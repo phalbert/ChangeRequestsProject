@@ -1,0 +1,17 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+.navbar-inverse {
+ background-color:#D71921;
+ border-color: inherit;
+ color: white;
+ }
+ 
+#TitleLbl {
+    color: white;
+}
+
+.form-control
+{
+    border-color: #428BCA;
+}
+                          

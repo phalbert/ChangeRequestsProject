@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CRWebPortal.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Change Request Management System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+        rel="stylesheet" />
+    <script type="text/jscript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.bundle.min.js"></script>
+    <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Site.css" rel="Stylesheet" />
+</head>
+<body>
+    <form runat="server">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="TitleLbl" runat="server" href="#"><i class="fa fa-file"></i> Change Request Management System</a>
+            </div>
+        </div>
+        <div class="container" style="padding-top: 100px">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <div class="footer">
+                <p>&copy; <%: DateTime.Now.Year %> Change Request Management System</p>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
