@@ -1,13 +1,11 @@
-﻿<%@ Page Title="About Us" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="About Us" Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true"
     CodeBehind="About.aspx.cs" Inherits="CRWebPortal.About" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        About
+        Credits
     </h2>
     <p>
-        Put content here.
+      You are using a product Designed by Kasozi. A world reknown Guarantee for reliability and Performance
     </p>
 </asp:Content>

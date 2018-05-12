@@ -16,7 +16,15 @@ namespace CRWebPortal
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Response.Redirect("~/SupplyOTP.aspx");
+            }
+            catch (Exception ex)
+            {
 
+                throw;
+            }
         }
 
         protected void rdBtnOTP_SelectedIndexChanged(object sender, EventArgs e)

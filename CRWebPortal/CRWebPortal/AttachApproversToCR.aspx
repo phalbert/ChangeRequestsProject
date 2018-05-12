@@ -1,18 +1,37 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AttachApproversToCR.aspx.cs" Inherits="CRWebPortal.AttachApproversToCR" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true" CodeBehind="AttachApproversToCR.aspx.cs" Inherits="CRWebPortal.AttachApproversToCR" %>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-            <div class="panel panel-primary">
-                <div class="panel-body">
+        <div class="col-12">
+            <ul class='nav nav-wizard'>
+
+                <li><a href="CreateChangeRequest.aspx" data-toggle="tab">CR Details</a></li>
+                <li><a href="AttachSystemsAffected.aspx" data-toggle="tab">Systems Affected</a></li>
+                <li><a href="AttachItemToChangeRequest.aspx" data-toggle="tab">Any Attachments</a></li>
+                <li class="active"><a href="AttachApproversToCR.aspx" data-toggle="tab">Assign Approvers</a></li>
+                <li><a href="Finished.aspx" data-toggle="tab">Done</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="card border-primary text-white  mb-3">
+                <div class="card-header bg-primary">
+                    Specify Approvers/Reviewers For this Change Request
+                </div>
+                <div class="card-body bg-default">
 
                     <%------------ General Details Section---------  --%>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                           Specify Approvers/Reviewers For this Change Request
+                    <div class="card border-primary text-white  mb-3">
+                        <div class="card-header bg-primary">
+                            Select Approvers/Reviewers
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body bg-default">
                             <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
@@ -32,19 +51,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-footer">
-                            <asp:Button ID="btnSubmit" Text="Save Details" CssClass="btn btn-md btn-danger pull-left" runat="server" OnClick="btnSubmit_Click" />
+                        <div class="card-footer">
+                            <asp:Button ID="btnSubmit" Text="Save Details" CssClass="btn btn-md btn-info pull-left" runat="server" OnClick="btnSubmit_Click" />
                             <br />
                             <br />
                         </div>
                     </div>
 
                     <%------------ View Uploaded Files---------  --%>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
+                    <div class="card border-primary text-white  mb-3">
+                        <div class="card-header bg-primary">
                             Selected Change Control Board
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body bg-default">
                             <div class="row">
                                 <div class="row">
                                     <div class="table-responsive">
@@ -68,14 +87,13 @@
                     </div>
 
                 </div>
-                <div class="panel-footer text-center">
+                <div class="card-footer text-center">
                     <asp:Button ID="btnBack" Text="Go Back" CssClass="btn btn-md btn-danger" runat="server" OnClick="btnBack_Click" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="btnNextStep" Text="Next Step" CssClass="btn btn-md btn-success" runat="server" OnClick="btnNextStep_Click" />
                 </div>
             </div>
 
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-1"></div>
     </div>
 </asp:Content>

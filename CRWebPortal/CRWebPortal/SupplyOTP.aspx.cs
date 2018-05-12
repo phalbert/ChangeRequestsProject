@@ -20,7 +20,13 @@ namespace CRWebPortal
         }
         
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+      
+        protected void btnResend_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {

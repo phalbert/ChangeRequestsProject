@@ -11,13 +11,14 @@
     <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/nav-wizard.css" rel="stylesheet" />
     <link href="Styles/Site.css" rel="Stylesheet" />
 </head>
 <body>
     <form runat="server">
         <div id="wrapper" class="toggled">
 
-            <!-- Sidebar -->
+            <!---------------------------- Sidebar ------------------------->
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand" style="padding-top: 15px; height: 240px;">
@@ -26,28 +27,38 @@
                         </a>
                     </li>
                     <li class="li-border-up-down">
-                        <a href="#">Login</a>
+                        <a href="CreateChangeRequest.aspx">New Change Request</a>
                     </li>
-                    
+                    <li class="li-border-down">
+                        <a href="#">View Change Requests</a>
+                    </li>
+                    <li class="li-border-down">
+                        <a href="#">Use T.B.P Access</a>
+                    </li>
+                    <li class="li-border-down">
+                        <a href="#">Request For T.B.P Access</a>
+                    </li>
+                    <li class="li-border-down">
+                        <a href="#">About</a>
+                    </li>
                 </ul>
             </div>
-            <!-- /#sidebar-wrapper -->
+            <!------------------------------ /#sidebar-wrapper ------------------------------->
 
-            <!-- Page Content -->
+            <!------------------------------ Page Content ------------------------------------->
             <div id="page-content-wrapper">
+
                 <div class="container-fluid">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
-                
+
                 <div class="footer" style="padding-top: 20%">
                     <hr />
                     <p>&copy; <%: DateTime.Now.Year %> Change Request Management System</p>
                 </div>
             </div>
-
-
-            <!-- /#page-content-wrapper -->
+            <!---------------------------- /#page-content-wrapper ----------------------------->
 
         </div>
 

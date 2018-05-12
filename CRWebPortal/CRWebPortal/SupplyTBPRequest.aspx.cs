@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace CRWebPortal
 {
-    public partial class SupplyUsername : System.Web.UI.Page
+    public partial class SupplyTBPRequest : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,15 +16,7 @@ namespace CRWebPortal
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Response.Redirect("~/ChooseOtpMethod.aspx");
-            }
-            catch (Exception ex)
-            {
 
-                throw;
-            }
         }
     }
 }

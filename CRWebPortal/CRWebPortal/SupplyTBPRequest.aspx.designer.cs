@@ -10,42 +10,42 @@
 namespace CRWebPortal {
     
     
-    public partial class SupplyOTP {
+    public partial class SupplyTBPRequest {
         
         /// <summary>
-        /// txtOTP control.
+        /// ddDatabases control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOTP;
+        protected global::System.Web.UI.WebControls.DropDownList ddDatabases;
         
         /// <summary>
-        /// btnBack control.
+        /// ddTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.DropDownList ddTable;
         
         /// <summary>
-        /// btnResend control.
+        /// txtReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnResend;
+        protected global::System.Web.UI.WebControls.TextBox txtReason;
         
         /// <summary>
-        /// btnNext control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }
