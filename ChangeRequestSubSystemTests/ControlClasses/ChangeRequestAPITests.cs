@@ -11,8 +11,9 @@ using System.Data;
 namespace ChangeRequestSubSystem.ControlClasses.Tests
 {
     [TestClass()]
-    public class ChangeRequestAPITests
+    public class ChangeRequestAPITests: AbstractModelTestCase
     {
+
         [TestMethod()]
         public void SendOneTimePINTest()
         {
@@ -39,6 +40,16 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         }
 
         [TestMethod()]
+        public void DynamicTest()
+        {
+            string Username = "kasozi.nsubuga@";
+            //password.CompanyCode = "Pegasus";
+            OneTimePassword[] all = OneTimePassword.QueryWithStoredProc<OneTimePassword>("GetLatestOTP", Username);
+            //OneTimePassword resp = DynamicExtensions.FromDynamic<OneTimePassword>(resp1.Rows[0]);
+            //Assert.AreEqual(Globals.SUCCESS_STATUS_CODE, resp.StatusCode);
+        }
+
+        [TestMethod()]
         public void LoginTest_InvalidParameters()
         {
             ChangeRequestInterface api = new ChangeRequestAPI();
@@ -52,10 +63,10 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
             ChangeRequestInterface api = new ChangeRequestAPI();
             ChangeRequest changeRequest = new ChangeRequest();
             changeRequest.ChangeRequestId = "122333333";
-            Approver approver = new Approver();
-            approver.Username = "kasozi.nsubuga@pegasus.co.ug";
+            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink();
+            
             string Decision = "APPROVED";
-            ApiResult result = api.UpdateChangeRequestStatus(approver,changeRequest, Decision);
+            ApiResult result = api.UpdateChangeRequestStatus(link);
             Assert.AreEqual(Globals.SUCCESS_STATUS_CODE, result.StatusCode);
         }
 
@@ -64,8 +75,8 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         {
             ChangeRequestInterface api = new ChangeRequestAPI();
             ChangeRequest changeRequest = new ChangeRequest();
-            Approver approver = new Approver();
-            ApiResult result = api.UpdateChangeRequestStatus(approver, changeRequest, "");
+            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink();
+            ApiResult result = api.UpdateChangeRequestStatus(link);
             Assert.AreEqual(Globals.FAILURE_STATUS_CODE, result.StatusCode);
         }
 
@@ -75,9 +86,9 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
             ChangeRequestInterface api = new ChangeRequestAPI();
             ChangeRequest changeRequest = new ChangeRequest();
             changeRequest.ChangeRequestId = "122333333";
-            Approver approver = new Approver();
-            approver.Username = "kasozi.nsubuga@pegasus.co.ug";
-            ApiResult result = api.AssignChangeRequestToApprover(changeRequest,approver);
+            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink();
+            //approver.Username = "kasozi.nsubuga@pegasus.co.ug";
+            ApiResult result = api.AssignChangeRequestToApprover(link);
             Assert.AreEqual(Globals.SUCCESS_STATUS_CODE, result.StatusCode);
         }
 
@@ -86,8 +97,8 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         {
             ChangeRequestInterface api = new ChangeRequestAPI();
             ChangeRequest changeRequest = new ChangeRequest();
-            Approver approver = new Approver();
-            ApiResult result = api.AssignChangeRequestToApprover(changeRequest, approver);
+            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink();
+            ApiResult result = api.AssignChangeRequestToApprover(link);
             Assert.AreEqual(Globals.FAILURE_STATUS_CODE, result.StatusCode);
         }
 
@@ -95,30 +106,30 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         public void ExecuteDataSetTest()
         {
             ChangeRequestInterface api = new ChangeRequestAPI();
-            DataTable result = api.ExecuteDataSet("GetSystemUserById",new object[] {"kasozi.nsubuga@pegasus.co.ug" }).Tables[0];
+            DataTable result = api.ExecuteDataSet("GetSystemUserById", new object[] { "kasozi.nsubuga@pegasus.co.ug" }).Tables[0];
             Assert.IsNotNull(result);
         }
-        
+
 
         [TestMethod()]
         public void SaveChangeRequestTest()
         {
             ChangeRequestInterface api = new ChangeRequestAPI();
             ChangeRequest changeRequest = new ChangeRequest();
-            changeRequest.ChangeCategoryCode = "N/A";
+            //changeRequest.ChangeCategoryCode = "N/A";
             changeRequest.ChangeRequestId = DateTime.Now.Ticks.ToString();
-            changeRequest.CompanyCode = "PEGASUS";
+            //changeRequest.CompanyCode = "PEGASUS";
             changeRequest.Description = "Test Desc";
             changeRequest.ImpactOfNotImplementing = "Serious";
-            changeRequest.ImplementationDate = "2018-05-05";
-            changeRequest.Implementer = "Kasozi";
+            //changeRequest.ImplementationDate = "2018-05-05";
+            //changeRequest.Implementer = "Kasozi";
             changeRequest.ImplementerEmail = "kasozi.nsubuga@pegasus.co.ug";
             changeRequest.ImplementerPhone = "0752001311";
             changeRequest.Justification = "Test";
-            changeRequest.ModifiedBy = "kasozi.nsubuga@pegasus.co.ug";
-            changeRequest.RequesterAddress = "Ntinda";
+            //changeRequest.ModifiedBy = "kasozi.nsubuga@pegasus.co.ug";
+            //changeRequest.RequesterAddress = "Ntinda";
             changeRequest.RequesterEmail = "techsupport@pegasus.co.ug";
-            changeRequest.RequesterId = "techsupport";
+            //changeRequest.RequesterId = "techsupport";
             changeRequest.RequesterPhone = "0752001311";
             changeRequest.Title = "Test Change Request";
             ApiResult result = api.SaveChangeRequest(changeRequest);
@@ -149,6 +160,18 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
             ApiResult result = api.SaveRole(newRole);
             Assert.AreEqual(Globals.SUCCESS_STATUS_CODE, result.StatusCode);
         }
-        
+
+        [TestMethod()]
+        public void AttachSystemsAffectedToChangeRequestTest()
+        {
+            ChangeRequestInterface api = new ChangeRequestAPI();
+            SystemAffected systemAffected = new SystemAffected();
+            systemAffected.SystemName = "Test";
+            systemAffected.SystemType = "Test";
+            systemAffected.TypeOfChange = "Update";
+            systemAffected.Details = "Test";
+            ApiResult result = api.AttachSystemsAffectedToChangeRequest(systemAffected);
+            Assert.AreEqual(Globals.SUCCESS_STATUS_CODE, result.StatusCode);
+        }
     }
 }

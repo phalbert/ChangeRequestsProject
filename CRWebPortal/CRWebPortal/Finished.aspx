@@ -2,22 +2,6 @@
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
-    
-    <div class="row">
-        <div class="col-12">
-            <ul class='nav nav-wizard'>
-
-                <li><a href="CreateChangeRequest.aspx" data-toggle="tab">Change Details</a></li>
-                <li><a href="AttachSystemsAffected.aspx" data-toggle="tab">Systems Affected</a></li>
-                <li><a href="AttachItemToChangeRequest.aspx" data-toggle="tab">Any Attachments</a></li>
-                <li><a href="AttachApproversToCR.aspx" data-toggle="tab">Assign Approvers</a></li>
-                <li class="active"><a href="Finished.aspx" data-toggle="tab">Done</a></li>
-
-            </ul>
-        </div>
-    </div>
-    <br />
-
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-10 text-center">

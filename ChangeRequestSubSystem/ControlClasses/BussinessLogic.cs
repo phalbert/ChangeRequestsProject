@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Castle.ActiveRecord;
+using Castle.ActiveRecord.Framework;
 using ChangeRequestSubSystem.Entities;
 
 namespace ChangeRequestSubSystem.ControlClasses
@@ -12,59 +14,242 @@ namespace ChangeRequestSubSystem.ControlClasses
     {
         private List<string> AcceptableMethodsOfSendingOTP = new List<string>() { "EMAIL", "PHONE" };
 
+        public BussinessLogic()
+        {
+
+        }
+
+        internal ApiResult Initialize()
+        {
+            ApiResult apiResult = new ApiResult();
+
+            try
+            {
+                IConfigurationSource source = System.Configuration.ConfigurationManager.GetSection("activerecord") as IConfigurationSource;
+
+                List<Type> typesToKeepTrackOf = new List<Type>();
+                typesToKeepTrackOf.Add(typeof(SystemAffected));
+                typesToKeepTrackOf.Add(typeof(ApiLog));
+                typesToKeepTrackOf.Add(typeof(PostChangeTest));
+                typesToKeepTrackOf.Add(typeof(ApproverToChangeRequestLink));
+                typesToKeepTrackOf.Add(typeof(Company));
+                typesToKeepTrackOf.Add(typeof(SystemUser));
+                typesToKeepTrackOf.Add(typeof(RiskAnalysis));
+                typesToKeepTrackOf.Add(typeof(CR_Attachment));
+                typesToKeepTrackOf.Add(typeof(Role));
+                typesToKeepTrackOf.Add(typeof(ServicesAffected));
+                typesToKeepTrackOf.Add(typeof(ChangeRequest));
+
+                ActiveRecordStarter.Initialize(source, typesToKeepTrackOf.ToArray());
+                ActiveRecordStarter.UpdateSchema();
+
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError("OnInitialize", "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields("FAILED TO INTIALIZE API");
+            }
+
+            return apiResult;
+        }
+
+        internal ApiResult DropAndRecreate()
+        {
+            ApiResult apiResult = new ApiResult();
+
+            try
+            {
+                IConfigurationSource source = System.Configuration.ConfigurationManager.GetSection("activerecord") as IConfigurationSource;
+
+                List<Type> typesToKeepTrackOf = new List<Type>();
+                typesToKeepTrackOf.Add(typeof(SystemAffected));
+                typesToKeepTrackOf.Add(typeof(ApiLog));
+                typesToKeepTrackOf.Add(typeof(PostChangeTest));
+                typesToKeepTrackOf.Add(typeof(ApproverToChangeRequestLink));
+                typesToKeepTrackOf.Add(typeof(Company));
+                typesToKeepTrackOf.Add(typeof(SystemUser));
+                typesToKeepTrackOf.Add(typeof(RiskAnalysis));
+                typesToKeepTrackOf.Add(typeof(CR_Attachment));
+                typesToKeepTrackOf.Add(typeof(Role));
+                typesToKeepTrackOf.Add(typeof(ServicesAffected));
+                typesToKeepTrackOf.Add(typeof(ChangeRequest));
+                typesToKeepTrackOf.Add(typeof(OneTimePassword));
+                ActiveRecordStarter.Initialize(source, typesToKeepTrackOf.ToArray());
+                ActiveRecordStarter.DropSchema();
+                ActiveRecordStarter.UpdateSchema();
+
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError("OnInitialize", "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields("FAILED TO INTIALIZE API");
+            }
+
+            return apiResult;
+        }
+
+        private bool HandleError(string Id, string type, string message)
+        {
+            try
+            {
+                //try to log errror
+                Task.Factory.StartNew(() =>
+                {
+                    ApiLog log = new ApiLog();
+                    log.LogInfo(Id, type, message);
+                });
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        internal ApiResult AttachSystemAffectedToChangeRequest(SystemAffected sys)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!sys.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(sys.StatusDesc);
+                    return apiResult;
+                }
+
+                sys.Save();
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(AttachSystemAffectedToChangeRequest), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
+        internal ApiResult AttachPostChangeTestsToChangeRequest(PostChangeTest postChangeTest)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!postChangeTest.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(postChangeTest.StatusDesc);
+                    return apiResult;
+                }
+
+                postChangeTest.Save();
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(AttachSystemAffectedToChangeRequest), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
+        internal ApiResult AttachRiskAnalysisToChangeRequest(RiskAnalysis riskAnalysis)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!riskAnalysis.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(riskAnalysis.StatusDesc);
+                    return apiResult;
+                }
+
+                riskAnalysis.Save();
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(AttachSystemAffectedToChangeRequest), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
+        internal ApiResult SaveSystemUser(SystemUser systemUser)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!systemUser.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(systemUser.StatusDesc);
+                    return apiResult;
+                }
+
+                systemUser.Save();
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(AttachSystemAffectedToChangeRequest), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
         internal ApiResult SendOneTimePIN(string username, string MethodOfSending)
         {
             ApiResult apiResult = new ApiResult();
             try
             {
 
-                if (string.IsNullOrEmpty(username))
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"Please Supply a Username";
-                    return apiResult;
-                }
-                if (!AcceptableMethodsOfSendingOTP.Contains(MethodOfSending.ToUpper()))
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"Please Specify how you want to recieve the OTP";
-                    return apiResult;
-                }
+                //if (string.IsNullOrEmpty(username))
+                //{
+                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                //    apiResult.StatusDesc = $"Please Supply a Username";
+                //    return apiResult;
+                //}
+                //if (!AcceptableMethodsOfSendingOTP.Contains(MethodOfSending.ToUpper()))
+                //{
+                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                //    apiResult.StatusDesc = $"Please Specify how you want to recieve the OTP";
+                //    return apiResult;
+                //}
 
-                DatabaseHandler dh = new DatabaseHandler();
-                DataTable dt = dh.GetUserByID(username);
+                //DatabaseHandler dh = new DatabaseHandler();
+                //DataTable dt = dh.GetUserByID(username);
 
-                if (dt.Rows.Count < 0)
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"User with Username [{username}] doesnt exist";
-                    return apiResult;
-                }
-
-
-                string Phone = dt.Rows[0]["PhoneNumber"].ToString();
-                string Email = dt.Rows[0]["Email"].ToString();
-                string preferedContact = MethodOfSending.ToUpper() == "PHONE" ? Phone : Email;
-                string OTP = "1234"; //GenerateOTP(preferedContact);
-
-                dt = dh.SaveOneTimePIN(username, OTP);
-
-                if (dt.Rows.Count < 0)
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"FAILED TO LOG OTP";
-                    return apiResult;
-                }
-
-                ApiResult sendResult = MethodOfSending.ToUpper() == "PHONE" ? SendOneTimePINByPhone(preferedContact, OTP) : SendOneTimePINByEmail(preferedContact, OTP);
+                //if (dt.Rows.Count < 0)
+                //{
+                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                //    apiResult.StatusDesc = $"User with Username [{username}] doesnt exist";
+                //    return apiResult;
+                //}
 
 
-                if (sendResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = "Send One Time PIN failed: " + sendResult.StatusDesc;
-                    return apiResult;
-                }
+                //string Phone = dt.Rows[0]["PhoneNumber"].ToString();
+                //string Email = dt.Rows[0]["Email"].ToString();
+                //string preferedContact = MethodOfSending.ToUpper() == "PHONE" ? Phone : Email;
+                //string OTP = "1234"; //GenerateOTP(preferedContact);
+
+                //dt = dh.SaveOneTimePIN(username, OTP);
+
+                //if (dt.Rows.Count < 0)
+                //{
+                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                //    apiResult.StatusDesc = $"FAILED TO LOG OTP";
+                //    return apiResult;
+                //}
+
+                //ApiResult sendResult = MethodOfSending.ToUpper() == "PHONE" ? SendOneTimePINByPhone(preferedContact, OTP) : SendOneTimePINByEmail(preferedContact, OTP);
+
+
+                //if (sendResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
+                //{
+                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                //    apiResult.StatusDesc = "Send One Time PIN failed: " + sendResult.StatusDesc;
+                //    return apiResult;
+                //}
 
                 apiResult.StatusCode = Globals.SUCCESS_STATUS_CODE;
                 apiResult.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
@@ -82,7 +267,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             try
             {
                 DatabaseHandler dh = new DatabaseHandler();
-                return dh.ExecuteDataSet(storedProc, parameters);
+                return DatabaseHandler.ExecuteDataSet(storedProc, parameters);
             }
             catch (Exception ex)
             {
@@ -154,100 +339,51 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal ApiResult UpdateChangeRequestStatus(Approver approver, ChangeRequest changeRequest, string Decision)
+        internal ApiResult UpdateChangeRequestStatus(ApproverToChangeRequestLink link)
         {
             ApiResult apiResult = new ApiResult();
             try
             {
-                if (!changeRequest.IsValidUpdateRequest())
+                if (!link.IsValidUpdate())
                 {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = changeRequest.StatusDesc;
+                    apiResult.SetFailuresAsStatusInResponseFields(link.StatusDesc);
                     return apiResult;
                 }
 
-                if (!approver.IsValidUpdateRequest())
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = approver.StatusDesc;
-                    return apiResult;
-                }
-
-                if (string.IsNullOrEmpty(Decision))
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = "Please Supply a Decision";
-                    return apiResult;
-                }
-
-                DatabaseHandler dh = new DatabaseHandler();
-                DataTable dt = dh.UpdateChangeRequestStatus(changeRequest, approver, Decision);
-
-                if (dt.Rows.Count < 0)
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"NO ROWS AFFECTED";
-                    return apiResult;
-                }
-
-                string InsertedID = dt.Rows[0][0].ToString();
-
-              
-                if (InsertedID != "WAIT")
-                {
-                    //TODO: Send out Success or Failure Notification
-                }
-
-                apiResult.PegPayID = InsertedID;
-                apiResult.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                apiResult.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                link.Update();
+                apiResult.SetSuccessAsStatusInResponseFields();
                 return apiResult;
             }
             catch (Exception ex)
             {
-                apiResult = HandleException(nameof(UpdateChangeRequestStatus), $"{changeRequest.ChangeRequestId}:{approver.Username}", ex);
+                HandleError(nameof(UpdateChangeRequestStatus), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
             }
             return apiResult;
         }
 
-        internal ApiResult AssignChangeRequestToApprover(ChangeRequest changeRequest, Approver approver)
+        internal ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link)
         {
             ApiResult apiResult = new ApiResult();
             try
             {
-                if (!changeRequest.IsValidAssignRequest())
+                if (!link.IsValid())
                 {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = changeRequest.StatusDesc;
+                    apiResult.SetFailuresAsStatusInResponseFields(link.StatusDesc);
                     return apiResult;
                 }
 
-                if (!approver.IsValidAssignRequest())
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = approver.StatusDesc;
-                    return apiResult;
-                }
 
-                DatabaseHandler dh = new DatabaseHandler();
-                DataTable dt = dh.AssignChangeRequestToApprover(changeRequest, approver);
+                link.Save();
 
-                if (dt.Rows.Count < 0)
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"NO ROWS AFFECTED";
-                    return apiResult;
-                }
-
-                string InsertedID = dt.Rows[0][0].ToString();
-                apiResult.PegPayID = InsertedID;
-                apiResult.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                apiResult.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                apiResult.PegPayID = link.Id.ToString();
+                apiResult.SetSuccessAsStatusInResponseFields();
                 return apiResult;
             }
             catch (Exception ex)
             {
-                apiResult = HandleException(nameof(AssignChangeRequestToApprover), $"{changeRequest.ChangeRequestId}:{approver.Username}", ex);
+                HandleError(nameof(AssignChangeRequestToApprover), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
             }
             return apiResult;
         }
@@ -259,30 +395,20 @@ namespace ChangeRequestSubSystem.ControlClasses
             {
                 if (!req.IsValid())
                 {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = req.StatusDesc;
+                    apiResult.SetFailuresAsStatusInResponseFields(req.StatusDesc);
                     return apiResult;
                 }
 
-                DatabaseHandler dh = new DatabaseHandler();
-                DataTable dt = dh.SaveRole(req);
+                req.Save();
 
-                if (dt.Rows.Count < 0)
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"NO ROWS AFFECTED";
-                    return apiResult;
-                }
-
-                string InsertedID = dt.Rows[0][0].ToString();
-                apiResult.PegPayID = InsertedID;
-                apiResult.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                apiResult.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                apiResult.PegPayID = "" + req.Id;
+                apiResult.SetSuccessAsStatusInResponseFields();
                 return apiResult;
             }
             catch (Exception ex)
             {
-                apiResult = HandleException(nameof(SaveRole), $"{req.RoleCode}", ex);
+                HandleError(nameof(SaveRole), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
             }
             return apiResult;
         }
@@ -294,30 +420,45 @@ namespace ChangeRequestSubSystem.ControlClasses
             {
                 if (!req.IsValid())
                 {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = req.StatusDesc;
+                    apiResult.SetFailuresAsStatusInResponseFields(req.StatusDesc);
                     return apiResult;
                 }
 
-                DatabaseHandler dh = new DatabaseHandler();
-                DataTable dt = dh.SaveCompany(req);
+                req.Save();
 
-                if (dt.Rows.Count < 0)
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"NO ROWS AFFECTED";
-                    return apiResult;
-                }
-
-                string InsertedID = dt.Rows[0][0].ToString();
-                apiResult.PegPayID = InsertedID;
-                apiResult.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                apiResult.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                apiResult.PegPayID = "" + req.Id;
+                apiResult.SetSuccessAsStatusInResponseFields();
                 return apiResult;
             }
             catch (Exception ex)
             {
-                apiResult = HandleException(nameof(SaveCompany), $"{req.CompanyCode}", ex);
+                HandleError(nameof(SaveCompany), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
+        internal ApiResult AttachItemToChangeRequest(CR_Attachment req)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!req.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(req.StatusDesc);
+                    return apiResult;
+                }
+
+                req.Save();
+
+                apiResult.PegPayID = "" + req.Id;
+                apiResult.SetSuccessAsStatusInResponseFields();
+                return apiResult;
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(SaveCompany), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
             }
             return apiResult;
         }
@@ -329,30 +470,20 @@ namespace ChangeRequestSubSystem.ControlClasses
             {
                 if (!changeRequest.IsValid())
                 {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = changeRequest.StatusDesc;
+                    apiResult.SetFailuresAsStatusInResponseFields(changeRequest.StatusDesc);
                     return apiResult;
                 }
 
-                DatabaseHandler dh = new DatabaseHandler();
-                DataTable dt = dh.SaveChangeRequest(changeRequest);
+                changeRequest.Save();
 
-                if (dt.Rows.Count < 0)
-                {
-                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    apiResult.StatusDesc = $"NO ROWS AFFECTED";
-                    return apiResult;
-                }
-
-                string InsertedID = dt.Rows[0][0].ToString();
-                apiResult.PegPayID = InsertedID;
-                apiResult.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                apiResult.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                apiResult.PegPayID = "" + changeRequest.Id;
+                apiResult.SetSuccessAsStatusInResponseFields();
                 return apiResult;
             }
             catch (Exception ex)
             {
-                apiResult = HandleException(nameof(SaveCompany), $"{changeRequest.ChangeRequestId}", ex);
+                HandleError(nameof(SaveCompany), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
             }
             return apiResult;
         }
@@ -376,30 +507,18 @@ namespace ChangeRequestSubSystem.ControlClasses
                     return user;
                 }
 
-                DatabaseHandler dh = new DatabaseHandler();
-                DataSet ds = dh.CheckUserCreds(username, password);
-                DataTable dt = ds.Tables[0];
+                SystemUser[] all = SystemUser.FindAllByProperty("Username", username);
 
-                if (dt.Rows.Count < 0)
+                dynamic resp = DatabaseHandler.ExecuteStoredProc("GetLatestOTP", username);
+
+
+                OneTimePassword oneTimePassword = new OneTimePassword();
+                if (oneTimePassword.Password!=password&&oneTimePassword.Username!=username)
                 {
                     user.StatusCode = Globals.FAILURE_STATUS_CODE;
                     user.StatusDesc = $"Invalid Username or Password";
                     return user;
                 }
-
-                string generatedOTP = dt.Rows[0]["GeneratedOTP"].ToString();
-
-                if (generatedOTP != password)
-                {
-                    user.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    user.StatusDesc = $"Invalid Username or Password";
-                    return user;
-                }
-
-                dt = ds.Tables[1];
-                user.PhoneNumber = dt.Rows[0]["PhoneNumber"].ToString();
-                user.CompanyEmail = dt.Rows[0]["Email"].ToString();
-                user.CompanyCode = dt.Rows[0]["CompanyCode"].ToString();
 
                 user.StatusCode = Globals.SUCCESS_STATUS_CODE;
                 user.StatusDesc = Globals.SUCCESS_STATUS_TEXT;

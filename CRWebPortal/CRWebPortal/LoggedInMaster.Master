@@ -33,10 +33,10 @@
                         <a href="#">View Change Requests</a>
                     </li>
                     <li class="li-border-down">
-                        <a href="#">Use T.B.P Access</a>
+                        <a href="SupplyToken.aspx">Use T.B.P Access</a>
                     </li>
                     <li class="li-border-down">
-                        <a href="#">Request For T.B.P Access</a>
+                        <a href="ApplyForTBPAccess.aspx">Request For T.B.P Access</a>
                     </li>
                     <li class="li-border-down">
                         <a href="#">About</a>
@@ -49,6 +49,13 @@
             <div id="page-content-wrapper">
 
                 <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert alert-success text-center">
+                                <asp:Label ID="lblMsg" runat="server" Text="SYSTEM STATE : READY"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>

@@ -68,10 +68,12 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="AttachApproversToCR.aspx" />
+    <Content Include="AttachApproversToTBPRequest.aspx" />
     <Content Include="AttachItemToChangeRequest.aspx" />
     <Content Include="AttachSystemsAffected.aspx" />
     <Content Include="ChooseOtpMethod.aspx" />
     <Content Include="CreateChangeRequest.aspx" />
+    <Content Include="ExecuteQuery.aspx" />
     <Content Include="Finished.aspx" />
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
@@ -86,6 +88,7 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="SupplyOTP.aspx" />
     <Content Include="SupplyTBPRequest.aspx" />
+    <Content Include="SupplyToken.aspx" />
     <Content Include="SupplyUsername.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -131,12 +134,26 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ApplyForTBPAccess.aspx.cs">
+      <DependentUpon>ApplyForTBPAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplyForTBPAccess.aspx.designer.cs">
+      <DependentUpon>ApplyForTBPAccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AttachApproversToCR.aspx.cs">
       <DependentUpon>AttachApproversToCR.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AttachApproversToCR.aspx.designer.cs">
       <DependentUpon>AttachApproversToCR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AttachApproversToTBPRequest.aspx.cs">
+      <DependentUpon>AttachApproversToTBPRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AttachApproversToTBPRequest.aspx.designer.cs">
+      <DependentUpon>AttachApproversToTBPRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="AttachItemToChangeRequest.aspx.cs">
       <DependentUpon>AttachItemToChangeRequest.aspx</DependentUpon>
@@ -172,6 +189,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExecuteQuery.aspx.cs">
+      <DependentUpon>ExecuteQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExecuteQuery.aspx.designer.cs">
+      <DependentUpon>ExecuteQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finished.aspx.cs">
       <DependentUpon>Finished.aspx</DependentUpon>
@@ -212,6 +236,13 @@
     <Compile Include="SupplyTBPRequest.aspx.designer.cs">
       <DependentUpon>SupplyTBPRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SupplyToken.aspx.cs">
+      <DependentUpon>SupplyToken.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupplyToken.aspx.designer.cs">
+      <DependentUpon>SupplyToken.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SupplyUsername.aspx.cs">
       <DependentUpon>SupplyUsername.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,6 +259,7 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ApplyForTBPAccess.aspx" />
     <None Include="font-awesome\fonts\fontawesome-webfont.eot" />
     <None Include="font-awesome\fonts\fontawesome-webfont.ttf" />
     <None Include="font-awesome\fonts\fontawesome-webfont.woff" />

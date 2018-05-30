@@ -39,6 +39,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.ActiveRecord, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ChangeRequestSubSystem\bin\Debug\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PegPayGatewaySolution\PegPayGatewayApi\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -68,6 +73,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ControlClasses\AbstractModelTestCase.cs" />
     <Compile Include="ControlClasses\ChangeRequestAPITests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
