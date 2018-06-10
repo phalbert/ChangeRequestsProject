@@ -40,12 +40,24 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.Button btnResend;
         
         /// <summary>
-        /// btnNext control.
+        /// btnVerify control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.WebControls.Button btnVerify;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new CRWebPortal.SiteMaster Master {
+            get {
+                return ((CRWebPortal.SiteMaster)(base.Master));
+            }
+        }
     }
 }

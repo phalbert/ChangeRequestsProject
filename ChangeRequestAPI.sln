@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeRequestSubSystem", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeRequestSubSystemTests", "ChangeRequestSubSystemTests\ChangeRequestSubSystemTests.csproj", "{230D7EB2-45E6-411E-B862-319C83E58D41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{4AE5C682-1210-4810-BE17-C77C25DFCB99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{230D7EB2-45E6-411E-B862-319C83E58D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{230D7EB2-45E6-411E-B862-319C83E58D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{230D7EB2-45E6-411E-B862-319C83E58D41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE5C682-1210-4810-BE17-C77C25DFCB99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE5C682-1210-4810-BE17-C77C25DFCB99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE5C682-1210-4810-BE17-C77C25DFCB99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE5C682-1210-4810-BE17-C77C25DFCB99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

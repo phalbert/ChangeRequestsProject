@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Castle.ActiveRecord;
@@ -27,22 +28,11 @@ namespace ChangeRequestSubSystem.ControlClasses
             {
                 IConfigurationSource source = System.Configuration.ConfigurationManager.GetSection("activerecord") as IConfigurationSource;
 
-                List<Type> typesToKeepTrackOf = new List<Type>();
-                typesToKeepTrackOf.Add(typeof(SystemAffected));
-                typesToKeepTrackOf.Add(typeof(ApiLog));
-                typesToKeepTrackOf.Add(typeof(PostChangeTest));
-                typesToKeepTrackOf.Add(typeof(ApproverToChangeRequestLink));
-                typesToKeepTrackOf.Add(typeof(Company));
-                typesToKeepTrackOf.Add(typeof(SystemUser));
-                typesToKeepTrackOf.Add(typeof(RiskAnalysis));
-                typesToKeepTrackOf.Add(typeof(CR_Attachment));
-                typesToKeepTrackOf.Add(typeof(Role));
-                typesToKeepTrackOf.Add(typeof(ServicesAffected));
-                typesToKeepTrackOf.Add(typeof(ChangeRequest));
+                List<Type> typesToKeepTrackOf = GetTypesToKeepTrackOf();
 
                 ActiveRecordStarter.Initialize(source, typesToKeepTrackOf.ToArray());
                 ActiveRecordStarter.UpdateSchema();
-
+                Seed();
                 apiResult.SetSuccessAsStatusInResponseFields();
             }
             catch (Exception ex)
@@ -61,24 +51,11 @@ namespace ChangeRequestSubSystem.ControlClasses
             try
             {
                 IConfigurationSource source = System.Configuration.ConfigurationManager.GetSection("activerecord") as IConfigurationSource;
-
-                List<Type> typesToKeepTrackOf = new List<Type>();
-                typesToKeepTrackOf.Add(typeof(SystemAffected));
-                typesToKeepTrackOf.Add(typeof(ApiLog));
-                typesToKeepTrackOf.Add(typeof(PostChangeTest));
-                typesToKeepTrackOf.Add(typeof(ApproverToChangeRequestLink));
-                typesToKeepTrackOf.Add(typeof(Company));
-                typesToKeepTrackOf.Add(typeof(SystemUser));
-                typesToKeepTrackOf.Add(typeof(RiskAnalysis));
-                typesToKeepTrackOf.Add(typeof(CR_Attachment));
-                typesToKeepTrackOf.Add(typeof(Role));
-                typesToKeepTrackOf.Add(typeof(ServicesAffected));
-                typesToKeepTrackOf.Add(typeof(ChangeRequest));
-                typesToKeepTrackOf.Add(typeof(OneTimePassword));
+                List<Type> typesToKeepTrackOf = GetTypesToKeepTrackOf();
                 ActiveRecordStarter.Initialize(source, typesToKeepTrackOf.ToArray());
                 ActiveRecordStarter.DropSchema();
                 ActiveRecordStarter.UpdateSchema();
-
+                Seed();
                 apiResult.SetSuccessAsStatusInResponseFields();
             }
             catch (Exception ex)
@@ -88,6 +65,27 @@ namespace ChangeRequestSubSystem.ControlClasses
             }
 
             return apiResult;
+        }
+
+        private static List<Type> GetTypesToKeepTrackOf()
+        {
+            return new List<Type>
+                {
+                    typeof(SystemAffected),
+                    typeof(ApiLog),
+                    typeof(PostChangeTest),
+                    typeof(ApproverToChangeRequestLink),
+                    typeof(Company),
+                    typeof(SystemUser),
+                    typeof(RiskAnalysis),
+                    typeof(CR_Attachment),
+                    typeof(Role),
+                    typeof(ServicesAffected),
+                    typeof(ChangeRequest),
+                    typeof(OneTimePassword),
+                    typeof(RollBackPlan),
+                    typeof(TimeBoundAccessRequest)
+                };
         }
 
         private bool HandleError(string Id, string type, string message)
@@ -175,6 +173,28 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
+        internal ApiResult SaveTimeBoundAccessRequest(TimeBoundAccessRequest req)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!req.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(req.StatusDesc);
+                    return apiResult;
+                }
+
+                req.Save();
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(AttachSystemAffectedToChangeRequest), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
         internal ApiResult SaveSystemUser(SystemUser systemUser)
         {
             ApiResult apiResult = new ApiResult();
@@ -185,6 +205,10 @@ namespace ChangeRequestSubSystem.ControlClasses
                     apiResult.SetFailuresAsStatusInResponseFields(systemUser.StatusDesc);
                     return apiResult;
                 }
+
+                SystemUser old = SystemUser.QueryWithStoredProc("GetSystemUserByID", systemUser.Username).FirstOrDefault();
+
+                systemUser.Id = old != null ? old.Id : systemUser.Id;
 
                 systemUser.Save();
                 apiResult.SetSuccessAsStatusInResponseFields();
@@ -197,62 +221,79 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
+        internal ApiResult Seed()
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                SystemUser user = new SystemUser();
+                user.CompanyCode = "PEGASUS";
+                user.Email = "kasozi.nsubuga@pegasus.co.ug";
+                user.Username = "nsubugak";
+                user.RoleCode = "SUPER-ADMIN";
+                user.ModifiedBy = "Admin";
+                user.PhoneNumber = "256752001311";
+
+                SaveSystemUser(user);
+
+            }
+            catch (Exception ex)
+            {
+                apiResult = HandleException(nameof(SendOneTimePIN), $"SeedError, Error:{ex.Message}", ex);
+            }
+            return apiResult;
+        }
+
         internal ApiResult SendOneTimePIN(string username, string MethodOfSending)
         {
             ApiResult apiResult = new ApiResult();
             try
             {
 
-                //if (string.IsNullOrEmpty(username))
-                //{
-                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                //    apiResult.StatusDesc = $"Please Supply a Username";
-                //    return apiResult;
-                //}
-                //if (!AcceptableMethodsOfSendingOTP.Contains(MethodOfSending.ToUpper()))
-                //{
-                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                //    apiResult.StatusDesc = $"Please Specify how you want to recieve the OTP";
-                //    return apiResult;
-                //}
+                if (string.IsNullOrEmpty(username))
+                {
+                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    apiResult.StatusDesc = $"Please Supply a Username";
+                    return apiResult;
+                }
+                if (!AcceptableMethodsOfSendingOTP.Contains(MethodOfSending.ToUpper()))
+                {
+                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    apiResult.StatusDesc = $"Please Specify how you want to recieve the OTP";
+                    return apiResult;
+                }
 
-                //DatabaseHandler dh = new DatabaseHandler();
-                //DataTable dt = dh.GetUserByID(username);
+                SystemUser[] systemUsers = SystemUser.QueryWithStoredProc("GetSystemUserByID", username);
 
-                //if (dt.Rows.Count < 0)
-                //{
-                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                //    apiResult.StatusDesc = $"User with Username [{username}] doesnt exist";
-                //    return apiResult;
-                //}
+                if (systemUsers.Count() <= 0)
+                {
+                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    apiResult.StatusDesc = $"User with Username [{username}] doesnt exist";
+                    return apiResult;
+                }
 
+                SystemUser user = systemUsers[0];
 
-                //string Phone = dt.Rows[0]["PhoneNumber"].ToString();
-                //string Email = dt.Rows[0]["Email"].ToString();
-                //string preferedContact = MethodOfSending.ToUpper() == "PHONE" ? Phone : Email;
-                //string OTP = "1234"; //GenerateOTP(preferedContact);
-
-                //dt = dh.SaveOneTimePIN(username, OTP);
-
-                //if (dt.Rows.Count < 0)
-                //{
-                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                //    apiResult.StatusDesc = $"FAILED TO LOG OTP";
-                //    return apiResult;
-                //}
-
-                //ApiResult sendResult = MethodOfSending.ToUpper() == "PHONE" ? SendOneTimePINByPhone(preferedContact, OTP) : SendOneTimePINByEmail(preferedContact, OTP);
+                OneTimePassword oneTimePassword = new OneTimePassword();
+                oneTimePassword.CompanyCode = user.CompanyCode;
+                oneTimePassword.Password = "1234";
+                oneTimePassword.ValidityDurationInSeconds = 5 * 60;
+                oneTimePassword.Username = user.Username;
+                oneTimePassword.Save();
 
 
-                //if (sendResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
-                //{
-                //    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
-                //    apiResult.StatusDesc = "Send One Time PIN failed: " + sendResult.StatusDesc;
-                //    return apiResult;
-                //}
+                ApiResult sendResult = MethodOfSending.ToUpper() == "PHONE" ? SendOneTimePINByPhone(user.PhoneNumber, oneTimePassword.Password) : SendOneTimePINByEmail(user.Email, oneTimePassword.Password);
+
+
+                if (sendResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
+                {
+                    apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    apiResult.StatusDesc = "Send One Time PIN failed: " + sendResult.StatusDesc;
+                    return apiResult;
+                }
 
                 apiResult.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                apiResult.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                apiResult.StatusDesc = $"Successfully Sent One time Password by {MethodOfSending} to {sendResult.PegPayID}. Its Valid for {oneTimePassword.ValidityDurationInSeconds/60} minute(s)";
                 return apiResult;
             }
             catch (Exception ex)
@@ -275,6 +316,40 @@ namespace ChangeRequestSubSystem.ControlClasses
                 {
                     DatabaseHandler dh = new DatabaseHandler();
                     dh.LogError(nameof(SendOneTimePIN), $"{storedProc}, Error:{ex.Message}");
+                });
+                throw ex;
+            }
+        }
+
+        internal DataSet ExecuteSqlQuery(string SqlQuery)
+        {
+            try
+            {
+                return DatabaseHandler.ExecuteSqlQuery(SqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Task.Factory.StartNew(() =>
+                {
+                    DatabaseHandler dh = new DatabaseHandler();
+                    dh.LogError(nameof(SendOneTimePIN), $"{SqlQuery}, Error:{ex.Message}");
+                });
+                throw ex;
+            }
+        }
+
+        internal int ExecuteNonQuery(string SqlQuery)
+        {
+            try
+            {
+                return DatabaseHandler.ExecuteNonQuery(SqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Task.Factory.StartNew(() =>
+                {
+                    DatabaseHandler dh = new DatabaseHandler();
+                    dh.LogError(nameof(SendOneTimePIN), $"{SqlQuery}, Error:{ex.Message}");
                 });
                 throw ex;
             }
@@ -318,6 +393,7 @@ namespace ChangeRequestSubSystem.ControlClasses
 
                 result.StatusCode = Globals.SUCCESS_STATUS_CODE;
                 result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                result.PegPayID = preferedContact;
             }
             catch (Exception ex)
             {
@@ -350,7 +426,19 @@ namespace ChangeRequestSubSystem.ControlClasses
                     return apiResult;
                 }
 
-                link.Update();
+                ApproverToChangeRequestLink old = ApproverToChangeRequestLink.QueryWithStoredProc("GetApproverToChangeRequest", link.UserId, link.ChangeRequestId).FirstOrDefault();
+
+                if (old == null)
+                {
+                    link.Save();
+                }
+                else
+                {
+                    old.Decision = link.Decision;
+                    old.Reason = link.Reason;
+                    old.Save();
+                }
+
                 apiResult.SetSuccessAsStatusInResponseFields();
                 return apiResult;
             }
@@ -362,7 +450,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link)
+        internal ApiResult AssignApproverToChangeRequest(ApproverToChangeRequestLink link)
         {
             ApiResult apiResult = new ApiResult();
             try
@@ -382,7 +470,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             }
             catch (Exception ex)
             {
-                HandleError(nameof(AssignChangeRequestToApprover), "EXCEPTION", ex.Message);
+                HandleError(nameof(AssignApproverToChangeRequest), "EXCEPTION", ex.Message);
                 apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
             }
             return apiResult;
@@ -438,7 +526,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal ApiResult AttachItemToChangeRequest(CR_Attachment req)
+        internal ApiResult AttachRollBackPlanToChangeRequest(RollBackPlan req)
         {
             ApiResult apiResult = new ApiResult();
             try
@@ -461,6 +549,52 @@ namespace ChangeRequestSubSystem.ControlClasses
                 apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
             }
             return apiResult;
+        }
+
+        internal ApiResult AttachItemToChangeRequest(CR_Attachment req)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                req.Hash = GenerateSHA256String(req.Base64StringOfContent);
+
+                if (!req.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(req.StatusDesc);
+                    return apiResult;
+                }
+
+                req.Save();
+
+                apiResult.PegPayID = "" + req.Id;
+                apiResult.SetSuccessAsStatusInResponseFields();
+                return apiResult;
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(SaveCompany), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
+        public static string GenerateSHA256String(string inputString)
+        {
+            SHA256 sha256 = SHA256Managed.Create();
+            byte[] bytes = Encoding.UTF8.GetBytes(inputString);
+            byte[] hash = sha256.ComputeHash(bytes);
+            return GetStringFromHash(hash);
+        }
+        
+
+        private static string GetStringFromHash(byte[] hash)
+        {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                result.Append(hash[i].ToString("X2"));
+            }
+            return result.ToString();
         }
 
         internal ApiResult SaveChangeRequest(ChangeRequest changeRequest)
@@ -507,16 +641,33 @@ namespace ChangeRequestSubSystem.ControlClasses
                     return user;
                 }
 
-                SystemUser[] all = SystemUser.FindAllByProperty("Username", username);
+                SystemUser[] systemUsers = SystemUser.QueryWithStoredProc("GetSystemUserByID", username);
 
-                dynamic resp = DatabaseHandler.ExecuteStoredProc("GetLatestOTP", username);
-
-
-                OneTimePassword oneTimePassword = new OneTimePassword();
-                if (oneTimePassword.Password!=password&&oneTimePassword.Username!=username)
+                if (systemUsers.Count() <= 0)
                 {
                     user.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    user.StatusDesc = $"Invalid Username or Password";
+                    user.StatusDesc = $"Invalid username supplied";
+                    return user;
+                }
+
+                user = systemUsers[0];
+                //IEnumerable
+                OneTimePassword[] oneTimePasswords = OneTimePassword.QueryWithStoredProc("GetLatestOTP", username);
+
+                if (oneTimePasswords.Count() <= 0)
+                {
+                    user.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    user.StatusDesc = $"No OTP found for {username}";
+                    return user;
+                }
+
+                OneTimePassword oneTimePassword = oneTimePasswords[0];
+
+
+                if (oneTimePassword.Password != password)
+                {
+                    user.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    user.StatusDesc = $"Invalid Password Supplied";
                     return user;
                 }
 
@@ -562,6 +713,7 @@ namespace ChangeRequestSubSystem.ControlClasses
 
                 result.StatusCode = Globals.SUCCESS_STATUS_CODE;
                 result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                result.PegPayID = preferedContact;
             }
             catch (Exception ex)
             {

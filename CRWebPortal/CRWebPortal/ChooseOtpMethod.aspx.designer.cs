@@ -47,5 +47,17 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new CRWebPortal.SiteMaster Master {
+            get {
+                return ((CRWebPortal.SiteMaster)(base.Master));
+            }
+        }
     }
 }

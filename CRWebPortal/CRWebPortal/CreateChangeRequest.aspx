@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true" CodeBehind="CreateChangeRequest.aspx.cs" Inherits="CRWebPortal.CreateChangeRequest" %>
+<%@ MasterType VirtualPath="~/LoggedInMaster.Master" %>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
@@ -62,7 +63,7 @@
                             <div class="row">
                                 <div class="col-lg-12" style="padding-bottom: 10px">
                                     <label>
-                                        Solution Description</label>
+                                        Proposed Solution Description</label>
                                     <asp:TextBox TextMode="MultiLine" ID="txtSolutionDesc" runat="server" CssClass="form-control"
                                         placeholder="Enter text" />
                                 </div>
@@ -71,10 +72,11 @@
                                 <div class="col-lg-12" style="padding-bottom: 10px">
                                     <label>
                                         Change Category</label>
-                                    <asp:DropDownList runat="server" CssClass="form-control">
-                                        <asp:ListItem>New System/Service</asp:ListItem>
-                                        <asp:ListItem>Enhancement/Update Of Existing System</asp:ListItem>
-                                        <asp:ListItem>Termination Of Existing System/Service</asp:ListItem>
+                                    <asp:DropDownList ID="ddChangeCategories" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="EMERGENCY_UPDATE">Emergency Update Of Existing System</asp:ListItem>
+                                        <asp:ListItem Value="NEW_SYSTEM">New System/Service</asp:ListItem>
+                                        <asp:ListItem Value="PLANNED_UPDATE">Planned Enhancement/Update Of Existing System</asp:ListItem>
+                                        <asp:ListItem Value="TERMINATION">Termination Of Existing System/Service</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -99,7 +101,7 @@
                                 <div class="col-lg-12" style="padding-bottom: 10px">
                                     <label>
                                         Impact of Not Implementing</label>
-                                    <asp:TextBox TextMode="MultiLine" ID="TextBox2" runat="server" CssClass="form-control"
+                                    <asp:TextBox TextMode="MultiLine" ID="txtImpact" runat="server" CssClass="form-control"
                                         placeholder="Enter text" />
                                 </div>
                             </div>
@@ -117,29 +119,30 @@
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
                                         Requestor Name</label>
-                                    <asp:TextBox ID="txtCustName" runat="server" CssClass="form-control"
+                                    <asp:TextBox ID="txtReqName" runat="server" CssClass="form-control"
                                         placeholder="Enter text" />
                                 </div>
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
                                         Requestor Email</label>
-                                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"
+                                    <asp:TextBox ID="txtReqEmail" runat="server" CssClass="form-control"
                                         placeholder="Enter text" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
-                                        Requestor Physical Address</label>
-                                    <asp:TextBox ID="txtReqAddress" runat="server" CssClass="form-control"
-                                        placeholder="Enter text" />
+                                        Requestor Phone</label>
+                                    <asp:TextBox ID="txtReqPhone" runat="server" CssClass="form-control"
+                                        placeholder="Phone Number" />
                                 </div>
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
-                                        Date of Request</label>
-                                    <asp:TextBox ID="txtDateOfRequest" runat="server" CssClass="form-control"
+                                        Requestor Company or Address</label>
+                                    <asp:TextBox ID="txtReqAddress" runat="server" CssClass="form-control"
                                         placeholder="Enter text" />
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -173,8 +176,17 @@
                                 </div>
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
-                                        Date of Implementation</label>
-                                    <asp:TextBox ID="txtDateOfImplementation" runat="server" CssClass="form-control"
+                                        Start Date Time of Implementation</label>
+                                    <asp:TextBox ID="txtImplementationStartDate" runat="server" CssClass="form-control form_datetime"
+                                        placeholder="Enter text" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6" style="padding-bottom: 10px">
+                                    <label>
+                                          End Date Time of Implementation</label>
+                                    <asp:TextBox ID="txtImplementationEndDateTime" runat="server" CssClass="form-control form_datetime"
                                         placeholder="Enter text" />
                                 </div>
                             </div>

@@ -49,6 +49,15 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.DropDownList ddDuration;
         
         /// <summary>
+        /// ddApprover control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddApprover;
+        
+        /// <summary>
         /// txtReason control.
         /// </summary>
         /// <remarks>
@@ -65,5 +74,17 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNextStep;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new CRWebPortal.LoggedInMaster Master {
+            get {
+                return ((CRWebPortal.LoggedInMaster)(base.Master));
+            }
+        }
     }
 }

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:14856/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:14856/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:14856/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+      <xsd:import schemaLocation="http://localhost:14856/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" />
+      <xsd:import schemaLocation="http://localhost:14856/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:14856/Service1.svc?xsd=xsd5" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CRSystemAPI_SaveChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCompany" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRole" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveSystemUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSystemUser" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveSystemUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSystemUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachItemsToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachItemsToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachItemsToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachItemsToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachSystemsAffectedToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachSystemsAffectedToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachSystemsAffectedToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachSystemsAffectedToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachPostChangeTestToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachPostChangeTestToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachPostChangeTestToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachPostChangeTestToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachRiskAnalysisToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachRiskAnalysisToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachRiskAnalysisToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachRiskAnalysisToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachRollBackPlanToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachRollBackPlanToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachRollBackPlanToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachRollBackPlanToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AssignChangeRequestToApprover_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignChangeRequestToApprover" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AssignChangeRequestToApprover_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignChangeRequestToApproverResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_UpdateChangeRequestStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateChangeRequestStatus" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_UpdateChangeRequestStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateChangeRequestStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SendOneTimePIN_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendOneTimePIN" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SendOneTimePIN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendOneTimePINResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ExecuteDataSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteDataSet" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ExecuteDataSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveTimeBoundAccessRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTimeBoundAccessRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveTimeBoundAccessRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTimeBoundAccessRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ExecuteSqlQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlQuery" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ExecuteSqlQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ExecuteNonQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteNonQuery" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ExecuteNonQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteNonQueryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CRSystemAPI">
+    <wsdl:operation name="SaveChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveChangeRequest" message="tns:CRSystemAPI_SaveChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveChangeRequestResponse" message="tns:CRSystemAPI_SaveChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveCompany" message="tns:CRSystemAPI_SaveCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveCompanyResponse" message="tns:CRSystemAPI_SaveCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveRole" message="tns:CRSystemAPI_SaveRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveRoleResponse" message="tns:CRSystemAPI_SaveRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSystemUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveSystemUser" message="tns:CRSystemAPI_SaveSystemUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveSystemUserResponse" message="tns:CRSystemAPI_SaveSystemUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachItemsToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequest" message="tns:CRSystemAPI_AttachItemsToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequestResponse" message="tns:CRSystemAPI_AttachItemsToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachSystemsAffectedToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequest" message="tns:CRSystemAPI_AttachSystemsAffectedToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequestResponse" message="tns:CRSystemAPI_AttachSystemsAffectedToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachPostChangeTestToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequest" message="tns:CRSystemAPI_AttachPostChangeTestToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequestResponse" message="tns:CRSystemAPI_AttachPostChangeTestToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachRiskAnalysisToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequest" message="tns:CRSystemAPI_AttachRiskAnalysisToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequestResponse" message="tns:CRSystemAPI_AttachRiskAnalysisToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachRollBackPlanToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequest" message="tns:CRSystemAPI_AttachRollBackPlanToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequestResponse" message="tns:CRSystemAPI_AttachRollBackPlanToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignChangeRequestToApprover">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApprover" message="tns:CRSystemAPI_AssignChangeRequestToApprover_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApproverResponse" message="tns:CRSystemAPI_AssignChangeRequestToApprover_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateChangeRequestStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatus" message="tns:CRSystemAPI_UpdateChangeRequestStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatusResponse" message="tns:CRSystemAPI_UpdateChangeRequestStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOneTimePIN">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SendOneTimePIN" message="tns:CRSystemAPI_SendOneTimePIN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SendOneTimePINResponse" message="tns:CRSystemAPI_SendOneTimePIN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/Login" message="tns:CRSystemAPI_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/LoginResponse" message="tns:CRSystemAPI_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteDataSet">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteDataSet" message="tns:CRSystemAPI_ExecuteDataSet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteDataSetResponse" message="tns:CRSystemAPI_ExecuteDataSet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTimeBoundAccessRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequest" message="tns:CRSystemAPI_SaveTimeBoundAccessRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequestResponse" message="tns:CRSystemAPI_SaveTimeBoundAccessRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteSqlQuery" message="tns:CRSystemAPI_ExecuteSqlQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteSqlQueryResponse" message="tns:CRSystemAPI_ExecuteSqlQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteNonQuery" message="tns:CRSystemAPI_ExecuteNonQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteNonQueryResponse" message="tns:CRSystemAPI_ExecuteNonQuery_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_CRSystemAPI" type="tns:CRSystemAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCompany">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRole">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSystemUser">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveSystemUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachItemsToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachSystemsAffectedToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachPostChangeTestToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachRiskAnalysisToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachRollBackPlanToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignChangeRequestToApprover">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApprover" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateChangeRequestStatus">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOneTimePIN">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SendOneTimePIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteDataSet">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/ExecuteDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTimeBoundAccessRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlQuery">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/ExecuteSqlQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/ExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_CRSystemAPI" binding="tns:BasicHttpBinding_CRSystemAPI">
+      <soap:address location="http://localhost:14856/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

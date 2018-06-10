@@ -40,6 +40,15 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.TextBox txtSolutionDesc;
         
         /// <summary>
+        /// ddChangeCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddChangeCategories;
+        
+        /// <summary>
         /// txtJustification control.
         /// </summary>
         /// <remarks>
@@ -49,31 +58,40 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.TextBox txtJustification;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtImpact control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtImpact;
         
         /// <summary>
-        /// txtCustName control.
+        /// txtReqName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustName;
+        protected global::System.Web.UI.WebControls.TextBox txtReqName;
         
         /// <summary>
-        /// txtEmail control.
+        /// txtReqEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtReqEmail;
+        
+        /// <summary>
+        /// txtReqPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReqPhone;
         
         /// <summary>
         /// txtReqAddress control.
@@ -83,15 +101,6 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtReqAddress;
-        
-        /// <summary>
-        /// txtDateOfRequest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateOfRequest;
         
         /// <summary>
         /// txtImplementerName control.
@@ -121,13 +130,22 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.TextBox txtImplementerPhone;
         
         /// <summary>
-        /// txtDateOfImplementation control.
+        /// txtImplementationStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateOfImplementation;
+        protected global::System.Web.UI.WebControls.TextBox txtImplementationStartDate;
+        
+        /// <summary>
+        /// txtImplementationEndDateTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtImplementationEndDateTime;
         
         /// <summary>
         /// btnBack control.
@@ -146,5 +164,17 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new CRWebPortal.LoggedInMaster Master {
+            get {
+                return ((CRWebPortal.LoggedInMaster)(base.Master));
+            }
+        }
     }
 }

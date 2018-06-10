@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true" CodeBehind="AttachApproversToCR.aspx.cs" Inherits="CRWebPortal.AttachApproversToCR" %>
 
+<%@ MasterType VirtualPath="~/LoggedInMaster.Master" %>
+
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    
+
     <div class="row">
         <div class="col-12">
             <ul class='nav nav-wizard'>
@@ -45,8 +47,8 @@
                                     <label>
                                         Name Of Person</label>
                                     <asp:DropDownList ID="ddNameOfApprover" runat="server" CssClass="form-control">
-                                        <asp:ListItem Value="REVIEWER">Nsubuga Kasozi</asp:ListItem>
-                                        <asp:ListItem Value="APPROVER">Paul Kavule</asp:ListItem>
+                                        <asp:ListItem Value="kasozi.nsubuga@pegasus.co.ug">Nsubuga Kasozi</asp:ListItem>
+                                        <asp:ListItem Value="paul.kavule@pegasus.co.ug">Paul Kavule</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -57,31 +59,27 @@
                             <br />
                         </div>
                     </div>
-
+                   
                     <%------------ View Uploaded Files---------  --%>
                     <div class="card border-primary text-white  mb-3">
                         <div class="card-header bg-primary">
                             Selected Change Control Board
                         </div>
                         <div class="card-body bg-default">
-                            <div class="row">
-                                <div class="row">
-                                    <div class="table-responsive">
-                                        <asp:GridView runat="server" Width="100%" CssClass="table table-bordered table-hover"
-                                            ID="dataGridResults" OnRowCommand="dataGridResults_RowCommand">
-                                            <AlternatingRowStyle BackColor="#BFE4FF" />
-                                            <HeaderStyle BackColor="#115E9B" Font-Bold="false" ForeColor="white" Font-Italic="False"
-                                                Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Height="30px" />
-                                            <Columns>
-                                                <asp:TemplateField HeaderText="Systems">
-                                                    <ItemTemplate>
-                                                        <asp:Button ID="btnDeleteSystem" runat="server" Text="Delete" CommandName="Delete" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                        </asp:GridView>
-                                    </div>
-                                </div>
+                            <div class="row text-center">
+                                <asp:GridView runat="server" Width="100%" CssClass="table table-bordered"
+                                    ID="dataGridResults" OnRowCommand="dataGridResults_RowCommand" ForeColor="black">
+                                    <AlternatingRowStyle BackColor="#BFE4FF" />
+                                    <HeaderStyle BackColor="#115E9B" Font-Bold="false" ForeColor="white" Font-Italic="False"
+                                        Font-Overline="False" Font-Strikeout="False" Font-Underline="False" />
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Systems">
+                                            <ItemTemplate>
+                                                <asp:Button ID="btnDeleteSystem" runat="server" Text="Delete" CommandName="Delete" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
                             </div>
                         </div>
                     </div>

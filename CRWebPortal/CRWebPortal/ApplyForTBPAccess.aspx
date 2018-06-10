@@ -1,4 +1,6 @@
-﻿<%@  Page Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true" CodeBehind="ApplyForTBPAccess.aspx.cs" Inherits="CRWebPortal.ApplyForTBPAccess" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true" CodeBehind="ApplyForTBPAccess.aspx.cs" Inherits="CRWebPortal.ApplyForTBPAccess" %>
+
+<%@ MasterType VirtualPath="~/LoggedInMaster.Master" %>
 
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -6,9 +8,7 @@
     <div class="row">
         <div class="col-12">
             <ul class='nav nav-wizard'>
-
-                <li class="active"><a href="CreateChangeRequest.aspx" data-toggle="tab">Privilleged Access Details</a></li>
-                <li><a href="AttachApproversToCR.aspx" data-toggle="tab">Assign Approvers</a></li>
+                <li class="active"><a href="ApplyForTBPAccess.aspx" data-toggle="tab">Privilleged Access Details</a></li>
                 <li><a href="Finished.aspx" data-toggle="tab">Done</a></li>
 
             </ul>
@@ -21,24 +21,22 @@
         <div class="col-lg-10">
             <div class="card border-primary text-white  mb-3">
                 <div class="card-header bg-primary text-center">
-                    Specify Reasons for this Access
+                    Specify Details for this Access
                 </div>
                 <div class="card-body bg-default">
 
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
                         <div class="card-header bg-primary">
-                            Database Affected details
+                            System Access details
                         </div>
                         <div class="card-body bg-default">
                             <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
-                                        Databases</label>
+                                        System Name</label>
                                     <asp:DropDownList ID="ddDatabases" runat="server" CssClass="form-control">
                                         <asp:ListItem Value="DATABASE">Database</asp:ListItem>
-                                        <asp:ListItem Value="SERVER">Server</asp:ListItem>
-                                        <asp:ListItem Value="FIREWALL">Firewall</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
 
@@ -59,7 +57,7 @@
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
                                         Start Date And Time</label>
-                                    <asp:TextBox ID="txtStartDateTime" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtStartDateTime" CssClass="form-control form_datetime" runat="server"></asp:TextBox>
                                 </div>
 
                                 <div class="col-lg-6" style="padding-bottom: 10px">
@@ -69,6 +67,17 @@
                                         <asp:ListItem Value="15">15 minutes</asp:ListItem>
                                         <asp:ListItem Value="30">30 minutes</asp:ListItem>
                                         <asp:ListItem Value="60">1 hour</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6" style="padding-bottom: 10px">
+                                    <label>
+                                        Approver</label>
+                                    <asp:DropDownList ID="ddApprover" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="kasozi.nsubuga@pegasus.co.ug">Nsubuga Kasozi</asp:ListItem>
+                                        <asp:ListItem Value="paul.kavule@pegasus.co.ug">Paul Kavule</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -84,7 +93,7 @@
                     </div>
                 </div>
                 <div class="card-footer bg-default text-center">
-                    <asp:Button ID="btnNextStep" Text="Next Step" CssClass="btn btn-md btn-success" runat="server" OnClick="btnNextStep_Click"  />
+                    <asp:Button ID="btnNextStep" Text="Request For Access" CssClass="btn btn-md btn-success" runat="server" OnClick="btnNextStep_Click" />
                 </div>
             </div>
 

@@ -13,8 +13,13 @@
                     <asp:TextBox ID="txtUsername" placeholder="Enter Your Username" Style="border-color: #428BCA" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="card-footer bg-default text-center">
-                    <asp:Button ID="btnSubmit" Text="Sign In" CssClass="btn btn-md btn-success" runat="server" OnClick="btnSubmit_Click" />
-                     <asp:Button ID="btnRegister" Text="Sign Up" CssClass="btn btn-md btn-danger" runat="server"  />
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-6">
+                            <asp:Button ID="btnSubmit" Text="Sign In" CssClass="btn btn-block btn-success" runat="server" OnClick="btnSubmit_Click" />
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
                 </div>
             </div>
         </div>

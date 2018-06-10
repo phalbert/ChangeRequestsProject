@@ -14,24 +14,16 @@ namespace ChangeRequestSubSystem.Entities
         public int Id { get; set; }
 
         [Property(Length = 50)]
+        public string ChangeRequestId { get; set; }
+
+        [Property(Length = 50)]
         public string Name { get; set; }
 
         [Property(Length = 6500)]
         public string Base64StringOfContent { get; set; }
 
-        [Property(Length = 400, Unique = true)]
+        [Property(Length = 400)]
         public string Hash { get; set; }
 
-        [Property(Length = 50)]
-        public string ModifiedBy { get; set; }
-
-        [Property(Length = 50)]
-        public string CreatedBy { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime ModifiedOn { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime CreatedOn { get; set; }
     }
 }

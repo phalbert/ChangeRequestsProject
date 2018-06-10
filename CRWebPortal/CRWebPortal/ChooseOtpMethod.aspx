@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChooseOtpMethod.aspx.cs" Inherits="CRWebPortal.ChooseOtpMethod" %>
+<%@ MasterType VirtualPath="~/Site.Master" %>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div class="row" style="padding-top: 15%">
@@ -13,7 +14,7 @@
                     <div class="row text-center">
                         <div class="col-lg-4"></div>
                         <div class="col-lg-4">
-                            <asp:RadioButton ID="rdEmail" Text="&nbsp;Email" runat="server" GroupName="OTPType" />
+                            <asp:RadioButton ID="rdEmail" Text="&nbsp;Email" Checked="true" runat="server" GroupName="OTPType" />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:RadioButton ID="rdPhone" Text="&nbsp;Phone" runat="server" GroupName="OTPType" />
                         </div>

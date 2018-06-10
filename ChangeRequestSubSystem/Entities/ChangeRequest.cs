@@ -53,13 +53,13 @@ namespace ChangeRequestSubSystem.Entities
         public bool DoesChangeHaveDownTime { get; set; }
 
         [Property(Length = 6500)]
-        public string Description { get; set; }
+        public string Problem { get; set; }
+
+        [Property(Length = 6500)]
+        public string Solution { get; set; }
 
         [Property(Length = 6500)]
         public string Justification { get; set; }
-
-        [Property(Length = 6500)]
-        public string RollbackPlan { get; set; }
 
         [Property(Length = 50)]
         public string EnvironmentAffected { get; set; }
@@ -76,19 +76,11 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public string ApprovalReason { get; set; }
 
-        [Property(Length = 50)]
-        public string ModifiedBy { get; set; }
-
-        [Property(Length = 50)]
-        public string CreatedBy { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime ModifiedOn { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime CreatedOn { get; set; }
-
-
+        public override bool IsValid()
+        {
+            
+            return base.IsValid();
+        }
 
     }
 }

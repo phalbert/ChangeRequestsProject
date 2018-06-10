@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true" CodeBehind="AttachSystemsAffected.aspx.cs" Inherits="CRWebPortal.AttachSystemsAffected" %>
 
+<%@ MasterType VirtualPath="~/LoggedInMaster.Master" %>
+
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
     <div class="row">
@@ -71,24 +73,20 @@
                             List Of Affected Systems
                         </div>
                         <div class="card-body bg-default">
-                            <div class="row">
-                                <div class="row">
-                                    <div class="table-responsive">
-                                        <asp:GridView runat="server" Width="100%" CssClass="table table-bordered table-hover"
-                                            ID="dataGridResults" OnRowCommand="dataGridResults_RowCommand">
-                                            <AlternatingRowStyle BackColor="#BFE4FF" />
-                                            <HeaderStyle BackColor="#115E9B" Font-Bold="false" ForeColor="white" Font-Italic="False"
-                                                Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Height="30px" />
-                                            <Columns>
-                                                <asp:TemplateField HeaderText="Systems">
-                                                    <ItemTemplate>
-                                                        <asp:Button ID="btnDeleteSystem" runat="server" Text="Delete" CommandName="Delete" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                        </asp:GridView>
-                                    </div>
-                                </div>
+                            <div class="row text-center">
+                                <asp:GridView runat="server" Width="100%" CssClass="table table-bordered"
+                                    ID="dataGridResults" OnRowCommand="dataGridResults_RowCommand" ForeColor="black">
+                                    <AlternatingRowStyle BackColor="#BFE4FF" />
+                                    <HeaderStyle BackColor="#115E9B" Font-Bold="false" ForeColor="white" Font-Italic="False"
+                                        Font-Overline="False" Font-Strikeout="False" Font-Underline="False" />
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Systems">
+                                            <ItemTemplate>
+                                                <asp:Button ID="btnDeleteSystem" runat="server" Text="Delete" CommandName="Delete" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
                             </div>
                         </div>
                     </div>

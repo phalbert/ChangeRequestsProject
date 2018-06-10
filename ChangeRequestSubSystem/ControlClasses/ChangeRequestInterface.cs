@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ChangeRequestSubSystem.ControlClasses
 {
+   
     public interface ChangeRequestInterface
     {
         ApiResult SaveChangeRequest(ChangeRequest ChangeRequest);
@@ -15,6 +17,8 @@ namespace ChangeRequestSubSystem.ControlClasses
         ApiResult SaveCompany(Company req);
 
         ApiResult SaveRole(Role req);
+
+        ApiResult SaveSystemUser(SystemUser req);
 
         ApiResult AttachItemsToChangeRequest(CR_Attachment attachment);
 
@@ -24,7 +28,7 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         ApiResult AttachRiskAnalysisToChangeRequest(RiskAnalysis riskAnalysis);
 
-        //ApiResult SaveTBPARequest(ChangeRequest changeRequest);
+        ApiResult AttachRollBackPlanToChangeRequest(RollBackPlan plan);
 
         ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link);
 
@@ -36,9 +40,15 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         DataSet ExecuteDataSet(string StoredProc, object[] parameters);
 
+        ApiResult SaveTimeBoundAccessRequest(TimeBoundAccessRequest req);
+
+        DataSet ExecuteSqlQuery(string SqlQuery);
+
+        int ExecuteNonQuery(string SqlQuery);
+
     }
 
-    public class ChangeRequestAPI : ChangeRequestInterface
+    public class CRSubSystemAPI : ChangeRequestInterface
     {
         static BussinessLogic bll = new BussinessLogic();
 
@@ -48,9 +58,13 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         public ApiResult UpdateChangeRequestStatus(ApproverToChangeRequestLink link) => bll.UpdateChangeRequestStatus(link);
 
-        public ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link) => bll.AssignChangeRequestToApprover(link);
+        public ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link) => bll.AssignApproverToChangeRequest(link);
 
         public DataSet ExecuteDataSet(string StoredProc, object[] parameters) => bll.ExecuteDataSet(StoredProc, parameters);
+
+        public DataSet ExecuteSqlQuery(string SqlQuery) => bll.ExecuteSqlQuery(SqlQuery);
+
+        public int ExecuteNonQuery(string SqlQuery) => bll.ExecuteNonQuery(SqlQuery);
 
         public SystemUser Login(string Username, string Password) => bll.Login(Username, Password);
 
@@ -58,13 +72,17 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         public ApiResult SaveCompany(Company req) => bll.SaveCompany(req);
 
-        public ApiResult AttachItemToChangeRequest(CR_Attachment req) => bll.AttachItemToChangeRequest(req);
+        public ApiResult SaveTimeBoundAccessRequest(TimeBoundAccessRequest req) => bll.SaveTimeBoundAccessRequest(req);
 
+        public ApiResult SaveSystemUser(SystemUser req) => bll.SaveSystemUser(req);
+        
         public ApiResult SaveRole(Role req) => bll.SaveRole(req);
 
         public ApiResult SendOneTimePIN(string Username, string MethodOfSending) => bll.SendOneTimePIN(Username, MethodOfSending);
 
         public ApiResult AttachSystemsAffectedToChangeRequest(SystemAffected systemAffected) => bll.AttachSystemAffectedToChangeRequest(systemAffected);
+
+        public ApiResult AttachRollBackPlanToChangeRequest(RollBackPlan plan) => bll.AttachRollBackPlanToChangeRequest(plan);
 
         public ApiResult AttachItemsToChangeRequest(CR_Attachment attachment) => bll.AttachItemToChangeRequest(attachment);
 

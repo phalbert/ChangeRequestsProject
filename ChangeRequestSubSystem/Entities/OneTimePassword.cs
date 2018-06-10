@@ -21,11 +21,8 @@ namespace ChangeRequestSubSystem.Entities
 
         [Property(Length = 50)]
         public string CompanyCode { get; set; }
-
+        
         [Property(Length = 50)]
-        public DateTime CreatedOn { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime ValidityDurationInSeconds { get; set; }
+        public int ValidityDurationInSeconds { get; set; }
     }
 }

@@ -19,16 +19,6 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50, Unique = true)]
         public string CompanyCode { get; set; }
 
-        [Property(Length = 50)]
-        public string ModifiedBy { get; set; }
 
-        [Property(Length = 50)]
-        public string CreatedBy { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime ModifiedOn { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime CreatedOn { get; set; }
     }
 }

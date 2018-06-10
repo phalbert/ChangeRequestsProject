@@ -22,6 +22,15 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.FileUpload fuAttachment;
         
         /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
         /// dataGridResults control.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
-        /// btnSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
-        
-        /// <summary>
         /// btnNextStep control.
         /// </summary>
         /// <remarks>
@@ -56,5 +56,17 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNextStep;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new CRWebPortal.LoggedInMaster Master {
+            get {
+                return ((CRWebPortal.LoggedInMaster)(base.Master));
+            }
+        }
     }
 }

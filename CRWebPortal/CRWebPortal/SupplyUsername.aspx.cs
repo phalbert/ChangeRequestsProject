@@ -18,7 +18,9 @@ namespace CRWebPortal
         {
             try
             {
-                Response.Redirect("~/ChooseOtpMethod.aspx");
+                string username = txtUsername.Text;
+                
+                Response.Redirect("~/ChooseOtpMethod.aspx?UserId="+username);
             }
             catch (Exception ex)
             {

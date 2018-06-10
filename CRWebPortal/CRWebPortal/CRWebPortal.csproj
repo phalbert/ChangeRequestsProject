@@ -25,6 +25,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,11 +45,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -72,6 +78,19 @@
     <Content Include="AttachItemToChangeRequest.aspx" />
     <Content Include="AttachSystemsAffected.aspx" />
     <Content Include="ChooseOtpMethod.aspx" />
+    <Content Include="Connected Services\CRSystemAPI\CRWebPortal.CRSystemAPI.ApiResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CRSystemAPI\CRWebPortal.CRSystemAPI.SystemUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\CRSystemAPI\Service1.disco" />
+    <None Include="Connected Services\CRSystemAPI\configuration91.svcinfo" />
+    <None Include="Connected Services\CRSystemAPI\configuration.svcinfo" />
+    <None Include="Connected Services\CRSystemAPI\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="CreateChangeRequest.aspx" />
     <Content Include="ExecuteQuery.aspx" />
     <Content Include="Finished.aspx" />
@@ -79,7 +98,13 @@
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Images\pegasus.png" />
+    <Content Include="Scripts\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\jquery.datetimepicker.full.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Styles\bootstrap-datetimepicker.min.css" />
     <Content Include="Styles\nav-wizard.css" />
+    <Content Include="Styles\pace-theme.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -97,6 +122,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="System.Data.DataSet.datasource" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -141,6 +168,7 @@
     <Compile Include="ApplyForTBPAccess.aspx.designer.cs">
       <DependentUpon>ApplyForTBPAccess.aspx</DependentUpon>
     </Compile>
+    <Content Include="App_Code\SharedLogic.cs" />
     <Compile Include="AttachApproversToCR.aspx.cs">
       <DependentUpon>AttachApproversToCR.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -169,12 +197,18 @@
     <Compile Include="AttachSystemsAffected.aspx.designer.cs">
       <DependentUpon>AttachSystemsAffected.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\BussinessLogic.cs" />
     <Compile Include="ChooseOtpMethod.aspx.cs">
       <DependentUpon>ChooseOtpMethod.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ChooseOtpMethod.aspx.designer.cs">
       <DependentUpon>ChooseOtpMethod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\CRSystemAPI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="CreateChangeRequest.aspx.cs">
       <DependentUpon>CreateChangeRequest.aspx</DependentUpon>
@@ -207,6 +241,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\Globals.cs" />
     <Compile Include="LoggedInMaster.Master.cs">
       <DependentUpon>LoggedInMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -214,6 +249,7 @@
     <Compile Include="LoggedInMaster.Master.designer.cs">
       <DependentUpon>LoggedInMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\PageExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -260,6 +296,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplyForTBPAccess.aspx" />
+    <None Include="Connected Services\CRSystemAPI\Service1.wsdl" />
+    <None Include="Connected Services\CRSystemAPI\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service15.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="font-awesome\fonts\fontawesome-webfont.eot" />
     <None Include="font-awesome\fonts\fontawesome-webfont.ttf" />
     <None Include="font-awesome\fonts\fontawesome-webfont.woff" />
@@ -291,6 +346,12 @@
     <None Include="font-awesome\scss\_stacked.scss" />
     <None Include="font-awesome\scss\_variables.scss" />
     <Content Include="LoggedInMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CRSystemAPI\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

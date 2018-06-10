@@ -10,27 +10,64 @@ using System.Threading.Tasks;
 
 namespace ChangeRequestSubSystem.Entities
 {
-    public class DbEntity<T> : ActiveRecordBase<T>
+    public class DbEntity<T> : ActiveRecordBase<T> where T : new()
     {
         public string StatusCode { get; set; }
         public string StatusDesc { get; set; }
 
+        [Property(Length = 50)]
+        public string ModifiedBy { get; set; }
+
+        [Property(Length = 50)]
+        public string CreatedBy { get; set; }
+
+        [Property(Length = 50)]
+        public DateTime ModifiedOn { get; set; }
+
+        [Property(Length = 50)]
+        public DateTime CreatedOn { get; set; }
+
+        public DbEntity()
+        {
+            ModifiedOn = DateTime.Now;
+            CreatedOn = DateTime.Now;
+            ModifiedBy = "";
+            CreatedBy = "";
+        }
+
         public virtual bool IsValid()
         {
+            CreatedOn = DateTime.Now;
+            ModifiedOn = DateTime.Now;
             return true;
         }
 
 
-        public static T[] QueryWithStoredProc<T>(string storedProc, params object[] storedProcParameters) where T : new()
+        public static T[] QueryWithStoredProc(string storedProc, params object[] storedProcParameters)
         {
             List<T> all = new List<T>();
             DataTable dt = DatabaseHandler.ExecuteStoredProc(storedProc, storedProcParameters);
 
             foreach (DataRow dr in dt.Rows)
             {
+
                 T obj = new T();
                 CopyParentArrayToChildProperty(dr, obj);
                 all.Add(obj);
+            }
+
+            return all.ToArray();
+        }
+
+        public static T[] QueryWithStoredProc2(string storedProc, params object[] storedProcParameters)
+        {
+            List<T> all = new List<T>();
+            DataTable dt = DatabaseHandler.ExecuteStoredProc(storedProc, storedProcParameters);
+            List<dynamic> dys = dt.AsDynamicEnumerable().ToList();
+            foreach (dynamic dr in dys)
+            {
+
+                string columnName = dr.Username;
             }
 
             return all.ToArray();
@@ -48,7 +85,7 @@ namespace ChangeRequestSubSystem.Entities
                 {
                     object[] attrs = childProperty.GetCustomAttributes(false);
                     bool hasBeenSet = false;
-                    
+
                     foreach (object attr in attrs)
                     {
                         PrimaryKeyAttribute pkAttribute = attr as PrimaryKeyAttribute;

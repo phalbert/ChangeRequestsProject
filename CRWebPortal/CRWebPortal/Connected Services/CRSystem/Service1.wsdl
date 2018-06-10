@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:element name="SaveChangeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="ChangeRequest" nillable="true" type="q1:ChangeRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveChangeRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="SaveChangeRequestResult" nillable="true" type="q2:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveCompany">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="req" nillable="true" type="q3:Company" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveCompanyResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="SaveCompanyResult" nillable="true" type="q4:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveRole">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="req" nillable="true" type="q5:Role" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveRoleResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="SaveRoleResult" nillable="true" type="q6:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveSystemUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="req" nillable="true" type="q7:SystemUser" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveSystemUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="SaveSystemUserResult" nillable="true" type="q8:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachItemsToChangeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="attachment" nillable="true" type="q9:CR_Attachment" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachItemsToChangeRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="AttachItemsToChangeRequestResult" nillable="true" type="q10:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachSystemsAffectedToChangeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="systemAffected" nillable="true" type="q11:SystemAffected" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachSystemsAffectedToChangeRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="AttachSystemsAffectedToChangeRequestResult" nillable="true" type="q12:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachPostChangeTestToChangeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="test" nillable="true" type="q13:PostChangeTest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachPostChangeTestToChangeRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="AttachPostChangeTestToChangeRequestResult" nillable="true" type="q14:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachRiskAnalysisToChangeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="riskAnalysis" nillable="true" type="q15:RiskAnalysis" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachRiskAnalysisToChangeRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="AttachRiskAnalysisToChangeRequestResult" nillable="true" type="q16:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachRollBackPlanToChangeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="plan" nillable="true" type="q17:RollBackPlan" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AttachRollBackPlanToChangeRequestResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="AttachRollBackPlanToChangeRequestResult" nillable="true" type="q18:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AssignChangeRequestToApprover">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="link" nillable="true" type="q19:ApproverToChangeRequestLink" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AssignChangeRequestToApproverResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="AssignChangeRequestToApproverResult" nillable="true" type="q20:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateChangeRequestStatus">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="link" nillable="true" type="q21:ApproverToChangeRequestLink" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateChangeRequestStatusResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="UpdateChangeRequestStatusResult" nillable="true" type="q22:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendOneTimePIN">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="MethodOfSending" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendOneTimePINResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="SendOneTimePINResult" nillable="true" type="q23:ApiResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Login">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LoginResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="LoginResult" nillable="true" type="q24:SystemUser" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteDataSet">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="StoredProc" nillable="true" type="xs:string" />
+            <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parameters" nillable="true" type="q25:ArrayOfanyType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExecuteDataSetResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ExecuteDataSetResult" nillable="true">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="xs:schema" />
+                  <xs:any />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" />
+      <xs:complexType name="ChangeRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfChangeRequestnX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ApprovalReason" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ApprovalStatus" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ChangeCategoryId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ChangeEndDateTime" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ChangeStartDateTime" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="DoesChangeHaveDownTime" type="xs:boolean" />
+              <xs:element minOccurs="0" name="EnvironmentAffected" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="ImpactOfNotImplementing" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ImplementerCompany" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ImplementerEmail" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ImplementerName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ImplementerPhone" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Justification" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Problem" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="RequesterCompany" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="RequesterEmail" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="RequesterName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="RequesterPhone" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Solution" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ChangeRequest" nillable="true" type="tns:ChangeRequest" />
+      <xs:complexType name="DbEntityOfChangeRequestnX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="ChangeRequest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q1:ActiveRecordBaseOfChangeRequestnX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfChangeRequestnX7H3sQe" nillable="true" type="tns:DbEntityOfChangeRequestnX7H3sQe" />
+      <xs:complexType name="ApiResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BaseClass">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PegPayID" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ApiResult" nillable="true" type="tns:ApiResult" />
+      <xs:complexType name="BaseClass">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BaseClass" nillable="true" type="tns:BaseClass" />
+      <xs:complexType name="Company">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfCompanynX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CompanyCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="Company" nillable="true" type="tns:Company" />
+      <xs:complexType name="DbEntityOfCompanynX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="Company" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q2:ActiveRecordBaseOfCompanynX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfCompanynX7H3sQe" nillable="true" type="tns:DbEntityOfCompanynX7H3sQe" />
+      <xs:complexType name="Role">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfRolenX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CompanyCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="Role" nillable="true" type="tns:Role" />
+      <xs:complexType name="DbEntityOfRolenX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="Role" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q3:ActiveRecordBaseOfRolenX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfRolenX7H3sQe" nillable="true" type="tns:DbEntityOfRolenX7H3sQe" />
+      <xs:complexType name="SystemUser">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfSystemUsernX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CompanyCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SystemUser" nillable="true" type="tns:SystemUser" />
+      <xs:complexType name="DbEntityOfSystemUsernX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="SystemUser" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q4:ActiveRecordBaseOfSystemUsernX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfSystemUsernX7H3sQe" nillable="true" type="tns:DbEntityOfSystemUsernX7H3sQe" />
+      <xs:complexType name="CR_Attachment">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfCR_AttachmentnX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Base64StringOfContent" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CR_Attachment" nillable="true" type="tns:CR_Attachment" />
+      <xs:complexType name="DbEntityOfCR_AttachmentnX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="CR_Attachment" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q5:ActiveRecordBaseOfCR_AttachmentnX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfCR_AttachmentnX7H3sQe" nillable="true" type="tns:DbEntityOfCR_AttachmentnX7H3sQe" />
+      <xs:complexType name="SystemAffected">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfSystemAffectednX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="SystemName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="SystemType" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="TypeOfChange" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SystemAffected" nillable="true" type="tns:SystemAffected" />
+      <xs:complexType name="DbEntityOfSystemAffectednX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="SystemAffected" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q6:ActiveRecordBaseOfSystemAffectednX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfSystemAffectednX7H3sQe" nillable="true" type="tns:DbEntityOfSystemAffectednX7H3sQe" />
+      <xs:complexType name="PostChangeTest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfPostChangeTestnX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="TestDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PostChangeTest" nillable="true" type="tns:PostChangeTest" />
+      <xs:complexType name="DbEntityOfPostChangeTestnX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="PostChangeTest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q7:ActiveRecordBaseOfPostChangeTestnX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfPostChangeTestnX7H3sQe" nillable="true" type="tns:DbEntityOfPostChangeTestnX7H3sQe" />
+      <xs:complexType name="RiskAnalysis">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfRiskAnalysisnX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Are3rdPartyClientsAffected" type="xs:boolean" />
+              <xs:element minOccurs="0" name="AreMultiplePartiesInvolvedInChange" type="xs:boolean" />
+              <xs:element minOccurs="0" name="AreTherePostChangeTests" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ChangeAffectsMultipleServices" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DoesChangeAffectArchitecturalStyleOrFlow" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DoesChangeHaveImpactOnApplicationSecurity" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DoesChangeRequireSpecialAccess" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DoeschangeAffectDR" type="xs:boolean" />
+              <xs:element minOccurs="0" name="EnvironmentChangeIsHappening" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="HasImplementerEverDoneThisChange" type="xs:boolean" />
+              <xs:element minOccurs="0" name="HowWere3rdPartiesInformed" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="IsChangeDependantOnOtherChange" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsChangeHappeningOnProduction" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsChangeInMaintainanceWindow" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsRecommended" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsTheChangeEasyToValidate" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="IsThereARollbackPlan" type="xs:boolean" />
+              <xs:element minOccurs="0" name="NumberOfTestsDone" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="NumberOfTestsThatPassed" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="NumberOfUsersImpactedInCaseOfFailure" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="SeverityOfImpactOfChange" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="TimeTakenToDoRollback" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="TotalRiskScore" type="xs:int" />
+              <xs:element minOccurs="0" name="WereAnyTestsDone" type="xs:boolean" />
+              <xs:element minOccurs="0" name="WhenWillChangeHappen" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Will3rdPartiesBeInformedInCaseOfDownTime" type="xs:boolean" />
+              <xs:element minOccurs="0" name="WillChangeBeImplementedInPhases" type="xs:boolean" />
+              <xs:element minOccurs="0" name="WillChangeBeVisibleToUsers" type="xs:boolean" />
+              <xs:element minOccurs="0" name="WillServicesBeUpDuringRollback" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="RiskAnalysis" nillable="true" type="tns:RiskAnalysis" />
+      <xs:complexType name="DbEntityOfRiskAnalysisnX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="RiskAnalysis" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q8:ActiveRecordBaseOfRiskAnalysisnX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfRiskAnalysisnX7H3sQe" nillable="true" type="tns:DbEntityOfRiskAnalysisnX7H3sQe" />
+      <xs:complexType name="RollBackPlan">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfRollBackPlannX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="RollBackPlanDetails" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="RollBackPlan" nillable="true" type="tns:RollBackPlan" />
+      <xs:complexType name="DbEntityOfRollBackPlannX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="RollBackPlan" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q9:ActiveRecordBaseOfRollBackPlannX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfRollBackPlannX7H3sQe" nillable="true" type="tns:DbEntityOfRollBackPlannX7H3sQe" />
+      <xs:complexType name="ApproverToChangeRequestLink">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DbEntityOfApproverToChangeRequestLinknX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Decision" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="Id" type="xs:int" />
+              <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ApproverToChangeRequestLink" nillable="true" type="tns:ApproverToChangeRequestLink" />
+      <xs:complexType name="DbEntityOfApproverToChangeRequestLinknX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="ApproverToChangeRequestLink" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q10:ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DbEntityOfApproverToChangeRequestLinknX7H3sQe" nillable="true" type="tns:DbEntityOfApproverToChangeRequestLinknX7H3sQe" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ActiveRecordBaseOfChangeRequestnX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="ChangeRequest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfChangeRequestnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfChangeRequestnX7H3sQe" />
+      <xs:complexType name="ActiveRecordBase">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordHooksBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBase" nillable="true" type="tns:ActiveRecordBase" />
+      <xs:complexType name="ActiveRecordHooksBase">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:element name="ActiveRecordHooksBase" nillable="true" type="tns:ActiveRecordHooksBase" />
+      <xs:complexType name="ActiveRecordBaseOfCompanynX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="Company" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfCompanynX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfCompanynX7H3sQe" />
+      <xs:complexType name="ActiveRecordBaseOfRolenX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="Role" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfRolenX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfRolenX7H3sQe" />
+      <xs:complexType name="ActiveRecordBaseOfSystemUsernX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="SystemUser" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfSystemUsernX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfSystemUsernX7H3sQe" />
+      <xs:complexType name="ActiveRecordBaseOfCR_AttachmentnX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="CR_Attachment" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfCR_AttachmentnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfCR_AttachmentnX7H3sQe" />
+      <xs:complexType name="ActiveRecordBaseOfSystemAffectednX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="SystemAffected" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfSystemAffectednX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfSystemAffectednX7H3sQe" />
+      <xs:complexType name="ActiveRecordBaseOfPostChangeTestnX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="PostChangeTest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfPostChangeTestnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfPostChangeTestnX7H3sQe" />
+      <xs:complexType name="ActiveRecordBaseOfRiskAnalysisnX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="RiskAnalysis" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfRiskAnalysisnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfRiskAnalysisnX7H3sQe" />
+      <xs:complexType name="ActiveRecordBaseOfRollBackPlannX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="RollBackPlan" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfRollBackPlannX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfRollBackPlannX7H3sQe" />
+      <xs:complexType name="ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="ApproverToChangeRequestLink" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ActiveRecordBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfanyType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" type="xs:anyType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfanyType" nillable="true" type="tns:ArrayOfanyType" />
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="DataSet" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CRSystemAPI_SaveChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCompany" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRole" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveSystemUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSystemUser" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveSystemUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSystemUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachItemsToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachItemsToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachItemsToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachItemsToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachSystemsAffectedToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachSystemsAffectedToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachSystemsAffectedToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachSystemsAffectedToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachPostChangeTestToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachPostChangeTestToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachPostChangeTestToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachPostChangeTestToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachRiskAnalysisToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachRiskAnalysisToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachRiskAnalysisToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachRiskAnalysisToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachRollBackPlanToChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttachRollBackPlanToChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AttachRollBackPlanToChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttachRollBackPlanToChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AssignChangeRequestToApprover_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignChangeRequestToApprover" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_AssignChangeRequestToApprover_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignChangeRequestToApproverResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_UpdateChangeRequestStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateChangeRequestStatus" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_UpdateChangeRequestStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateChangeRequestStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SendOneTimePIN_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendOneTimePIN" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SendOneTimePIN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendOneTimePINResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ExecuteDataSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteDataSet" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ExecuteDataSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteDataSetResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CRSystemAPI">
+    <wsdl:operation name="SaveChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveChangeRequest" message="tns:CRSystemAPI_SaveChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveChangeRequestResponse" message="tns:CRSystemAPI_SaveChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveCompany" message="tns:CRSystemAPI_SaveCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveCompanyResponse" message="tns:CRSystemAPI_SaveCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveRole" message="tns:CRSystemAPI_SaveRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveRoleResponse" message="tns:CRSystemAPI_SaveRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSystemUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveSystemUser" message="tns:CRSystemAPI_SaveSystemUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveSystemUserResponse" message="tns:CRSystemAPI_SaveSystemUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachItemsToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequest" message="tns:CRSystemAPI_AttachItemsToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequestResponse" message="tns:CRSystemAPI_AttachItemsToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachSystemsAffectedToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequest" message="tns:CRSystemAPI_AttachSystemsAffectedToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequestResponse" message="tns:CRSystemAPI_AttachSystemsAffectedToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachPostChangeTestToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequest" message="tns:CRSystemAPI_AttachPostChangeTestToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequestResponse" message="tns:CRSystemAPI_AttachPostChangeTestToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachRiskAnalysisToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequest" message="tns:CRSystemAPI_AttachRiskAnalysisToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequestResponse" message="tns:CRSystemAPI_AttachRiskAnalysisToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachRollBackPlanToChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequest" message="tns:CRSystemAPI_AttachRollBackPlanToChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequestResponse" message="tns:CRSystemAPI_AttachRollBackPlanToChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignChangeRequestToApprover">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApprover" message="tns:CRSystemAPI_AssignChangeRequestToApprover_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApproverResponse" message="tns:CRSystemAPI_AssignChangeRequestToApprover_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateChangeRequestStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatus" message="tns:CRSystemAPI_UpdateChangeRequestStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatusResponse" message="tns:CRSystemAPI_UpdateChangeRequestStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOneTimePIN">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SendOneTimePIN" message="tns:CRSystemAPI_SendOneTimePIN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SendOneTimePINResponse" message="tns:CRSystemAPI_SendOneTimePIN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/Login" message="tns:CRSystemAPI_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/LoginResponse" message="tns:CRSystemAPI_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteDataSet">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteDataSet" message="tns:CRSystemAPI_ExecuteDataSet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteDataSetResponse" message="tns:CRSystemAPI_ExecuteDataSet_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_CRSystemAPI" type="tns:CRSystemAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCompany">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRole">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSystemUser">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveSystemUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachItemsToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachSystemsAffectedToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachPostChangeTestToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachRiskAnalysisToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachRollBackPlanToChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignChangeRequestToApprover">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApprover" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateChangeRequestStatus">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOneTimePIN">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SendOneTimePIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteDataSet">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/ExecuteDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_CRSystemAPI" binding="tns:BasicHttpBinding_CRSystemAPI">
+      <soap:address location="http://localhost:14856/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

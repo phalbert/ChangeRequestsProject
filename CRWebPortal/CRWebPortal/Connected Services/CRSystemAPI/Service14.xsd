@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ActiveRecordBaseOfChangeRequestnX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ChangeRequest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfChangeRequestnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfChangeRequestnX7H3sQe" />
+  <xs:complexType name="ActiveRecordBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordHooksBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBase" nillable="true" type="tns:ActiveRecordBase" />
+  <xs:complexType name="ActiveRecordHooksBase">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ActiveRecordHooksBase" nillable="true" type="tns:ActiveRecordHooksBase" />
+  <xs:complexType name="ActiveRecordBaseOfCompanynX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Company" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfCompanynX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfCompanynX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfRolenX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Role" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfRolenX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfRolenX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfSystemUsernX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="SystemUser" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfSystemUsernX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfSystemUsernX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfCR_AttachmentnX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="CR_Attachment" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfCR_AttachmentnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfCR_AttachmentnX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfSystemAffectednX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="SystemAffected" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfSystemAffectednX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfSystemAffectednX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfPostChangeTestnX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="PostChangeTest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfPostChangeTestnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfPostChangeTestnX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfRiskAnalysisnX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RiskAnalysis" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfRiskAnalysisnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfRiskAnalysisnX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfRollBackPlannX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RollBackPlan" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfRollBackPlannX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfRollBackPlannX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ApproverToChangeRequestLink" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe" />
+  <xs:complexType name="ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TimeBoundAccessRequest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActiveRecordBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe" />
+</xs:schema>

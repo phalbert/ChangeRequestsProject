@@ -15,7 +15,7 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         
         public AbstractModelTestCase()
         {
-            ChangeRequestAPI.Initialize();
+            CRSubSystemAPI.Initialize();
         }
 
         [TestInitialize]

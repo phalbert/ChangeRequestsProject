@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChangeRequestSubSystem.Entities
 {
-    [ActiveRecord("SystemmUsers")]
+    [ActiveRecord("SystemUsers")]
     public class SystemUser:DbEntity<SystemUser>
     {
         [PrimaryKey(PrimaryKeyType.Identity, "RecordId")]
@@ -28,16 +28,6 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public string RoleCode { get; set; }
 
-        [Property(Length = 50)]
-        public string ModifiedBy { get; set; }
-
-        [Property(Length = 50)]
-        public string CreatedBy { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime ModifiedOn { get; set; }
-
-        [Property(Length = 50)]
-        public DateTime CreatedOn { get; set; }
+      
     }
 }

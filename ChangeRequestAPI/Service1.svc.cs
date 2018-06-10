@@ -1,33 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using ChangeRequestSubSystem.ControlClasses;
+using ChangeRequestSubSystem.Entities;
 
 namespace ChangeRequestAPI
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class Service1 : IService1
+    public class Service1 : CRSystemAPI
     {
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
+        CRSubSystemAPI cRSubSystemAPI = new CRSubSystemAPI();
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
+        public ApiResult UpdateChangeRequestStatus(ApproverToChangeRequestLink link) => cRSubSystemAPI.UpdateChangeRequestStatus(link);
+
+        public ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link) => cRSubSystemAPI.AssignChangeRequestToApprover(link);
+
+        public DataSet ExecuteDataSet(string StoredProc, object[] parameters) => cRSubSystemAPI.ExecuteDataSet(StoredProc, parameters);
+
+        public int ExecuteNonQuery(string SqlQuery)=> cRSubSystemAPI.ExecuteNonQuery(SqlQuery);
+       
+        public DataSet ExecuteSqlQuery(string SqlText) => cRSubSystemAPI.ExecuteSqlQuery(SqlText);
+
+        public SystemUser Login(string Username, string Password) => cRSubSystemAPI.Login(Username, Password);
+
+        public ApiResult SaveChangeRequest(ChangeRequest ChangeRequest) => cRSubSystemAPI.SaveChangeRequest(ChangeRequest);
+
+        public ApiResult SaveCompany(Company req) => cRSubSystemAPI.SaveCompany(req);
+
+        public ApiResult SaveSystemUser(SystemUser req) => cRSubSystemAPI.SaveSystemUser(req);
+
+        public ApiResult SaveRole(Role req) => cRSubSystemAPI.SaveRole(req);
+
+        public ApiResult SendOneTimePIN(string Username, string MethodOfSending) => cRSubSystemAPI.SendOneTimePIN(Username, MethodOfSending);
+
+        public ApiResult AttachSystemsAffectedToChangeRequest(SystemAffected systemAffected) => cRSubSystemAPI.AttachSystemsAffectedToChangeRequest(systemAffected);
+
+        public ApiResult AttachRollBackPlanToChangeRequest(RollBackPlan plan) => cRSubSystemAPI.AttachRollBackPlanToChangeRequest(plan);
+
+        public ApiResult AttachItemsToChangeRequest(CR_Attachment attachment) => cRSubSystemAPI.AttachItemsToChangeRequest(attachment);
+
+        public ApiResult AttachPostChangeTestToChangeRequest(PostChangeTest test) => cRSubSystemAPI.AttachPostChangeTestToChangeRequest(test);
+
+        public ApiResult AttachRiskAnalysisToChangeRequest(RiskAnalysis riskAnalysis) => cRSubSystemAPI.AttachRiskAnalysisToChangeRequest(riskAnalysis);
+
+        public ApiResult SaveTimeBoundAccessRequest(TimeBoundAccessRequest req) => cRSubSystemAPI.SaveTimeBoundAccessRequest(req);
     }
 }

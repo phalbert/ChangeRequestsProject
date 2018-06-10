@@ -35,21 +35,6 @@ namespace ChangeRequestSubSystem.ControlClasses
             return;
         }
 
-        //internal DataTable GetUserByID(string username)
-        //{
-        //    DataTable dt = new DataTable();
-        //    try
-        //    {
-        //       DbCommand procommand = DB.GetStoredProcCommand("GetSystemUserbyID", username);
-        //        dt = DB.ExecuteDataSet(procommand).Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return dt;
-        //}
-
         public static DataTable ExecuteStoredProc(string StoredProc, params object[] parameters)
         {
             DataTable dt = new DataTable();
@@ -66,64 +51,54 @@ namespace ChangeRequestSubSystem.ControlClasses
             }
         }
 
-        //internal DataTable SaveOneTimePIN(string username, string OTP)
-        //{
-        //    DataTable dt = new DataTable();
-        //    try
-        //    {
-        //        procommand = DB.GetStoredProcCommand("SaveOneTimePassword", username, OTP);
-        //        dt = DB.ExecuteDataSet(procommand).Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return dt;
-        //}
+        public static DataSet ExecuteSqlQuery(string sqlQuery)
+        {
+            DataSet dt = new DataSet();
+            try
+            {
+                DbCommand procommand = DB.GetSqlStringCommand(sqlQuery);
+                dt = DB.ExecuteDataSet(procommand);
 
-        //internal DataSet CheckUserCreds(string username, string password)
-        //{
-        //    DataSet dt = new DataSet();
-        //    try
-        //    {
-        //        procommand = DB.GetStoredProcCommand("CheckUserCreds", username, password);
-        //        dt = DB.ExecuteDataSet(procommand);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return dt;
-        //}
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-        //internal DataTable SaveChangeRequest(ChangeRequest changeRequest)
-        //{
-        //    DataTable dt = new DataTable();
-        //    try
-        //    {
-        //        procommand = DB.GetStoredProcCommand("SaveChangeRequests",
-        //                                              changeRequest.ChangeRequestId,
-        //                                              changeRequest.Title,
-        //                                              changeRequest.RequesterId,
-        //                                              changeRequest.RequesterAddress,
-        //                                              changeRequest.RequesterEmail,
-        //                                              changeRequest.RequesterPhone,
-        //                                              changeRequest.Implementer,
-        //                                              changeRequest.ImplementerEmail,
-        //                                              changeRequest.ImplementerPhone,
-        //                                              changeRequest.ImplementationDate,
-        //                                              changeRequest.Description,
-        //                                              changeRequest.Justification,
-        //                                              changeRequest.ImpactOfNotImplementing,
-        //                                              changeRequest.ChangeCategoryCode);
-        //        dt = DB.ExecuteDataSet(procommand).Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return dt;
-        //}
+        public static int ExecuteNonQuery(string sqlQuery)
+        {
+            int dt = 0;
+            try
+            {
+                DbCommand procommand = DB.GetSqlStringCommand(sqlQuery);
+                dt = DB.ExecuteNonQuery(procommand);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        internal static List<dynamic> ExecuteDynamicDataTable(string storedProc, params object[] parameters)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                DbCommand procommand = DB.GetStoredProcCommand(storedProc, parameters);
+                dt = DB.ExecuteDataSet(procommand).Tables[0];
+                List<dynamic> dys = dt.AsDynamicEnumerable().ToList();
+                return dys;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
+        }
 
         internal static DataSet ExecuteDataSet(string storedProc, object[] parameters)
         {
@@ -140,64 +115,6 @@ namespace ChangeRequestSubSystem.ControlClasses
             }
         }
 
-        //internal DataTable SaveCompany(Company req)
-        //{
-        //    DataTable dt = new DataTable();
-        //    try
-        //    {
-        //        procommand = DB.GetStoredProcCommand("SaveCompany", req.CompanyName, req.CompanyCode, req.ModifiedBy);
-        //        dt = DB.ExecuteDataSet(procommand).Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return dt;
-        //}
-
-        //internal DataTable SaveRole(Role req)
-        //{
-        //    DataTable dt = new DataTable();
-        //    try
-        //    {
-        //        procommand = DB.GetStoredProcCommand("SaveRole", req.RoleName, req.RoleCode, req.CompanyCode, req.ModifiedBy);
-        //        dt = DB.ExecuteDataSet(procommand).Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return dt;
-        //}
-
-        //internal DataTable AssignChangeRequestToApprover(ChangeRequest changeRequest, Approver approver)
-        //{
-        //    DataTable dt = new DataTable();
-        //    try
-        //    {
-        //        procommand = DB.GetStoredProcCommand("SaveApproverForAChangeRequest", changeRequest.ChangeRequestId, approver.Username, approver.RoleCode, "PENDING", "PENDING");
-        //        dt = DB.ExecuteDataSet(procommand).Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return dt;
-        //}
-
-        //internal DataTable UpdateChangeRequestStatus(ChangeRequest changeRequest, Approver approver, string Decision)
-        //{
-        //    DataTable dt = new DataTable();
-        //    try
-        //    {
-        //        procommand = DB.GetStoredProcCommand("UpdateChangeRequestStatus", changeRequest.ChangeRequestId, approver.Username, Decision);
-        //        dt = DB.ExecuteDataSet(procommand).Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return dt;
-        //}
+      
     }
 }

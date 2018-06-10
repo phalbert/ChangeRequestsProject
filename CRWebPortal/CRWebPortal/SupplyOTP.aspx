@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SupplyOTP.aspx.cs" Inherits="CRWebPortal.SupplyOTP" %>
+<%@ MasterType VirtualPath="~/Site.Master" %>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div class="row" style="padding-top: 15%">
@@ -15,7 +16,7 @@
                 <div class="card-footer bg-default text-center">
                     <asp:Button ID="btnBack" Text="Go Back" CssClass="btn btn-md btn-danger" runat="server" OnClick="btnBack_Click" />
                     <asp:Button ID="btnResend" Text="Resend OTP" CssClass="btn btn-md btn-info" runat="server" OnClick="btnResend_Click" />
-                     <asp:Button ID="btnNext" Text="Verify OTP" CssClass="btn btn-md btn-success" runat="server" OnClick="btnNext_Click" />
+                     <asp:Button ID="btnVerify" Text="Verify OTP" CssClass="btn btn-md btn-success" runat="server" OnClick="btnVerifyOTP_Click" />
                 </div>
             </div>
         </div>

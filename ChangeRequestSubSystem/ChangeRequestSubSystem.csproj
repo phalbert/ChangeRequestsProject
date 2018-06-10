@@ -100,7 +100,6 @@
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\ApiRequest.cs" />
     <Compile Include="Entities\BaseClass.cs" />
-    <Compile Include="Entities\Converter.cs" />
     <Compile Include="Entities\CR_Attachment.cs" />
     <Compile Include="Entities\DbEntity.cs" />
     <Compile Include="Entities\DynamicExtensions.cs" />
@@ -109,10 +108,11 @@
     <Compile Include="Entities\PostChangeTests.cs" />
     <Compile Include="Entities\RiskAnalysis.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\RollBackPlan.cs" />
     <Compile Include="Entities\ServicesAffected.cs" />
     <Compile Include="Entities\SystemAffected.cs" />
     <Compile Include="Entities\SystemUser.cs" />
-    <Compile Include="Entities\ValueFromAttribute.cs" />
+    <Compile Include="Entities\TimeBoundAccessRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
