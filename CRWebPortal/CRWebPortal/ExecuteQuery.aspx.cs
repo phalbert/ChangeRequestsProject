@@ -39,7 +39,64 @@ namespace CRWebPortal
 
         private bool IsAccessRequestIsValid()
         {
+            SystemUser user = Session["User"] as SystemUser;
+            TimeBoundAccessRequest tbar = BussinessLogic.cRSystemAPIClient.CheckForValidTimeBoundAccessRequest(user);
+
+            if (tbar.StatusCode != Globals.SUCCESS_STATUS_CODE)
+            {
+                //Show Error Message
+                Master.ErrorMessage = "ERROR:" + tbar.StatusDesc;
+                return false;
+            }
+
+            string statementsAllowed = GetStatementsAllowed(tbar);
+            string msg = $"SUCCESS: STATEMENTS YOU CAN EXECUTE {statementsAllowed}";
+            Session["TBAR"] = tbar;
+
+            LoadAutoCompleteIntellisense(tbar);
+            Master.ErrorMessage = msg;
             return true;
+        }
+
+        private void LoadAutoCompleteIntellisense(TimeBoundAccessRequest tbar)
+        {
+            string GetAllTablesSql = $"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG = '{tbar.SystemCode}'";
+            DataTable dt = BussinessLogic.cRSystemAPIClient.ExecuteSqlQuery(GetAllTablesSql, tbar).Tables[0];
+            string array = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                string tableName = dr[0].ToString();
+                array += $"'{tableName}',";
+            }
+            array = array.TrimEnd(',');
+            Session["Tables"] = array;
+        }
+
+        private string GetStatementsAllowed(TimeBoundAccessRequest request)
+        {
+            string statements = $"";
+            switch (request.TypeOfAccess.ToUpper())
+            {
+                case "UPDATE":
+                    statements = $"[SELECT's, UPDATE's] ON DB {request.SystemCode}";
+                    break;
+                case "DELETE":
+                    statements = $"[SELECT's, UPDATE's, DELETE's] ON DB {request.SystemCode}";
+                    break;
+                case "INSERT":
+                    statements = $"[SELECT's, UPDATE's, DELETE's,INSERT's] ON DB {request.SystemCode}";
+                    break;
+                case "CREATE":
+                    statements = $"[SELECT's, UPDATE's, DELETE's,INSERT's,CREATE] ON DB {request.SystemCode}";
+                    break;
+                case "FULL":
+                    statements = $"[ANY QUERY] ON DB {request.SystemCode}";
+                    break;
+                default:
+                    statements= $"[SELECT's] ON DB {request.SystemCode}";
+                    break;
+            }
+            return statements;
         }
 
         protected void dataGridResults_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -74,10 +131,6 @@ namespace CRWebPortal
             }
         }
 
-        //private void switchActiveButtons()
-        //{
-        //   btnComplete.Visible=!btn
-        //}
 
         protected void btnExecute_Click(object sender, EventArgs e)
         {
@@ -109,17 +162,8 @@ namespace CRWebPortal
                 //he input an update or delete statement
                 if (result.StatusCode == Globals.SUCCESS_STATUS_CODE)
                 {
-                    DataTable dt = BussinessLogic.cRSystemAPIClient.ExecuteSqlQuery(result.PegPayID).Tables[0];
-
-                    if (dt.Rows.Count <= 0)
-                    {
-                        //Show Error Message
-                        string msg1 = "ERROR: NO ROWS WILL BE AFFECTED. DOUBLE CHECK YOUR QUERY";
-                        Master.ErrorMessage = msg1;
-                        dataGridResults.DataSource = null;
-                        dataGridResults.DataBind();
-                        return;
-                    }
+                    TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
+                    DataTable dt = BussinessLogic.cRSystemAPIClient.ExecuteSqlQuery(result.PegPayID, tbar).Tables[0];
 
                     dataGridResults.DataSource = dt;
                     dataGridResults.DataBind();
@@ -175,6 +219,12 @@ namespace CRWebPortal
                     result.PegPayID = selectStatement;
                     return result;
 
+                case "SELECT":
+                    result.StatusCode = Globals.SUCCESS_STATUS_CODE;
+                    result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+                    result.PegPayID = query;
+                    return result;
+
                 case "DELETE":
                     string fromClause = query.Split(new string[] { "from" }, StringSplitOptions.RemoveEmptyEntries)[1];
                     tableName = fromClause.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)[0];
@@ -201,6 +251,7 @@ namespace CRWebPortal
                 default:
                     result.StatusCode = "300";
                     result.StatusDesc = "Unable to Determine Query Type";
+                    result.PegPayID = queryType;
                     return result;
             }
 
@@ -212,25 +263,18 @@ namespace CRWebPortal
             {
 
                 string query = txtQuery.Text;
-                int dt = BussinessLogic.cRSystemAPIClient.ExecuteNonQuery(query);
+                TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
+                int dt = BussinessLogic.cRSystemAPIClient.ExecuteNonQuery(query, tbar);
 
-                if (dt <= 0)
-                {
-                    //Show Error Message
-                    string msg1 = "ERROR: NO ROWS WHERE BE AFFECTED. DOUBLE CHECK YOUR QUERY";
-                    Master.ErrorMessage = msg1;
-                    return;
-                }
-                else
-                {
-                    //Show Error Message
-                    string msg1 = $"SUCCESS: {dt} ROWS WHERE BE AFFECTED.";
-                    Master.ErrorMessage = msg1;
-                    btnComplete.Visible = false;
-                    btnExecute.Visible = true;
-                    txtQuery.Enabled = true;
-                    return;
-                }
+
+                //Show Error Message
+                string msg1 = $"SUCCESS: {dt} ROWS WHERE AFFECTED.";
+                Master.ErrorMessage = msg1;
+                btnComplete.Visible = false;
+                btnExecute.Visible = true;
+                txtQuery.Enabled = true;
+                return;
+
             }
             catch (Exception ex)
             {

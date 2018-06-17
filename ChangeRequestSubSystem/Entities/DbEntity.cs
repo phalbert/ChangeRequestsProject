@@ -59,21 +59,21 @@ namespace ChangeRequestSubSystem.Entities
             return all.ToArray();
         }
 
-        public static T[] QueryWithStoredProc2(string storedProc, params object[] storedProcParameters)
-        {
-            List<T> all = new List<T>();
-            DataTable dt = DatabaseHandler.ExecuteStoredProc(storedProc, storedProcParameters);
-            List<dynamic> dys = dt.AsDynamicEnumerable().ToList();
-            foreach (dynamic dr in dys)
-            {
+        //public static T[] QueryWithStoredProc2(string storedProc, params object[] storedProcParameters)
+        //{
+        //    List<T> all = new List<T>();
+        //    DataTable dt = DatabaseHandler.ExecuteStoredProc(storedProc, storedProcParameters);
+        //    List<dynamic> dys = dt.AsDynamicEnumerable().ToList();
+        //    foreach (dynamic dr in dys)
+        //    {
 
-                string columnName = dr.Username;
-            }
+        //        string columnName = dr.Username;
+        //    }
 
-            return all.ToArray();
-        }
+        //    return all.ToArray();
+        //}
 
-        public static void CopyParentArrayToChildProperty(DataRow parent, object child)
+        private static void CopyParentArrayToChildProperty(DataRow parent, object child)
         {
             var childProperties = child.GetType().GetProperties();
 

@@ -112,6 +112,24 @@
   <wsdl:message name="CRSystemAPI_ExecuteNonQuery_OutputMessage">
     <wsdl:part name="parameters" element="tns:ExecuteNonQueryResponse" />
   </wsdl:message>
+  <wsdl:message name="CRSystemAPI_CheckForValidTimeBoundAccessRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckForValidTimeBoundAccessRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_CheckForValidTimeBoundAccessRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckForValidTimeBoundAccessRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ApproveChangeRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveChangeRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ApproveChangeRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveChangeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ApproveTBAR_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveTBAR" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_ApproveTBAR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveTBARResponse" />
+  </wsdl:message>
   <wsdl:portType name="CRSystemAPI">
     <wsdl:operation name="SaveChangeRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveChangeRequest" message="tns:CRSystemAPI_SaveChangeRequest_InputMessage" />
@@ -180,6 +198,18 @@
     <wsdl:operation name="ExecuteNonQuery">
       <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteNonQuery" message="tns:CRSystemAPI_ExecuteNonQuery_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/ExecuteNonQueryResponse" message="tns:CRSystemAPI_ExecuteNonQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckForValidTimeBoundAccessRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequest" message="tns:CRSystemAPI_CheckForValidTimeBoundAccessRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequestResponse" message="tns:CRSystemAPI_CheckForValidTimeBoundAccessRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveChangeRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/ApproveChangeRequest" message="tns:CRSystemAPI_ApproveChangeRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/ApproveChangeRequestResponse" message="tns:CRSystemAPI_ApproveChangeRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveTBAR">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/ApproveTBAR" message="tns:CRSystemAPI_ApproveTBAR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/ApproveTBARResponse" message="tns:CRSystemAPI_ApproveTBAR_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_CRSystemAPI" type="tns:CRSystemAPI">
@@ -330,6 +360,33 @@
     </wsdl:operation>
     <wsdl:operation name="ExecuteNonQuery">
       <soap:operation soapAction="http://tempuri.org/CRSystemAPI/ExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckForValidTimeBoundAccessRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveChangeRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/ApproveChangeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveTBAR">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/ApproveTBAR" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

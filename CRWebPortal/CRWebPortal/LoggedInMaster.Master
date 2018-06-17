@@ -12,6 +12,8 @@
     <link href="Styles/nav-wizard.css" rel="stylesheet" />
     <link href="Styles/Site.css" rel="Stylesheet" />
     <link href="Styles/bootstrap-datetimepicker.min.css" rel="Stylesheet" />
+    <link href="Styles/bootstrap-datetimepicker.min.css" rel="Stylesheet" />
+    <asp:ContentPlaceHolder ID="headContentPlaceHolder" runat="server"/>
 </head>
 <body>
     <form runat="server">
@@ -57,6 +59,7 @@
                     </div>
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
+                     
                 </div>
 
                 <div class="footer" style="padding-top: 20%">
@@ -77,19 +80,24 @@
 <script type="text/jscript" src="Scripts/bootstrap-datetimepicker.js"></script>
 <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
 
     $('.form_datetime').datetimepicker({
         //language:  'fr',
         weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		forceParse: 0,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
         showMeridian: 1
     });
+
     console.log("Ready");
 
 </script>
+
+<asp:ContentPlaceHolder ID="footerJsContent" runat="server"/>
+
 </html>

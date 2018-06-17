@@ -231,6 +231,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SqlText" nillable="true" type="xs:string" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="tbar" nillable="true" type="q28:TimeBoundAccessRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -257,6 +258,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SqlText" nillable="true" type="xs:string" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="tbar" nillable="true" type="q29:TimeBoundAccessRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -264,6 +266,52 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ExecuteNonQueryResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckForValidTimeBoundAccessRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="user" nillable="true" type="q30:SystemUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckForValidTimeBoundAccessRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="CheckForValidTimeBoundAccessRequestResult" nillable="true" type="q31:TimeBoundAccessRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApproveChangeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Decision" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApproveChangeRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApproveChangeRequestResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApproveTBAR">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TbarId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Decision" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApproveTBARResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApproveTBARResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

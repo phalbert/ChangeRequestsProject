@@ -35,7 +35,7 @@ namespace CRWebPortal
             {
                 //Show Error Message
                 string msg = "ERROR:" + ex.Message;
-                Master.ErrorMessage = msg;
+                lblMsg.Text = msg;
                 return;
             }
         }
@@ -61,20 +61,20 @@ namespace CRWebPortal
                 {
                     //Show Error Message
                     string error = result.StatusDesc;
-                    Master.ErrorMessage = error;
+                    lblMsg.Text = error;
                     return;
                 }
 
                 //Show Error Message
                 string msg = result.StatusDesc;
-                Master.ErrorMessage = msg;
+                lblMsg.Text = msg;
                 return;
             }
             catch (Exception ex)
             {
                 //Show Error Message
                 string msg = "ERROR:" + ex.Message;
-                Master.ErrorMessage = msg;
+                lblMsg.Text = msg;
                 return;
             }
         }
@@ -94,7 +94,7 @@ namespace CRWebPortal
                 {
                     //Show Error Message
                     string msg = user.StatusDesc;
-                    Master.ErrorMessage = msg;
+                    lblMsg.Text = msg;
                     return;
                 }
 
@@ -105,7 +105,7 @@ namespace CRWebPortal
             {
                 //Show Error Message
                 string msg = "ERROR:" + ex.Message;
-                Master.ErrorMessage = msg;
+                lblMsg.Text = msg;
                 return;
             }
         }

@@ -73,6 +73,9 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="ApproveChangeRequest.aspx" />
+    <Content Include="ApproveChangeRequestEmail.html" />
+    <Content Include="ApproveTbarRequest.aspx" />
     <Content Include="AttachApproversToCR.aspx" />
     <Content Include="AttachApproversToTBPRequest.aspx" />
     <Content Include="AttachItemToChangeRequest.aspx" />
@@ -82,6 +85,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\CRSystemAPI\CRWebPortal.CRSystemAPI.SystemUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CRSystemAPI\CRWebPortal.CRSystemAPI.TimeBoundAccessRequest.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\CRSystemAPI\Service1.disco" />
@@ -97,12 +103,18 @@
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Images\Bing-background-1920x1200.jpg" />
     <Content Include="Images\pegasus.png" />
     <Content Include="Scripts\bootstrap-datetimepicker.fr.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\jquery.a-tools-1.4.1.js" />
+    <Content Include="Scripts\jquery.asuggest.js" />
     <Content Include="Scripts\jquery.datetimepicker.full.min.js" />
+    <Content Include="Scripts\jquery.easy-autocomplete.min.js" />
+    <Content Include="Scripts\jquery.time-to.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
+    <Content Include="Styles\easy-autocomplete.min.css" />
     <Content Include="Styles\nav-wizard.css" />
     <Content Include="Styles\pace-theme.css" />
     <Content Include="Styles\Site.css" />
@@ -111,10 +123,13 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\style.css" />
+    <Content Include="Styles\timeTo.css" />
     <Content Include="SupplyOTP.aspx" />
     <Content Include="SupplyTBPRequest.aspx" />
     <Content Include="SupplyToken.aspx" />
     <Content Include="SupplyUsername.aspx" />
+    <Content Include="Test.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -168,7 +183,28 @@
     <Compile Include="ApplyForTBPAccess.aspx.designer.cs">
       <DependentUpon>ApplyForTBPAccess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ApproveTbarRequest.aspx.cs">
+      <DependentUpon>ApproveTbarRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApproveTbarRequest.aspx.designer.cs">
+      <DependentUpon>ApproveTbarRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Content Include="App_Code\SharedLogic.cs" />
+    <Compile Include="ApproveChangeRequest.aspx.cs">
+      <DependentUpon>ApproveChangeRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApproveChangeRequest.aspx.designer.cs">
+      <DependentUpon>ApproveChangeRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AttachApproversToCR.aspx.cs">
       <DependentUpon>AttachApproversToCR.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

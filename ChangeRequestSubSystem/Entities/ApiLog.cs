@@ -10,7 +10,7 @@ namespace ChangeRequestSubSystem.Entities
     [ActiveRecord("ErrorLogs")]
     public class ApiLog : DbEntity<ApiLog>
     {
-        [PrimaryKey(PrimaryKeyType.Native, "RecordId")]
+        [PrimaryKey(PrimaryKeyType.Identity, "RecordId")]
         public int RecordId { get; set; }
 
         [Property]

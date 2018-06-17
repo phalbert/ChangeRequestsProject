@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="ControlClasses\AbstractModelTestCase.cs" />
     <Compile Include="ControlClasses\ChangeRequestAPITests.cs" />
+    <Compile Include="ControlClasses\CRSubSystemAPITests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

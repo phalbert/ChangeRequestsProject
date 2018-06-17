@@ -141,13 +141,13 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
             Assert.AreEqual(Globals.SUCCESS_STATUS_TEXT, result.StatusDesc);
         }
 
-        [TestMethod()]
-        public void TestStuff()
-        {
+        //[TestMethod()]
+        //public void TestStuff()
+        //{
 
-            OneTimePassword[] otp = OneTimePassword.QueryWithStoredProc2("GetLatestOTP","kasozi.nsubuga@pegasus.co.ug");
-            Assert.Fail();
-        }
+        //    OneTimePassword[] otp = OneTimePassword.QueryWithStoredProc2("GetLatestOTP","kasozi.nsubuga@pegasus.co.ug");
+        //    Assert.Fail();
+        //}
 
         [TestMethod()]
         public void SaveCompanyTest()
@@ -225,7 +225,7 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         }
 
         [TestMethod()]
-        public void AttachRollBackPlanToChangeRequest()
+        public void AttachRollBackPlanToChangeRequestTest()
         {
             ChangeRequestInterface api = new CRSubSystemAPI();
             RollBackPlan systemAffected = new RollBackPlan();
@@ -236,13 +236,73 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
             Assert.AreEqual(Globals.SUCCESS_STATUS_TEXT, result.StatusDesc);
         }
 
+        [TestMethod()]
+        public void SaveTimeBoundAccessRequestTest()
+        {
+            ChangeRequestInterface api = new CRSubSystemAPI();
+            TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
+            tbar.Approver = "nsubugak";
+            tbar.ApproverReason = "PENDING";
+            tbar.CreatedBy = "nsubugak";
+            tbar.CreatedOn = DateTime.Now;
+            tbar.DurationInMinutes = 15;
+            tbar.ModifiedBy = "nsubugak";
+            tbar.ModifiedOn = DateTime.Now;
+            tbar.Reason = "To Debug Stuff";
+            tbar.StartTime= DateTime.Now; ;
+            tbar.Status = "PENDING";
+            tbar.SystemCode = "DATABASE";
+            tbar.TBPAccessId = DateTime.Now.Ticks.ToString();
+            tbar.UserId = "nsubugak";
+            tbar.TypeOfAccess = "UPDATE";
+
+
+            ApiResult result = api.SaveTimeBoundAccessRequest(tbar);
+            Assert.AreEqual(Globals.SUCCESS_STATUS_TEXT, result.StatusDesc);
+        }
+
+        [TestMethod()]
+        public void SendApproveCrEmailTest()
+        {
+            ChangeRequestInterface api = new CRSubSystemAPI();
+           
+            ChangeRequest changeRequest = new ChangeRequest();
+            changeRequest.ApprovalStatus = "PENDING";
+            changeRequest.ApprovalReason = "";
+            changeRequest.ChangeCategoryId = "EMERGENCY_CHANGE";
+            changeRequest.ChangeRequestId = DateTime.Now.Ticks.ToString();
+            changeRequest.ChangeEndDateTime = DateTime.Now;
+            changeRequest.ChangeStartDateTime = DateTime.Now;
+            changeRequest.ImpactOfNotImplementing = "Bad Stuff";
+            changeRequest.ImplementerCompany = "Pegasus";
+            changeRequest.ImplementerEmail = "kasozi.nsubuga@pegasus.co.ug";
+            changeRequest.ImplementerName = "kasozi";
+            changeRequest.ImplementerPhone = "0785975800";
+            changeRequest.Justification = "We need to do this";
+            changeRequest.RequesterCompany = "Stanbic";
+            changeRequest.RequesterEmail = "damalie@stanbic.com";
+            changeRequest.RequesterName = "Damalie";
+            changeRequest.RequesterPhone = "0785975800";
+            changeRequest.Title = "Changing Transaction Status";
+            changeRequest.Problem = "Pegasus server 192.168.55.3 wishes to access UTL airtime listening on URL http://172.25.100.6/atpurchase.php  in order to be able to send Airtime Top Up requests for UTL phone numbers";
+            changeRequest.Solution = "Creation of UTL VPN";
+            changeRequest.Save();
+
+            ApproverToChangeRequestLink systemAffected = new ApproverToChangeRequestLink();
+            systemAffected.ChangeRequestId = changeRequest.ChangeRequestId;
+            systemAffected.UserId = "nsubugak";
+            string ApproveURL = "";
+            ApiResult result = api.SendApproveCrEmail(systemAffected);
+            Assert.AreEqual(Globals.SUCCESS_STATUS_TEXT, result.StatusDesc);
+        }
+
 
         //[TestMethod()]
         //public void AttachRollBackPlanToChangeRequest()
         //{
         //    ChangeRequestInterface api = new ChangeRequestAPI();
         //    RiskAnalysis systemAffected = new RiskAnalysis();
-            
+
         //    ApiResult result = api.AttachRiskAnalysisToChangeRequest(systemAffected);
         //    Assert.AreEqual(Globals.SUCCESS_STATUS_TEXT, result.StatusDesc);
         //}

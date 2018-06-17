@@ -2162,6 +2162,9 @@ namespace CRWebPortal.CRSystemAPI {
         private string DecisionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> HasEmailBeenSentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2195,6 +2198,19 @@ namespace CRWebPortal.CRSystemAPI {
                 if ((object.ReferenceEquals(this.DecisionField, value) != true)) {
                     this.DecisionField = value;
                     this.RaisePropertyChanged("Decision");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> HasEmailBeenSent {
+            get {
+                return this.HasEmailBeenSentField;
+            }
+            set {
+                if ((this.HasEmailBeenSentField.Equals(value) != true)) {
+                    this.HasEmailBeenSentField = value;
+                    this.RaisePropertyChanged("HasEmailBeenSent");
                 }
             }
         }
@@ -3193,10 +3209,19 @@ namespace CRWebPortal.CRSystemAPI {
         CRWebPortal.CRSystemAPI.ApiResult SaveTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest req);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteSqlQuery", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteSqlQueryResponse")]
-        System.Data.DataSet ExecuteSqlQuery(string SqlText);
+        System.Data.DataSet ExecuteSqlQuery(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteNonQuery", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteNonQueryResponse")]
-        int ExecuteNonQuery(string SqlText);
+        int ExecuteNonQuery(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequest", ReplyAction="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequestResponse")]
+        CRWebPortal.CRSystemAPI.TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.SystemUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveChangeRequestResponse")]
+        string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveTBAR", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveTBARResponse")]
+        string ApproveTBAR(string UserId, string TbarId, string Decision);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3286,12 +3311,24 @@ namespace CRWebPortal.CRSystemAPI {
             return base.Channel.SaveTimeBoundAccessRequest(req);
         }
         
-        public System.Data.DataSet ExecuteSqlQuery(string SqlText) {
-            return base.Channel.ExecuteSqlQuery(SqlText);
+        public System.Data.DataSet ExecuteSqlQuery(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar) {
+            return base.Channel.ExecuteSqlQuery(SqlText, tbar);
         }
         
-        public int ExecuteNonQuery(string SqlText) {
-            return base.Channel.ExecuteNonQuery(SqlText);
+        public int ExecuteNonQuery(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar) {
+            return base.Channel.ExecuteNonQuery(SqlText, tbar);
+        }
+        
+        public CRWebPortal.CRSystemAPI.TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.SystemUser user) {
+            return base.Channel.CheckForValidTimeBoundAccessRequest(user);
+        }
+        
+        public string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision) {
+            return base.Channel.ApproveChangeRequest(UserId, ChangeRequestId, Decision);
+        }
+        
+        public string ApproveTBAR(string UserId, string TbarId, string Decision) {
+            return base.Channel.ApproveTBAR(UserId, TbarId, Decision);
         }
     }
 }

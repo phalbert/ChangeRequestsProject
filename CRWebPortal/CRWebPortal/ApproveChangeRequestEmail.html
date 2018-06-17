@@ -1,0 +1,192 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="Styles/Site.css" rel="Stylesheet" />
+    <title>Hello, world!</title>
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="card border-primary text-white  mb-3">
+                <div class="card-header bg-primary text-center">
+                    <h1>Hi, [APPROVER_NAME] Please Approve CR with details below</h1>
+                </div>
+                <div class="card-body bg-default">
+                    <!--<%------------ General Details Section -----------  --%>-->
+                    <div class="card border-primary text-white  mb-3">
+                        <div class="card-header bg-primary">
+                            General Information
+                        </div>
+                        <div class="card-body bg-default">
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Title Of Change Request</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [TITLE]
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!------------ Change Description Section --------------->
+                    <div class="card border-primary text-white  mb-3">
+                        <div class="card-header bg-primary">
+                            Change Description (What is the Change About)
+                        </div>
+                        <div class="card-body bg-default">
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Current Problem Description</b>
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [CURRENT_PROBLEM]
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Proposed Solution Description</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [PROPOSED_SOLUTION]
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Change Category</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [CHANGE_CATEGORY]
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<%------------ Justification Details Section---------  --%>-->
+                    <div class="card border-primary text-white  mb-3">
+                        <div class="card-header bg-primary">
+                            Justify why the proposed changes should be implemented
+                        </div>
+                        <div class="card-body bg-default">
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Justification</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [JUSTIFICATION]
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Impact of Not Implementing</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [IMPACT]
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<%------------ Requestor Details Section ---------  --%>-->
+                    <div class="card border-primary text-white  mb-3">
+                        <div class="card-header bg-primary">
+                            Requestor Details (Who Requested for this)
+                        </div>
+                        <div class="card-body bg-default">
+
+                            <div class="row">
+                                <div class="col-lg-6" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Requestor Name</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [REQUESTOR_NAME]
+                                    </label>
+                                </div>
+                                <div class="col-lg-6" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Requestor Email</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [REQUESTOR_EMAIL]
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Requestor Phone</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [REQUESTOR_PHONE]
+                                    </label>
+                                </div>
+                                <div class="col-lg-6" style="padding-bottom: 10px">
+                                    <label>
+                                        <b>Requestor Company or Address</b>
+
+                                    </label>
+                                    <br />
+                                    <label>
+                                        [REQUESTOR_COMPANY]
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer text-center">
+                    <a href="UpdateCRDecision.aspx?UserId=[USER_ID]&Decision=REJECTED&REASON="><button id="btnReject" class="btn btn-md btn-danger">Reject CR</button></a>
+                    <a href="UpdateCRDecision.aspx?UserId=[USER_ID]&Decision=APPROVED&REASON="><button id="btnApprove" class="btn btn-md btn-primary">Approve CR</button></a>
+                </div>
+
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+    <!-- Optional JavaScript
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

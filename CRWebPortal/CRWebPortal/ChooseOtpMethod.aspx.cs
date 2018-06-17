@@ -25,7 +25,7 @@ namespace CRWebPortal
             {
                 //Show Error Message
                 string msg = "ERROR:" + ex.Message;
-                Master.ErrorMessage = msg;
+                lblMsg.Text = msg;
                 return;
             }
         }
@@ -38,7 +38,7 @@ namespace CRWebPortal
                 {
                     //Show Error Message
                     string msg = "Please Select a Delivery Method";
-                    Master.ErrorMessage = msg;
+                    lblMsg.Text = msg;
                     return;
                 }
 
@@ -52,7 +52,7 @@ namespace CRWebPortal
             {
                 //Show Error Message
                 string msg = "ERROR:" + ex.Message;
-                Master.ErrorMessage = msg;
+                lblMsg.Text = msg;
                 return;
             }
         }

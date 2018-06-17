@@ -19,6 +19,8 @@ namespace CRWebPortal
                 {
                     return;
                 }
+
+                LoadData();
             }
             catch (Exception ex)
             {
@@ -27,6 +29,12 @@ namespace CRWebPortal
                 Master.ErrorMessage = msg;
                 return;
             }
+        }
+
+        private void LoadData()
+        {
+            BussinessLogic.LoadDataIntoDropDown("GetSystemsForDropDown", ddDatabases, Session["User"] as SystemUser);
+            BussinessLogic.LoadDataIntoDropDown("GetApproversForDropDown", ddApprover, Session["User"] as SystemUser);
         }
 
         protected void btnNextStep_Click(object sender, EventArgs e)
@@ -39,7 +47,8 @@ namespace CRWebPortal
                 req.Approver = ddApprover.SelectedValue;
                 req.CreatedBy = (Session["User"] as SystemUser)?.Username;
                 req.CreatedOn = DateTime.Now;
-                req.ApproverReason = "";
+                req.ApproverReason = "PENDING";
+                req.Status = "PENDING";
                 req.DurationInMinutes = int.Parse(ddDuration.SelectedValue);
                 req.Reason = txtReason.Text;
                 req.StartTime = DateTime.ParseExact(txtStartDateTime.Text, dateFormat, CultureInfo.InvariantCulture);

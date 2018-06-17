@@ -49,15 +49,12 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.Button btnVerify;
         
         /// <summary>
-        /// Master property.
+        /// lblMsg control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new CRWebPortal.SiteMaster Master {
-            get {
-                return ((CRWebPortal.SiteMaster)(base.Master));
-            }
-        }
+        protected global::System.Web.UI.WebControls.Label lblMsg;
     }
 }

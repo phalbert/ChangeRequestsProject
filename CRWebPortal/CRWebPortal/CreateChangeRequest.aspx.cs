@@ -57,7 +57,9 @@ namespace CRWebPortal
                     RequesterEmail = txtReqEmail.Text,
                     RequesterName = txtReqName.Text,
                     RequesterPhone = txtReqPhone.Text,
-                    Title = txtTitle.Text
+                    Title = txtTitle.Text,
+                    Problem=txtProblemDesc.Text,
+                    Solution=txtSolutionDesc.Text
                 };
 
                 ApiResult apiResult = BussinessLogic.cRSystemAPIClient.SaveChangeRequest(changeRequest);

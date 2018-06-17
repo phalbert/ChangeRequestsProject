@@ -14,8 +14,6 @@ namespace ChangeRequestAPI
     [ServiceContract]
     public interface CRSystemAPI
     {
-       
-
         // TODO: Add your service operations here
         [OperationContract]
         ApiResult SaveChangeRequest(ChangeRequest ChangeRequest);
@@ -64,10 +62,19 @@ namespace ChangeRequestAPI
        
 
         [OperationContract]
-        DataSet ExecuteSqlQuery(string SqlText);
+        DataSet ExecuteSqlQuery(string SqlText, TimeBoundAccessRequest tbar);
 
         [OperationContract]
-        int ExecuteNonQuery(string SqlText);
+        int ExecuteNonQuery(string SqlText, TimeBoundAccessRequest tbar);
+
+        [OperationContract]
+        TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user);
+
+        [OperationContract]
+        string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision);
+
+        [OperationContract]
+        string ApproveTBAR(string UserId, string TbarId, string Decision);
     }
 
 

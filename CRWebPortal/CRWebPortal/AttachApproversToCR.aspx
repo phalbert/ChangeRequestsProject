@@ -47,7 +47,7 @@
                                     <label>
                                         Name Of Person</label>
                                     <asp:DropDownList ID="ddNameOfApprover" runat="server" CssClass="form-control">
-                                        <asp:ListItem Value="kasozi.nsubuga@pegasus.co.ug">Nsubuga Kasozi</asp:ListItem>
+                                        <asp:ListItem Value="nsubugak">Nsubuga Kasozi</asp:ListItem>
                                         <asp:ListItem Value="paul.kavule@pegasus.co.ug">Paul Kavule</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>

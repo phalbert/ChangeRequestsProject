@@ -23,9 +23,9 @@ namespace ChangeRequestAPI
 
         public DataSet ExecuteDataSet(string StoredProc, object[] parameters) => cRSubSystemAPI.ExecuteDataSet(StoredProc, parameters);
 
-        public int ExecuteNonQuery(string SqlQuery)=> cRSubSystemAPI.ExecuteNonQuery(SqlQuery);
-       
-        public DataSet ExecuteSqlQuery(string SqlText) => cRSubSystemAPI.ExecuteSqlQuery(SqlText);
+        public int ExecuteNonQuery(string SqlQuery, TimeBoundAccessRequest tbar) => cRSubSystemAPI.ExecuteNonQuery(SqlQuery, tbar);
+
+        public DataSet ExecuteSqlQuery(string SqlText, TimeBoundAccessRequest tbar) => cRSubSystemAPI.ExecuteSqlQuery(SqlText, tbar);
 
         public SystemUser Login(string Username, string Password) => cRSubSystemAPI.Login(Username, Password);
 
@@ -50,5 +50,12 @@ namespace ChangeRequestAPI
         public ApiResult AttachRiskAnalysisToChangeRequest(RiskAnalysis riskAnalysis) => cRSubSystemAPI.AttachRiskAnalysisToChangeRequest(riskAnalysis);
 
         public ApiResult SaveTimeBoundAccessRequest(TimeBoundAccessRequest req) => cRSubSystemAPI.SaveTimeBoundAccessRequest(req);
+
+        public TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user) => cRSubSystemAPI.CheckForValidTimeBoundAccessRequest(user);
+
+        public string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision) => cRSubSystemAPI.ApproveChangeRequest(UserId, ChangeRequestId, Decision).StatusDesc;
+
+        public string ApproveTBAR(string UserId, string TbarId, string Decision) => cRSubSystemAPI.ApproveTBAR(UserId, TbarId, Decision).StatusDesc;
+
     }
 }

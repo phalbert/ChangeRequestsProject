@@ -31,7 +31,7 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public int DurationInMinutes { get; set; }
 
-        [Property(Length = 50)]
+        [Property(Length = 6550)]
         public string Reason { get; set; }
 
         [Property(Length = 50)]
@@ -40,7 +40,7 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public string Approver { get; set; }
 
-        [Property(Length = 50)]
+        [Property(Length = 6550)]
         public string ApproverReason { get; set; }
     }
 }

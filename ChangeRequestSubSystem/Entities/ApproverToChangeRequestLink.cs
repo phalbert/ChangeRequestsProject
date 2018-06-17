@@ -28,7 +28,10 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public string Reason { get; set; }
 
-       
+        [Property]
+        public bool? HasEmailBeenSent { get; set; }
+
+
         public bool AlreadyExists()
         {
             return false;

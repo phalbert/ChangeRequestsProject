@@ -93,6 +93,7 @@
     <Compile Include="ControlClasses\ChangeRequestInterface.cs" />
     <Compile Include="ControlClasses\DatabaseHandler.cs" />
     <Compile Include="ControlClasses\Globals.cs" />
+    <Compile Include="ControlClasses\ThirdPartyDB.cs" />
     <Compile Include="Entities\ApiLog.cs" />
     <Compile Include="Entities\ApiResult.cs" />
     <Compile Include="Entities\ApproverToChangeRequestLink.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Entities\BaseClass.cs" />
     <Compile Include="Entities\CR_Attachment.cs" />
     <Compile Include="Entities\DbEntity.cs" />
+    <Compile Include="Entities\DbQueryLog.cs" />
     <Compile Include="Entities\DynamicExtensions.cs" />
     <Compile Include="Entities\DynamicObject.cs" />
     <Compile Include="Entities\OneTimePassword.cs" />
@@ -111,6 +113,8 @@
     <Compile Include="Entities\RollBackPlan.cs" />
     <Compile Include="Entities\ServicesAffected.cs" />
     <Compile Include="Entities\SystemAffected.cs" />
+    <Compile Include="Entities\System.cs" />
+    <Compile Include="Entities\SystemSetting.cs" />
     <Compile Include="Entities\SystemUser.cs" />
     <Compile Include="Entities\TimeBoundAccessRequest.cs" />
     <Compile Include="Program.cs" />
@@ -268,6 +272,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApproveChangeRequestEmail.html" />
+    <Content Include="ApproveTBAREmail.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

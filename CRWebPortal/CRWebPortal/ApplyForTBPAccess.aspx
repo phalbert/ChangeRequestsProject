@@ -48,7 +48,7 @@
                                         <asp:ListItem Value="DELETE">Delete table data</asp:ListItem>
                                         <asp:ListItem Value="INSERT">Insert table Details</asp:ListItem>
                                         <asp:ListItem Value="CREATE">Create Database Objects</asp:ListItem>
-                                        <asp:ListItem Value="ANY">Full DB Access</asp:ListItem>
+                                        <asp:ListItem Value="FULL">Full DB Access</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
