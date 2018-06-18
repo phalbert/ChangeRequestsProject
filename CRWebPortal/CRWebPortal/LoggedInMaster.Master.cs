@@ -33,12 +33,17 @@ namespace CRWebPortal
                 }
                 if (Session.IsNewSession)
                 {
-                    Response.Redirect("~/Default.aspx?Msg=Sorry, You have to Login again");
+                    Response.Redirect("~/Default.aspx?Msg=Sorry, Session Has Expired and You have to Login again");
+                    return;
+                }
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("~/Default.aspx?Msg=Sorry, Session Has Expired and You have to Login again");
                     return;
                 }
 
                 SystemUser user = Session["User"] as SystemUser;
-                
+
             }
             catch (Exception ex)
             {

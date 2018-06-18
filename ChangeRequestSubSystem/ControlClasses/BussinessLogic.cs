@@ -259,6 +259,32 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
+        internal ApiResult SaveSystemType(SystemType settting)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!settting.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(settting.StatusDesc);
+                    return apiResult;
+                }
+
+                SystemType old = SystemType.QueryWithStoredProc("GetSystemTypeByID", settting.TypeCode).FirstOrDefault();
+
+                settting.Id = old != null ? old.Id : settting.Id;
+
+                settting.Save();
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(AttachSystemAffectedToChangeRequest), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
         internal ApiResult Seed()
         {
             ApiResult apiResult = new ApiResult();
@@ -274,19 +300,19 @@ namespace ChangeRequestSubSystem.ControlClasses
 
                 SaveSystemUser(user);
 
-                TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
-                tbar.Approver = "nsubugak";
-                tbar.ApproverReason = "Test";
-                tbar.DurationInMinutes = 15;
-                tbar.Reason = "To Test";
-                tbar.StartTime = DateTime.Now;
-                tbar.Status = "APPROVED";
-                tbar.SystemCode = "ChangeRequestDB";
-                tbar.TBPAccessId = DateTime.Now.Ticks.ToString();
-                tbar.TypeOfAccess = "FULL";
-                tbar.UserId = "nsubugak";
+                //TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
+                //tbar.Approver = "nsubugak";
+                //tbar.ApproverReason = "Test";
+                //tbar.DurationInMinutes = 15;
+                //tbar.Reason = "To Test";
+                //tbar.StartTime = DateTime.Now;
+                //tbar.Status = "APPROVED";
+                //tbar.SystemCode = "ChangeRequestDB";
+                //tbar.TBPAccessId = DateTime.Now.Ticks.ToString();
+                //tbar.TypeOfAccess = "FULL";
+                //tbar.UserId = "nsubugak";
 
-                SaveTimeBoundAccessRequest(tbar);
+                //SaveTimeBoundAccessRequest(tbar);
 
                 SystemSetting setting = new SystemSetting();
                 setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_CR_EMAIL_TEMPLATE;
@@ -321,7 +347,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                 system.SystemCode = "TestMerchantCoreDB";
                 system.SystemName = "TestMerchantCoreDB";
 
-                system.Save();
+                SavePegasusSystem(system);
 
                 system = new PegasusSystem();
                 system.ConnectionString = "Data Source=(local);Initial Catalog=TestGenericPegPayApi;User Id=sa;Password=T3rr1613;";
@@ -331,6 +357,9 @@ namespace ChangeRequestSubSystem.ControlClasses
                 system.ModifiedOn = DateTime.Now;
                 system.SystemCode = "TestGenericPegPayApi";
                 system.SystemName = "TestGenericPegPayApi";
+                system.SystemType = "DATABASE";
+
+                SavePegasusSystem(system);
 
                 system = new PegasusSystem();
                 system.ConnectionString = "Data Source=(local);Initial Catalog=ChangeRequestDB;User Id=sa;Password=T3rr1613;";
@@ -340,8 +369,39 @@ namespace ChangeRequestSubSystem.ControlClasses
                 system.ModifiedOn = DateTime.Now;
                 system.SystemCode = "ChangeRequestDB";
                 system.SystemName = "ChangeRequestDB";
+                system.SystemType = "DATABASE";
 
-                system.Save();
+                SavePegasusSystem(system);
+
+                SystemType type = new SystemType();
+                type.CreatedBy = "nsubugak";
+                type.CreatedOn = DateTime.Now;
+                type.ModifiedBy = "nsubugak";
+                type.ModifiedOn = DateTime.Now;
+                type.TypeCode = "DATABASE";
+                type.TypeName = "Database";
+
+                SaveSystemType(type);
+
+                type = new SystemType();
+                type.CreatedBy = "nsubugak";
+                type.CreatedOn = DateTime.Now;
+                type.ModifiedBy = "nsubugak";
+                type.ModifiedOn = DateTime.Now;
+                type.TypeCode = "FIREWALL";
+                type.TypeName = "Database";
+
+                SaveSystemType(type);
+
+                type = new SystemType();
+                type.CreatedBy = "nsubugak";
+                type.CreatedOn = DateTime.Now;
+                type.ModifiedBy = "nsubugak";
+                type.ModifiedOn = DateTime.Now;
+                type.TypeCode = "SERVER";
+                type.TypeName = "SERVER";
+
+                SaveSystemType(type);
 
             }
             catch (Exception ex)
@@ -601,6 +661,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                 
 
                 msg = msg.Replace("[APPROVER_NAME]", approver.Username);
+                msg = msg.Replace("[REQUESTOR_NAME]", tbar.UserId);
                 msg = msg.Replace("[SYSTEM_NAME]", tbar.SystemCode);
                 msg = msg.Replace("[TYPE_OF_ACCESS]", tbar.TypeOfAccess);
                 msg = msg.Replace("[START_DATE]", tbar.StartTime.ToString(dateFormat));
@@ -1137,7 +1198,8 @@ namespace ChangeRequestSubSystem.ControlClasses
                     typeof(TimeBoundAccessRequest),
                     typeof(DbQueryLog),
                     typeof(SystemSetting),
-                    typeof(PegasusSystem)
+                    typeof(PegasusSystem),
+                    typeof(SystemType)
                 };
         }
 

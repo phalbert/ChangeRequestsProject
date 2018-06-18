@@ -41,7 +41,7 @@
                                     <br />
                                     <blockquote>
                                         <small>
-                                            <asp:Label ID="lblMsg" runat="server">Use Your Birth Certificate No. / KCPE Index No (as used in KCSE Exam Registration) as your Initial Password</asp:Label>
+                                            <asp:Label ID="lblMsg" runat="server">Use your pegasus Email e.g kasozi.nsubuga@pegasus.co.ug</asp:Label>
                                         </small>
                                     </blockquote>
                                 </div>

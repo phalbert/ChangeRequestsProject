@@ -33,8 +33,11 @@ namespace CRWebPortal
 
         private void LoadData()
         {
-            BussinessLogic.LoadDataIntoDropDown("GetSystemsForDropDown", ddDatabases, Session["User"] as SystemUser);
+            BussinessLogic.LoadDataIntoDropDown("GetDatabasesForDropDown", ddDatabases, Session["User"] as SystemUser);
             BussinessLogic.LoadDataIntoDropDown("GetApproversForDropDown", ddApprover, Session["User"] as SystemUser);
+
+            string dateFormat = "yyyy-MM-dd HH:mm";
+            txtStartDateTime.Text = DateTime.Now.ToString(dateFormat);
         }
 
         protected void btnNextStep_Click(object sender, EventArgs e)

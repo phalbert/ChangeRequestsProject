@@ -60,7 +60,6 @@ namespace ChangeRequestAPI
         [OperationContract]
         ApiResult SaveTimeBoundAccessRequest(TimeBoundAccessRequest req);
        
-
         [OperationContract]
         DataSet ExecuteSqlQuery(string SqlText, TimeBoundAccessRequest tbar);
 
@@ -75,6 +74,9 @@ namespace ChangeRequestAPI
 
         [OperationContract]
         string ApproveTBAR(string UserId, string TbarId, string Decision);
+
+        [OperationContract]
+        ApiResult SavePegasusSystem(PegasusSystem req);
     }
 
 

@@ -58,6 +58,8 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         ApiResult ApproveTBAR(string UserId, string TbarId, string Decision);
 
+        ApiResult SavePegasusSystem(PegasusSystem req);
+
     }
 
     public class CRSubSystemAPI : ChangeRequestInterface
@@ -89,6 +91,8 @@ namespace ChangeRequestSubSystem.ControlClasses
         public ApiResult SaveTimeBoundAccessRequest(TimeBoundAccessRequest req) => bll.SaveTimeBoundAccessRequest(req);
 
         public ApiResult SaveSystemUser(SystemUser req) => bll.SaveSystemUser(req);
+
+        public ApiResult SavePegasusSystem(PegasusSystem req) => bll.SavePegasusSystem(req);
 
         public ApiResult SaveSystemSetting(SystemSetting req) => bll.SaveSystemSetting(req);
 

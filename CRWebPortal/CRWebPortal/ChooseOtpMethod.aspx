@@ -8,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CR Login</title>
     <!-- Tell the browser to be responsive to screen width -->
+    <script type="text/jscript" src="Scripts/pace.min.js"></script>
+    <link href="Styles/pace-theme.css" rel="stylesheet" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="Styles/style.css" rel="stylesheet">
@@ -48,7 +50,7 @@
                                 <div class="col-xs-12">
                                     <blockquote>
                                         <small>
-                                            <asp:Label ID="lblMsg" runat="server">Use Your Birth Certificate No. / KCPE Index No (as used in KCSE Exam Registration) as your Initial Password</asp:Label>
+                                            <asp:Label ID="lblMsg" runat="server">Selecting Email means that the OTP will be sent to the email you used on Registration. Selecting Phone means that the OTP will be sent to the phone you used on Registration</asp:Label>
                                         </small>
                                     </blockquote>
                                 </div>

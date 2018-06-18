@@ -115,6 +115,7 @@
     <Compile Include="Entities\SystemAffected.cs" />
     <Compile Include="Entities\System.cs" />
     <Compile Include="Entities\SystemSetting.cs" />
+    <Compile Include="Entities\SystemType.cs" />
     <Compile Include="Entities\SystemUser.cs" />
     <Compile Include="Entities\TimeBoundAccessRequest.cs" />
     <Compile Include="Program.cs" />

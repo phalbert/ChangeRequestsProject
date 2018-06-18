@@ -11,7 +11,22 @@ namespace CRWebPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("~/SupplyUsername.aspx");
+            try
+            {
+                string Msg = Request.QueryString["Msg"];
+
+                if (Msg == null)
+                {
+                    Response.Redirect("~/SupplyUsername.aspx");
+                    return;
+                }
+
+                msg.Text = Msg;
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("~/SupplyUsername.aspx");
+            }
         }
     }
 }

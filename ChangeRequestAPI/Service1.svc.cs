@@ -57,5 +57,6 @@ namespace ChangeRequestAPI
 
         public string ApproveTBAR(string UserId, string TbarId, string Decision) => cRSubSystemAPI.ApproveTBAR(UserId, TbarId, Decision).StatusDesc;
 
+        public ApiResult SavePegasusSystem(PegasusSystem req) => cRSubSystemAPI.SavePegasusSystem(req);
     }
 }

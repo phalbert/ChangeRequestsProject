@@ -15,7 +15,7 @@ namespace ChangeRequestAPI
         {
             try
             {
-                CRSubSystemAPI.DropAndRecreate();
+                CRSubSystemAPI.Initialize();
             }
             catch (Exception)
             {

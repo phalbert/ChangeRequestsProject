@@ -48,6 +48,9 @@ namespace CRWebPortal.CRSystemAPI {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfTimeBoundAccessRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPegasusSystemnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfChangeRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfChangeRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ChangeRequest))]
@@ -110,6 +113,9 @@ namespace CRWebPortal.CRSystemAPI {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfTimeBoundAccessRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPegasusSystemnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfChangeRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfChangeRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ChangeRequest))]
@@ -2566,6 +2572,206 @@ namespace CRWebPortal.CRSystemAPI {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ActiveRecordBaseOfPegasusSystemnX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
+    public partial class ActiveRecordBaseOfPegasusSystemnX7H3sQe : CRWebPortal.CRSystemAPI.ActiveRecordBase {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DbEntityOfPegasusSystemnX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
+    public partial class DbEntityOfPegasusSystemnX7H3sQe : CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPegasusSystemnX7H3sQe {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreatedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreatedOnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModifiedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ModifiedOnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusDescField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreatedBy {
+            get {
+                return this.CreatedByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreatedByField, value) != true)) {
+                    this.CreatedByField = value;
+                    this.RaisePropertyChanged("CreatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreatedOn {
+            get {
+                return this.CreatedOnField;
+            }
+            set {
+                if ((this.CreatedOnField.Equals(value) != true)) {
+                    this.CreatedOnField = value;
+                    this.RaisePropertyChanged("CreatedOn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ModifiedBy {
+            get {
+                return this.ModifiedByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModifiedByField, value) != true)) {
+                    this.ModifiedByField = value;
+                    this.RaisePropertyChanged("ModifiedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ModifiedOn {
+            get {
+                return this.ModifiedOnField;
+            }
+            set {
+                if ((this.ModifiedOnField.Equals(value) != true)) {
+                    this.ModifiedOnField = value;
+                    this.RaisePropertyChanged("ModifiedOn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StatusCode {
+            get {
+                return this.StatusCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusCodeField, value) != true)) {
+                    this.StatusCodeField = value;
+                    this.RaisePropertyChanged("StatusCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StatusDesc {
+            get {
+                return this.StatusDescField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusDescField, value) != true)) {
+                    this.StatusDescField = value;
+                    this.RaisePropertyChanged("StatusDesc");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PegasusSystem", Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities")]
+    [System.SerializableAttribute()]
+    public partial class PegasusSystem : CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ConnectionStringField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemTypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ConnectionString {
+            get {
+                return this.ConnectionStringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ConnectionStringField, value) != true)) {
+                    this.ConnectionStringField = value;
+                    this.RaisePropertyChanged("ConnectionString");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemCode {
+            get {
+                return this.SystemCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemCodeField, value) != true)) {
+                    this.SystemCodeField = value;
+                    this.RaisePropertyChanged("SystemCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemName {
+            get {
+                return this.SystemNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemNameField, value) != true)) {
+                    this.SystemNameField = value;
+                    this.RaisePropertyChanged("SystemName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemType {
+            get {
+                return this.SystemTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemTypeField, value) != true)) {
+                    this.SystemTypeField = value;
+                    this.RaisePropertyChanged("SystemType");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ActiveRecordBaseOfChangeRequestnX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfChangeRequestnX7H3sQe))]
@@ -3190,6 +3396,8 @@ namespace CRWebPortal.CRSystemAPI {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverToChangeRequestLinknX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfTimeBoundAccessRequestnX7H3sQe))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfChangeRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBase))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordHooksBase))]
@@ -3203,6 +3411,7 @@ namespace CRWebPortal.CRSystemAPI {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfRollBackPlannX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPegasusSystemnX7H3sQe))]
         System.Data.DataSet ExecuteDataSet(string StoredProc, object[] parameters);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequest", ReplyAction="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequestResponse")]
@@ -3222,6 +3431,9 @@ namespace CRWebPortal.CRSystemAPI {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveTBAR", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveTBARResponse")]
         string ApproveTBAR(string UserId, string TbarId, string Decision);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SavePegasusSystem", ReplyAction="http://tempuri.org/CRSystemAPI/SavePegasusSystemResponse")]
+        CRWebPortal.CRSystemAPI.ApiResult SavePegasusSystem(CRWebPortal.CRSystemAPI.PegasusSystem req);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3329,6 +3541,10 @@ namespace CRWebPortal.CRSystemAPI {
         
         public string ApproveTBAR(string UserId, string TbarId, string Decision) {
             return base.Channel.ApproveTBAR(UserId, TbarId, Decision);
+        }
+        
+        public CRWebPortal.CRSystemAPI.ApiResult SavePegasusSystem(CRWebPortal.CRSystemAPI.PegasusSystem req) {
+            return base.Channel.SavePegasusSystem(req);
         }
     }
 }

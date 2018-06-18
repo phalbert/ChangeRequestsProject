@@ -98,6 +98,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="CreateChangeRequest.aspx" />
+    <Content Include="DbQueryLogs.aspx" />
     <Content Include="ExecuteQuery.aspx" />
     <Content Include="Finished.aspx" />
     <Content Include="font-awesome\css\font-awesome.css" />
@@ -105,16 +106,20 @@
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Images\Bing-background-1920x1200.jpg" />
     <Content Include="Images\pegasus.png" />
+    <Content Include="SaveSystem.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.fr.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\jquery-loading.js" />
     <Content Include="Scripts\jquery.a-tools-1.4.1.js" />
     <Content Include="Scripts\jquery.asuggest.js" />
-    <Content Include="Scripts\jquery.datetimepicker.full.min.js" />
-    <Content Include="Scripts\jquery.easy-autocomplete.min.js" />
+    <Content Include="Scripts\jquery.textcomplete.min.js" />
     <Content Include="Scripts\jquery.time-to.js" />
     <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\pace.min.js" />
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
     <Content Include="Styles\easy-autocomplete.min.css" />
+    <Content Include="Styles\jquery-loading.min.css" />
+    <Content Include="Styles\jquery.textcomplete.css" />
     <Content Include="Styles\nav-wizard.css" />
     <Content Include="Styles\pace-theme.css" />
     <Content Include="Styles\Site.css" />
@@ -189,6 +194,20 @@
     </Compile>
     <Compile Include="ApproveTbarRequest.aspx.designer.cs">
       <DependentUpon>ApproveTbarRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DbQueryLogs.aspx.cs">
+      <DependentUpon>DbQueryLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DbQueryLogs.aspx.designer.cs">
+      <DependentUpon>DbQueryLogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SaveSystem.aspx.cs">
+      <DependentUpon>SaveSystem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SaveSystem.aspx.designer.cs">
+      <DependentUpon>SaveSystem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

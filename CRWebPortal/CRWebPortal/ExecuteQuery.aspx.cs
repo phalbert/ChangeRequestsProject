@@ -15,16 +15,17 @@ namespace CRWebPortal
         {
             try
             {
-                if (IsPostBack)
-                {
-                    return;
-                }
                 if (!IsAccessRequestIsValid())
                 {
                     Multiview1.ActiveViewIndex = 0;
                     return;
                 }
 
+                if (IsPostBack)
+                {
+                    return;
+                }
+                
                 btnComplete.Visible = false;
                 btnExecute.Visible = true;
             }
@@ -35,6 +36,32 @@ namespace CRWebPortal
                 Master.ErrorMessage = msg;
                 return;
             }
+        }
+
+        private ApiResult CheckIfTbarIsStillValid(TimeBoundAccessRequest tbar)
+        {
+            ApiResult result = new ApiResult();
+            string dateFormat = "yyyy-MM-dd HH:mm";
+
+            if (DateTime.Now < tbar.StartTime)
+            {
+                Multiview1.ActiveViewIndex = 0;
+                result.StatusCode = Globals.FAILURE_STATUS_CODE;
+                result.StatusDesc = $"FAILED: EARLY T.B.A.R USE DETECTED. T.B.A.R FOUND IS MEANT TO BE USED FROM [{tbar.StartTime.ToString(dateFormat)}] FOR [{tbar.DurationInMinutes.ToString()}] MINUTES. THE CURRENT TIME IS [{DateTime.Now.ToString(dateFormat)}]. PLEASE TRY AGAIN AT SPECIFIED START TIME";
+                return result;
+            }
+
+            if (DateTime.Now > tbar.StartTime.AddMinutes(tbar.DurationInMinutes))
+            {
+                Multiview1.ActiveViewIndex = 0;
+                result.StatusCode = Globals.FAILURE_STATUS_CODE;
+                result.StatusDesc = $"FAILED: TBAR HAS EXPIRED. START TIME WAS [{tbar.StartTime.ToString(dateFormat)}] FOR [{tbar.DurationInMinutes.ToString()}] MINUTES. CURRENT TIME IS [{DateTime.Now.ToString(dateFormat)}]";
+                return result;
+            }
+
+            result.StatusCode = Globals.SUCCESS_STATUS_CODE;
+            result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+            return result;
         }
 
         private bool IsAccessRequestIsValid()
@@ -53,14 +80,28 @@ namespace CRWebPortal
             string msg = $"SUCCESS: STATEMENTS YOU CAN EXECUTE {statementsAllowed}";
             Session["TBAR"] = tbar;
 
+            ApiResult checkResult = CheckIfTbarIsStillValid(tbar);
+
+            if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
+            {
+                lblErrorMsg.Text = checkResult.StatusDesc;
+                Multiview1.ActiveViewIndex = 0;
+                return false;
+            }
+
             LoadAutoCompleteIntellisense(tbar);
+            DateTime maxDate = tbar.StartTime.AddMinutes(tbar.DurationInMinutes);
+            DateTime currentDate = DateTime.Now;
+            int minutesLeft = (int)maxDate.Subtract(currentDate).TotalMinutes;
             Master.ErrorMessage = msg;
             return true;
         }
 
         private void LoadAutoCompleteIntellisense(TimeBoundAccessRequest tbar)
         {
-            string GetAllTablesSql = $"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG = '{tbar.SystemCode}'";
+            string GetAllTablesSql = $"SELECT Name FROM sys.all_objects where type_desc in ('USER_TABLE', 'SQL_STORED_PROCEDURE', 'VIEW') and is_ms_shipped = 0" +
+                                      "union " +
+                                      "SELECT c.name AS 'ColumnName' FROM sys.columns c JOIN sys.tables t   ON c.object_id = t.object_id";
             DataTable dt = BussinessLogic.cRSystemAPIClient.ExecuteSqlQuery(GetAllTablesSql, tbar).Tables[0];
             string array = "";
             foreach (DataRow dr in dt.Rows)
@@ -70,6 +111,64 @@ namespace CRWebPortal
             }
             array = array.TrimEnd(',');
             Session["Tables"] = array;
+        }
+
+        private ApiResult CheckIfQueryIsValidForTbar(string SqlQuery, TimeBoundAccessRequest request)
+        {
+            ApiResult result = new ApiResult();
+            List<string> StatementsNotAllowed = new List<string>();
+            switch (request.TypeOfAccess.ToUpper())
+            {
+                case "UPDATE":
+                    StatementsNotAllowed = new List<string> { "DELETE", "INSERT", "CREATE", "TRUNCATE", "DROP" };
+                    result = QueryHasDisallowedStatements(SqlQuery, StatementsNotAllowed);
+                    return result;
+
+                case "DELETE":
+                    StatementsNotAllowed = new List<string> { "INSERT", "CREATE", "TRUNCATE", "DROP" };
+                    result = QueryHasDisallowedStatements(SqlQuery, StatementsNotAllowed);
+                    return result;
+
+                case "INSERT":
+                    StatementsNotAllowed = new List<string> { "CREATE", "TRUNCATE", "DROP" };
+                    result = QueryHasDisallowedStatements(SqlQuery, StatementsNotAllowed);
+                    return result;
+                case "CREATE":
+                    StatementsNotAllowed = new List<string> { "TRUNCATE", "DROP" };
+                    result = QueryHasDisallowedStatements(SqlQuery, StatementsNotAllowed);
+                    return result;
+                case "FULL":
+                    StatementsNotAllowed = new List<string> { };
+                    result = QueryHasDisallowedStatements(SqlQuery, StatementsNotAllowed);
+                    return result;
+                default:
+                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    result.StatusDesc = $"FAILED: UNABLE TO DETERMINE PERMISSIONS FOR THIS QUERY. CONTACT SYSTEM ADMIN's ";
+                    return result;
+            }
+        }
+
+        private ApiResult QueryHasDisallowedStatements(string sqlQuery, List<string> statementsNotAllowed)
+        {
+            ApiResult result = new ApiResult();
+            string[] queryParts = sqlQuery.Split(' ');
+
+            foreach (string disallowedQuery in statementsNotAllowed)
+            {
+                foreach (string part in queryParts)
+                {
+                    if (part.ToUpper() == disallowedQuery.ToUpper())
+                    {
+                        result.StatusCode = Globals.FAILURE_STATUS_CODE;
+                        result.StatusDesc = $"FAILED: {disallowedQuery} query found. ACCESS DENIED ";
+                        return result;
+                    }
+                }
+            }
+
+            result.StatusCode = Globals.SUCCESS_STATUS_CODE;
+            result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
+            return result;
         }
 
         private string GetStatementsAllowed(TimeBoundAccessRequest request)
@@ -93,7 +192,7 @@ namespace CRWebPortal
                     statements = $"[ANY QUERY] ON DB {request.SystemCode}";
                     break;
                 default:
-                    statements= $"[SELECT's] ON DB {request.SystemCode}";
+                    statements = $"[SELECT's] ON DB {request.SystemCode}";
                     break;
             }
             return statements;
@@ -112,10 +211,8 @@ namespace CRWebPortal
                 {
                     btnComplete.Visible = false;
                     btnExecute.Visible = true;
-                    txtQuery.Text = "";
                     txtQuery.Enabled = true;
                     dataGridResults.DataSource = null;
-
                 }
                 else
                 {
@@ -136,7 +233,32 @@ namespace CRWebPortal
         {
             try
             {
+                
+                TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
                 string sqlText = txtQuery.Text;
+
+                //check if tbar has expired
+                ApiResult checkResult = CheckIfTbarIsStillValid(tbar);
+
+                //tbar has expired
+                if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
+                {
+                    lblErrorMsg.Text = checkResult.StatusDesc;
+                    Multiview1.ActiveViewIndex = 0;
+                    return;
+                }
+
+                //see if the dude is fooling around with his query
+                checkResult = CheckIfQueryIsValidForTbar(sqlText,tbar);
+
+                //failed check
+                if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
+                {
+                    //return error
+                    Master.ErrorMessage = checkResult.StatusDesc;
+                    return;
+                }
+
                 ApiResult result = ConvertToSelect();
 
                 if (result.StatusCode == Globals.PARSE_ERROR_CODE)
@@ -162,7 +284,6 @@ namespace CRWebPortal
                 //he input an update or delete statement
                 if (result.StatusCode == Globals.SUCCESS_STATUS_CODE)
                 {
-                    TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
                     DataTable dt = BussinessLogic.cRSystemAPIClient.ExecuteSqlQuery(result.PegPayID, tbar).Tables[0];
 
                     dataGridResults.DataSource = dt;
@@ -261,11 +382,32 @@ namespace CRWebPortal
         {
             try
             {
-
-                string query = txtQuery.Text;
                 TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
-                int dt = BussinessLogic.cRSystemAPIClient.ExecuteNonQuery(query, tbar);
+                string sqlText = txtQuery.Text;
 
+                //check if tbar has expired
+                ApiResult checkResult = CheckIfTbarIsStillValid(tbar);
+
+                //tbar has expired
+                if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
+                {
+                    lblErrorMsg.Text = checkResult.StatusDesc;
+                    Multiview1.ActiveViewIndex = 0;
+                    return;
+                }
+
+                //see if the dude is fooling around with his query
+                checkResult = CheckIfQueryIsValidForTbar(sqlText, tbar);
+
+                //failed check
+                if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
+                {
+                    //return error
+                    Master.ErrorMessage = checkResult.StatusDesc;
+                    return;
+                }
+
+                int dt = BussinessLogic.cRSystemAPIClient.ExecuteNonQuery(sqlText, tbar);
 
                 //Show Error Message
                 string msg1 = $"SUCCESS: {dt} ROWS WHERE AFFECTED.";

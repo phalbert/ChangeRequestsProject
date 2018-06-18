@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
-    <script type="text/jscript" src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script>
+    <script type="text/jscript" src="Scripts/pace.min.js"></script>
     <link href="Styles/pace-theme.css" rel="stylesheet" />
     <title>Change Request Management System</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
