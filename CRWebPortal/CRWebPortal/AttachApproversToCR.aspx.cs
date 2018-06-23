@@ -39,7 +39,7 @@ namespace CRWebPortal
             try
             {
 
-                ApproverToChangeRequestLink attachment = new ApproverToChangeRequestLink();
+                ApproverForChangeRequest attachment = new ApproverForChangeRequest();
 
                 attachment.ChangeRequestId = Request.QueryString["Id"];
                 attachment.CreatedBy = (Session["User"] as SystemUser)?.Username;
@@ -48,7 +48,7 @@ namespace CRWebPortal
                 attachment.ModifiedOn = DateTime.Now;
                 attachment.Decision = "PENDING";
                 attachment.Reason = "PENDING";
-                attachment.UserId = ddNameOfApprover.SelectedValue;
+                attachment.ApproverId = ddNameOfApprover.SelectedValue;
                 attachment.Role = ddTypeOfApprover.SelectedValue;
 
                 ApiResult apiResult = BussinessLogic.cRSystemAPIClient.AssignChangeRequestToApprover(attachment);

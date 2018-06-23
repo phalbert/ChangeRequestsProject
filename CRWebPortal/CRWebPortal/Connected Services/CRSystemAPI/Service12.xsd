@@ -146,6 +146,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="CompanyCode" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" type="xs:int" />
           <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
@@ -254,8 +255,10 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:DbEntityOfPostChangeTestnX7H3sQe">
         <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" type="xs:int" />
           <xs:element minOccurs="0" name="TestDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TestName" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -379,32 +382,32 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DbEntityOfRollBackPlannX7H3sQe" nillable="true" type="tns:DbEntityOfRollBackPlannX7H3sQe" />
-  <xs:complexType name="ApproverToChangeRequestLink">
+  <xs:complexType name="ApproverForChangeRequest">
     <xs:complexContent mixed="false">
-      <xs:extension base="tns:DbEntityOfApproverToChangeRequestLinknX7H3sQe">
+      <xs:extension base="tns:DbEntityOfApproverForChangeRequestnX7H3sQe">
         <xs:sequence>
+          <xs:element minOccurs="0" name="ApproverId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Decision" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="HasEmailBeenSent" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="Id" type="xs:int" />
           <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="ApproverToChangeRequestLink" nillable="true" type="tns:ApproverToChangeRequestLink" />
-  <xs:complexType name="DbEntityOfApproverToChangeRequestLinknX7H3sQe">
+  <xs:element name="ApproverForChangeRequest" nillable="true" type="tns:ApproverForChangeRequest" />
+  <xs:complexType name="DbEntityOfApproverForChangeRequestnX7H3sQe">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ApproverToChangeRequestLink" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+          <GenericParameter Name="ApproverForChangeRequest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q10:ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q10:ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe">
         <xs:sequence>
           <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
@@ -416,7 +419,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="DbEntityOfApproverToChangeRequestLinknX7H3sQe" nillable="true" type="tns:DbEntityOfApproverToChangeRequestLinknX7H3sQe" />
+  <xs:element name="DbEntityOfApproverForChangeRequestnX7H3sQe" nillable="true" type="tns:DbEntityOfApproverForChangeRequestnX7H3sQe" />
   <xs:complexType name="TimeBoundAccessRequest">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:DbEntityOfTimeBoundAccessRequestnX7H3sQe">

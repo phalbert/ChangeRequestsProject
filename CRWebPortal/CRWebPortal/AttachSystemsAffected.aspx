@@ -35,7 +35,7 @@
                         </div>
                         <div class="card-body bg-default">
                             <div class="row">
-                                <div class="col-lg-4" style="padding-bottom: 10px">
+                                <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
                                         Type Of System</label>
                                     <asp:DropDownList ID="ddTypeOfSystem" runat="server" CssClass="form-control">
@@ -44,12 +44,7 @@
                                         <asp:ListItem Value="FIREWALL">Firewall</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
-                                <div class="col-lg-4" style="padding-bottom: 10px">
-                                    <label>
-                                        Name Of System</label>
-                                    <asp:TextBox ID="txtNameOfSystem" runat="server" CssClass="form-control" />
-                                </div>
-                                <div class="col-lg-4" style="padding-bottom: 10px">
+                                <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
                                         Type Of Change</label>
                                     <asp:DropDownList ID="ddTypeOfChange" runat="server" CssClass="form-control">

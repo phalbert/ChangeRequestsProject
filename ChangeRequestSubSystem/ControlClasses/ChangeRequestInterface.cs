@@ -30,9 +30,9 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         ApiResult AttachRollBackPlanToChangeRequest(RollBackPlan plan);
 
-        ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link);
+        ApiResult AssignChangeRequestToApprover(ApproverForChangeRequest link);
 
-        ApiResult UpdateChangeRequestStatus(ApproverToChangeRequestLink link);
+        ApiResult UpdateChangeRequestStatus(ApproverForChangeRequest link);
 
         ApiResult SendOneTimePIN(string Username, string MethodOfSending);
 
@@ -48,15 +48,15 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user);
 
-        ApiResult SendApproveCrEmail(ApproverToChangeRequestLink link);
+        ApiResult SendApproveCrEmail(ApproverForChangeRequest link);
 
         ApiResult SendApproveTbarEmail(TimeBoundAccessRequest tbar);
 
         ApiResult SaveSystemSetting(SystemSetting req);
 
-        ApiResult ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision);
+        ApiResult ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision, string Reason);
 
-        ApiResult ApproveTBAR(string UserId, string TbarId, string Decision);
+        ApiResult ApproveTBAR(string UserId, string TbarId, string Decision, string Reason);
 
         ApiResult SavePegasusSystem(PegasusSystem req);
 
@@ -70,9 +70,9 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         public static ApiResult DropAndRecreate() => bll.DropAndRecreate();
 
-        public ApiResult UpdateChangeRequestStatus(ApproverToChangeRequestLink link) => bll.UpdateChangeRequestStatus(link);
+        public ApiResult UpdateChangeRequestStatus(ApproverForChangeRequest link) => bll.UpdateChangeRequestStatus(link);
 
-        public ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link) => bll.AssignApproverToChangeRequest(link);
+        public ApiResult AssignChangeRequestToApprover(ApproverForChangeRequest link) => bll.AssignApproverToChangeRequest(link);
 
         public TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user) => bll.CheckForValidTimeBoundAccessRequest(user);
 
@@ -110,12 +110,12 @@ namespace ChangeRequestSubSystem.ControlClasses
 
         public ApiResult AttachRiskAnalysisToChangeRequest(RiskAnalysis riskAnalysis) => bll.AttachRiskAnalysisToChangeRequest(riskAnalysis);
 
-        public ApiResult SendApproveCrEmail(ApproverToChangeRequestLink link) => bll.SendApproveCrEmail(link);
+        public ApiResult SendApproveCrEmail(ApproverForChangeRequest link) => NotificationsHandler.SendApproveCrEmail(link);
 
-        public ApiResult ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision) => bll.ApproveChangeRequest(UserId, ChangeRequestId, Decision);
+        public ApiResult ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision,string Reason) => bll.ApproveChangeRequest(UserId, ChangeRequestId, Decision, Reason);
 
-        public ApiResult ApproveTBAR(string UserId, string TbarId, string Decision) => bll.ApproveTBAR(UserId, TbarId, Decision);
+        public ApiResult ApproveTBAR(string UserId, string TbarId, string Decision, string Reason) => bll.ApproveTBAR(UserId, TbarId, Decision, Reason);
 
-        public ApiResult SendApproveTbarEmail(TimeBoundAccessRequest tbar) => bll.SendApproveTbarEmail(tbar);
+        public ApiResult SendApproveTbarEmail(TimeBoundAccessRequest tbar) => NotificationsHandler.SendApproveTbarEmail(tbar);
     }
 }

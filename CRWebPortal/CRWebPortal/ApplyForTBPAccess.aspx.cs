@@ -33,7 +33,7 @@ namespace CRWebPortal
 
         private void LoadData()
         {
-            BussinessLogic.LoadDataIntoDropDown("GetDatabasesForDropDown", ddDatabases, Session["User"] as SystemUser);
+            BussinessLogic.LoadDataIntoDropDown("GetSystemsForDropDown", ddDatabases, Session["User"] as SystemUser);
             BussinessLogic.LoadDataIntoDropDown("GetApproversForDropDown", ddApprover, Session["User"] as SystemUser);
 
             string dateFormat = "yyyy-MM-dd HH:mm";
@@ -76,6 +76,21 @@ namespace CRWebPortal
             }
             catch (Exception ex)
             { 
+                //Show Error Message
+                string msg = "ERROR:" + ex.Message;
+                Master.ErrorMessage = msg;
+                return;
+            }
+        }
+
+        protected void ddDatabases_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
                 //Show Error Message
                 string msg = "ERROR:" + ex.Message;
                 Master.ErrorMessage = msg;

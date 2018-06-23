@@ -10,8 +10,9 @@
 
                 <li><a href="CreateChangeRequest.aspx" data-toggle="tab">CR Details</a></li>
                 <li><a href="AttachSystemsAffected.aspx" data-toggle="tab">Systems Affected</a></li>
+                <li><a href="AttachPostChangeTests.aspx" data-toggle="tab">Post Change Tests</a></li>
                 <li><a href="AttachItemToChangeRequest.aspx" data-toggle="tab">Any Attachments</a></li>
-                <li class="active"><a href="AttachApproversToCR.aspx" data-toggle="tab">Assign Approvers</a></li>
+                <li><a class="active" href="AttachApproversToCR.aspx" data-toggle="tab">Assign Approvers</a></li>
                 <li><a href="Finished.aspx" data-toggle="tab">Done</a></li>
 
             </ul>
@@ -59,7 +60,7 @@
                             <br />
                         </div>
                     </div>
-                   
+
                     <%------------ View Uploaded Files---------  --%>
                     <div class="card border-primary text-white  mb-3">
                         <div class="card-header bg-primary">

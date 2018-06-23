@@ -9,6 +9,7 @@
 
                 <li class='active'><a href="CreateChangeRequest.aspx" data-toggle="tab">CR Details</a></li>
                 <li><a href="AttachSystemsAffected.aspx" data-toggle="tab">Systems Affected</a></li>
+                <li><a href="AttachPostChangeTests.aspx" data-toggle="tab">Post Change Tests</a></li>
                 <li><a href="AttachItemToChangeRequest.aspx" data-toggle="tab">Any Attachments</a></li>
                 <li><a href="AttachApproversToCR.aspx" data-toggle="tab">Assign Approvers</a></li>
                 <li><a href="Finished.aspx" data-toggle="tab">Done</a></li>

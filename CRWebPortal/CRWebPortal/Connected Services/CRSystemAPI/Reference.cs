@@ -42,9 +42,9 @@ namespace CRWebPortal.CRSystemAPI {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfRollBackPlannX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfRollBackPlannX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.RollBackPlan))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverToChangeRequestLinknX7H3sQe))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverForChangeRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverForChangeRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfTimeBoundAccessRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest))]
@@ -107,9 +107,9 @@ namespace CRWebPortal.CRSystemAPI {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfRollBackPlannX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfRollBackPlannX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.RollBackPlan))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverToChangeRequestLinknX7H3sQe))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverForChangeRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverForChangeRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfTimeBoundAccessRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest))]
@@ -600,6 +600,9 @@ namespace CRWebPortal.CRSystemAPI {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FullNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -633,6 +636,19 @@ namespace CRWebPortal.CRSystemAPI {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FullName {
+            get {
+                return this.FullNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FullNameField, value) != true)) {
+                    this.FullNameField = value;
+                    this.RaisePropertyChanged("FullName");
                 }
             }
         }
@@ -1226,10 +1242,29 @@ namespace CRWebPortal.CRSystemAPI {
     public partial class PostChangeTest : CRWebPortal.CRSystemAPI.DbEntityOfPostChangeTestnX7H3sQe {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ChangeRequestIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TestDescField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TestNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ChangeRequestId {
+            get {
+                return this.ChangeRequestIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ChangeRequestIdField, value) != true)) {
+                    this.ChangeRequestIdField = value;
+                    this.RaisePropertyChanged("ChangeRequestId");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id {
@@ -1253,6 +1288,19 @@ namespace CRWebPortal.CRSystemAPI {
                 if ((object.ReferenceEquals(this.TestDescField, value) != true)) {
                     this.TestDescField = value;
                     this.RaisePropertyChanged("TestDesc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TestName {
+            get {
+                return this.TestNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TestNameField, value) != true)) {
+                    this.TestNameField = value;
+                    this.RaisePropertyChanged("TestName");
                 }
             }
         }
@@ -2044,19 +2092,19 @@ namespace CRWebPortal.CRSystemAPI {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverToChangeRequestLinknX7H3sQe))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink))]
-    public partial class ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe : CRWebPortal.CRSystemAPI.ActiveRecordBase {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverForChangeRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverForChangeRequest))]
+    public partial class ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe : CRWebPortal.CRSystemAPI.ActiveRecordBase {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DbEntityOfApproverToChangeRequestLinknX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DbEntityOfApproverForChangeRequestnX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink))]
-    public partial class DbEntityOfApproverToChangeRequestLinknX7H3sQe : CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverForChangeRequest))]
+    public partial class DbEntityOfApproverForChangeRequestnX7H3sQe : CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CreatedByField;
@@ -2157,9 +2205,12 @@ namespace CRWebPortal.CRSystemAPI {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ApproverToChangeRequestLink", Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ApproverForChangeRequest", Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities")]
     [System.SerializableAttribute()]
-    public partial class ApproverToChangeRequestLink : CRWebPortal.CRSystemAPI.DbEntityOfApproverToChangeRequestLinknX7H3sQe {
+    public partial class ApproverForChangeRequest : CRWebPortal.CRSystemAPI.DbEntityOfApproverForChangeRequestnX7H3sQe {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApproverIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ChangeRequestIdField;
@@ -2179,8 +2230,18 @@ namespace CRWebPortal.CRSystemAPI {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoleField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserIdField;
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApproverId {
+            get {
+                return this.ApproverIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApproverIdField, value) != true)) {
+                    this.ApproverIdField = value;
+                    this.RaisePropertyChanged("ApproverId");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string ChangeRequestId {
@@ -2256,19 +2317,6 @@ namespace CRWebPortal.CRSystemAPI {
                 if ((object.ReferenceEquals(this.RoleField, value) != true)) {
                     this.RoleField = value;
                     this.RaisePropertyChanged("Role");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserId {
-            get {
-                return this.UserIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
                 }
             }
         }
@@ -3359,10 +3407,10 @@ namespace CRWebPortal.CRSystemAPI {
         CRWebPortal.CRSystemAPI.ApiResult AttachRollBackPlanToChangeRequest(CRWebPortal.CRSystemAPI.RollBackPlan plan);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApprover", ReplyAction="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApproverResponse")]
-        CRWebPortal.CRSystemAPI.ApiResult AssignChangeRequestToApprover(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink link);
+        CRWebPortal.CRSystemAPI.ApiResult AssignChangeRequestToApprover(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatus", ReplyAction="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatusResponse")]
-        CRWebPortal.CRSystemAPI.ApiResult UpdateChangeRequestStatus(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink link);
+        CRWebPortal.CRSystemAPI.ApiResult UpdateChangeRequestStatus(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SendOneTimePIN", ReplyAction="http://tempuri.org/CRSystemAPI/SendOneTimePINResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SendOneTimePIN(string Username, string MethodOfSending);
@@ -3392,8 +3440,8 @@ namespace CRWebPortal.CRSystemAPI {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfRiskAnalysisnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.RollBackPlan))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfRollBackPlannX7H3sQe))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverToChangeRequestLinknX7H3sQe))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApproverForChangeRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfApproverForChangeRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfTimeBoundAccessRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
@@ -3409,7 +3457,7 @@ namespace CRWebPortal.CRSystemAPI {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPostChangeTestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfRiskAnalysisnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfRollBackPlannX7H3sQe))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPegasusSystemnX7H3sQe))]
         System.Data.DataSet ExecuteDataSet(string StoredProc, object[] parameters);
@@ -3427,10 +3475,10 @@ namespace CRWebPortal.CRSystemAPI {
         CRWebPortal.CRSystemAPI.TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.SystemUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveChangeRequestResponse")]
-        string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision);
+        string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision, string Reason);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveTBAR", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveTBARResponse")]
-        string ApproveTBAR(string UserId, string TbarId, string Decision);
+        string ApproveTBAR(string UserId, string TbarId, string Decision, string Reason);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SavePegasusSystem", ReplyAction="http://tempuri.org/CRSystemAPI/SavePegasusSystemResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SavePegasusSystem(CRWebPortal.CRSystemAPI.PegasusSystem req);
@@ -3499,11 +3547,11 @@ namespace CRWebPortal.CRSystemAPI {
             return base.Channel.AttachRollBackPlanToChangeRequest(plan);
         }
         
-        public CRWebPortal.CRSystemAPI.ApiResult AssignChangeRequestToApprover(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink link) {
+        public CRWebPortal.CRSystemAPI.ApiResult AssignChangeRequestToApprover(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link) {
             return base.Channel.AssignChangeRequestToApprover(link);
         }
         
-        public CRWebPortal.CRSystemAPI.ApiResult UpdateChangeRequestStatus(CRWebPortal.CRSystemAPI.ApproverToChangeRequestLink link) {
+        public CRWebPortal.CRSystemAPI.ApiResult UpdateChangeRequestStatus(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link) {
             return base.Channel.UpdateChangeRequestStatus(link);
         }
         
@@ -3535,12 +3583,12 @@ namespace CRWebPortal.CRSystemAPI {
             return base.Channel.CheckForValidTimeBoundAccessRequest(user);
         }
         
-        public string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision) {
-            return base.Channel.ApproveChangeRequest(UserId, ChangeRequestId, Decision);
+        public string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision, string Reason) {
+            return base.Channel.ApproveChangeRequest(UserId, ChangeRequestId, Decision, Reason);
         }
         
-        public string ApproveTBAR(string UserId, string TbarId, string Decision) {
-            return base.Channel.ApproveTBAR(UserId, TbarId, Decision);
+        public string ApproveTBAR(string UserId, string TbarId, string Decision, string Reason) {
+            return base.Channel.ApproveTBAR(UserId, TbarId, Decision, Reason);
         }
         
         public CRWebPortal.CRSystemAPI.ApiResult SavePegasusSystem(CRWebPortal.CRSystemAPI.PegasusSystem req) {

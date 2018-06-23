@@ -28,5 +28,19 @@ namespace CRWebPortal
                 Response.Redirect("~/SupplyUsername.aspx");
             }
         }
+
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("~/SupplyUsername.aspx");
+                return;
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("~/SupplyUsername.aspx");
+            }
+        }
     }
 }
+

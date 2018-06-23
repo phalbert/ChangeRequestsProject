@@ -19,6 +19,7 @@ namespace CRWebPortal
                 {
                     return;
                 }
+                LoadData();
             }
             catch (Exception ex)
             {
@@ -27,6 +28,23 @@ namespace CRWebPortal
                 Master.ErrorMessage = msg;
                 return;
             }
+        }
+
+        private void LoadData()
+        {
+            SystemUser user = (Session["User"] as SystemUser);
+            txtReqEmail.Text = user.Email;
+            txtReqName.Text = user.FullName;
+            txtReqPhone.Text = user.PhoneNumber;
+
+            txtImplementerEmail.Text = user.Email;
+            txtImplementerName.Text = user.FullName;
+            txtImplementerPhone.Text = user.PhoneNumber;
+
+            txtReqName.Enabled = false;
+            txtReqPhone.Enabled = false;
+            txtReqEmail.Enabled = false;
+            txtImplementationStartDate.Text = DateTime.Now.ToString(Globals.DATE_TIME_FORMAT);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -38,15 +56,14 @@ namespace CRWebPortal
         {
             try
             {
-                string dateFormat = "yyyy-MM-dd HH:mm";
                 ChangeRequest changeRequest = new ChangeRequest
                 {
                     ApprovalStatus = "PENDING",
                     ApprovalReason = "",
                     ChangeCategoryId = ddChangeCategories.SelectedValue,
                     ChangeRequestId = BussinessLogic.GenerateUniqueId("CR-"),
-                    ChangeEndDateTime = !string.IsNullOrEmpty(txtImplementationStartDate.Text)? DateTime.ParseExact(txtImplementationStartDate.Text, dateFormat, CultureInfo.InvariantCulture):throw new Exception("Please Supply a Start Date"),
-                    ChangeStartDateTime = !string.IsNullOrEmpty(txtImplementationEndDateTime.Text) ? DateTime.ParseExact(txtImplementationEndDateTime.Text, dateFormat, CultureInfo.InvariantCulture) : throw new Exception("Please Supply a End Date"),
+                    ChangeEndDateTime = !string.IsNullOrEmpty(txtImplementationStartDate.Text)? DateTime.ParseExact(txtImplementationStartDate.Text, Globals.DATE_TIME_FORMAT, CultureInfo.InvariantCulture):throw new Exception("Please Supply a Start Date"),
+                    ChangeStartDateTime = !string.IsNullOrEmpty(txtImplementationEndDateTime.Text) ? DateTime.ParseExact(txtImplementationEndDateTime.Text, Globals.DATE_TIME_FORMAT, CultureInfo.InvariantCulture) : throw new Exception("Please Supply a End Date"),
                     ImpactOfNotImplementing = txtImpact.Text,
                     ImplementerCompany = (Session["User"] as SystemUser)?.CompanyCode,
                     ImplementerEmail = txtImplementerEmail.Text,

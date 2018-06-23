@@ -14,12 +14,12 @@ namespace Tester
         {
             CRSubSystemAPI.Initialize();
             ChangeRequestInterface api = new CRSubSystemAPI();
-            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink
+            ApproverForChangeRequest link = new ApproverForChangeRequest
             {
                 ChangeRequestId = "12345",
                 Decision = "APPROVED",
                 Reason = "APPROVED",
-                UserId = "kasozi.nsubuga@pegasus.co.ug"
+                ApproverId = "kasozi.nsubuga@pegasus.co.ug"
             };
             ApiResult result = api.UpdateChangeRequestStatus(link);
             Console.Read();

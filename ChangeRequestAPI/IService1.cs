@@ -43,10 +43,10 @@ namespace ChangeRequestAPI
         ApiResult AttachRollBackPlanToChangeRequest(RollBackPlan plan);
 
         [OperationContract]
-        ApiResult AssignChangeRequestToApprover(ApproverToChangeRequestLink link);
+        ApiResult AssignChangeRequestToApprover(ApproverForChangeRequest link);
 
         [OperationContract]
-        ApiResult UpdateChangeRequestStatus(ApproverToChangeRequestLink link);
+        ApiResult UpdateChangeRequestStatus(ApproverForChangeRequest link);
 
         [OperationContract]
         ApiResult SendOneTimePIN(string Username, string MethodOfSending);
@@ -70,10 +70,10 @@ namespace ChangeRequestAPI
         TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user);
 
         [OperationContract]
-        string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision);
+        string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision, string Reason);
 
         [OperationContract]
-        string ApproveTBAR(string UserId, string TbarId, string Decision);
+        string ApproveTBAR(string UserId, string TbarId, string Decision,string Reason);
 
         [OperationContract]
         ApiResult SavePegasusSystem(PegasusSystem req);

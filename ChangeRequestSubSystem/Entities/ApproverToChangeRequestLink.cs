@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 namespace ChangeRequestSubSystem.Entities
 {
     [ActiveRecord("ApproversForChangeRequests")]
-    public class ApproverToChangeRequestLink : DbEntity<ApproverToChangeRequestLink>
+    public class ApproverForChangeRequest : DbEntity<ApproverForChangeRequest>
     {
         [PrimaryKey(PrimaryKeyType.Identity, "RecordId")]
         public int Id { get; set; }
 
         [Property(Length = 50)]
-        public string UserId { get; set; }
+        public string ApproverId { get; set; }
 
         [Property(Length = 50)]
         public string Role { get; set; }
@@ -25,7 +25,7 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public string Decision { get; set; }
 
-        [Property(Length = 50)]
+        [Property(Length = 6550)]
         public string Reason { get; set; }
 
         [Property]

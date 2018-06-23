@@ -2,6 +2,31 @@
     overflow-x: hidden;
 }
 
+.btn-sq-lg {
+	width: 200px !important;
+	height: 200px !important;
+}
+
+.btn-sq {
+	width: 100px !important;
+	height: 100px !important;
+	font-size: 10px;
+}
+
+.btn-sq-sm {
+	width: 50px !important;
+	height: 50px !important;
+	font-size: 10px;
+}
+
+.btn-sq-xs {
+	width: 25px !important;
+	height: 25px !important;
+	padding: 2px;
+}
+
+
+
 .li-border-up-down {
     border-top: 3px solid white;
     border-bottom: 3px solid white;

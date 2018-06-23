@@ -147,11 +147,11 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ActiveRecordBaseOfRollBackPlannX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfRollBackPlannX7H3sQe" />
-  <xs:complexType name="ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe">
+  <xs:complexType name="ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="ActiveRecordBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ApproverToChangeRequestLink" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+          <GenericParameter Name="ApproverForChangeRequest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
@@ -161,7 +161,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfApproverToChangeRequestLinknX7H3sQe" />
+  <xs:element name="ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe" nillable="true" type="tns:ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe" />
   <xs:complexType name="ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe">
     <xs:annotation>
       <xs:appinfo>

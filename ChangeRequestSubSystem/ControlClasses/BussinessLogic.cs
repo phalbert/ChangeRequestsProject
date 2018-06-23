@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Castle.ActiveRecord;
 using Castle.ActiveRecord.Framework;
@@ -16,7 +17,7 @@ namespace ChangeRequestSubSystem.ControlClasses
 {
     public class BussinessLogic
     {
-      
+
 
         public BussinessLogic()
         {
@@ -187,7 +188,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                     return apiResult;
                 }
 
-                ApiResult sendResult = SendApproveTbarEmail(req);
+                ApiResult sendResult = NotificationsHandler.SendApproveTbarEmail(req);
 
                 if (sendResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
@@ -297,6 +298,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                 user.RoleCode = "SUPER-ADMIN";
                 user.ModifiedBy = "Admin";
                 user.PhoneNumber = "256752001311";
+                user.FullName = "Nsubuga Kasozi";
 
                 SaveSystemUser(user);
 
@@ -316,7 +318,7 @@ namespace ChangeRequestSubSystem.ControlClasses
 
                 SystemSetting setting = new SystemSetting();
                 setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_CR_EMAIL_TEMPLATE;
-                setting.SettingValue= @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveChangeRequestEmail.html";
+                setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveChangeRequestEmail.html";
 
                 SaveSystemSetting(setting);
 
@@ -346,6 +348,31 @@ namespace ChangeRequestSubSystem.ControlClasses
                 system.ModifiedOn = DateTime.Now;
                 system.SystemCode = "TestMerchantCoreDB";
                 system.SystemName = "TestMerchantCoreDB";
+                system.SystemType = "DATABASE";
+
+                SavePegasusSystem(system);
+
+                system = new PegasusSystem();
+                system.ConnectionString = "192.168.33.8";
+                system.CreatedBy = "nsubugak";
+                system.CreatedOn = DateTime.Now;
+                system.ModifiedBy = "nsubugak";
+                system.ModifiedOn = DateTime.Now;
+                system.SystemCode = "TERMINAL_SVR_1";
+                system.SystemName = "Terminal Server 1 (33.8)";
+                system.SystemType = "SERVER";
+
+                SavePegasusSystem(system);
+
+                system = new PegasusSystem();
+                system.ConnectionString = "192.168.33.9";
+                system.CreatedBy = "nsubugak";
+                system.CreatedOn = DateTime.Now;
+                system.ModifiedBy = "nsubugak";
+                system.ModifiedOn = DateTime.Now;
+                system.SystemCode = "TERMINAL_SVR_2";
+                system.SystemName = "Terminal Server 2 (33.9)";
+                system.SystemType = "SERVER";
 
                 SavePegasusSystem(system);
 
@@ -389,7 +416,17 @@ namespace ChangeRequestSubSystem.ControlClasses
                 type.ModifiedBy = "nsubugak";
                 type.ModifiedOn = DateTime.Now;
                 type.TypeCode = "FIREWALL";
-                type.TypeName = "Database";
+                type.TypeName = "Firewall";
+
+                SaveSystemType(type);
+
+                type = new SystemType();
+                type.CreatedBy = "nsubugak";
+                type.CreatedOn = DateTime.Now;
+                type.ModifiedBy = "nsubugak";
+                type.ModifiedOn = DateTime.Now;
+                type.TypeCode = "OTHER_NETWORK";
+                type.TypeName = "Other Network Device";
 
                 SaveSystemType(type);
 
@@ -399,7 +436,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                 type.ModifiedBy = "nsubugak";
                 type.ModifiedOn = DateTime.Now;
                 type.TypeCode = "SERVER";
-                type.TypeName = "SERVER";
+                type.TypeName = "Server";
 
                 SaveSystemType(type);
 
@@ -416,7 +453,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             ApiResult apiResult = new ApiResult();
             try
             {
-
+                //Thread.Sleep(new TimeSpan(0, 1, 0));
                 if (string.IsNullOrEmpty(username))
                 {
                     apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
@@ -449,7 +486,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                 oneTimePassword.Save();
 
 
-                ApiResult sendResult = MethodOfSending.ToUpper() == "PHONE" ? SendOneTimePINByPhone(user.PhoneNumber, oneTimePassword.Password) : SendOneTimePINByEmail(user.Email, oneTimePassword.Password);
+                ApiResult sendResult = MethodOfSending.ToUpper() == "PHONE" ? NotificationsHandler.SendOneTimePINByPhone(user.PhoneNumber, oneTimePassword.Password) : NotificationsHandler.SendOneTimePINByEmail(user.Email, oneTimePassword.Password);
 
 
                 if (sendResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
@@ -531,171 +568,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             }
         }
 
-        public ApiResult SendApproveCrEmail(ApproverToChangeRequestLink link)
-        {
-            ApiResult result = new ApiResult();
-            try
-            {
-                SystemUser approver = SystemUser.QueryWithStoredProc("GetSystemUserById", link.UserId).FirstOrDefault();
 
-                if (approver == null)
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = $"USER WITH THE APPROVER ID {link.UserId} WAS NOT FOUND";
-                    return result;
-                }
-
-                ChangeRequest changeRequest = ChangeRequest.QueryWithStoredProc("GetChangeRequestById", link.ChangeRequestId).FirstOrDefault();
-
-                if (changeRequest == null)
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = $"CHANGE REQUEST WITH THE ID {link.ChangeRequestId} WAS NOT FOUND";
-                    return result;
-                }
-
-                string filePath = SystemSetting.QueryWithStoredProc("GetSystemSettingById", Globals.FILE_PATH_TO_APPROVE_CR_EMAIL_TEMPLATE).FirstOrDefault()?.SettingValue;
-
-                if (filePath == null)
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = $"{nameof(Globals.FILE_PATH_TO_APPROVE_CR_EMAIL_TEMPLATE)} NOT FOUND";
-                    return result;
-                }
-
-                string ApproveURL = SystemSetting.QueryWithStoredProc("GetSystemSettingById", Globals.APPROVE_CR_URL).FirstOrDefault()?.SettingValue;
-
-                if (ApproveURL == null)
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = $"{nameof(Globals.APPROVE_CR_URL)} NOT FOUND";
-                    return result;
-                }
-
-                string msg = File.ReadAllText(filePath);
-                string dateFormat = "yyyy-MM-dd HH:mm";
-
-
-                msg = msg.Replace("[APPROVER_NAME]", approver.Username);
-                msg = msg.Replace("[TITLE]", changeRequest.Title);
-                msg = msg.Replace("[CURRENT_PROBLEM]", changeRequest.Problem);
-                msg = msg.Replace("[PROPOSED_SOLUTION]", changeRequest.Solution);
-                msg = msg.Replace("[CHANGE_CATEGORY]", changeRequest.ChangeCategoryId);
-                msg = msg.Replace("[JUSTIFICATION]", changeRequest.Justification);
-                msg = msg.Replace("[IMPACT]", changeRequest.ImpactOfNotImplementing);
-                msg = msg.Replace("[REQUESTOR_NAME]", changeRequest.RequesterName);
-                msg = msg.Replace("[REQUESTOR_EMAIL]", changeRequest.RequesterEmail);
-                msg = msg.Replace("[REQUESTOR_PHONE]", changeRequest.RequesterPhone);
-                msg = msg.Replace("[REQUESTOR_COMPANY]", changeRequest.RequesterCompany);
-                msg = msg.Replace("[IMPLEMENTER_NAME]", changeRequest.ImplementerName);
-                msg = msg.Replace("[IMPLEMENTER_EMAIL]", changeRequest.ImplementerEmail);
-                msg = msg.Replace("[IMPLEMENTER_PHONE]", changeRequest.ImplementerPhone);
-                msg = msg.Replace("[START_DATE]", changeRequest.ChangeStartDateTime.ToString(dateFormat));
-                msg = msg.Replace("[END_DATE]", changeRequest.ChangeEndDateTime.ToString(dateFormat));
-                msg = msg.Replace("[APPROVE_URL]", ApproveURL);
-                msg = msg.Replace("[USER_ID]", link.UserId);
-                msg = msg.Replace("[CR_ID]", changeRequest.ChangeRequestId);
-
-                MailMessage mail = new MailMessage(Globals.FROM_EMAIL, approver.Email);
-                SmtpClient client = new SmtpClient();
-                client.Port = 587;
-                client.Host = Globals.SMPTP_SERVER;
-                client.EnableSsl = true;
-                client.Timeout = 10000;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential(Globals.SMTP_USERNAME, Globals.SMTP_PASSWORD);
-                mail.Subject = Globals.MAIL_SUBJECT_APPROVE_CR_EMAIL;
-                mail.Body = msg;
-                mail.IsBodyHtml = true;
-                client.Send(mail);
-
-                result.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
-            }
-            catch (Exception ex)
-            {
-                result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                result.StatusDesc = "EXCEPTION: " + ex.Message;
-                return result;
-            }
-            return result;
-        }
-
-        public ApiResult SendApproveTbarEmail(TimeBoundAccessRequest tbar)
-        {
-            ApiResult result = new ApiResult();
-            try
-            {
-                SystemUser approver = SystemUser.QueryWithStoredProc("GetSystemUserById", tbar.Approver).FirstOrDefault();
-
-                if (approver == null)
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = $"USER WITH THE APPROVER ID {tbar.Approver} WAS NOT FOUND";
-                    return result;
-                }
-
-                
-
-                string filePath = SystemSetting.QueryWithStoredProc("GetSystemSettingById", Globals.FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE).FirstOrDefault()?.SettingValue;
-
-                if (filePath == null)
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = $"{nameof(Globals.FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE)} NOT FOUND";
-                    return result;
-                }
-
-                string ApproveURL = SystemSetting.QueryWithStoredProc("GetSystemSettingById", Globals.APPROVE_TBAR_URL).FirstOrDefault()?.SettingValue;
-
-                if (ApproveURL == null)
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = $"{nameof(Globals.APPROVE_TBAR_URL)} NOT FOUND";
-                    return result;
-                }
-
-                string msg = File.ReadAllText(filePath);
-                string dateFormat = "yyyy-MM-dd HH:mm";
-                
-
-                msg = msg.Replace("[APPROVER_NAME]", approver.Username);
-                msg = msg.Replace("[REQUESTOR_NAME]", tbar.UserId);
-                msg = msg.Replace("[SYSTEM_NAME]", tbar.SystemCode);
-                msg = msg.Replace("[TYPE_OF_ACCESS]", tbar.TypeOfAccess);
-                msg = msg.Replace("[START_DATE]", tbar.StartTime.ToString(dateFormat));
-                msg = msg.Replace("[DURATION]", tbar.DurationInMinutes.ToString());
-                msg = msg.Replace("[REASON]", tbar.Reason);
-                msg = msg.Replace("[APPROVE_URL]", ApproveURL);
-                msg = msg.Replace("[USER_ID]", approver.Username);
-                msg = msg.Replace("[TBAR_ID]", tbar.TBPAccessId);
-
-                MailMessage mail = new MailMessage(Globals.FROM_EMAIL, approver.Email);
-                SmtpClient client = new SmtpClient();
-                client.Port = 587;
-                client.Host = Globals.SMPTP_SERVER;
-                client.EnableSsl = true;
-                client.Timeout = 10000;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential(Globals.SMTP_USERNAME, Globals.SMTP_PASSWORD);
-                mail.Subject = Globals.MAIL_SUBJECT_APPROVE_TBAR_EMAIL;
-                mail.Body = msg;
-                mail.IsBodyHtml = true;
-                client.Send(mail);
-
-                result.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
-            }
-            catch (Exception ex)
-            {
-                result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                result.StatusDesc = "EXCEPTION: " + ex.Message;
-                return result;
-            }
-            return result;
-        }
 
         internal int ExecuteNonQuery(string SqlQuery, TimeBoundAccessRequest tbar)
         {
@@ -740,45 +613,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             }
         }
 
-        internal ApiResult SendOneTimePINByEmail(string preferedContact, string OTP)
-        {
-            ApiResult result = new ApiResult();
-            try
-            {
-                //send the OTP
-                MailApi.Email mail = new MailApi.Email();
-                MailApi.EmailAddress addr = new MailApi.EmailAddress();
-                addr.Address = preferedContact;
-                addr.Name = preferedContact;
-                addr.AddressType = MailApi.EmailAddressType.To;
 
-                MailApi.EmailAddress[] addresses = { addr };
-                mail.MailAddresses = addresses;
-                mail.From = Globals.MAIL_FROM;
-                mail.Message = $"Hi<br/>,Your One Time PIN For the CR System is {OTP}";
-                mail.Subject = Globals.MAIL_SUBJECT;
-
-                MailApi.MessengerSoapClient mapi = new MailApi.MessengerSoapClient();
-
-                MailApi.Result resp = mapi.PostEmail(mail);
-
-                if (resp.StatusCode != "0")
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = resp.StatusDesc;
-                    return result;
-                }
-
-                result.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
-                result.PegPayID = preferedContact;
-            }
-            catch (Exception ex)
-            {
-                result = HandleException(nameof(SendOneTimePINByPhone), $"{preferedContact}", ex);
-            }
-            return result;
-        }
 
         internal ApiResult HandleException(string methodName, string message, Exception ex)
         {
@@ -793,7 +628,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal ApiResult UpdateChangeRequestStatus(ApproverToChangeRequestLink link)
+        internal ApiResult UpdateChangeRequestStatus(ApproverForChangeRequest link)
         {
             ApiResult apiResult = new ApiResult();
             try
@@ -804,7 +639,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                     return apiResult;
                 }
 
-                ApproverToChangeRequestLink old = ApproverToChangeRequestLink.QueryWithStoredProc("GetApproverToChangeRequest", link.UserId, link.ChangeRequestId).FirstOrDefault();
+                ApproverForChangeRequest old = ApproverForChangeRequest.QueryWithStoredProc("GetApproverToChangeRequest", link.ApproverId, link.ChangeRequestId).FirstOrDefault();
 
                 if (old == null)
                 {
@@ -828,22 +663,58 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal ApiResult ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision)
+        internal ApiResult ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision, string Reason)
         {
             ApiResult apiResult = new ApiResult();
             try
             {
-                ApproverToChangeRequestLink old = ApproverToChangeRequestLink.QueryWithStoredProc("GetApproverByID", UserId, ChangeRequestId, "").FirstOrDefault();
+                //look for the Approver based on the CR Id
+                ApproverForChangeRequest old = ApproverForChangeRequest.QueryWithStoredProc("GetApproverByID", UserId, ChangeRequestId, "").FirstOrDefault();
 
-                if (old==null)
+                //Approver not found. This guy is hacking this shit
+                if (old == null)
                 {
                     apiResult.SetFailuresAsStatusInResponseFields($"NOT ABLE TO FIND CR {ChangeRequestId} FOR APPROVER {UserId}");
                     return apiResult;
                 }
 
+                //save the decision made
                 old.Decision = Decision;
+                old.Reason = Reason;
                 old.Save();
+
+                //automatically set the success fields
+                //here SUCCESS simply means we have logged their response successfully
                 apiResult.SetSuccessAsStatusInResponseFields();
+                apiResult.StatusDesc = "SUCCESS: YOUR DECISION HAS BEEN SAVED SUCCESFULLY";
+
+                //this dude has rejected the CR
+                if (Decision == "REJECTED")
+                {
+                    //inform the requestor asynchronously
+                    Task.Factory.StartNew(() =>
+                    {
+                        InformRequestorOfCrOutCome(ChangeRequestId);
+                    });
+                    return apiResult;
+                }
+
+                //check if there is someone else left to approve
+                ApproverForChangeRequest[] pending = ApproverForChangeRequest.QueryWithStoredProc("GetPendingApprovers");
+
+                //no one else is left to approve
+                if (pending.Length == 0)
+                {
+                    //inform the requestor asynchronously
+                    Task.Factory.StartNew(() =>
+                    {
+                        InformRequestorOfCrOutCome(ChangeRequestId);
+                    });
+                    return apiResult;
+                }
+
+
+                return apiResult;
             }
             catch (Exception ex)
             {
@@ -853,12 +724,74 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal ApiResult ApproveTBAR(string UserId, string TbarId, string Decision)
+        private ApiResult InformRequestorOfTbarOutCome(string tbarID)
         {
             ApiResult apiResult = new ApiResult();
             try
             {
-                TimeBoundAccessRequest old = TimeBoundAccessRequest.QueryWithStoredProc("GetTBarByID", UserId,TbarId).FirstOrDefault();
+                TimeBoundAccessRequest tbar = TimeBoundAccessRequest.QueryWithStoredProc("GetTbarById2", tbarID)[0];
+
+                if (tbar.Status == "APPROVED")
+                {
+                    apiResult = NotificationsHandler.SendTbarApprovedEmail(tbar);
+                }
+                else if (tbar.Status == "REJECTED")
+                {
+                    apiResult = NotificationsHandler.SendTbarRejectedEmail(tbar, tbar.ApproverReason);
+                }
+
+                apiResult.SetSuccessAsStatusInResponseFields();
+                return apiResult;
+            }
+            catch (Exception ex)
+            {
+                apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                apiResult.StatusDesc = "EXCEPTION: " + ex.Message;
+            }
+            return apiResult;
+        }
+
+        private ApiResult InformRequestorOfCrOutCome(string changeRequestId)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                ChangeRequest cr = ChangeRequest.QueryWithStoredProc("GetChangeRequestById", changeRequestId)[0];
+
+                ApproverForChangeRequest[] pending = ApproverForChangeRequest.QueryWithStoredProc("CheckForCRRejection", changeRequestId);
+
+                //Someone has rejected the Change Rejected
+                if (pending.Length != 0)
+                {
+                    cr.ApprovalStatus = pending[0].Decision;
+                    cr.ApprovalReason = $"CR NOT APPROVED BY APPROVER {pending[0].ApproverId}. Reason: {pending[0].Reason}";
+                    cr.Save();
+                    apiResult = NotificationsHandler.SendCrRejectedEmail(cr, cr.ApprovalReason);
+                    return apiResult;
+                }
+
+                cr.ApprovalStatus = "APPROVED";
+                cr.ApprovalReason = "APPROVED BY EVERY APPROVER";
+                cr.Save();
+                apiResult = NotificationsHandler.SendCrApprovedEmail(cr);
+                return apiResult;
+            }
+            catch (Exception ex)
+            {
+                apiResult.StatusCode = Globals.FAILURE_STATUS_CODE;
+                apiResult.StatusDesc = "EXCEPTION: " + ex.Message;
+            }
+            return apiResult;
+        }
+
+
+
+        internal ApiResult ApproveTBAR(string UserId, string TbarId, string Decision, string Reason)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                TimeBoundAccessRequest old = TimeBoundAccessRequest.QueryWithStoredProc("GetTBarByID", UserId, TbarId).FirstOrDefault();
 
                 if (old == null)
                 {
@@ -867,9 +800,21 @@ namespace ChangeRequestSubSystem.ControlClasses
                 }
 
                 old.Status = Decision;
-                old.ApproverReason = Decision;
+                old.ApproverReason = Reason;
                 old.Save();
                 apiResult.SetSuccessAsStatusInResponseFields();
+                apiResult.StatusDesc = "SUCCESS: YOUR DECISION HAS BEEN SAVED SUCCESFULLY";
+
+                //this dude has rejected the CR
+                if (Decision == "REJECTED")
+                {
+                    //inform the requestor asynchronously
+                    Task.Factory.StartNew(() =>
+                    {
+                        InformRequestorOfTbarOutCome(TbarId);
+                    });
+                    return apiResult;
+                }
             }
             catch (Exception ex)
             {
@@ -879,7 +824,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal ApiResult AssignApproverToChangeRequest(ApproverToChangeRequestLink link)
+        internal ApiResult AssignApproverToChangeRequest(ApproverForChangeRequest link)
         {
             ApiResult apiResult = new ApiResult();
             try
@@ -890,19 +835,19 @@ namespace ChangeRequestSubSystem.ControlClasses
                     apiResult.SetFailuresAsStatusInResponseFields(link.StatusDesc);
                     return apiResult;
                 }
-                
-                ApproverToChangeRequestLink old = ApproverToChangeRequestLink.QueryWithStoredProc("GetApproverByID",link.UserId,link.ChangeRequestId,link.Role).FirstOrDefault();
+
+                ApproverForChangeRequest old = ApproverForChangeRequest.QueryWithStoredProc("GetApproverByID", link.ApproverId, link.ChangeRequestId, link.Role).FirstOrDefault();
 
                 link.Id = old != null ? old.Id : link.Id;
                 link.Save();
 
-                
-                ApiResult sendResult = SendApproveCrEmail(link);
+
+                ApiResult sendResult = NotificationsHandler.SendApproveCrEmail(link);
 
                 if (sendResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
                     apiResult.PegPayID = link.Id.ToString();
-                    apiResult.SetFailuresAsStatusInResponseFields("FAILED TO SEND EMAIL TO APPROVER: "+sendResult.StatusDesc);
+                    apiResult.SetFailuresAsStatusInResponseFields("FAILED TO SEND EMAIL TO APPROVER: " + sendResult.StatusDesc);
                     return apiResult;
                 }
 
@@ -1100,7 +1045,7 @@ namespace ChangeRequestSubSystem.ControlClasses
 
                 user = systemUsers[0];
                 //IEnumerable
-                OneTimePassword[] oneTimePasswords = OneTimePassword.QueryWithStoredProc("GetLatestOTP", username);
+                OneTimePassword[] oneTimePasswords = OneTimePassword.QueryWithStoredProc("GetLatestOTP", username, password);
 
                 if (oneTimePasswords.Count() <= 0)
                 {
@@ -1135,40 +1080,6 @@ namespace ChangeRequestSubSystem.ControlClasses
             return user;
         }
 
-        private ApiResult SendOneTimePINByPhone(string preferedContact, string OTP)
-        {
-            ApiResult result = new ApiResult();
-            try
-            {
-                //send the OTP
-                MailApi.SMS sms = new MailApi.SMS();
-                sms.Mask = Globals.SMS_MASK;
-                sms.Sender = Globals.SMS_SENDER;
-                sms.Message = $"Hi, Your One Time PIN For CR System is {OTP}";
-                sms.Phone = preferedContact;
-                sms.Reference = DateTime.Now.Ticks.ToString();
-                sms.VendorTranId = DateTime.Now.Ticks.ToString();
-
-                MailApi.MessengerSoapClient mailApi = new MailApi.MessengerSoapClient();
-                MailApi.Result resp = mailApi.SendSMS(sms);
-
-                if (resp.StatusCode != "0")
-                {
-                    result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                    result.StatusDesc = resp.StatusDesc;
-                    return result;
-                }
-
-                result.StatusCode = Globals.SUCCESS_STATUS_CODE;
-                result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
-                result.PegPayID = preferedContact;
-            }
-            catch (Exception ex)
-            {
-                result = HandleException(nameof(SendOneTimePINByPhone), $"{preferedContact}", ex);
-            }
-            return result;
-        }
 
         public static string GenerateSHA256String(string inputString)
         {
@@ -1185,7 +1096,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                     typeof(SystemAffected),
                     typeof(ApiLog),
                     typeof(PostChangeTest),
-                    typeof(ApproverToChangeRequestLink),
+                    typeof(ApproverForChangeRequest),
                     typeof(Company),
                     typeof(SystemUser),
                     typeof(RiskAnalysis),
@@ -1232,6 +1143,6 @@ namespace ChangeRequestSubSystem.ControlClasses
             return result.ToString();
         }
 
-       
+
     }
 }

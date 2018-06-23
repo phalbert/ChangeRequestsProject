@@ -131,7 +131,7 @@
   <xs:element name="AssignChangeRequestToApprover">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="link" nillable="true" type="q19:ApproverToChangeRequestLink" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="link" nillable="true" type="q19:ApproverForChangeRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -145,7 +145,7 @@
   <xs:element name="UpdateChangeRequestStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="link" nillable="true" type="q21:ApproverToChangeRequestLink" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="link" nillable="true" type="q21:ApproverForChangeRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -289,6 +289,7 @@
         <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="Decision" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -305,6 +306,7 @@
         <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="TbarId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="Decision" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

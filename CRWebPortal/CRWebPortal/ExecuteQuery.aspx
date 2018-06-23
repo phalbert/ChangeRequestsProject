@@ -100,7 +100,7 @@
         {
             DateTime maxDate = Tbar.StartTime.AddMinutes(Tbar.DurationInMinutes);
             DateTime currentDate = DateTime.Now;
-            int minutesLeft = (int)maxDate.Subtract(currentDate).TotalMinutes;
+            int minutesLeft = ((int)maxDate.Subtract(currentDate).TotalMinutes)+1;//add an extra minute for network latency
     %>
     <script type="text/javascript">
 

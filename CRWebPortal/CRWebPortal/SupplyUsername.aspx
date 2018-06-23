@@ -8,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CR Login</title>
     <!-- Tell the browser to be responsive to screen width -->
+    <script type="text/jscript" src="Scripts/pace.min.js"></script>
+    <link href="Styles/pace-theme-bounce.css" rel="stylesheet" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="Styles/style.css" rel="stylesheet">

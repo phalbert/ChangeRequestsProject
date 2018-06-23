@@ -8,9 +8,10 @@
         <div class="col-12">
             <ul class='nav nav-wizard'>
 
-                <li><a href="CreateChangeRequest.aspx" data-toggle="tab">Change Details</a></li>
+                <li><a href="CreateChangeRequest.aspx" data-toggle="tab">CR Details</a></li>
                 <li><a href="AttachSystemsAffected.aspx" data-toggle="tab">Systems Affected</a></li>
-                <li class="active"><a href="AttachItemToChangeRequest.aspx" data-toggle="tab">Any Attachments</a></li>
+                <li><a href="AttachPostChangeTests.aspx" data-toggle="tab">Post Change Tests</a></li>
+                <li><a class="active" href="AttachItemToChangeRequest.aspx" data-toggle="tab">Any Attachments</a></li>
                 <li><a href="AttachApproversToCR.aspx" data-toggle="tab">Assign Approvers</a></li>
                 <li><a href="Finished.aspx" data-toggle="tab">Done</a></li>
 
@@ -24,7 +25,7 @@
         <div class="col-lg-10">
             <div class="card border-primary text-white  mb-3">
                 <div class="card-header bg-primary">
-                    Upload Any Attachments to the Change Request
+                    Upload Any Items/Attachments to the Change Request
                 </div>
                 <div class="card-body bg-default">
 
@@ -75,7 +76,7 @@
                 <div class="card-footer text-center">
                     <asp:Button ID="btnBack" Text="Go Back" CssClass="btn btn-md btn-danger" runat="server" OnClick="btnBack_Click" />
 
-                    
+
 
                     <asp:Button ID="btnNextStep" Text="Next Step" CssClass="btn btn-md btn-success" runat="server" OnClick="btnNextStep_Click" />
                 </div>

@@ -8,14 +8,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CR Login</title>
     <!-- Tell the browser to be responsive to screen width -->
+    <script>
+        window.paceOptions = {
+            ajax: {
+                trackMethods: ['GET', 'POST']
+            }
+        }
+    </script>
     <script type="text/jscript" src="Scripts/pace.min.js"></script>
-    <link href="Styles/pace-theme.css" rel="stylesheet" />
+    <link href="Styles/pace-theme-bounce.css" rel="stylesheet" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="Styles/style.css" rel="stylesheet">
 </head>
-<body cz-shortcut-listen="true" class="content-wrapper">
-    <form runat="server">
+<body class="pjax-container" cz-shortcut-listen="true" class="content-wrapper">
+    <form  runat="server">
         <div class="preloader" style="display: none;">
             <div class="cssload-speeding-wheel"></div>
         </div>
@@ -62,9 +69,16 @@
         </div>
         <!-- jQuery -->
         <script type="text/jscript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
         <!-- plugin -->
+
+        <script>
+            $(document).on('submit', 'form[data-pjax]', function (event) {
+                $.pjax.submit(event, '.pjax-container')
+            })
+        </script>
     </form>
 </body>
 </html>

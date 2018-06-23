@@ -35,7 +35,7 @@
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
                                         System Name</label>
-                                    <asp:DropDownList ID="ddDatabases" runat="server" CssClass="form-control">
+                                    <asp:DropDownList ID="ddDatabases" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddDatabases_SelectedIndexChanged">
                                         <asp:ListItem Value="DATABASE">Database</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>

@@ -93,6 +93,7 @@
     <Compile Include="ControlClasses\ChangeRequestInterface.cs" />
     <Compile Include="ControlClasses\DatabaseHandler.cs" />
     <Compile Include="ControlClasses\Globals.cs" />
+    <Compile Include="ControlClasses\NotificationsHandler.cs" />
     <Compile Include="ControlClasses\ThirdPartyDB.cs" />
     <Compile Include="Entities\ApiLog.cs" />
     <Compile Include="Entities\ApiResult.cs" />

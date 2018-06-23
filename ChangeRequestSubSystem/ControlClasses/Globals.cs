@@ -27,5 +27,6 @@ public static class Globals
     public const string FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE = "FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE";
     public const string APPROVE_CR_URL = "APPROVE_CR_URL";
     public const string APPROVE_TBAR_URL = "APPROVE_TBAR_URL";
+    public const string DATE_FORMAT = "yyyy-MM-dd HH:mm";
 }
 

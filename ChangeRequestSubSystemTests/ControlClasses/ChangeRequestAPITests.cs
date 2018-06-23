@@ -63,11 +63,11 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         public void UpdateChangeRequestStatusTest()
         {
             ChangeRequestInterface api = new CRSubSystemAPI();
-            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink();
+            ApproverForChangeRequest link = new ApproverForChangeRequest();
             link.ChangeRequestId = "1234";
             link.Decision = "APPROVED";
             link.Reason = "APPROVED";
-            link.UserId = "kasozi.nsubuga@pegasu.co.ug";
+            link.ApproverId = "kasozi.nsubuga@pegasu.co.ug";
             ApiResult result = api.UpdateChangeRequestStatus(link);
             Assert.AreEqual(Globals.SUCCESS_STATUS_TEXT, result.StatusDesc);
         }
@@ -77,7 +77,7 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         {
             ChangeRequestInterface api = new CRSubSystemAPI();
             ChangeRequest changeRequest = new ChangeRequest();
-            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink();
+            ApproverForChangeRequest link = new ApproverForChangeRequest();
             ApiResult result = api.UpdateChangeRequestStatus(link);
             Assert.AreEqual(Globals.FAILURE_STATUS_CODE, result.StatusCode);
         }
@@ -86,11 +86,11 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         public void AssignChangeRequestToApproverTest()
         {
             ChangeRequestInterface api = new CRSubSystemAPI();
-            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink();
+            ApproverForChangeRequest link = new ApproverForChangeRequest();
             link.ChangeRequestId = "1234";
             link.Decision = "";
             link.Reason = "";
-            link.UserId = "kasozi.nsubuga@pegasu.co.ug";
+            link.ApproverId = "kasozi.nsubuga@pegasu.co.ug";
             ApiResult result = api.AssignChangeRequestToApprover(link);
             Assert.AreEqual(Globals.SUCCESS_STATUS_TEXT, result.StatusDesc);
         }
@@ -100,7 +100,7 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
         {
             ChangeRequestInterface api = new CRSubSystemAPI();
             ChangeRequest changeRequest = new ChangeRequest();
-            ApproverToChangeRequestLink link = new ApproverToChangeRequestLink();
+            ApproverForChangeRequest link = new ApproverForChangeRequest();
             ApiResult result = api.AssignChangeRequestToApprover(link);
             Assert.AreEqual(Globals.FAILURE_STATUS_CODE, result.StatusCode);
         }
@@ -288,9 +288,9 @@ namespace ChangeRequestSubSystem.ControlClasses.Tests
             changeRequest.Solution = "Creation of UTL VPN";
             changeRequest.Save();
 
-            ApproverToChangeRequestLink systemAffected = new ApproverToChangeRequestLink();
+            ApproverForChangeRequest systemAffected = new ApproverForChangeRequest();
             systemAffected.ChangeRequestId = changeRequest.ChangeRequestId;
-            systemAffected.UserId = "nsubugak";
+            systemAffected.ApproverId = "nsubugak";
             string ApproveURL = "";
             ApiResult result = api.SendApproveCrEmail(systemAffected);
             Assert.AreEqual(Globals.SUCCESS_STATUS_TEXT, result.StatusDesc);

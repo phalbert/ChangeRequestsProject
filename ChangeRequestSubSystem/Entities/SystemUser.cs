@@ -19,6 +19,9 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public string PhoneNumber { get; set; }
 
+        [Property(Length = 100)]
+        public string FullName { get; set; }
+
         [Property(Length = 50, Unique = true)]
         public string Username { get; set; }
 

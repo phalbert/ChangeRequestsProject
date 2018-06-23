@@ -12,5 +12,6 @@
         public const string SMS_SENDER = "CHANGE REQUEST SYSTEM";
 
         public static string PARSE_ERROR_CODE = "500";
+        public static string DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm";
     }
 }

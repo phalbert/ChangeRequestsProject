@@ -35,7 +35,8 @@
                         <a href="#">View Change Requests</a>
                     </li>
                     <li class="li-border-down">
-                        <a href="ExecuteQuery.aspx">Use Time Bound Access</a>
+                        <a href="ChooseTbarMethod.aspx">Use Time Bound DB Access</a>
+                    </li>
                     </li>
                     <li class="li-border-down">
                         <a href="ApplyForTBPAccess.aspx">Request 4 Time Bound Access</a>

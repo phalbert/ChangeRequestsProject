@@ -18,10 +18,44 @@ namespace CRWebPortal
                 string Decision = Request.QueryString["Decision"];
                 string Reason = Request.QueryString["Reason"];
 
-                string opResult = BussinessLogic.cRSystemAPIClient.ApproveChangeRequest(UserId, ChangeRequestId, Decision);
+                if (Decision != "APPROVED")
+                {
+                    lblMsg.Text = "Hi, Please supply a detailed reason for rejection inorder to help the Requestor";
+                    MultiView1.SetActiveView(ReasonView);
+                    return;
+                }
+
+                string opResult = BussinessLogic.cRSystemAPIClient.ApproveChangeRequest(UserId, ChangeRequestId, Decision,Reason);
                 lblMsg.Text = opResult;
             }
             catch(Exception ex)
+            {
+                //Show Error Message
+                string msg = "ERROR:" + ex.Message;
+                lblMsg.Text = msg;
+                return;
+            }
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string UserId = Request.QueryString["UserId"];
+                string ChangeRequestId = Request.QueryString["ChangeRequestId"];
+                string Decision = Request.QueryString["Decision"];
+                string Reason = txtReason.Text;
+                string opResult = BussinessLogic.cRSystemAPIClient.ApproveChangeRequest(UserId, ChangeRequestId, Decision, Reason);
+
+                lblMsg.Text = opResult;
+
+                if (opResult.Contains(Globals.SUCCESS_STATUS_TEXT))
+                {
+                    MultiView1.SetActiveView(EmptyView);
+                    return;
+                }
+            }
+            catch (Exception ex)
             {
                 //Show Error Message
                 string msg = "ERROR:" + ex.Message;

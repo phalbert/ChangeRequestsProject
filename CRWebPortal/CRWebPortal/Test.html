@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<HEAD>
+    <TITLE> New Windows in Javascript </TITLE>
+    <link href="Styles/timeTo.css" rel="Stylesheet" />
+</HEAD>
+<body>
+    <H3> Example of creating new windows in Javascript </H3>
+    <HR>
+    Use the buttons below to test opening and closing windows in JavaScript.
+    <HR>
+    <form NAME="frmNW">
+        <div class="count-down-timer"></div>
+        <INPUT TYPE="button" VALUE="Open New Window" id="btnOpenWndw" />
+        <INPUT TYPE="button" VALUE="Close New Window" id="btnCloseWndw" />
+        <INPUT TYPE="button" VALUE="Close Main Window" id="btnCloseAll" />
+    </form>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.time-to.js"></script>
+    <script type="text/javascript">
+        // Store a variable for your window
+        var yourWindow;
+        $(function () {
+            $(frmNW.btnOpenWndw).click(function () {
+                yourWindow = window.open('http://localhost:8019/RdpWeb/', 'My Server', '');
+            });
+            $(frmNW.btnCloseWndw).click(function () {
+                yourWindow.close();
+            });
+        });
+
+        $('.count-down-timer').timeTo(60, function () { yourWindow.close(); });
+        // If you are leaving the page, close the child window (if applicable)
+        window.onbeforeunload = function () {
+            yourWindow.close();
+        }
+    </script>
+</body>
+</html>

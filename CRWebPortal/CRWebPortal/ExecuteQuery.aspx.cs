@@ -15,8 +15,13 @@ namespace CRWebPortal
         {
             try
             {
-                if (!IsAccessRequestIsValid())
+
+                TimeBoundAccessRequest tbar = BussinessLogic.IsAccessRequestIsValid(Session);
+
+                if (tbar.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
+                    string msg = "ERROR:" + tbar.StatusDesc;
+                    Master.ErrorMessage = msg;
                     Multiview1.ActiveViewIndex = 0;
                     return;
                 }
@@ -25,9 +30,10 @@ namespace CRWebPortal
                 {
                     return;
                 }
-                
+
                 btnComplete.Visible = false;
                 btnExecute.Visible = true;
+                LoadData();
             }
             catch (Exception ex)
             {
@@ -38,56 +44,14 @@ namespace CRWebPortal
             }
         }
 
-        private ApiResult CheckIfTbarIsStillValid(TimeBoundAccessRequest tbar)
-        {
-            ApiResult result = new ApiResult();
-            string dateFormat = "yyyy-MM-dd HH:mm";
-
-            if (DateTime.Now < tbar.StartTime)
-            {
-                Multiview1.ActiveViewIndex = 0;
-                result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                result.StatusDesc = $"FAILED: EARLY T.B.A.R USE DETECTED. T.B.A.R FOUND IS MEANT TO BE USED FROM [{tbar.StartTime.ToString(dateFormat)}] FOR [{tbar.DurationInMinutes.ToString()}] MINUTES. THE CURRENT TIME IS [{DateTime.Now.ToString(dateFormat)}]. PLEASE TRY AGAIN AT SPECIFIED START TIME";
-                return result;
-            }
-
-            if (DateTime.Now > tbar.StartTime.AddMinutes(tbar.DurationInMinutes))
-            {
-                Multiview1.ActiveViewIndex = 0;
-                result.StatusCode = Globals.FAILURE_STATUS_CODE;
-                result.StatusDesc = $"FAILED: TBAR HAS EXPIRED. START TIME WAS [{tbar.StartTime.ToString(dateFormat)}] FOR [{tbar.DurationInMinutes.ToString()}] MINUTES. CURRENT TIME IS [{DateTime.Now.ToString(dateFormat)}]";
-                return result;
-            }
-
-            result.StatusCode = Globals.SUCCESS_STATUS_CODE;
-            result.StatusDesc = Globals.SUCCESS_STATUS_TEXT;
-            return result;
-        }
-
-        private bool IsAccessRequestIsValid()
+        private bool LoadData()
         {
             SystemUser user = Session["User"] as SystemUser;
-            TimeBoundAccessRequest tbar = BussinessLogic.cRSystemAPIClient.CheckForValidTimeBoundAccessRequest(user);
-
-            if (tbar.StatusCode != Globals.SUCCESS_STATUS_CODE)
-            {
-                //Show Error Message
-                Master.ErrorMessage = "ERROR:" + tbar.StatusDesc;
-                return false;
-            }
+            TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
 
             string statementsAllowed = GetStatementsAllowed(tbar);
             string msg = $"SUCCESS: STATEMENTS YOU CAN EXECUTE {statementsAllowed}";
             Session["TBAR"] = tbar;
-
-            ApiResult checkResult = CheckIfTbarIsStillValid(tbar);
-
-            if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
-            {
-                lblErrorMsg.Text = checkResult.StatusDesc;
-                Multiview1.ActiveViewIndex = 0;
-                return false;
-            }
 
             LoadAutoCompleteIntellisense(tbar);
             DateTime maxDate = tbar.StartTime.AddMinutes(tbar.DurationInMinutes);
@@ -233,12 +197,12 @@ namespace CRWebPortal
         {
             try
             {
-                
+
                 TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
                 string sqlText = txtQuery.Text;
 
                 //check if tbar has expired
-                ApiResult checkResult = CheckIfTbarIsStillValid(tbar);
+                ApiResult checkResult = BussinessLogic.CheckIfTbarIsStillValid(tbar);
 
                 //tbar has expired
                 if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
@@ -249,7 +213,7 @@ namespace CRWebPortal
                 }
 
                 //see if the dude is fooling around with his query
-                checkResult = CheckIfQueryIsValidForTbar(sqlText,tbar);
+                checkResult = CheckIfQueryIsValidForTbar(sqlText, tbar);
 
                 //failed check
                 if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
@@ -386,7 +350,7 @@ namespace CRWebPortal
                 string sqlText = txtQuery.Text;
 
                 //check if tbar has expired
-                ApiResult checkResult = CheckIfTbarIsStillValid(tbar);
+                ApiResult checkResult = BussinessLogic.CheckIfTbarIsStillValid(tbar);
 
                 //tbar has expired
                 if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)

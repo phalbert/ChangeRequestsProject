@@ -24,7 +24,7 @@ namespace CRWebPortal
                 {
                     return;
                 }
-               
+                LoadData();
             }
             catch (Exception ex)
             {
@@ -33,6 +33,11 @@ namespace CRWebPortal
                 Master.ErrorMessage = msg;
                 return;
             }
+        }
+
+        private void LoadData()
+        {
+            BussinessLogic.LoadDataIntoDropDown("GetSystemsForDropDown", ddTypeOfSystem, Session["User"] as SystemUser);
         }
 
         protected void dataGridResults_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -74,10 +79,10 @@ namespace CRWebPortal
                 systemAffected.ChangeRequestId = ViewState["ChangeRequestId"] as string;
                 systemAffected.CreatedBy = (Session["User"] as SystemUser)?.Username;
                 systemAffected.CreatedOn = DateTime.Now;
-                systemAffected.Details = txtNameOfSystem.Text;
+                systemAffected.Details = ddTypeOfSystem.SelectedValue;
                 systemAffected.ModifiedBy = (Session["User"] as SystemUser)?.Username;
                 systemAffected.ModifiedOn = DateTime.Now;
-                systemAffected.SystemName = txtNameOfSystem.Text;
+                systemAffected.SystemName = ddTypeOfSystem.SelectedValue;
                 systemAffected.SystemType = ddTypeOfSystem.SelectedValue;
                 systemAffected.TypeOfChange = ddTypeOfChange.SelectedValue;
 
@@ -109,7 +114,7 @@ namespace CRWebPortal
             try
             {
                 string crid = ViewState["ChangeRequestId"] as string;
-                Response.Redirect("~/AttachItemToChangeRequest.aspx?Id=" + crid);
+                Response.Redirect("~/AttachPostChangeTestsToCR.aspx?Id=" + crid);
             }
             catch (Exception ex)
             {
