@@ -34,12 +34,18 @@
                             <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
-                                        System Name</label>
-                                    <asp:DropDownList ID="ddDatabases" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddDatabases_SelectedIndexChanged">
-                                        <asp:ListItem Value="DATABASE">Database</asp:ListItem>
+                                        System Type</label>
+                                    <asp:DropDownList ID="ddSystemTypes" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddSystemTypes_SelectedIndexChanged">
                                     </asp:DropDownList>
                                 </div>
-
+                                <div class="col-lg-6" style="padding-bottom: 10px">
+                                    <label>
+                                        System Name</label>
+                                    <asp:DropDownList ID="ddSystems" runat="server" CssClass="form-control">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
                                         Type Of Access</label>
@@ -51,9 +57,20 @@
                                         <asp:ListItem Value="FULL">Full DB Access</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
+                                <div class="col-lg-6" style="padding-bottom: 10px">
+                                    <label>
+                                        Approver</label>
+                                    <asp:DropDownList ID="ddApprover" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="kasozi.nsubuga@pegasus.co.ug">Nsubuga Kasozi</asp:ListItem>
+                                        <asp:ListItem Value="paul.kavule@pegasus.co.ug">Paul Kavule</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
                             </div>
 
+
+
                             <div class="row">
+
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
                                         Start Date And Time</label>
@@ -71,16 +88,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-lg-6" style="padding-bottom: 10px">
-                                    <label>
-                                        Approver</label>
-                                    <asp:DropDownList ID="ddApprover" runat="server" CssClass="form-control">
-                                        <asp:ListItem Value="kasozi.nsubuga@pegasus.co.ug">Nsubuga Kasozi</asp:ListItem>
-                                        <asp:ListItem Value="paul.kavule@pegasus.co.ug">Paul Kavule</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
+
 
                             <div class="row">
                                 <div class="col-lg-12">

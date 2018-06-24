@@ -286,6 +286,32 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
+        internal ApiResult SaveAccessType(AccessType settting)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!settting.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(settting.StatusDesc);
+                    return apiResult;
+                }
+
+                SystemType old = SystemType.QueryWithStoredProc("GetAccessTypeByID", settting.AccessTypeCode).FirstOrDefault();
+
+                settting.Id = old != null ? old.Id : settting.Id;
+
+                settting.Save();
+                apiResult.SetSuccessAsStatusInResponseFields();
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(AttachSystemAffectedToChangeRequest), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
         internal ApiResult Seed()
         {
             ApiResult apiResult = new ApiResult();
@@ -439,6 +465,72 @@ namespace ChangeRequestSubSystem.ControlClasses
                 type.TypeName = "Server";
 
                 SaveSystemType(type);
+
+                AccessType acesstype = new AccessType();
+                acesstype.CreatedBy = "nsubugak";
+                acesstype.CreatedOn = DateTime.Now;
+                acesstype.ModifiedBy = "nsubugak";
+                acesstype.ModifiedOn = DateTime.Now;
+                acesstype.AccessTypeCode = "UPDATE";
+                acesstype.AccessTypeName = "Update Database Data";
+                acesstype.SystemTypeCode = "DATABASE";
+
+                SaveAccessType(acesstype);
+
+                acesstype = new AccessType();
+                acesstype.CreatedBy = "nsubugak";
+                acesstype.CreatedOn = DateTime.Now;
+                acesstype.ModifiedBy = "nsubugak";
+                acesstype.ModifiedOn = DateTime.Now;
+                acesstype.AccessTypeCode = "DELETE";
+                acesstype.AccessTypeName = "Delete Database Data";
+                acesstype.SystemTypeCode = "DATABASE";
+
+                SaveAccessType(acesstype);
+
+                acesstype = new AccessType();
+                acesstype.CreatedBy = "nsubugak";
+                acesstype.CreatedOn = DateTime.Now;
+                acesstype.ModifiedBy = "nsubugak";
+                acesstype.ModifiedOn = DateTime.Now;
+                acesstype.AccessTypeCode = "INSERT";
+                acesstype.AccessTypeName = "INSERT Database Data";
+                acesstype.SystemTypeCode = "DATABASE";
+
+                SaveAccessType(acesstype);
+
+                acesstype = new AccessType();
+                acesstype.CreatedBy = "nsubugak";
+                acesstype.CreatedOn = DateTime.Now;
+                acesstype.ModifiedBy = "nsubugak";
+                acesstype.ModifiedOn = DateTime.Now;
+                acesstype.AccessTypeCode = "CREATE";
+                acesstype.AccessTypeName = "CREATE Database Objects";
+                acesstype.SystemTypeCode = "DATABASE";
+
+                SaveAccessType(acesstype);
+
+                acesstype = new AccessType();
+                acesstype.CreatedBy = "nsubugak";
+                acesstype.CreatedOn = DateTime.Now;
+                acesstype.ModifiedBy = "nsubugak";
+                acesstype.ModifiedOn = DateTime.Now;
+                acesstype.AccessTypeCode = "FULL";
+                acesstype.AccessTypeName = "FULL Database Access.(Any Query)";
+                acesstype.SystemTypeCode = "DATABASE";
+
+                SaveAccessType(acesstype);
+
+                acesstype = new AccessType();
+                acesstype.CreatedBy = "nsubugak";
+                acesstype.CreatedOn = DateTime.Now;
+                acesstype.ModifiedBy = "nsubugak";
+                acesstype.ModifiedOn = DateTime.Now;
+                acesstype.AccessTypeCode = "ADMIN_SERVER_ACCESS";
+                acesstype.AccessTypeName = "Admin Server Access.";
+                acesstype.SystemTypeCode = "SERVER";
+
+                SaveAccessType(acesstype);
 
             }
             catch (Exception ex)
@@ -1110,7 +1202,8 @@ namespace ChangeRequestSubSystem.ControlClasses
                     typeof(DbQueryLog),
                     typeof(SystemSetting),
                     typeof(PegasusSystem),
-                    typeof(SystemType)
+                    typeof(SystemType),
+                    typeof(AccessType)
                 };
         }
 

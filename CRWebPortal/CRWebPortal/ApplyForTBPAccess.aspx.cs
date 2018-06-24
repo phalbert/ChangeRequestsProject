@@ -1,6 +1,7 @@
 ﻿using CRWebPortal.CRSystemAPI;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -33,9 +34,11 @@ namespace CRWebPortal
 
         private void LoadData()
         {
-            BussinessLogic.LoadDataIntoDropDown("GetSystemsForDropDown", ddDatabases, Session["User"] as SystemUser);
+            
             BussinessLogic.LoadDataIntoDropDown("GetApproversForDropDown", ddApprover, Session["User"] as SystemUser);
-
+            BussinessLogic.LoadDataIntoDropDown("GetSystemTypesForDropDown", ddSystemTypes, Session["User"] as SystemUser);
+            BussinessLogic.LoadDataIntoDropDown("GetDatabasesForDropDown", ddSystems, Session["User"] as SystemUser);
+            BussinessLogic.LoadDataIntoDropDown("GetDatabaseAccessTypesForDropDown", ddTypeOfAccess, Session["User"] as SystemUser);
             string dateFormat = "yyyy-MM-dd HH:mm";
             txtStartDateTime.Text = DateTime.Now.ToString(dateFormat);
         }
@@ -55,7 +58,7 @@ namespace CRWebPortal
                 req.DurationInMinutes = int.Parse(ddDuration.SelectedValue);
                 req.Reason = txtReason.Text;
                 req.StartTime = DateTime.ParseExact(txtStartDateTime.Text, dateFormat, CultureInfo.InvariantCulture);
-                req.SystemCode = ddDatabases.SelectedValue;
+                req.SystemCode = ddSystems.SelectedValue;
                 req.TypeOfAccess = ddTypeOfAccess.SelectedValue;
                 req.UserId = (Session["User"] as SystemUser)?.Username;
                 req.TBPAccessId = BussinessLogic.GenerateUniqueId("TBPA-");
@@ -83,11 +86,32 @@ namespace CRWebPortal
             }
         }
 
-        protected void ddDatabases_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddSystemTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
+                string systemType = ddSystemTypes.SelectedValue.ToUpper();
 
+                if (systemType == "DATABASE")
+                {
+                    BussinessLogic.LoadDataIntoDropDown("GetDatabasesForDropDown", ddSystems, Session["User"] as SystemUser);
+                    BussinessLogic.LoadDataIntoDropDown("GetDatabaseAccessTypesForDropDown", ddTypeOfAccess, Session["User"] as SystemUser);
+                    return;
+                }
+                else if (systemType == "SERVER")
+                {
+                    BussinessLogic.LoadDataIntoDropDown("GetServersForDropDown", ddSystems, Session["User"] as SystemUser);
+                    BussinessLogic.LoadDataIntoDropDown("GetServerAccessTypesForDropDown", ddTypeOfAccess, Session["User"] as SystemUser);
+                    return;
+                }
+
+                //Show Error Message
+                ddSystems.Items.Clear();
+                ddTypeOfAccess.Items.Clear();
+                
+                string msg = "ERROR: SYSTEM TYPE SPECIFIED IS NOT YET SUPPORTED FOR TBAR";
+                Master.ErrorMessage = msg;
+                return;
             }
             catch (Exception ex)
             {
@@ -97,5 +121,7 @@ namespace CRWebPortal
                 return;
             }
         }
+
+        
     }
 }

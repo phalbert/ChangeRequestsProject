@@ -81,7 +81,11 @@
             });
         });
 
-        $('.count-down-timer').timeTo((<%=minutesLeft * 60%>, function () { yourWindow.close(); });
+        $('.count-down-timer').timeTo(<%=minutesLeft * 60%>, function ()
+        {
+            yourWindow.close();
+            window.location.replace("]<%=Server.MapPath("~/ChooseTbarMethod.aspx")%>");
+        });
         // If you are leaving the page, close the child window (if applicable)
         window.onbeforeunload = function () {
             yourWindow.close();

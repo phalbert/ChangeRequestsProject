@@ -15,7 +15,7 @@ namespace CRWebPortal
             return cRSystemAPIClient;
         }
 
-        public static TimeBoundAccessRequest IsAccessRequestIsValid(HttpSessionState Session)
+        public static TimeBoundAccessRequest IsAccessRequestIsValid(HttpSessionState Session,string TbarMethod)
         {
             TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
             try
@@ -36,6 +36,24 @@ namespace CRWebPortal
                     Session["TBAR"] = null;
                     tbar.StatusCode = checkResult.StatusCode;
                     tbar.StatusDesc = checkResult.StatusDesc;
+                    return tbar;
+                }
+                DataTable dt = cRSystemAPIClient.ExecuteDataSet("GetSystemById",new object[] { tbar.SystemCode }).Tables[0];
+                if (dt.Rows.Count == 0)
+                {
+                    Session["TBAR"] = null;
+                    tbar.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    tbar.StatusDesc = "FAILED TO DETERMINE SYSTEM TO ACCESS";
+                    return tbar;
+                }
+
+                String systemType = dt.Rows[0]["SystemType"].ToString();
+
+                if (systemType.ToUpper() != TbarMethod.ToUpper())
+                {
+                    Session["TBAR"] = null;
+                    tbar.StatusCode = Globals.FAILURE_STATUS_CODE;
+                    tbar.StatusDesc = "TBAR FOUND IS MEANT FOR "+systemType+" ACCESS. YOU APPEAR TO BE TRYING TO USE IT FOR "+TbarMethod+" ACCESS";
                     return tbar;
                 }
 

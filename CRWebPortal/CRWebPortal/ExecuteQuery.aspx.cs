@@ -16,7 +16,7 @@ namespace CRWebPortal
             try
             {
 
-                TimeBoundAccessRequest tbar = BussinessLogic.IsAccessRequestIsValid(Session);
+                TimeBoundAccessRequest tbar = BussinessLogic.IsAccessRequestIsValid(Session,"DATABASE");
 
                 if (tbar.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
@@ -33,7 +33,7 @@ namespace CRWebPortal
 
                 btnComplete.Visible = false;
                 btnExecute.Visible = true;
-                LoadData();
+                LoadData(tbar);
             }
             catch (Exception ex)
             {
@@ -44,11 +44,9 @@ namespace CRWebPortal
             }
         }
 
-        private bool LoadData()
+        private bool LoadData(TimeBoundAccessRequest tbar)
         {
             SystemUser user = Session["User"] as SystemUser;
-            TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
-
             string statementsAllowed = GetStatementsAllowed(tbar);
             string msg = $"SUCCESS: STATEMENTS YOU CAN EXECUTE {statementsAllowed}";
             Session["TBAR"] = tbar;
@@ -57,6 +55,7 @@ namespace CRWebPortal
             DateTime maxDate = tbar.StartTime.AddMinutes(tbar.DurationInMinutes);
             DateTime currentDate = DateTime.Now;
             int minutesLeft = (int)maxDate.Subtract(currentDate).TotalMinutes;
+            Session["TBAR"] = tbar;
             Master.ErrorMessage = msg;
             return true;
         }

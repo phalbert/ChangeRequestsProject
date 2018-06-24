@@ -13,13 +13,22 @@ namespace CRWebPortal {
     public partial class ApplyForTBPAccess {
         
         /// <summary>
-        /// ddDatabases control.
+        /// ddSystemTypes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddDatabases;
+        protected global::System.Web.UI.WebControls.DropDownList ddSystemTypes;
+        
+        /// <summary>
+        /// ddSystems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddSystems;
         
         /// <summary>
         /// ddTypeOfAccess control.
@@ -29,6 +38,15 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddTypeOfAccess;
+        
+        /// <summary>
+        /// ddApprover control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddApprover;
         
         /// <summary>
         /// txtStartDateTime control.
@@ -47,15 +65,6 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddDuration;
-        
-        /// <summary>
-        /// ddApprover control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddApprover;
         
         /// <summary>
         /// txtReason control.

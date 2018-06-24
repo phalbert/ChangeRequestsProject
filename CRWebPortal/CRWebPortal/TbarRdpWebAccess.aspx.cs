@@ -15,7 +15,7 @@ namespace CRWebPortal
             try
             {
 
-                TimeBoundAccessRequest tbar = BussinessLogic.IsAccessRequestIsValid(Session);
+                TimeBoundAccessRequest tbar = BussinessLogic.IsAccessRequestIsValid(Session,"SERVER");
 
                 if (tbar.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
@@ -29,6 +29,8 @@ namespace CRWebPortal
                 {
                     return;
                 }
+
+                LoadData(tbar);
             }
             catch (Exception ex)
             {
@@ -37,6 +39,11 @@ namespace CRWebPortal
                 Master.ErrorMessage = msg;
                 return;
             }
+        }
+
+        private void LoadData(TimeBoundAccessRequest tbar)
+        {
+            Session["TBAR"] = tbar;
         }
 
         protected void btnCloseWndw_Click(object sender, EventArgs e)
