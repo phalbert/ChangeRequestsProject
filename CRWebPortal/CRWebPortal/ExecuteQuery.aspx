@@ -20,7 +20,9 @@
 
                     <div class="alert alert-danger text-center">
                         <p>
-                            <asp:Label ID="lblErrorMsg" runat="server">Access Denied. Please Request for Time Bound Access Formally!!.</asp:Label>
+                            <asp:Label ID="lblErrorMsg" runat="server">
+                                Access Denied. Please Request for Time Bound Access Using this <a href="ApplyForTBPAccess.aspx"><b>LINK</b></a>.
+                            </asp:Label>
                         </p>
                     </div>
 

@@ -15,20 +15,14 @@
         <div class="row">
             <div class="col-lg-12 text-center" style="padding-top: 50px;">
                 <p>
-                    <a href="ExecuteQuery.aspx" class="btn btn-sq-lg btn-primary">
-                        <i class="fa fa-database fa-5x"></i>
-                        <br />
-                        USE A TBAR DB ACCESS
-                        <br>
-                        SESSION
-            </a>
-                    <a href="TbarRdpWebAccess.aspx" class="btn btn-sq-lg btn-success">
-                        <i class="fa fa-windows fa-5x"></i>
-                        <br />
-                        USE A TBAR RDP ACCESS
-                        <br>
-                        SESSION
-            </a>
+                    <a href="ExecuteQuery.aspx" class="btn btn-lg btn-primary">
+                        USE T.B.A.R FOR DB ACCESS
+                        
+                    </a>
+                    <a href="TbarRdpWebAccess.aspx" class="btn btn-lg btn-success">
+                        USE T.B.A.R FOR RDP ACCESS
+                        
+                    </a>
                 </p>
             </div>
         </div>

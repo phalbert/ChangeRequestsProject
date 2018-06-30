@@ -51,7 +51,32 @@
     <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>C:\Users\TEST1\source\repos\UIAutomatedTest\UIAutomatedTest\bin\Debug\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,6 +93,15 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="TestStack.White">
+      <HintPath>C:\Users\TEST1\source\repos\UIAutomatedTest\UIAutomatedTest\bin\Debug\TestStack.White.dll</HintPath>
+    </Reference>
+    <Reference Include="UIALogging">
+      <HintPath>C:\Users\TEST1\source\repos\UIAutomatedTest\UIAutomatedTest\bin\Debug\UIALogging.dll</HintPath>
+    </Reference>
+    <Reference Include="UIATestLibrary">
+      <HintPath>C:\Users\TEST1\source\repos\UIAutomatedTest\UIAutomatedTest\bin\Debug\UIATestLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -108,22 +142,51 @@
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Images\apple-icon.png" />
     <Content Include="Images\Bing-background-1920x1200.jpg" />
+    <Content Include="Images\cover.jpg" />
+    <Content Include="Images\faces\avatar.jpg" />
+    <Content Include="Images\faces\card-profile1-square.jpg" />
+    <Content Include="Images\faces\card-profile2-square.jpg" />
+    <Content Include="Images\faces\marc.jpg" />
+    <Content Include="Images\favicon.png" />
+    <Content Include="Images\mask.png" />
+    <Content Include="Images\new_logo.png" />
     <Content Include="Images\pegasus.png" />
+    <Content Include="Images\processing.gif" />
+    <Content Include="Images\sidebar-1.jpg" />
+    <Content Include="Images\sidebar-2.jpg" />
+    <Content Include="Images\sidebar-3.jpg" />
+    <Content Include="Images\sidebar-4.jpg" />
     <Content Include="SaveSystem.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.fr.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\core\bootstrap-material-design.min.js" />
+    <Content Include="Scripts\core\jquery.min.js" />
+    <Content Include="Scripts\core\popper.min.js" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery-loading.js" />
     <Content Include="Scripts\jquery.a-tools-1.4.1.js" />
     <Content Include="Scripts\jquery.asuggest.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\jquery.textcomplete.min.js" />
     <Content Include="Scripts\jquery.time-to.js" />
+    <Content Include="Scripts\material-dashboard.js" />
+    <Content Include="Scripts\material-dashboard.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\pace.min.js" />
+    <Content Include="Scripts\plugins\bootstrap-notify.js" />
+    <Content Include="Scripts\plugins\chartist.min.js" />
+    <Content Include="Scripts\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
     <Content Include="Styles\easy-autocomplete.min.css" />
     <Content Include="Styles\jquery-loading.min.css" />
     <Content Include="Styles\jquery.textcomplete.css" />
+    <Content Include="Styles\material-dashboard.css" />
+    <Content Include="Styles\material-dashboard.min.css" />
     <Content Include="Styles\nav-wizard.css" />
     <Content Include="Styles\pace-theme-bounce.css" />
     <Content Include="Styles\pace-theme.css" />
@@ -151,6 +214,8 @@
     </Content>
     <Content Include="System.Data.DataSet.datasource" />
     <None Include="packages.config" />
+    <Content Include="Styles\material-dashboard.css.map" />
+    <Content Include="Scripts\material-dashboard.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -209,6 +274,7 @@
     <Compile Include="AttachPostChangeTestsToCR.aspx.designer.cs">
       <DependentUpon>AttachPostChangeTestsToCR.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChatHub.cs" />
     <Compile Include="ChooseTbarMethod.aspx.cs">
       <DependentUpon>ChooseTbarMethod.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -230,6 +296,7 @@
     <Compile Include="SaveSystem.aspx.designer.cs">
       <DependentUpon>SaveSystem.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <Compile Include="TbarRdpWebAccess.aspx.cs">
       <DependentUpon>TbarRdpWebAccess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

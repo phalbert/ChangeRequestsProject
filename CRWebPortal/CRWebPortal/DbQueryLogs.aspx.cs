@@ -36,7 +36,8 @@ namespace CRWebPortal
         private void LoadData()
         {
             BussinessLogic.LoadDataIntoDropDown("GetSystemUsersForDropDown", ddUsers, Session["User"] as SystemUser);
-            //BussinessLogic.LoadDataIntoDropDown("GetCompaniesForDropDown", ddCompany, Session["User"] as SystemUser);
+            txtEndDate.Text = DateTime.Now.AddDays(1).ToString(Globals.DATE_TIME_FORMAT);
+            txtStartDate.Text = DateTime.Now.ToString(Globals.DATE_TIME_FORMAT);
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -56,9 +57,8 @@ namespace CRWebPortal
 
         private void SearchDB()
         {
-            string dateFormat = "yyyy-MM-dd HH:mm";
-            DateTime startDate = DateTime.ParseExact(txtStartDate.Text, dateFormat, CultureInfo.InvariantCulture);
-            DateTime endDate = DateTime.ParseExact(txtEndDate.Text, dateFormat, CultureInfo.InvariantCulture);
+            DateTime startDate = DateTime.ParseExact(txtStartDate.Text, Globals.DATE_TIME_FORMAT, CultureInfo.InvariantCulture);
+            DateTime endDate = DateTime.ParseExact(txtEndDate.Text, Globals.DATE_TIME_FORMAT, CultureInfo.InvariantCulture);
             string UserId = ddUsers.SelectedValue;
            
             object[] parameters = { UserId, startDate, endDate };

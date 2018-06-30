@@ -44,6 +44,7 @@
                                         placeholder="Enter text" />
                                 </div>
                             </div>
+                            <br />
                         </div>
                     </div>
 
@@ -61,6 +62,7 @@
                                         placeholder="Enter text" />
                                 </div>
                             </div>
+                            <br />
                             <div class="row">
                                 <div class="col-lg-12" style="padding-bottom: 10px">
                                     <label>
@@ -69,6 +71,7 @@
                                         placeholder="Enter text" />
                                 </div>
                             </div>
+                            <br />
                             <div class="row">
                                 <div class="col-lg-12" style="padding-bottom: 10px">
                                     <label>
@@ -98,6 +101,7 @@
                                         placeholder="Enter text" />
                                 </div>
                             </div>
+                            <br />
                             <div class="row">
                                 <div class="col-lg-12" style="padding-bottom: 10px">
                                     <label>
@@ -130,6 +134,7 @@
                                         placeholder="Enter text" />
                                 </div>
                             </div>
+                            <br />
                             <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
@@ -168,6 +173,7 @@
                                         placeholder="Enter text" />
                                 </div>
                             </div>
+                            <br />
                             <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
@@ -182,7 +188,7 @@
                                         placeholder="Enter text" />
                                 </div>
                             </div>
-
+                            <br />
                             <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>

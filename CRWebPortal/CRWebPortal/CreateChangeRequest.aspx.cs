@@ -45,6 +45,7 @@ namespace CRWebPortal
             txtReqPhone.Enabled = false;
             txtReqEmail.Enabled = false;
             txtImplementationStartDate.Text = DateTime.Now.ToString(Globals.DATE_TIME_FORMAT);
+            txtImplementationEndDateTime.Text = DateTime.Now.AddHours(2).ToString(Globals.DATE_TIME_FORMAT);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

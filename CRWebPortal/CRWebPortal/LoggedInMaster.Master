@@ -11,9 +11,9 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="Styles/nav-wizard.css" rel="stylesheet" />
     <link href="Styles/Site.css" rel="Stylesheet" />
+    <link href="Styles/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link href="Styles/bootstrap-datetimepicker.min.css" rel="Stylesheet" />
-    <link href="Styles/bootstrap-datetimepicker.min.css" rel="Stylesheet" />
-    <link href="Styles/jquery-loading.min.css" rel="Stylesheet" />
     <asp:ContentPlaceHolder ID="headContentPlaceHolder" runat="server" />
 </head>
 <body>
@@ -87,12 +87,22 @@
         </div>
     </form>
 </body>
-<script type="text/jscript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/jscript" src="Scripts/bootstrap-datetimepicker.js"></script>
-<script type="text/jscript" src="Scripts/bootstrap-datetimepicker.js"></script>
+<!--   Core JS Files   -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="Scripts/jquery.signalR-2.2.2.min.js"></script>
 <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script type="text/jscript" src="Scripts/jquery-loading.js"></script>
+<script src="Scripts/core/popper.min.js" type="text/javascript"></script>
+<script src="Scripts/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+<script type="text/jscript" src="Scripts/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!-- Chartist JS -->
+<script type="text/jscript" src="Scripts/plugins/chartist.min.js"></script>
+<!--  Notifications Plugin    -->
+<script type="text/jscript" src="Scripts/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="Scripts/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
+<script type="text/jscript" src="Scripts/bootstrap-datetimepicker.js"></script>
+
 <script type="text/javascript">
 
     $('.form_datetime').datetimepicker({
@@ -105,12 +115,6 @@
         forceParse: 0,
         showMeridian: 1
     });
-
-    $('.loading')
-        .loading({
-            circles: 3,
-            overlay: true
-        });
 
     console.log("Ready");
 
