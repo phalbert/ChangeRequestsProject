@@ -128,10 +128,117 @@
     <Content Include="Connected Services\CRSystemAPI\CRWebPortal.CRSystemAPI.TimeBoundAccessRequest.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\CRSystemAPI\Service1.disco" />
     <None Include="Connected Services\CRSystemAPI\configuration91.svcinfo" />
     <None Include="Connected Services\CRSystemAPI\configuration.svcinfo" />
     <None Include="Connected Services\CRSystemAPI\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SharedCommonsAPI\configuration91.svcinfo" />
+    <None Include="Connected Services\SharedCommonsAPI\configuration.svcinfo" />
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.AddCommasToMoneyStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.ByteArrayToStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.CommonResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.DecryptStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.DecryptTextResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.EncryptStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.EncryptTextResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.FormatTranAmountStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.FormatUgPhoneNumberResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GenearetHMACSha256HashResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GenerateMD5HashResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GeneratePasswordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GeneratePinResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GenerateRandomStringOfXlengthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GenerateSha256HashResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GenerateUniqueIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GetAllowedImageExtensionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GetBoolFromStringDefaultsToFalseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GetDigitalSignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GetIntFromStringDefaultsToZeroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.GetUgPhoneNetworkCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.IsNumericAndAboveZeroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.IsNumericResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.IsValidBooleanResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.IsValidEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.IsValidUgPhoneNumberResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.RemoveCommasFromMoneyStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.StartServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.StopServiceAfterXminutesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.StopServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.VerifyDigitalSignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.AddUserToGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.RemoveUserFromGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SharedCommonsAPI\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -164,6 +271,28 @@
     <Content Include="Scripts\core\bootstrap-material-design.min.js" />
     <Content Include="Scripts\core\jquery.min.js" />
     <Content Include="Scripts\core\popper.min.js" />
+    <None Include="Connected Services\CRSystemAPI\Service11.wsdl" />
+    <None Include="Connected Services\CRSystemAPI\Service16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service161.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service162.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service163.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service164.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service165.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SharedCommonsAPI\Service.wsdl" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
@@ -181,6 +310,7 @@
     <Content Include="Scripts\plugins\bootstrap-notify.js" />
     <Content Include="Scripts\plugins\chartist.min.js" />
     <Content Include="Scripts\plugins\perfect-scrollbar.jquery.min.js" />
+    <Content Include="Scripts\progressbar.min.js" />
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
     <Content Include="Styles\easy-autocomplete.min.css" />
     <Content Include="Styles\jquery-loading.min.css" />
@@ -216,6 +346,7 @@
     <None Include="packages.config" />
     <Content Include="Styles\material-dashboard.css.map" />
     <Content Include="Scripts\material-dashboard.js.map" />
+    <Content Include="Scripts\progressbar.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -282,6 +413,12 @@
     <Compile Include="ChooseTbarMethod.aspx.designer.cs">
       <DependentUpon>ChooseTbarMethod.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\SharedCommonsAPI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ConversionResult.cs" />
     <Compile Include="DbQueryLogs.aspx.cs">
       <DependentUpon>DbQueryLogs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -289,6 +426,7 @@
     <Compile Include="DbQueryLogs.aspx.designer.cs">
       <DependentUpon>DbQueryLogs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DDProcessHub.cs" />
     <Compile Include="SaveSystem.aspx.cs">
       <DependentUpon>SaveSystem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -296,6 +434,7 @@
     <Compile Include="SaveSystem.aspx.designer.cs">
       <DependentUpon>SaveSystem.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SimpleDatabaseHandler.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="TbarRdpWebAccess.aspx.cs">
       <DependentUpon>TbarRdpWebAccess.aspx</DependentUpon>
@@ -446,25 +585,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplyForTBPAccess.aspx" />
-    <None Include="Connected Services\CRSystemAPI\Service1.wsdl" />
-    <None Include="Connected Services\CRSystemAPI\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service13.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service14.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service15.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="font-awesome\fonts\fontawesome-webfont.eot" />
     <None Include="font-awesome\fonts\fontawesome-webfont.ttf" />
     <None Include="font-awesome\fonts\fontawesome-webfont.woff" />
@@ -502,6 +622,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\CRSystemAPI\" />
+    <WCFMetadataStorage Include="Connected Services\SharedCommonsAPI\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,1380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://pegasus.co.ug/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://pegasus.co.ug/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://pegasus.co.ug/">
+      <s:element name="GetAllowedImageExtensions">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllowedImageExtensionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllowedImageExtensionsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FormatTranAmountString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatTranAmountStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FormatTranAmountStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCommasToMoneyString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="money" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCommasToMoneyStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddCommasToMoneyStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatUgPhoneNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatUgPhoneNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FormatUgPhoneNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveCommasFromMoneyString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="money" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveCommasFromMoneyStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveCommasFromMoneyStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidUgPhoneNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidUgPhoneNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsValidUgPhoneNumberResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUgPhoneNetworkCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUgPhoneNetworkCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUgPhoneNetworkCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartServiceResult" type="tns:CommonResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CommonResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StatusCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="returnObj" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StopService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StopServiceResult" type="tns:CommonResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopServiceAfterXminutes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="delayInMinutes" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopServiceAfterXminutesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StopServiceAfterXminutesResult" type="tns:CommonResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserToGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="domain" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserToGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUserToGroupResult" type="tns:CommonResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveUserFromGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="domain" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveUserFromGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveUserFromGroupResult" type="tns:CommonResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenearetHMACSha256Hash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="secretPresharedKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenearetHMACSha256HashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenearetHMACSha256HashResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDigitalSignature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataToSign" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathToPrivateKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDigitalSignatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDigitalSignatureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plainText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathToPrivateKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptTextResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plainText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PathToPrivateKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DecryptTextResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateRandomStringOfXlength">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="length" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateRandomStringOfXlengthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateRandomStringOfXlengthResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateSha256Hash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateSha256HashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateSha256HashResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateUniqueId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LeadString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateUniqueIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateUniqueIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateMD5Hash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateMD5HashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateMD5HashResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneratePassword">
+        <s:complexType />
+      </s:element>
+      <s:element name="GeneratePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeneratePasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneratePin">
+        <s:complexType />
+      </s:element>
+      <s:element name="GeneratePinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeneratePinResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsNumeric">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsNumericResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsNumericResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsNumericAndAboveZero">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsNumericAndAboveZeroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsNumericAndAboveZeroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidBoolean">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidBooleanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsValidBooleanResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsValidEmailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoolFromStringDefaultsToFalse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoolFromStringDefaultsToFalseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetBoolFromStringDefaultsToFalseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIntFromStringDefaultsToZero">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIntFromStringDefaultsToZeroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetIntFromStringDefaultsToZeroResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyDigitalSignature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="digitalSignature" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pathToPublicKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyDigitalSignatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerifyDigitalSignatureResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DecryptStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plainText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ByteArrayToString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ba" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ByteArrayToStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ByteArrayToStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllowedImageExtensionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllowedImageExtensions" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedImageExtensionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllowedImageExtensionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="FormatTranAmountStringSoapIn">
+    <wsdl:part name="parameters" element="tns:FormatTranAmountString" />
+  </wsdl:message>
+  <wsdl:message name="FormatTranAmountStringSoapOut">
+    <wsdl:part name="parameters" element="tns:FormatTranAmountStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCommasToMoneyStringSoapIn">
+    <wsdl:part name="parameters" element="tns:AddCommasToMoneyString" />
+  </wsdl:message>
+  <wsdl:message name="AddCommasToMoneyStringSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCommasToMoneyStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="FormatUgPhoneNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:FormatUgPhoneNumber" />
+  </wsdl:message>
+  <wsdl:message name="FormatUgPhoneNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:FormatUgPhoneNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveCommasFromMoneyStringSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveCommasFromMoneyString" />
+  </wsdl:message>
+  <wsdl:message name="RemoveCommasFromMoneyStringSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveCommasFromMoneyStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidUgPhoneNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:IsValidUgPhoneNumber" />
+  </wsdl:message>
+  <wsdl:message name="IsValidUgPhoneNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:IsValidUgPhoneNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUgPhoneNetworkCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUgPhoneNetworkCode" />
+  </wsdl:message>
+  <wsdl:message name="GetUgPhoneNetworkCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUgPhoneNetworkCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:StartService" />
+  </wsdl:message>
+  <wsdl:message name="StartServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:StartServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="StopServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:StopService" />
+  </wsdl:message>
+  <wsdl:message name="StopServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:StopServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="StopServiceAfterXminutesSoapIn">
+    <wsdl:part name="parameters" element="tns:StopServiceAfterXminutes" />
+  </wsdl:message>
+  <wsdl:message name="StopServiceAfterXminutesSoapOut">
+    <wsdl:part name="parameters" element="tns:StopServiceAfterXminutesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserToGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUserToGroup" />
+  </wsdl:message>
+  <wsdl:message name="AddUserToGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserToGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserFromGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveUserFromGroup" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserFromGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveUserFromGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenearetHMACSha256HashSoapIn">
+    <wsdl:part name="parameters" element="tns:GenearetHMACSha256Hash" />
+  </wsdl:message>
+  <wsdl:message name="GenearetHMACSha256HashSoapOut">
+    <wsdl:part name="parameters" element="tns:GenearetHMACSha256HashResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDigitalSignatureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDigitalSignature" />
+  </wsdl:message>
+  <wsdl:message name="GetDigitalSignatureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDigitalSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncryptTextSoapIn">
+    <wsdl:part name="parameters" element="tns:EncryptText" />
+  </wsdl:message>
+  <wsdl:message name="EncryptTextSoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="DecryptTextSoapIn">
+    <wsdl:part name="parameters" element="tns:DecryptText" />
+  </wsdl:message>
+  <wsdl:message name="DecryptTextSoapOut">
+    <wsdl:part name="parameters" element="tns:DecryptTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateRandomStringOfXlengthSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateRandomStringOfXlength" />
+  </wsdl:message>
+  <wsdl:message name="GenerateRandomStringOfXlengthSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateRandomStringOfXlengthResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateSha256HashSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateSha256Hash" />
+  </wsdl:message>
+  <wsdl:message name="GenerateSha256HashSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateSha256HashResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateUniqueIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateUniqueId" />
+  </wsdl:message>
+  <wsdl:message name="GenerateUniqueIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateUniqueIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateMD5HashSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateMD5Hash" />
+  </wsdl:message>
+  <wsdl:message name="GenerateMD5HashSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateMD5HashResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:GeneratePassword" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:GeneratePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePinSoapIn">
+    <wsdl:part name="parameters" element="tns:GeneratePin" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePinSoapOut">
+    <wsdl:part name="parameters" element="tns:GeneratePinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsNumericSoapIn">
+    <wsdl:part name="parameters" element="tns:IsNumeric" />
+  </wsdl:message>
+  <wsdl:message name="IsNumericSoapOut">
+    <wsdl:part name="parameters" element="tns:IsNumericResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsNumericAndAboveZeroSoapIn">
+    <wsdl:part name="parameters" element="tns:IsNumericAndAboveZero" />
+  </wsdl:message>
+  <wsdl:message name="IsNumericAndAboveZeroSoapOut">
+    <wsdl:part name="parameters" element="tns:IsNumericAndAboveZeroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidBooleanSoapIn">
+    <wsdl:part name="parameters" element="tns:IsValidBoolean" />
+  </wsdl:message>
+  <wsdl:message name="IsValidBooleanSoapOut">
+    <wsdl:part name="parameters" element="tns:IsValidBooleanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:IsValidEmail" />
+  </wsdl:message>
+  <wsdl:message name="IsValidEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:IsValidEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoolFromStringDefaultsToFalseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoolFromStringDefaultsToFalse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoolFromStringDefaultsToFalseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoolFromStringDefaultsToFalseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIntFromStringDefaultsToZeroSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIntFromStringDefaultsToZero" />
+  </wsdl:message>
+  <wsdl:message name="GetIntFromStringDefaultsToZeroSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIntFromStringDefaultsToZeroResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifyDigitalSignatureSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifyDigitalSignature" />
+  </wsdl:message>
+  <wsdl:message name="VerifyDigitalSignatureSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifyDigitalSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="DecryptStringSoapIn">
+    <wsdl:part name="parameters" element="tns:DecryptString" />
+  </wsdl:message>
+  <wsdl:message name="DecryptStringSoapOut">
+    <wsdl:part name="parameters" element="tns:DecryptStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncryptStringSoapIn">
+    <wsdl:part name="parameters" element="tns:EncryptString" />
+  </wsdl:message>
+  <wsdl:message name="EncryptStringSoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="ByteArrayToStringSoapIn">
+    <wsdl:part name="parameters" element="tns:ByteArrayToString" />
+  </wsdl:message>
+  <wsdl:message name="ByteArrayToStringSoapOut">
+    <wsdl:part name="parameters" element="tns:ByteArrayToStringResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SharedCommonsAPISoap">
+    <wsdl:operation name="GetAllowedImageExtensions">
+      <wsdl:input message="tns:GetAllowedImageExtensionsSoapIn" />
+      <wsdl:output message="tns:GetAllowedImageExtensionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FormatTranAmountString">
+      <wsdl:input message="tns:FormatTranAmountStringSoapIn" />
+      <wsdl:output message="tns:FormatTranAmountStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCommasToMoneyString">
+      <wsdl:input message="tns:AddCommasToMoneyStringSoapIn" />
+      <wsdl:output message="tns:AddCommasToMoneyStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FormatUgPhoneNumber">
+      <wsdl:input message="tns:FormatUgPhoneNumberSoapIn" />
+      <wsdl:output message="tns:FormatUgPhoneNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCommasFromMoneyString">
+      <wsdl:input message="tns:RemoveCommasFromMoneyStringSoapIn" />
+      <wsdl:output message="tns:RemoveCommasFromMoneyStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidUgPhoneNumber">
+      <wsdl:input message="tns:IsValidUgPhoneNumberSoapIn" />
+      <wsdl:output message="tns:IsValidUgPhoneNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUgPhoneNetworkCode">
+      <wsdl:input message="tns:GetUgPhoneNetworkCodeSoapIn" />
+      <wsdl:output message="tns:GetUgPhoneNetworkCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartService">
+      <wsdl:input message="tns:StartServiceSoapIn" />
+      <wsdl:output message="tns:StartServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopService">
+      <wsdl:input message="tns:StopServiceSoapIn" />
+      <wsdl:output message="tns:StopServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopServiceAfterXminutes">
+      <wsdl:input message="tns:StopServiceAfterXminutesSoapIn" />
+      <wsdl:output message="tns:StopServiceAfterXminutesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToGroup">
+      <wsdl:input message="tns:AddUserToGroupSoapIn" />
+      <wsdl:output message="tns:AddUserToGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromGroup">
+      <wsdl:input message="tns:RemoveUserFromGroupSoapIn" />
+      <wsdl:output message="tns:RemoveUserFromGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenearetHMACSha256Hash">
+      <wsdl:input message="tns:GenearetHMACSha256HashSoapIn" />
+      <wsdl:output message="tns:GenearetHMACSha256HashSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalSignature">
+      <wsdl:input message="tns:GetDigitalSignatureSoapIn" />
+      <wsdl:output message="tns:GetDigitalSignatureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncryptText">
+      <wsdl:input message="tns:EncryptTextSoapIn" />
+      <wsdl:output message="tns:EncryptTextSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DecryptText">
+      <wsdl:input message="tns:DecryptTextSoapIn" />
+      <wsdl:output message="tns:DecryptTextSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateRandomStringOfXlength">
+      <wsdl:input message="tns:GenerateRandomStringOfXlengthSoapIn" />
+      <wsdl:output message="tns:GenerateRandomStringOfXlengthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateSha256Hash">
+      <wsdl:input message="tns:GenerateSha256HashSoapIn" />
+      <wsdl:output message="tns:GenerateSha256HashSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateUniqueId">
+      <wsdl:input message="tns:GenerateUniqueIdSoapIn" />
+      <wsdl:output message="tns:GenerateUniqueIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateMD5Hash">
+      <wsdl:input message="tns:GenerateMD5HashSoapIn" />
+      <wsdl:output message="tns:GenerateMD5HashSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePassword">
+      <wsdl:input message="tns:GeneratePasswordSoapIn" />
+      <wsdl:output message="tns:GeneratePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePin">
+      <wsdl:input message="tns:GeneratePinSoapIn" />
+      <wsdl:output message="tns:GeneratePinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsNumeric">
+      <wsdl:input message="tns:IsNumericSoapIn" />
+      <wsdl:output message="tns:IsNumericSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsNumericAndAboveZero">
+      <wsdl:input message="tns:IsNumericAndAboveZeroSoapIn" />
+      <wsdl:output message="tns:IsNumericAndAboveZeroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidBoolean">
+      <wsdl:input message="tns:IsValidBooleanSoapIn" />
+      <wsdl:output message="tns:IsValidBooleanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidEmail">
+      <wsdl:input message="tns:IsValidEmailSoapIn" />
+      <wsdl:output message="tns:IsValidEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoolFromStringDefaultsToFalse">
+      <wsdl:input message="tns:GetBoolFromStringDefaultsToFalseSoapIn" />
+      <wsdl:output message="tns:GetBoolFromStringDefaultsToFalseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIntFromStringDefaultsToZero">
+      <wsdl:input message="tns:GetIntFromStringDefaultsToZeroSoapIn" />
+      <wsdl:output message="tns:GetIntFromStringDefaultsToZeroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyDigitalSignature">
+      <wsdl:input message="tns:VerifyDigitalSignatureSoapIn" />
+      <wsdl:output message="tns:VerifyDigitalSignatureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DecryptString">
+      <wsdl:input message="tns:DecryptStringSoapIn" />
+      <wsdl:output message="tns:DecryptStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncryptString">
+      <wsdl:input message="tns:EncryptStringSoapIn" />
+      <wsdl:output message="tns:EncryptStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ByteArrayToString">
+      <wsdl:input message="tns:ByteArrayToStringSoapIn" />
+      <wsdl:output message="tns:ByteArrayToStringSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SharedCommonsAPISoap" type="tns:SharedCommonsAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllowedImageExtensions">
+      <soap:operation soapAction="http://pegasus.co.ug/GetAllowedImageExtensions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormatTranAmountString">
+      <soap:operation soapAction="http://pegasus.co.ug/FormatTranAmountString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCommasToMoneyString">
+      <soap:operation soapAction="http://pegasus.co.ug/AddCommasToMoneyString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormatUgPhoneNumber">
+      <soap:operation soapAction="http://pegasus.co.ug/FormatUgPhoneNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCommasFromMoneyString">
+      <soap:operation soapAction="http://pegasus.co.ug/RemoveCommasFromMoneyString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidUgPhoneNumber">
+      <soap:operation soapAction="http://pegasus.co.ug/IsValidUgPhoneNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUgPhoneNetworkCode">
+      <soap:operation soapAction="http://pegasus.co.ug/GetUgPhoneNetworkCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartService">
+      <soap:operation soapAction="http://pegasus.co.ug/StartService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopService">
+      <soap:operation soapAction="http://pegasus.co.ug/StopService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopServiceAfterXminutes">
+      <soap:operation soapAction="http://pegasus.co.ug/StopServiceAfterXminutes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToGroup">
+      <soap:operation soapAction="http://pegasus.co.ug/AddUserToGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromGroup">
+      <soap:operation soapAction="http://pegasus.co.ug/RemoveUserFromGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenearetHMACSha256Hash">
+      <soap:operation soapAction="http://pegasus.co.ug/GenearetHMACSha256Hash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalSignature">
+      <soap:operation soapAction="http://pegasus.co.ug/GetDigitalSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptText">
+      <soap:operation soapAction="http://pegasus.co.ug/EncryptText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecryptText">
+      <soap:operation soapAction="http://pegasus.co.ug/DecryptText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateRandomStringOfXlength">
+      <soap:operation soapAction="http://pegasus.co.ug/GenerateRandomStringOfXlength" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateSha256Hash">
+      <soap:operation soapAction="http://pegasus.co.ug/GenerateSha256Hash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateUniqueId">
+      <soap:operation soapAction="http://pegasus.co.ug/GenerateUniqueId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateMD5Hash">
+      <soap:operation soapAction="http://pegasus.co.ug/GenerateMD5Hash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePassword">
+      <soap:operation soapAction="http://pegasus.co.ug/GeneratePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePin">
+      <soap:operation soapAction="http://pegasus.co.ug/GeneratePin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsNumeric">
+      <soap:operation soapAction="http://pegasus.co.ug/IsNumeric" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsNumericAndAboveZero">
+      <soap:operation soapAction="http://pegasus.co.ug/IsNumericAndAboveZero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidBoolean">
+      <soap:operation soapAction="http://pegasus.co.ug/IsValidBoolean" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidEmail">
+      <soap:operation soapAction="http://pegasus.co.ug/IsValidEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoolFromStringDefaultsToFalse">
+      <soap:operation soapAction="http://pegasus.co.ug/GetBoolFromStringDefaultsToFalse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIntFromStringDefaultsToZero">
+      <soap:operation soapAction="http://pegasus.co.ug/GetIntFromStringDefaultsToZero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyDigitalSignature">
+      <soap:operation soapAction="http://pegasus.co.ug/VerifyDigitalSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecryptString">
+      <soap:operation soapAction="http://pegasus.co.ug/DecryptString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptString">
+      <soap:operation soapAction="http://pegasus.co.ug/EncryptString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ByteArrayToString">
+      <soap:operation soapAction="http://pegasus.co.ug/ByteArrayToString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SharedCommonsAPISoap12" type="tns:SharedCommonsAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllowedImageExtensions">
+      <soap12:operation soapAction="http://pegasus.co.ug/GetAllowedImageExtensions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormatTranAmountString">
+      <soap12:operation soapAction="http://pegasus.co.ug/FormatTranAmountString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCommasToMoneyString">
+      <soap12:operation soapAction="http://pegasus.co.ug/AddCommasToMoneyString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FormatUgPhoneNumber">
+      <soap12:operation soapAction="http://pegasus.co.ug/FormatUgPhoneNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCommasFromMoneyString">
+      <soap12:operation soapAction="http://pegasus.co.ug/RemoveCommasFromMoneyString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidUgPhoneNumber">
+      <soap12:operation soapAction="http://pegasus.co.ug/IsValidUgPhoneNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUgPhoneNetworkCode">
+      <soap12:operation soapAction="http://pegasus.co.ug/GetUgPhoneNetworkCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartService">
+      <soap12:operation soapAction="http://pegasus.co.ug/StartService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopService">
+      <soap12:operation soapAction="http://pegasus.co.ug/StopService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopServiceAfterXminutes">
+      <soap12:operation soapAction="http://pegasus.co.ug/StopServiceAfterXminutes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToGroup">
+      <soap12:operation soapAction="http://pegasus.co.ug/AddUserToGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromGroup">
+      <soap12:operation soapAction="http://pegasus.co.ug/RemoveUserFromGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenearetHMACSha256Hash">
+      <soap12:operation soapAction="http://pegasus.co.ug/GenearetHMACSha256Hash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalSignature">
+      <soap12:operation soapAction="http://pegasus.co.ug/GetDigitalSignature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptText">
+      <soap12:operation soapAction="http://pegasus.co.ug/EncryptText" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecryptText">
+      <soap12:operation soapAction="http://pegasus.co.ug/DecryptText" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateRandomStringOfXlength">
+      <soap12:operation soapAction="http://pegasus.co.ug/GenerateRandomStringOfXlength" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateSha256Hash">
+      <soap12:operation soapAction="http://pegasus.co.ug/GenerateSha256Hash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateUniqueId">
+      <soap12:operation soapAction="http://pegasus.co.ug/GenerateUniqueId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateMD5Hash">
+      <soap12:operation soapAction="http://pegasus.co.ug/GenerateMD5Hash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePassword">
+      <soap12:operation soapAction="http://pegasus.co.ug/GeneratePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePin">
+      <soap12:operation soapAction="http://pegasus.co.ug/GeneratePin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsNumeric">
+      <soap12:operation soapAction="http://pegasus.co.ug/IsNumeric" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsNumericAndAboveZero">
+      <soap12:operation soapAction="http://pegasus.co.ug/IsNumericAndAboveZero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidBoolean">
+      <soap12:operation soapAction="http://pegasus.co.ug/IsValidBoolean" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidEmail">
+      <soap12:operation soapAction="http://pegasus.co.ug/IsValidEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoolFromStringDefaultsToFalse">
+      <soap12:operation soapAction="http://pegasus.co.ug/GetBoolFromStringDefaultsToFalse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIntFromStringDefaultsToZero">
+      <soap12:operation soapAction="http://pegasus.co.ug/GetIntFromStringDefaultsToZero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyDigitalSignature">
+      <soap12:operation soapAction="http://pegasus.co.ug/VerifyDigitalSignature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecryptString">
+      <soap12:operation soapAction="http://pegasus.co.ug/DecryptString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptString">
+      <soap12:operation soapAction="http://pegasus.co.ug/EncryptString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ByteArrayToString">
+      <soap12:operation soapAction="http://pegasus.co.ug/ByteArrayToString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SharedCommonsAPI">
+    <wsdl:port name="SharedCommonsAPISoap" binding="tns:SharedCommonsAPISoap">
+      <soap:address location="http://localhost:8020/SharedCommonsAPI/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SharedCommonsAPISoap12" binding="tns:SharedCommonsAPISoap12">
+      <soap12:address location="http://localhost:8020/SharedCommonsAPI/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

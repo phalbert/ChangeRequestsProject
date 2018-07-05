@@ -31,6 +31,9 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public string RoleCode { get; set; }
 
-      
+        [Property(Length = 50)]
+        public string DomainAccountUsername { get; set; }
+
+
     }
 }

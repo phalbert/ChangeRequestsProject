@@ -14,49 +14,68 @@
 </head>
 <body cz-shortcut-listen="true" class="content-wrapper">
     <form runat="server">
-        <div class="preloader" style="display: none;">
-            <div class="cssload-speeding-wheel"></div>
-        </div>
-        <div id="wrapper">
 
-            <section id="wrapper" class="login-register">
-                <div class="login-box login-sidebar">
-                    <div class="white-box">
+        <div style="width: 30%; margin: 0 auto;">
+            <div id="result" style="font-family: Tahoma; font-size: 0.9em; color: darkgray; margin-top: 230px; padding-bottom: 5px">
+                Initializing and Preparing...
+            </div>
 
-                        <div class="form-horizontal">
-                            <a href="javascript:void(0)" class="text-center db">
-                                <img width="300" height="300" src="Images/pegasus.png" alt="Home"><br>
-                            </a>
-
-
-                            <div class="form-group">
-                                <label>Username</label>
-                                <asp:TextBox ID="txtUsername" placeholder="Enter Your Username" Style="border-color: #428BCA" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-
-                            <div class="form-group text-center m-t-20">
-                                <div class="col-xs-12">
-                                    <asp:Button ID="btnSubmit" runat="server" Text="Log In" class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light"></asp:Button>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <blockquote>
-                                        <small>
-                                            <asp:Label ID="lblMsg" runat="server">Use Your Birth Certificate No. / KCPE Index No (as used in KCSE Exam Registration) as your Initial Password</asp:Label>
-                                        </small>
-                                    </blockquote>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div id="progressbar" style="width: 300px; height: 15px"></div>
+            <br />
         </div>
         <!-- jQuery -->
-        <script type="text/jscript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="Scripts/jquery.signalR-2.2.2.min.js"></script>
+        <script src="signalr/hubs"></script>
+
         <!-- Bootstrap Core JavaScript -->
         <script type="text/jscript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
         <!-- plugin -->
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                // initialize progress bar
+                //$("#progressbar").progressbar({ value: 0 });
+
+                // initialize the connection to the server
+                var progressNotifier = $.connection.DDProcess;
+
+                // client-side sendMessage function that will be called from the server-side
+                progressNotifier.client.sendMessage = function (message) {
+                    // update progress
+                    UpdateProgress(message);
+                };
+
+                $.connection.hub.qs = { "TbarId": "TBPA-636660567289641609" };
+                // establish the connection to the server and start server-side operation
+                $.connection.hub.start().done(function () {
+                    // call the method CallLongOperation defined in the Hub
+                    progressNotifier.server.callLongOperation();
+                });
+            });
+
+            function UpdateProgress(message) {
+                // get result div
+                var result = $("#result");
+                // set message
+                result.html(message);
+
+                if (message.toLowerCase().indexOf("done") >= 0) {
+                    var arr = message.split(':');
+                    var imageURL = arr[1];
+                    result.html(imageURL);
+
+                    var img = document.createElement("img");
+                    img.src = imageURL;
+                    document.body.appendChild(img);
+                }
+
+            }
+
+        </script>
     </form>
 </body>
 </html>

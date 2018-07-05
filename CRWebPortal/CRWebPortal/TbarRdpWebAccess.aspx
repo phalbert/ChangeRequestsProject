@@ -41,22 +41,34 @@
                                 <div class="col-lg-12">
                                     <label>TIME LEFT</label>
                                     <div class="count-down-timer"></div>
-                                <p class="help-block"></p>
+                                    <p class="help-block"></p>
                                 </div>
                             </div>
                             <div class="container" id="processingDiv" runat="server">
-                                <div class="row"><label><h4>AWAITING START RDP SESSION</h4></label></div><br />
-                                <div class="row text-center"><img id="imgLoading" src="Images/processing.gif" alt="" /><p class="help-block"></p></div>
-
-                            </div>
-                            <div class="row" id="imgDiv" runat="server" visible="false">
-                                <p class="help-block">SEE BELOW TV DETAILS</p>
-                                <asp:Image ID="tvImageDesktop" class="img-fluid" Height="500px" Width="500px" runat="server" />
-                                <p class="help-block"></p>
+                                <div class="row">
+                                    <h4 style="color: black">
+                                        <asp:Label ID="lblSystemState" runat="server">AWAITING START RDP SESSION</asp:Label>
+                                    </h4>
+                                </div>
+                                <div class="row">
+                                    <h4 style="color: black">
+                                        <b>SYSTEM NAME :</b> <asp:Label ID="lblSystemName" runat="server">AWAITING START RDP SESSION</asp:Label>
+                                    </h4>
+                                </div>
+                                <div class="row">
+                                    <h4 style="color: black">
+                                       <b>COMPUTER ID :</b> <asp:Label ID="lblUsername" runat="server">AWAITING START RDP SESSION</asp:Label>
+                                    </h4>
+                                </div>
+                                <div class="row">
+                                    <h4 style="color: black">
+                                        <b>PASSWORD:</b> <asp:Label ID="lblPassword" runat="server">AWAITING START RDP SESSION</asp:Label>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer bg-default text-center">
-                            <asp:Button ID="btnCloseWndw" Text="Close RDP Session" CssClass="btn btn-md btn-danger btnCloseWndw" OnClick="btnCloseWndw_Click"  runat="server" />
+                            <asp:Button ID="btnCloseWndw" Text="Close RDP Session" CssClass="btn btn-md btn-danger btnCloseWndw" OnClick="btnCloseWndw_Click" runat="server" />
                             <asp:Button ID="btnOpenWndw" Text="Start RDP Session" CssClass="btn btn-md btn-success btnOpenWndw" OnClick="btnOpenWndw_Click" runat="server" />
                         </div>
                     </div>
@@ -65,88 +77,37 @@
                 <asp:View runat="server" ID="PollingView">
                     <script type="text/javascript">
 
-                        $(document).ready(function () {
-                            SetTime();
-                            setTimeout(CallHandler, 10000);
-                        });
+                        $(function () {
 
-                        function CallHandler() {
+                            // Reference the auto-generated proxy for the hub.
+                            var progress = $.connection.progressHub;
+                            console.log(progress);
 
-                            var obj = {
-                                'VendorCode': $('.txtVendorCode').val(),
-                                'Pswd': $('.txtPassword').val(),
-                                'MerchantId': $('.txtMerchantId').val(),
-                                'TranId': $('.txtVendorId').val(),
-                                'ReturnUrl': $('.txtReturnUrl').val()
-                            }
+                            // Create a function that the hub can call back to display messages.
+                            progress.client.addProgress = function (message, percentage) {
+                                //at this point server side had send message and percentage back to the client
+                                //and then we handle progress bar any way we want it
 
-                            $.ajax({
-                                url: "PollRequestHandler.ashx",
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                data: obj,
-                                responseType: "json",
-                                success: OnComplete,
-                                error: OnFail
+                                //Using a function in Helper.js file we show modal and display text and percentage
+                                $('#StatusDesc').text(message);
+
+
+                                //closing modal when the progress gets to 100%
+                                if (percentage == "100%") {
+                                    ProgressBarModal();
+                                }
+                            };
+
+                            //Before doing anything with our hub we must start it
+                            $.connection.hub.start().done(function () {
+
+                                //getting the connection ID in case you want to display progress to the specific user
+                                //that started the process in the first place.
+                                var connectionId = $.connection.hub.id;
+                                console.log(connectionId);
                             });
 
-                            return false;
-                        }
-
-                        function ConfirmCancel() {
-                            if (confirm('Are you sure that you want To Cancel this Ongoing Transaction?') == true) {
-                                return true;
-                            }
-                            return false;
-                        }
-
-                        function SetTime() {
-                            var dt = new Date();
-                            var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-                            $('#lastQueryTime').text(time);
-                            $('#lastQueryTime').css('color', '#449D44');
-                        }
-
-                        function OnComplete(Status) {
-
-                            var StatusCode = Status.StatusCode;
-                            var StatusDesc = Status.StatusDesc;
-                            var ReturnUrl = Status.ReturnUrl;
-
-                            //success
-                            if (StatusCode == "0") {
-                                SetTime();
-                                $('#StatusDesc').text('Transaction was Successfull');
-                                changeClass('alert-info', 'alert-success');
-                                window.location = ReturnUrl;
-                            }
-                            //pending
-                            else if (StatusCode == "122" || StatusCode == "1000") {
-                                SetTime();
-                                $('#StatusDesc').text(StatusDesc);
-                                changeClass('alert-info', 'alert-info');
-                                setTimeout(CallHandler, 3000);
-                            }
-                            //failed
-                            else {
-                                SetTime();
-                                $('#StatusDesc').text("Transaction Failed: " + StatusDesc);
-                                changeClass('alert-info', 'alert-danger');
-                                $("#imgLoading").hide();
-                                window.location = ReturnUrl;
-                            }
-                        }
-
-                        function OnFail(result) {
-                            SetTime();
-                            $('#StatusDesc').text('Request Failed. Check your Internet Connection. Retrying...');
-                            changeClass('alert-info', 'alert-danger');
-                            setTimeout(CallHandler, 3000);
-                        }
-
-                        function changeClass(oldClassName, newClassName) {
-                            $("#StatusDesc." + oldClassName).removeClass(oldClassName).addClass(newClassName);
-                        }
+                        });
                     </script>
                     <div class="row text-center w-100" style="padding-top: 50px;">
                         <div class="col-lg-2"></div>
@@ -160,19 +121,12 @@
                                 </div>
                                 <div class="card-body bg-default text-black text-center">
                                     <h4 style="color: black">Processing Your Request Please Wait (Max wait Time is 8 minutes):
-                            <br />
-                                        (You may need to approve a debit prompt sent to your phone [
-                            <label id="lblPhone" runat="server"></label>
-                                        ]).
                                     </h4>
                                     <br />
-                                    <h6 style="color: black">Time of Last Status Check:
-                            <label id="lastQueryTime" class="alert alert-success">
-                            </label>
-                                        Status:
-                            <label id="StatusDesc" runat="server" class="alert alert-info">
-                                PENDING
-                            </label>
+                                    <h6>
+                                        <label id="StatusDesc" runat="server" class="alert alert-info">
+                                            PENDING
+                                        </label>
                                     </h6>
                                     <br />
                                     <img id="imgLoading" src="Images/processing.gif" alt="" />

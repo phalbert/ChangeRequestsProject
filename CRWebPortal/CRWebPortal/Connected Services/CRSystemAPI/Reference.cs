@@ -597,6 +597,9 @@ namespace CRWebPortal.CRSystemAPI {
         private string CompanyCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DomainAccountUsernameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -623,6 +626,19 @@ namespace CRWebPortal.CRSystemAPI {
                 if ((object.ReferenceEquals(this.CompanyCodeField, value) != true)) {
                     this.CompanyCodeField = value;
                     this.RaisePropertyChanged("CompanyCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DomainAccountUsername {
+            get {
+                return this.DomainAccountUsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DomainAccountUsernameField, value) != true)) {
+                    this.DomainAccountUsernameField = value;
+                    this.RaisePropertyChanged("DomainAccountUsername");
                 }
             }
         }
@@ -3419,7 +3435,6 @@ namespace CRWebPortal.CRSystemAPI {
         CRWebPortal.CRSystemAPI.SystemUser Login(string Username, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteDataSet", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteDataSetResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ChangeRequest))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfChangeRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ApiResult))]
@@ -3446,6 +3461,7 @@ namespace CRWebPortal.CRSystemAPI {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfTimeBoundAccessRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfChangeRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBase))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordHooksBase))]

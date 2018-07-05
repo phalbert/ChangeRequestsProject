@@ -15,6 +15,11 @@ namespace CRWebPortal
             return cRSystemAPIClient;
         }
 
+       
+        
+
+       
+
         public static TimeBoundAccessRequest IsAccessRequestIsValid(HttpSessionState Session,string TbarMethod)
         {
             TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();

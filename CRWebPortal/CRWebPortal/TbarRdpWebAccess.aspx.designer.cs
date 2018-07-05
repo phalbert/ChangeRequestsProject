@@ -58,22 +58,40 @@ namespace CRWebPortal {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl processingDiv;
         
         /// <summary>
-        /// imgDiv control.
+        /// lblSystemState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl imgDiv;
+        protected global::System.Web.UI.WebControls.Label lblSystemState;
         
         /// <summary>
-        /// tvImageDesktop control.
+        /// lblSystemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image tvImageDesktop;
+        protected global::System.Web.UI.WebControls.Label lblSystemName;
+        
+        /// <summary>
+        /// lblUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsername;
+        
+        /// <summary>
+        /// lblPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPassword;
         
         /// <summary>
         /// btnCloseWndw control.
@@ -110,15 +128,6 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// lblPhone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPhone;
         
         /// <summary>
         /// StatusDesc control.

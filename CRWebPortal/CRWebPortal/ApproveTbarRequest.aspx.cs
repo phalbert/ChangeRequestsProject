@@ -25,6 +25,7 @@ namespace CRWebPortal
                     return;
                 }
 
+                btnSave.Text = "Return";
                 string opResult = BussinessLogic.cRSystemAPIClient.ApproveTBAR(UserId, TbarId, Decision,Reason);
                 lblMsg.Text = opResult;
             }
@@ -53,6 +54,8 @@ namespace CRWebPortal
                     MultiView1.SetActiveView(EmptyView);
                     return;
                 }
+
+                Response.Redirect("~/Default.aspx");
             }
             catch (Exception ex)
             {

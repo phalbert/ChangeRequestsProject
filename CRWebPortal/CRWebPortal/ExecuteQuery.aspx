@@ -35,28 +35,48 @@
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
                         <div class="card-header bg-primary">
-                            Query Details
+                            <asp:Label ID="lblDbName" runat="server">DB_NAME</asp:Label>
                                    
                         </div>
                         <div class="card-body bg-default">
+
                             <div class="row">
+                                <%------------ Enter Query Section---------  --%>
                                 <div class="col-lg-12">
-                                    <label>TIME LEFT</label>
-                                    <div class="count-down-timer"></div>
+                                    <div class="card border-primary text-white mb-3">
+                                        <div class="card-header bg-primary">
+                                            Time Left
+                                   
+                                        </div>
+                                        <div class="card-body bg-default">
+                                             <div class="count-down-timer"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <br />
+
                             <div class="row">
+                                <%------------ Enter Query Section---------  --%>
                                 <div class="col-lg-12">
-                                    <label>
-                                        Enter Query</label>
-                                    <asp:TextBox ID="txtQuery" CssClass="form-control auto-complete" Style="background-color: white" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                    <div class="card border-primary text-white mb-3">
+                                        <div class="card-header bg-primary">
+                                            Enter Query
+                                   
+                                        </div>
+                                        <div class="card-body bg-default">
+                                            <asp:TextBox ID="txtQuery" required="true" CssClass="form-control auto-complete" Style="background-color: white" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                        </div>
+                                        <div class="card-footer bg-default text-center">
+                                            <asp:Button ID="btnRefresh" Text="Refresh Intellisense" CssClass="btn btn-sm btn-dark" runat="server" OnClick="btnRefresh_Click" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <br />
 
                             <div class="row" id="resultsDiv" runat="server">
-                                <%------------ General Details Section---------  --%>
+                                <%------------ Query Results Section---------  --%>
                                 <div class="col-lg-12">
                                     <div class="card border-primary text-white mb-3">
                                         <div class="card-header bg-primary">
@@ -66,7 +86,7 @@
                                         <div class="card-body bg-default">
                                             <div class="table-responsive">
                                                 <asp:GridView runat="server" Width="100%" CssClass="table table-bordered table-hover"
-                                                    ID="dataGridResults" OnRowCommand="dataGridResults_RowCommand" ForeColor="Black" AllowPaging="true" PageSize="15">
+                                                    ID="dataGridResults" OnRowCommand="dataGridResults_RowCommand" ForeColor="Black" AllowPaging="true" PageSize="15" OnPageIndexChanging="dataGridResults_PageIndexChanging">
                                                     <AlternatingRowStyle BackColor="#BFE4FF" />
                                                     <HeaderStyle BackColor="#115E9B" Font-Bold="false" ForeColor="white" Font-Italic="False"
                                                         Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Height="30px" />
@@ -77,7 +97,7 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-default text-center">
-                                <asp:Button ID="btnCancel" Text="Cancel" CssClass="btn btn-md btn-danger" runat="server" OnClick="btnCancel_Click" />
+                                <asp:Button ID="btnCancel" Text="Cancel" CssClass="btn btn-md btn-danger" runat="server" OnClick="btnCancel_Click" formnovalidate/>
                                 <asp:Button ID="btnExecute" Text="Execute" CssClass="btn btn-md btn-success" runat="server" OnClick="btnExecute_Click" />
                                 <asp:Button ID="btnComplete" Text="Confirm Execution" CssClass="btn btn-md btn-success" runat="server" OnClick="btnComplete_Click" />
                             </div>
@@ -102,7 +122,7 @@
         {
             DateTime maxDate = Tbar.StartTime.AddMinutes(Tbar.DurationInMinutes);
             DateTime currentDate = DateTime.Now;
-            int minutesLeft = ((int)maxDate.Subtract(currentDate).TotalMinutes)+1;//add an extra minute for network latency
+            int minutesLeft = ((int)maxDate.Subtract(currentDate).TotalMinutes) + 1;//add an extra minute for network latency
     %>
     <script type="text/javascript">
 
@@ -114,6 +134,7 @@
         $('.auto-complete').textcomplete([{
             match: /(^|\b)(\w{2,})$/,
             search: function (term, callback) {
+                debugger;
                 var words = [<%=Tables%>];
                 callback($.map(words, function (word) {
                     return word.toLowerCase().indexOf(term.toLowerCase()) === 0 ? word : null;

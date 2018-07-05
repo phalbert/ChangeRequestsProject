@@ -325,45 +325,52 @@ namespace ChangeRequestSubSystem.ControlClasses
                 user.ModifiedBy = "Admin";
                 user.PhoneNumber = "256752001311";
                 user.FullName = "Nsubuga Kasozi";
+                user.DomainAccountUsername = "kobusheesheh";
 
                 SaveSystemUser(user);
 
-                //TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
-                //tbar.Approver = "nsubugak";
-                //tbar.ApproverReason = "Test";
-                //tbar.DurationInMinutes = 15;
-                //tbar.Reason = "To Test";
-                //tbar.StartTime = DateTime.Now;
-                //tbar.Status = "APPROVED";
-                //tbar.SystemCode = "ChangeRequestDB";
-                //tbar.TBPAccessId = DateTime.Now.Ticks.ToString();
-                //tbar.TypeOfAccess = "FULL";
-                //tbar.UserId = "nsubugak";
+                TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
+                tbar.Approver = "nsubugak";
+                tbar.ApproverReason = "Test";
+                tbar.DurationInMinutes = 15;
+                tbar.Reason = "To Test";
+                tbar.StartTime = DateTime.Now;
+                tbar.Status = "APPROVED";
+                tbar.SystemCode = "TERMINAL_SVR_1";
+                tbar.TBPAccessId = DateTime.Now.Ticks.ToString();
+                tbar.TypeOfAccess = "FULL";
+                tbar.UserId = "nsubugak";
 
-                //SaveTimeBoundAccessRequest(tbar);
+                SaveTimeBoundAccessRequest(tbar);
 
                 SystemSetting setting = new SystemSetting();
                 setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_CR_EMAIL_TEMPLATE;
                 setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveChangeRequestEmail.html";
-
                 SaveSystemSetting(setting);
 
                 setting = new SystemSetting();
                 setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE;
                 setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
+                SaveSystemSetting(setting);
 
+                setting = new SystemSetting();
+                setting.SettingKey = "RDP_ACCESS";
+                setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
+                SaveSystemSetting(setting);
+
+                setting = new SystemSetting();
+                setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE;
+                setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
                 SaveSystemSetting(setting);
 
                 setting = new SystemSetting();
                 setting.SettingKey = Globals.APPROVE_CR_URL;
-                setting.SettingValue = @"localhost:25235/ApproveChangeRequest.aspx";
-
+                setting.SettingValue = $@"{Globals.DOMAIN}/ApproveChangeRequest.aspx";
                 SaveSystemSetting(setting);
 
                 setting = new SystemSetting();
                 setting.SettingKey = Globals.APPROVE_TBAR_URL;
-                setting.SettingValue = @"localhost:25235/ApproveTbarRequest.aspx";
-
+                setting.SettingValue = $@"{Globals.DOMAIN}/ApproveTbarRequest.aspx";
                 SaveSystemSetting(setting);
 
                 PegasusSystem system = new PegasusSystem();
@@ -379,7 +386,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                 SavePegasusSystem(system);
 
                 system = new PegasusSystem();
-                system.ConnectionString = "192.168.33.8";
+                system.ConnectionString = "192.168.33.8:470227779:Tp4tci2s4u2g!";
                 system.CreatedBy = "nsubugak";
                 system.CreatedOn = DateTime.Now;
                 system.ModifiedBy = "nsubugak";
@@ -391,7 +398,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                 SavePegasusSystem(system);
 
                 system = new PegasusSystem();
-                system.ConnectionString = "192.168.33.9";
+                system.ConnectionString = "192.168.33.9:470227779:Tp4tci2s4u2g!";
                 system.CreatedBy = "nsubugak";
                 system.CreatedOn = DateTime.Now;
                 system.ModifiedBy = "nsubugak";

@@ -47,15 +47,13 @@
                                     <div class="form-group text-center m-t-20">
                                         <asp:TextBox ID="txtReason" Height="100px" TextMode="MultiLine" placeholder="Enter The Reason For Rejection" Style="border-color: #428BCA" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
-
-                                    <div class="form-group text-center m-t-20">
-                                        <div class="col-xs-12">
-                                            <asp:Button ID="btnSave" runat="server" Text="Save" class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light" OnClick="btnSave_Click"></asp:Button>
-                                        </div>
-                                    </div>
                                 </asp:View>
                             </asp:MultiView>
-
+                            <div class="form-group text-center m-t-20">
+                                <div class="col-xs-12">
+                                    <asp:Button ID="btnSave" runat="server" Text="Save" class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light" OnClick="btnSave_Click"></asp:Button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

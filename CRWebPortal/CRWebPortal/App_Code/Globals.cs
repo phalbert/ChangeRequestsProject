@@ -13,5 +13,11 @@
 
         public static string PARSE_ERROR_CODE = "500";
         public static string DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm";
+
+        public static string SQL_TO_GET_INTELLISENSE_DATA = "SELECT Name FROM sys.all_objects where type_desc in ('USER_TABLE', 'SQL_STORED_PROCEDURE', 'VIEW') and is_ms_shipped = 0" +
+                                                         "union " +
+                                                         "SELECT c.name AS 'ColumnName' FROM sys.columns c JOIN sys.tables t   ON c.object_id = t.object_id";
+
+        public const int MAXIMUM_ROWS_FOR_NON_FULL_CONTROL_QUERY = 10;
     }
 }

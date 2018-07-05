@@ -16,7 +16,7 @@ namespace CRWebPortal
             try
             {
 
-                TimeBoundAccessRequest tbar = BussinessLogic.IsAccessRequestIsValid(Session,"DATABASE");
+                TimeBoundAccessRequest tbar = BussinessLogic.IsAccessRequestIsValid(Session, "DATABASE");
 
                 if (tbar.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
@@ -48,23 +48,16 @@ namespace CRWebPortal
         {
             SystemUser user = Session["User"] as SystemUser;
             string statementsAllowed = GetStatementsAllowed(tbar);
-            string msg = $"SUCCESS: STATEMENTS YOU CAN EXECUTE {statementsAllowed}";
             Session["TBAR"] = tbar;
 
             LoadAutoCompleteIntellisense(tbar);
-            DateTime maxDate = tbar.StartTime.AddMinutes(tbar.DurationInMinutes);
-            DateTime currentDate = DateTime.Now;
-            int minutesLeft = (int)maxDate.Subtract(currentDate).TotalMinutes;
-            Session["TBAR"] = tbar;
-            Master.ErrorMessage = msg;
+            lblDbName.Text = $"DB ACCESS LIMITED TO [{tbar.SystemCode}], STATEMENTS ALLOWED [{statementsAllowed}]";
             return true;
         }
 
         private void LoadAutoCompleteIntellisense(TimeBoundAccessRequest tbar)
         {
-            string GetAllTablesSql = $"SELECT Name FROM sys.all_objects where type_desc in ('USER_TABLE', 'SQL_STORED_PROCEDURE', 'VIEW') and is_ms_shipped = 0" +
-                                      "union " +
-                                      "SELECT c.name AS 'ColumnName' FROM sys.columns c JOIN sys.tables t   ON c.object_id = t.object_id";
+            string GetAllTablesSql = Globals.SQL_TO_GET_INTELLISENSE_DATA;
             DataTable dt = BussinessLogic.cRSystemAPIClient.ExecuteSqlQuery(GetAllTablesSql, tbar).Tables[0];
             string array = "";
             foreach (DataRow dr in dt.Rows)
@@ -80,6 +73,7 @@ namespace CRWebPortal
         {
             ApiResult result = new ApiResult();
             List<string> StatementsNotAllowed = new List<string>();
+
             switch (request.TypeOfAccess.ToUpper())
             {
                 case "UPDATE":
@@ -96,14 +90,17 @@ namespace CRWebPortal
                     StatementsNotAllowed = new List<string> { "CREATE", "TRUNCATE", "DROP" };
                     result = QueryHasDisallowedStatements(SqlQuery, StatementsNotAllowed);
                     return result;
+
                 case "CREATE":
                     StatementsNotAllowed = new List<string> { "TRUNCATE", "DROP" };
                     result = QueryHasDisallowedStatements(SqlQuery, StatementsNotAllowed);
                     return result;
+
                 case "FULL":
                     StatementsNotAllowed = new List<string> { };
                     result = QueryHasDisallowedStatements(SqlQuery, StatementsNotAllowed);
                     return result;
+
                 default:
                     result.StatusCode = Globals.FAILURE_STATUS_CODE;
                     result.StatusDesc = $"FAILED: UNABLE TO DETERMINE PERMISSIONS FOR THIS QUERY. CONTACT SYSTEM ADMIN's ";
@@ -222,7 +219,7 @@ namespace CRWebPortal
                     return;
                 }
 
-                ApiResult result = ConvertToSelect();
+                ConversionResult result = ConvertToSelect();
 
                 if (result.StatusCode == Globals.PARSE_ERROR_CODE)
                 {
@@ -244,13 +241,21 @@ namespace CRWebPortal
                     return;
                 }
 
-                //he input an update or delete statement
+                //query he input has been converted into a select statement succesfully
                 if (result.StatusCode == Globals.SUCCESS_STATUS_CODE)
                 {
                     DataTable dt = BussinessLogic.cRSystemAPIClient.ExecuteSqlQuery(result.PegPayID, tbar).Tables[0];
 
                     dataGridResults.DataSource = dt;
                     dataGridResults.DataBind();
+
+                    if (tbar.TypeOfAccess != "FULL" && dt.Rows.Count > Globals.MAXIMUM_ROWS_FOR_NON_FULL_CONTROL_QUERY)
+                    {
+                        string msg1 = $"ERROR: {dt.Rows.Count} ROWS WILL BE AFFECTED BY THIS QUERY. ANY NUMBER BEYOND {Globals.MAXIMUM_ROWS_FOR_NON_FULL_CONTROL_QUERY}" +
+                            $" REQUIRES A FULL CONTROL T.B.A.R. PLEASE REQUEST FOR FULL CONTROL T.B.A.R";
+                        Master.ErrorMessage = msg1;
+                        return;
+                    }
 
                     string msg = $"SUCCESS: {dt.Rows.Count} ROWS WILL BE AFFECTED. PLEASE CONFIRM QUERY EXECUTION";
                     Master.ErrorMessage = msg;
@@ -276,22 +281,26 @@ namespace CRWebPortal
             }
         }
 
-        private ApiResult ConvertToSelect()
+        private ConversionResult ConvertToSelect()
         {
-            ApiResult result = new ApiResult();
+            ConversionResult result = new ConversionResult();
             string query = txtQuery.Text;
 
-            if (string.IsNullOrEmpty(query)) { throw new Exception("Please supply a Query"); }
+            if (string.IsNullOrEmpty(query))
+            {
+                throw new Exception("Please supply a Query");
+            }
 
+
+            string[] whereConditions = { };
             string[] queryParts = query.Split(' ');
-            string queryType = queryParts[0];
+            string queryType = queryParts[0]?.ToUpper();
             string selectStatement = "";
             string tableName = "";
             string whereCondition = "";
-            string[] whereConditions = { };
+            result.QueryType = queryType;
 
-
-            switch (queryType.ToUpper())
+            switch (queryType)
             {
                 case "UPDATE":
                     tableName = queryParts[1];
@@ -388,6 +397,43 @@ namespace CRWebPortal
                 Master.ErrorMessage = msg;
                 return;
             }
+        }
+
+        protected void btnRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
+
+                //check if tbar has expired
+                ApiResult checkResult = BussinessLogic.CheckIfTbarIsStillValid(tbar);
+
+                //tbar has expired
+                if (checkResult.StatusCode != Globals.SUCCESS_STATUS_CODE)
+                {
+                    lblErrorMsg.Text = checkResult.StatusDesc;
+                    Multiview1.ActiveViewIndex = 0;
+                    return;
+                }
+
+                LoadAutoCompleteIntellisense(tbar);
+
+                string msg = "SUCCESS: Intellisense Refreshed";
+                Master.ErrorMessage = msg;
+                return;
+            }
+            catch (Exception ex)
+            {
+                //Show Error Message
+                string msg = "ERROR:" + ex.Message;
+                Master.ErrorMessage = msg;
+                return;
+            }
+        }
+
+        protected void dataGridResults_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
         }
     }
 }

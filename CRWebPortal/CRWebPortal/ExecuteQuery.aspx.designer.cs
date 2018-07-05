@@ -49,6 +49,15 @@ namespace CRWebPortal {
         protected global::System.Web.UI.WebControls.View RequestView;
         
         /// <summary>
+        /// lblDbName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDbName;
+        
+        /// <summary>
         /// txtQuery control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace CRWebPortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtQuery;
+        
+        /// <summary>
+        /// btnRefresh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRefresh;
         
         /// <summary>
         /// resultsDiv control.

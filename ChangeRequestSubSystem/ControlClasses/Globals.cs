@@ -19,7 +19,7 @@ public static class Globals
     public const string MAIL_SUBJECT_APPROVE_TBAR_EMAIL = "APPROVE TBAR REQUEST";
     public const string SMPTP_SERVER = "smtp.gmail.com";
     public const string SMTP_USERNAME = "nkasozi@gmail.com";
-    public const string SMTP_PASSWORD = "T3rr1613";
+    public const string SMTP_PASSWORD = "uluspchlzgzjqqaq";//"Tp4tci2s4i2g!";
 
     public static List<string> AcceptableMethodsOfSendingOTP = new List<string>() { "EMAIL", "PHONE" };
 
@@ -28,5 +28,7 @@ public static class Globals
     public const string APPROVE_CR_URL = "APPROVE_CR_URL";
     public const string APPROVE_TBAR_URL = "APPROVE_TBAR_URL";
     public const string DATE_FORMAT = "yyyy-MM-dd HH:mm";
+
+    public static object DOMAIN = "test.pegasus.co.ug:8019/CrWebPortal";
 }
 
