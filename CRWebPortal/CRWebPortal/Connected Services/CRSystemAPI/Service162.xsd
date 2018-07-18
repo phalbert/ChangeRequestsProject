@@ -273,6 +273,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="user" nillable="true" type="q30:SystemUser" />
+        <xs:element minOccurs="0" name="typeOfAccess" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -328,6 +329,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="SavePegasusSystemResult" nillable="true" type="q33:ApiResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveGoLiveRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="goliveRequest" nillable="true" type="q34:GoLiveRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveGoLiveRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" minOccurs="0" name="SaveGoLiveRequestResult" nillable="true" type="q35:ApiResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

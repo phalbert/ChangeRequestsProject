@@ -136,6 +136,12 @@
   <wsdl:message name="CRSystemAPI_SavePegasusSystem_OutputMessage">
     <wsdl:part name="parameters" element="tns:SavePegasusSystemResponse" />
   </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveGoLiveRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveGoLiveRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRSystemAPI_SaveGoLiveRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveGoLiveRequestResponse" />
+  </wsdl:message>
   <wsdl:portType name="CRSystemAPI">
     <wsdl:operation name="SaveChangeRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveChangeRequest" message="tns:CRSystemAPI_SaveChangeRequest_InputMessage" />
@@ -220,6 +226,10 @@
     <wsdl:operation name="SavePegasusSystem">
       <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SavePegasusSystem" message="tns:CRSystemAPI_SavePegasusSystem_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SavePegasusSystemResponse" message="tns:CRSystemAPI_SavePegasusSystem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGoLiveRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/CRSystemAPI/SaveGoLiveRequest" message="tns:CRSystemAPI_SaveGoLiveRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/CRSystemAPI/SaveGoLiveRequestResponse" message="tns:CRSystemAPI_SaveGoLiveRequest_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_CRSystemAPI" type="tns:CRSystemAPI">
@@ -406,6 +416,15 @@
     </wsdl:operation>
     <wsdl:operation name="SavePegasusSystem">
       <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SavePegasusSystem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGoLiveRequest">
+      <soap:operation soapAction="http://tempuri.org/CRSystemAPI/SaveGoLiveRequest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

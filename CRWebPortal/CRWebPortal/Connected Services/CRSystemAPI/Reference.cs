@@ -51,6 +51,9 @@ namespace CRWebPortal.CRSystemAPI {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPegasusSystemnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfGoLiveRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfGoLiveRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.GoLiveRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfChangeRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfChangeRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ChangeRequest))]
@@ -116,6 +119,9 @@ namespace CRWebPortal.CRSystemAPI {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPegasusSystemnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfGoLiveRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfGoLiveRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.GoLiveRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfChangeRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfChangeRequestnX7H3sQe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ChangeRequest))]
@@ -2836,6 +2842,238 @@ namespace CRWebPortal.CRSystemAPI {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ActiveRecordBaseOfGoLiveRequestnX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfGoLiveRequestnX7H3sQe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.GoLiveRequest))]
+    public partial class ActiveRecordBaseOfGoLiveRequestnX7H3sQe : CRWebPortal.CRSystemAPI.ActiveRecordBase {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DbEntityOfGoLiveRequestnX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.GoLiveRequest))]
+    public partial class DbEntityOfGoLiveRequestnX7H3sQe : CRWebPortal.CRSystemAPI.ActiveRecordBaseOfGoLiveRequestnX7H3sQe {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreatedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreatedOnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModifiedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ModifiedOnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusDescField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreatedBy {
+            get {
+                return this.CreatedByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreatedByField, value) != true)) {
+                    this.CreatedByField = value;
+                    this.RaisePropertyChanged("CreatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreatedOn {
+            get {
+                return this.CreatedOnField;
+            }
+            set {
+                if ((this.CreatedOnField.Equals(value) != true)) {
+                    this.CreatedOnField = value;
+                    this.RaisePropertyChanged("CreatedOn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ModifiedBy {
+            get {
+                return this.ModifiedByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModifiedByField, value) != true)) {
+                    this.ModifiedByField = value;
+                    this.RaisePropertyChanged("ModifiedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ModifiedOn {
+            get {
+                return this.ModifiedOnField;
+            }
+            set {
+                if ((this.ModifiedOnField.Equals(value) != true)) {
+                    this.ModifiedOnField = value;
+                    this.RaisePropertyChanged("ModifiedOn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StatusCode {
+            get {
+                return this.StatusCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusCodeField, value) != true)) {
+                    this.StatusCodeField = value;
+                    this.RaisePropertyChanged("StatusCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StatusDesc {
+            get {
+                return this.StatusDescField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusDescField, value) != true)) {
+                    this.StatusDescField = value;
+                    this.RaisePropertyChanged("StatusDesc");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GoLiveRequest", Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities")]
+    [System.SerializableAttribute()]
+    public partial class GoLiveRequest : CRWebPortal.CRSystemAPI.DbEntityOfGoLiveRequestnX7H3sQe {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApproverDecisionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApproverUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ChangeRequestIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime GoLiveStartDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RequesterUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApproverDecision {
+            get {
+                return this.ApproverDecisionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApproverDecisionField, value) != true)) {
+                    this.ApproverDecisionField = value;
+                    this.RaisePropertyChanged("ApproverDecision");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApproverUserId {
+            get {
+                return this.ApproverUserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApproverUserIdField, value) != true)) {
+                    this.ApproverUserIdField = value;
+                    this.RaisePropertyChanged("ApproverUserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ChangeRequestId {
+            get {
+                return this.ChangeRequestIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ChangeRequestIdField, value) != true)) {
+                    this.ChangeRequestIdField = value;
+                    this.RaisePropertyChanged("ChangeRequestId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime GoLiveStartDateTime {
+            get {
+                return this.GoLiveStartDateTimeField;
+            }
+            set {
+                if ((this.GoLiveStartDateTimeField.Equals(value) != true)) {
+                    this.GoLiveStartDateTimeField = value;
+                    this.RaisePropertyChanged("GoLiveStartDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RequesterUserId {
+            get {
+                return this.RequesterUserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RequesterUserIdField, value) != true)) {
+                    this.RequesterUserIdField = value;
+                    this.RaisePropertyChanged("RequesterUserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ActiveRecordBaseOfChangeRequestnX7H3sQe", Namespace="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfChangeRequestnX7H3sQe))]
@@ -3398,41 +3636,80 @@ namespace CRWebPortal.CRSystemAPI {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/SaveChangeRequestResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SaveChangeRequest(CRWebPortal.CRSystemAPI.ChangeRequest ChangeRequest);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/SaveChangeRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveChangeRequestAsync(CRWebPortal.CRSystemAPI.ChangeRequest ChangeRequest);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveCompany", ReplyAction="http://tempuri.org/CRSystemAPI/SaveCompanyResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SaveCompany(CRWebPortal.CRSystemAPI.Company req);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveCompany", ReplyAction="http://tempuri.org/CRSystemAPI/SaveCompanyResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveCompanyAsync(CRWebPortal.CRSystemAPI.Company req);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveRole", ReplyAction="http://tempuri.org/CRSystemAPI/SaveRoleResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SaveRole(CRWebPortal.CRSystemAPI.Role req);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveRole", ReplyAction="http://tempuri.org/CRSystemAPI/SaveRoleResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveRoleAsync(CRWebPortal.CRSystemAPI.Role req);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveSystemUser", ReplyAction="http://tempuri.org/CRSystemAPI/SaveSystemUserResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SaveSystemUser(CRWebPortal.CRSystemAPI.SystemUser req);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveSystemUser", ReplyAction="http://tempuri.org/CRSystemAPI/SaveSystemUserResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveSystemUserAsync(CRWebPortal.CRSystemAPI.SystemUser req);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequestResponse")]
         CRWebPortal.CRSystemAPI.ApiResult AttachItemsToChangeRequest(CRWebPortal.CRSystemAPI.CR_Attachment attachment);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachItemsToChangeRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachItemsToChangeRequestAsync(CRWebPortal.CRSystemAPI.CR_Attachment attachment);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequestResponse")]
         CRWebPortal.CRSystemAPI.ApiResult AttachSystemsAffectedToChangeRequest(CRWebPortal.CRSystemAPI.SystemAffected systemAffected);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachSystemsAffectedToChangeRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachSystemsAffectedToChangeRequestAsync(CRWebPortal.CRSystemAPI.SystemAffected systemAffected);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequestResponse")]
         CRWebPortal.CRSystemAPI.ApiResult AttachPostChangeTestToChangeRequest(CRWebPortal.CRSystemAPI.PostChangeTest test);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachPostChangeTestToChangeRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachPostChangeTestToChangeRequestAsync(CRWebPortal.CRSystemAPI.PostChangeTest test);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequestResponse")]
         CRWebPortal.CRSystemAPI.ApiResult AttachRiskAnalysisToChangeRequest(CRWebPortal.CRSystemAPI.RiskAnalysis riskAnalysis);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachRiskAnalysisToChangeRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachRiskAnalysisToChangeRequestAsync(CRWebPortal.CRSystemAPI.RiskAnalysis riskAnalysis);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequestResponse")]
         CRWebPortal.CRSystemAPI.ApiResult AttachRollBackPlanToChangeRequest(CRWebPortal.CRSystemAPI.RollBackPlan plan);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/AttachRollBackPlanToChangeRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachRollBackPlanToChangeRequestAsync(CRWebPortal.CRSystemAPI.RollBackPlan plan);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApprover", ReplyAction="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApproverResponse")]
         CRWebPortal.CRSystemAPI.ApiResult AssignChangeRequestToApprover(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApprover", ReplyAction="http://tempuri.org/CRSystemAPI/AssignChangeRequestToApproverResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AssignChangeRequestToApproverAsync(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatus", ReplyAction="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatusResponse")]
         CRWebPortal.CRSystemAPI.ApiResult UpdateChangeRequestStatus(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatus", ReplyAction="http://tempuri.org/CRSystemAPI/UpdateChangeRequestStatusResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> UpdateChangeRequestStatusAsync(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SendOneTimePIN", ReplyAction="http://tempuri.org/CRSystemAPI/SendOneTimePINResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SendOneTimePIN(string Username, string MethodOfSending);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SendOneTimePIN", ReplyAction="http://tempuri.org/CRSystemAPI/SendOneTimePINResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SendOneTimePINAsync(string Username, string MethodOfSending);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/Login", ReplyAction="http://tempuri.org/CRSystemAPI/LoginResponse")]
         CRWebPortal.CRSystemAPI.SystemUser Login(string Username, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/Login", ReplyAction="http://tempuri.org/CRSystemAPI/LoginResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.SystemUser> LoginAsync(string Username, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteDataSet", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteDataSetResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ChangeRequest))]
@@ -3461,6 +3738,8 @@ namespace CRWebPortal.CRSystemAPI {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfTimeBoundAccessRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.PegasusSystem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfPegasusSystemnX7H3sQe))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.GoLiveRequest))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.DbEntityOfGoLiveRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfChangeRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBase))]
@@ -3476,28 +3755,59 @@ namespace CRWebPortal.CRSystemAPI {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfApproverForChangeRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfTimeBoundAccessRequestnX7H3sQe))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfPegasusSystemnX7H3sQe))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CRWebPortal.CRSystemAPI.ActiveRecordBaseOfGoLiveRequestnX7H3sQe))]
         System.Data.DataSet ExecuteDataSet(string StoredProc, object[] parameters);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteDataSet", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteDataSetResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ExecuteDataSetAsync(string StoredProc, object[] parameters);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequest", ReplyAction="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequestResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SaveTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest req);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequest", ReplyAction="http://tempuri.org/CRSystemAPI/SaveTimeBoundAccessRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveTimeBoundAccessRequestAsync(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest req);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteSqlQuery", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteSqlQueryResponse")]
         System.Data.DataSet ExecuteSqlQuery(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteSqlQuery", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteSqlQueryResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ExecuteSqlQueryAsync(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteNonQuery", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteNonQueryResponse")]
         int ExecuteNonQuery(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ExecuteNonQuery", ReplyAction="http://tempuri.org/CRSystemAPI/ExecuteNonQueryResponse")]
+        System.Threading.Tasks.Task<int> ExecuteNonQueryAsync(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequest", ReplyAction="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequestResponse")]
-        CRWebPortal.CRSystemAPI.TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.SystemUser user);
+        CRWebPortal.CRSystemAPI.TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.SystemUser user, string typeOfAccess);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequest", ReplyAction="http://tempuri.org/CRSystemAPI/CheckForValidTimeBoundAccessRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.TimeBoundAccessRequest> CheckForValidTimeBoundAccessRequestAsync(CRWebPortal.CRSystemAPI.SystemUser user, string typeOfAccess);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveChangeRequestResponse")]
         string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision, string Reason);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveChangeRequest", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveChangeRequestResponse")]
+        System.Threading.Tasks.Task<string> ApproveChangeRequestAsync(string UserId, string ChangeRequestId, string Decision, string Reason);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveTBAR", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveTBARResponse")]
         string ApproveTBAR(string UserId, string TbarId, string Decision, string Reason);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/ApproveTBAR", ReplyAction="http://tempuri.org/CRSystemAPI/ApproveTBARResponse")]
+        System.Threading.Tasks.Task<string> ApproveTBARAsync(string UserId, string TbarId, string Decision, string Reason);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SavePegasusSystem", ReplyAction="http://tempuri.org/CRSystemAPI/SavePegasusSystemResponse")]
         CRWebPortal.CRSystemAPI.ApiResult SavePegasusSystem(CRWebPortal.CRSystemAPI.PegasusSystem req);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SavePegasusSystem", ReplyAction="http://tempuri.org/CRSystemAPI/SavePegasusSystemResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SavePegasusSystemAsync(CRWebPortal.CRSystemAPI.PegasusSystem req);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveGoLiveRequest", ReplyAction="http://tempuri.org/CRSystemAPI/SaveGoLiveRequestResponse")]
+        CRWebPortal.CRSystemAPI.ApiResult SaveGoLiveRequest(CRWebPortal.CRSystemAPI.GoLiveRequest goliveRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CRSystemAPI/SaveGoLiveRequest", ReplyAction="http://tempuri.org/CRSystemAPI/SaveGoLiveRequestResponse")]
+        System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveGoLiveRequestAsync(CRWebPortal.CRSystemAPI.GoLiveRequest goliveRequest);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3531,84 +3841,176 @@ namespace CRWebPortal.CRSystemAPI {
             return base.Channel.SaveChangeRequest(ChangeRequest);
         }
         
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveChangeRequestAsync(CRWebPortal.CRSystemAPI.ChangeRequest ChangeRequest) {
+            return base.Channel.SaveChangeRequestAsync(ChangeRequest);
+        }
+        
         public CRWebPortal.CRSystemAPI.ApiResult SaveCompany(CRWebPortal.CRSystemAPI.Company req) {
             return base.Channel.SaveCompany(req);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveCompanyAsync(CRWebPortal.CRSystemAPI.Company req) {
+            return base.Channel.SaveCompanyAsync(req);
         }
         
         public CRWebPortal.CRSystemAPI.ApiResult SaveRole(CRWebPortal.CRSystemAPI.Role req) {
             return base.Channel.SaveRole(req);
         }
         
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveRoleAsync(CRWebPortal.CRSystemAPI.Role req) {
+            return base.Channel.SaveRoleAsync(req);
+        }
+        
         public CRWebPortal.CRSystemAPI.ApiResult SaveSystemUser(CRWebPortal.CRSystemAPI.SystemUser req) {
             return base.Channel.SaveSystemUser(req);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveSystemUserAsync(CRWebPortal.CRSystemAPI.SystemUser req) {
+            return base.Channel.SaveSystemUserAsync(req);
         }
         
         public CRWebPortal.CRSystemAPI.ApiResult AttachItemsToChangeRequest(CRWebPortal.CRSystemAPI.CR_Attachment attachment) {
             return base.Channel.AttachItemsToChangeRequest(attachment);
         }
         
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachItemsToChangeRequestAsync(CRWebPortal.CRSystemAPI.CR_Attachment attachment) {
+            return base.Channel.AttachItemsToChangeRequestAsync(attachment);
+        }
+        
         public CRWebPortal.CRSystemAPI.ApiResult AttachSystemsAffectedToChangeRequest(CRWebPortal.CRSystemAPI.SystemAffected systemAffected) {
             return base.Channel.AttachSystemsAffectedToChangeRequest(systemAffected);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachSystemsAffectedToChangeRequestAsync(CRWebPortal.CRSystemAPI.SystemAffected systemAffected) {
+            return base.Channel.AttachSystemsAffectedToChangeRequestAsync(systemAffected);
         }
         
         public CRWebPortal.CRSystemAPI.ApiResult AttachPostChangeTestToChangeRequest(CRWebPortal.CRSystemAPI.PostChangeTest test) {
             return base.Channel.AttachPostChangeTestToChangeRequest(test);
         }
         
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachPostChangeTestToChangeRequestAsync(CRWebPortal.CRSystemAPI.PostChangeTest test) {
+            return base.Channel.AttachPostChangeTestToChangeRequestAsync(test);
+        }
+        
         public CRWebPortal.CRSystemAPI.ApiResult AttachRiskAnalysisToChangeRequest(CRWebPortal.CRSystemAPI.RiskAnalysis riskAnalysis) {
             return base.Channel.AttachRiskAnalysisToChangeRequest(riskAnalysis);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachRiskAnalysisToChangeRequestAsync(CRWebPortal.CRSystemAPI.RiskAnalysis riskAnalysis) {
+            return base.Channel.AttachRiskAnalysisToChangeRequestAsync(riskAnalysis);
         }
         
         public CRWebPortal.CRSystemAPI.ApiResult AttachRollBackPlanToChangeRequest(CRWebPortal.CRSystemAPI.RollBackPlan plan) {
             return base.Channel.AttachRollBackPlanToChangeRequest(plan);
         }
         
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AttachRollBackPlanToChangeRequestAsync(CRWebPortal.CRSystemAPI.RollBackPlan plan) {
+            return base.Channel.AttachRollBackPlanToChangeRequestAsync(plan);
+        }
+        
         public CRWebPortal.CRSystemAPI.ApiResult AssignChangeRequestToApprover(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link) {
             return base.Channel.AssignChangeRequestToApprover(link);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> AssignChangeRequestToApproverAsync(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link) {
+            return base.Channel.AssignChangeRequestToApproverAsync(link);
         }
         
         public CRWebPortal.CRSystemAPI.ApiResult UpdateChangeRequestStatus(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link) {
             return base.Channel.UpdateChangeRequestStatus(link);
         }
         
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> UpdateChangeRequestStatusAsync(CRWebPortal.CRSystemAPI.ApproverForChangeRequest link) {
+            return base.Channel.UpdateChangeRequestStatusAsync(link);
+        }
+        
         public CRWebPortal.CRSystemAPI.ApiResult SendOneTimePIN(string Username, string MethodOfSending) {
             return base.Channel.SendOneTimePIN(Username, MethodOfSending);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SendOneTimePINAsync(string Username, string MethodOfSending) {
+            return base.Channel.SendOneTimePINAsync(Username, MethodOfSending);
         }
         
         public CRWebPortal.CRSystemAPI.SystemUser Login(string Username, string Password) {
             return base.Channel.Login(Username, Password);
         }
         
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.SystemUser> LoginAsync(string Username, string Password) {
+            return base.Channel.LoginAsync(Username, Password);
+        }
+        
         public System.Data.DataSet ExecuteDataSet(string StoredProc, object[] parameters) {
             return base.Channel.ExecuteDataSet(StoredProc, parameters);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ExecuteDataSetAsync(string StoredProc, object[] parameters) {
+            return base.Channel.ExecuteDataSetAsync(StoredProc, parameters);
         }
         
         public CRWebPortal.CRSystemAPI.ApiResult SaveTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest req) {
             return base.Channel.SaveTimeBoundAccessRequest(req);
         }
         
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveTimeBoundAccessRequestAsync(CRWebPortal.CRSystemAPI.TimeBoundAccessRequest req) {
+            return base.Channel.SaveTimeBoundAccessRequestAsync(req);
+        }
+        
         public System.Data.DataSet ExecuteSqlQuery(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar) {
             return base.Channel.ExecuteSqlQuery(SqlText, tbar);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ExecuteSqlQueryAsync(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar) {
+            return base.Channel.ExecuteSqlQueryAsync(SqlText, tbar);
         }
         
         public int ExecuteNonQuery(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar) {
             return base.Channel.ExecuteNonQuery(SqlText, tbar);
         }
         
-        public CRWebPortal.CRSystemAPI.TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.SystemUser user) {
-            return base.Channel.CheckForValidTimeBoundAccessRequest(user);
+        public System.Threading.Tasks.Task<int> ExecuteNonQueryAsync(string SqlText, CRWebPortal.CRSystemAPI.TimeBoundAccessRequest tbar) {
+            return base.Channel.ExecuteNonQueryAsync(SqlText, tbar);
+        }
+        
+        public CRWebPortal.CRSystemAPI.TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(CRWebPortal.CRSystemAPI.SystemUser user, string typeOfAccess) {
+            return base.Channel.CheckForValidTimeBoundAccessRequest(user, typeOfAccess);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.TimeBoundAccessRequest> CheckForValidTimeBoundAccessRequestAsync(CRWebPortal.CRSystemAPI.SystemUser user, string typeOfAccess) {
+            return base.Channel.CheckForValidTimeBoundAccessRequestAsync(user, typeOfAccess);
         }
         
         public string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision, string Reason) {
             return base.Channel.ApproveChangeRequest(UserId, ChangeRequestId, Decision, Reason);
         }
         
+        public System.Threading.Tasks.Task<string> ApproveChangeRequestAsync(string UserId, string ChangeRequestId, string Decision, string Reason) {
+            return base.Channel.ApproveChangeRequestAsync(UserId, ChangeRequestId, Decision, Reason);
+        }
+        
         public string ApproveTBAR(string UserId, string TbarId, string Decision, string Reason) {
             return base.Channel.ApproveTBAR(UserId, TbarId, Decision, Reason);
         }
         
+        public System.Threading.Tasks.Task<string> ApproveTBARAsync(string UserId, string TbarId, string Decision, string Reason) {
+            return base.Channel.ApproveTBARAsync(UserId, TbarId, Decision, Reason);
+        }
+        
         public CRWebPortal.CRSystemAPI.ApiResult SavePegasusSystem(CRWebPortal.CRSystemAPI.PegasusSystem req) {
             return base.Channel.SavePegasusSystem(req);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SavePegasusSystemAsync(CRWebPortal.CRSystemAPI.PegasusSystem req) {
+            return base.Channel.SavePegasusSystemAsync(req);
+        }
+        
+        public CRWebPortal.CRSystemAPI.ApiResult SaveGoLiveRequest(CRWebPortal.CRSystemAPI.GoLiveRequest goliveRequest) {
+            return base.Channel.SaveGoLiveRequest(goliveRequest);
+        }
+        
+        public System.Threading.Tasks.Task<CRWebPortal.CRSystemAPI.ApiResult> SaveGoLiveRequestAsync(CRWebPortal.CRSystemAPI.GoLiveRequest goliveRequest) {
+            return base.Channel.SaveGoLiveRequestAsync(goliveRequest);
         }
     }
 }

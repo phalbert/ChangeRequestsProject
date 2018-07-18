@@ -27,12 +27,15 @@ namespace ChangeRequestSubSystem.Entities
 
         public override bool IsValid()
         {
-            if (SystemType == "DATABASE" && string.IsNullOrEmpty(ConnectionString))
+            string propertiesThatCanBeNull = $"{nameof(Id)}";
+            string nullCheckResult = SharedCommons.SharedCommons.CheckForNulls(this, propertiesThatCanBeNull);
+            if (nullCheckResult != Globals.SUCCESS_STATUS_TEXT)
             {
                 StatusCode = Globals.FAILURE_STATUS_CODE;
-                StatusDesc = "Please Supply the Connection String to the Database";
+                StatusDesc = nullCheckResult;
                 return false;
             }
+
             return base.IsValid();
         }
     }

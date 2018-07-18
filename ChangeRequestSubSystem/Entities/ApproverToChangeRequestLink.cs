@@ -39,13 +39,16 @@ namespace ChangeRequestSubSystem.Entities
 
         public override bool IsValid()
         {
-            if (string.IsNullOrEmpty(ChangeRequestId))
+            string propertiesThatCanBeNull = $"{nameof(Id)}|{nameof(HasEmailBeenSent)}";
+            string nullCheckResult = SharedCommons.SharedCommons.CheckForNulls(this, propertiesThatCanBeNull);
+            if (nullCheckResult != Globals.SUCCESS_STATUS_TEXT)
             {
                 StatusCode = Globals.FAILURE_STATUS_CODE;
-                StatusDesc = "Please Supply a ChangeRequestId";
+                StatusDesc = nullCheckResult;
                 return false;
             }
-            return true;
+
+            return base.IsValid();
         }
 
 

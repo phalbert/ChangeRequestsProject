@@ -51,12 +51,14 @@ namespace ChangeRequestAPI
 
         public ApiResult SaveTimeBoundAccessRequest(TimeBoundAccessRequest req) => cRSubSystemAPI.SaveTimeBoundAccessRequest(req);
 
-        public TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user) => cRSubSystemAPI.CheckForValidTimeBoundAccessRequest(user);
+        public TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user, string typeOfAccess) => cRSubSystemAPI.CheckForValidTimeBoundAccessRequest(user,typeOfAccess);
 
         public string ApproveChangeRequest(string UserId, string ChangeRequestId, string Decision, string Reason) => cRSubSystemAPI.ApproveChangeRequest(UserId, ChangeRequestId, Decision,Reason).StatusDesc;
 
         public string ApproveTBAR(string UserId, string TbarId, string Decision, string Reason) => cRSubSystemAPI.ApproveTBAR(UserId, TbarId, Decision,Reason).StatusDesc;
 
         public ApiResult SavePegasusSystem(PegasusSystem req) => cRSubSystemAPI.SavePegasusSystem(req);
+
+        public ApiResult SaveGoLiveRequest(GoLiveRequest goliveRequest) => cRSubSystemAPI.SaveGoLiveRequest(goliveRequest);
     }
 }

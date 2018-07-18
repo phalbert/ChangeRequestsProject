@@ -109,9 +109,54 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="ApplyForGoLive.aspx" />
     <Content Include="ApproveChangeRequest.aspx" />
     <Content Include="ApproveChangeRequestEmail.html" />
     <Content Include="ApproveTbarRequest.aspx" />
+    <Content Include="assets\css\material-dashboard.css" />
+    <Content Include="assets\css\material-dashboard.min.css" />
+    <Content Include="assets\demo\demo.css" />
+    <Content Include="assets\demo\demo.js" />
+    <Content Include="assets\github\angular.png" />
+    <Content Include="assets\github\chrome.png" />
+    <Content Include="assets\github\dashboard.png" />
+    <Content Include="assets\github\edge.png" />
+    <Content Include="assets\github\firefox.png" />
+    <Content Include="assets\github\html.png" />
+    <Content Include="assets\github\maps.png" />
+    <Content Include="assets\github\notification.png" />
+    <Content Include="assets\github\opera.png" />
+    <Content Include="assets\github\opt_mdr_thumbnail.jpg" />
+    <Content Include="assets\github\opt_md_angular_thumbnail.jpg" />
+    <Content Include="assets\github\opt_md_thumbnail.jpg" />
+    <Content Include="assets\github\opt_md_vue_thumbnail.jpg" />
+    <Content Include="assets\github\product.gif" />
+    <Content Include="assets\github\react.svg" />
+    <Content Include="assets\github\safari.png" />
+    <Content Include="assets\github\tables.png" />
+    <Content Include="assets\github\user_profile.png" />
+    <Content Include="assets\github\vuejs.png" />
+    <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\cover.jpg" />
+    <Content Include="assets\img\faces\avatar.jpg" />
+    <Content Include="assets\img\faces\card-profile1-square.jpg" />
+    <Content Include="assets\img\faces\card-profile2-square.jpg" />
+    <Content Include="assets\img\faces\marc.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\mask.png" />
+    <Content Include="assets\img\new_logo.png" />
+    <Content Include="assets\img\sidebar-1.jpg" />
+    <Content Include="assets\img\sidebar-2.jpg" />
+    <Content Include="assets\img\sidebar-3.jpg" />
+    <Content Include="assets\img\sidebar-4.jpg" />
+    <Content Include="assets\js\core\bootstrap-material-design.min.js" />
+    <Content Include="assets\js\core\jquery.min.js" />
+    <Content Include="assets\js\core\popper.min.js" />
+    <Content Include="assets\js\material-dashboard.js" />
+    <Content Include="assets\js\material-dashboard.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-notify.js" />
+    <Content Include="assets\js\plugins\chartist.min.js" />
+    <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="AttachApproversToCR.aspx" />
     <Content Include="AttachApproversToTBPRequest.aspx" />
     <Content Include="AttachItemToChangeRequest.aspx" />
@@ -128,11 +173,195 @@
     <Content Include="Connected Services\CRSystemAPI\CRWebPortal.CRSystemAPI.TimeBoundAccessRequest.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="assets\css\material-dashboard.css.map" />
+    <Content Include="assets\js\material-dashboard.js.map" />
+    <Content Include="assets\scss\material-dashboard.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\bootstrap.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_background-variant.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_badge.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_float.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_grid-framework.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_hover.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_nav-divider.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_navbar-align.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_screen-reader.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_size.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_table-row.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_text-emphasis.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_text-hide.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\mixins\_visibility.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_align.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_background.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_borders.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_clearfix.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_display.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_embed.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_flex.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_float.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_position.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_screenreaders.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_sizing.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_spacing.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_text.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\utilities\_visibility.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_alert.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_badge.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_button-group.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_card.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_carousel.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_close.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_code.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_custom-forms.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_dropdown.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_functions.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_grid.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_images.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_input-group.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_jumbotron.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_list-group.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_media.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_mixins.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_modal.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_nav.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_navbar.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_pagination.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_popover.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_print.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_progress.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_reboot.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_root.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_tables.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_tooltip.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_transitions.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_type.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_utilities.scss" />
+    <Content Include="assets\scss\material-dashboard\bootstrap\scss\_variables.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\_card-plain.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\_card-profile.scss" />
+    <Content Include="assets\scss\material-dashboard\cards\_card-stats.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_alert.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_animations.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_breakpoints.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_chartist.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_colored-shadows.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_drawer.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_hover.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_layout.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_navbar-colors.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_navs.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_sidebar-color.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_transparency.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_type.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_utilities.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_variables.scss" />
+    <Content Include="assets\scss\material-dashboard\mixins\_vendor-prefixes.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\_animate.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\_chartist.scss" />
+    <Content Include="assets\scss\material-dashboard\plugins\_perfect-scrollbar.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_body.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_bootstrap-material-design-base.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_bootstrap-material-design.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_brand.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_card.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_code.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_colors-map.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_colors.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_custom-forms.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_drawer.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_dropdown.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_layout.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_list-group.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_menu.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_modals.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_nav.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_pagination.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_shadow.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_snackbar.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_spacing.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_state.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_tables.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_tooltip.scss" />
+    <Content Include="assets\scss\material-dashboard\variables\_type.scss" />
+    <Content Include="assets\scss\material-dashboard\_alerts.scss" />
+    <Content Include="assets\scss\material-dashboard\_buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\_cards.scss" />
+    <Content Include="assets\scss\material-dashboard\_checkboxes.scss" />
+    <Content Include="assets\scss\material-dashboard\_core-bootstrap.scss" />
+    <Content Include="assets\scss\material-dashboard\_dropdown.scss" />
+    <Content Include="assets\scss\material-dashboard\_example-pages.scss" />
+    <Content Include="assets\scss\material-dashboard\_fixed-plugin.scss" />
+    <Content Include="assets\scss\material-dashboard\_footers.scss" />
+    <Content Include="assets\scss\material-dashboard\_forms.scss" />
+    <Content Include="assets\scss\material-dashboard\_headers.scss" />
+    <Content Include="assets\scss\material-dashboard\_images.scss" />
+    <Content Include="assets\scss\material-dashboard\_input-group.scss" />
+    <Content Include="assets\scss\material-dashboard\_misc.scss" />
+    <Content Include="assets\scss\material-dashboard\_mixins.scss" />
+    <Content Include="assets\scss\material-dashboard\_navbar.scss" />
+    <Content Include="assets\scss\material-dashboard\_popover.scss" />
+    <Content Include="assets\scss\material-dashboard\_popups.scss" />
+    <Content Include="assets\scss\material-dashboard\_radios.scss" />
+    <Content Include="assets\scss\material-dashboard\_responsive.scss" />
+    <Content Include="assets\scss\material-dashboard\_ripples.scss" />
+    <Content Include="assets\scss\material-dashboard\_sidebar-and-main-panel.scss" />
+    <Content Include="assets\scss\material-dashboard\_social-buttons.scss" />
+    <Content Include="assets\scss\material-dashboard\_tables.scss" />
+    <Content Include="assets\scss\material-dashboard\_tabs.scss" />
+    <Content Include="assets\scss\material-dashboard\_togglebutton.scss" />
+    <Content Include="assets\scss\material-dashboard\_tooltip.scss" />
+    <Content Include="assets\scss\material-dashboard\_type.scss" />
+    <Content Include="assets\scss\material-dashboard\_variables.scss" />
     <None Include="Connected Services\CRSystemAPI\configuration91.svcinfo" />
     <None Include="Connected Services\CRSystemAPI\configuration.svcinfo" />
     <None Include="Connected Services\CRSystemAPI\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service11.wsdl" />
+    <None Include="Connected Services\CRSystemAPI\Service16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service161.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service162.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service163.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service164.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CRSystemAPI\Service165.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SharedCommonsAPI\configuration91.svcinfo" />
     <None Include="Connected Services\SharedCommonsAPI\configuration.svcinfo" />
@@ -232,10 +461,10 @@
     <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.VerifyDigitalSignatureResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.AddUserToGroupResponse.datasource">
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.AddUserToDomainGroupResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.RemoveUserFromGroupResponse.datasource">
+    <Content Include="Connected Services\SharedCommonsAPI\CRWebPortal.SharedCommonsAPI.RemoveUserFromDomainGroupResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\SharedCommonsAPI\Reference.svcmap">
@@ -243,6 +472,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="CreateChangeRequest.aspx" />
+    <Content Include="CreateSystemUser.aspx" />
     <Content Include="DbQueryLogs.aspx" />
     <Content Include="ExecuteQuery.aspx" />
     <Content Include="Finished.aspx" />
@@ -268,29 +498,12 @@
     <Content Include="SaveSystem.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.fr.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-material-datetimepicker.js" />
     <Content Include="Scripts\core\bootstrap-material-design.min.js" />
     <Content Include="Scripts\core\jquery.min.js" />
     <Content Include="Scripts\core\popper.min.js" />
-    <None Include="Connected Services\CRSystemAPI\Service11.wsdl" />
-    <None Include="Connected Services\CRSystemAPI\Service16.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service161.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service162.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service163.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service164.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CRSystemAPI\Service165.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SharedCommonsAPI\Service.wsdl" />
+    <None Include="Connected Services\SharedCommonsAPI\Service1.wsdl" />
+    <Content Include="MaterialUI.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
@@ -312,11 +525,13 @@
     <Content Include="Scripts\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Scripts\progressbar.min.js" />
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
+    <Content Include="Styles\bootstrap-material-datetimepicker.css" />
     <Content Include="Styles\easy-autocomplete.min.css" />
     <Content Include="Styles\jquery-loading.min.css" />
     <Content Include="Styles\jquery.textcomplete.css" />
     <Content Include="Styles\material-dashboard.css" />
     <Content Include="Styles\material-dashboard.min.css" />
+    <Content Include="Styles\Material-Design-Icons.svg" />
     <Content Include="Styles\nav-wizard.css" />
     <Content Include="Styles\pace-theme-bounce.css" />
     <Content Include="Styles\pace-theme.css" />
@@ -347,6 +562,10 @@
     <Content Include="Styles\material-dashboard.css.map" />
     <Content Include="Scripts\material-dashboard.js.map" />
     <Content Include="Scripts\progressbar.min.js.map" />
+    <Content Include="Styles\Material-Design-Icons.eot" />
+    <Content Include="Styles\Material-Design-Icons.ttf" />
+    <Content Include="Styles\Material-Design-Icons.woff" />
+    <Content Include="Styles\Material-Design-Icons.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -384,6 +603,13 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ApplyForGoLive.aspx.cs">
+      <DependentUpon>ApplyForGoLive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApplyForGoLive.aspx.designer.cs">
+      <DependentUpon>ApplyForGoLive.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ApplyForTBPAccess.aspx.cs">
       <DependentUpon>ApplyForTBPAccess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,6 +645,13 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ConversionResult.cs" />
+    <Compile Include="CreateSystemUser.aspx.cs">
+      <DependentUpon>CreateSystemUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateSystemUser.aspx.designer.cs">
+      <DependentUpon>CreateSystemUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DbQueryLogs.aspx.cs">
       <DependentUpon>DbQueryLogs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -427,6 +660,13 @@
       <DependentUpon>DbQueryLogs.aspx</DependentUpon>
     </Compile>
     <Compile Include="DDProcessHub.cs" />
+    <Compile Include="MaterialUI.Master.cs">
+      <DependentUpon>MaterialUI.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialUI.Master.designer.cs">
+      <DependentUpon>MaterialUI.Master</DependentUpon>
+    </Compile>
     <Compile Include="SaveSystem.aspx.cs">
       <DependentUpon>SaveSystem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

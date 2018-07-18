@@ -78,7 +78,15 @@ namespace ChangeRequestSubSystem.Entities
 
         public override bool IsValid()
         {
-            
+            string propertiesThatCanBeNull = "Id|DoesChangeHaveDownTime|EnvironmentAffected|ApprovalReason";
+            string nullCheckResult = SharedCommons.SharedCommons.CheckForNulls(this, propertiesThatCanBeNull);
+            if (nullCheckResult != Globals.SUCCESS_STATUS_TEXT)
+            {
+                StatusCode = Globals.FAILURE_STATUS_CODE;
+                StatusDesc = nullCheckResult;
+                return false;
+            }
+
             return base.IsValid();
         }
 

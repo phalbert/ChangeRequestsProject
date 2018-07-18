@@ -34,6 +34,24 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 50)]
         public string DomainAccountUsername { get; set; }
 
+        public override bool IsValid()
+        {
+            string propertiesThatCanBeNull = $"{nameof(Id)}";
+            string nullCheckResult = SharedCommons.SharedCommons.CheckForNulls(this, propertiesThatCanBeNull);
+            if (nullCheckResult != Globals.SUCCESS_STATUS_TEXT)
+            {
+                StatusCode = Globals.FAILURE_STATUS_CODE;
+                StatusDesc = nullCheckResult;
+                return false;
+            }
+            if (!SharedCommons.SharedCommons.IsValidEmail(Email))
+            {
+                StatusCode = Globals.FAILURE_STATUS_CODE;
+                StatusDesc = "PLEASE SUPPLY A VALID EMAIL";
+                return false;
+            }
 
+            return base.IsValid();
+        }
     }
 }

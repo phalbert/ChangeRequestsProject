@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EE4990BD-A759-4E02-93BE-5035DF332CFC}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>ChangeRequestSubSystem</RootNamespace>
     <AssemblyName>ChangeRequestSubSystem</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -30,6 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.1.3.42154, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
@@ -90,7 +93,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ControlClasses\BussinessLogic.cs" />
-    <Compile Include="ControlClasses\ChangeRequestInterface.cs" />
+    <Compile Include="Main\ChangeRequestInterface.cs" />
     <Compile Include="ControlClasses\DatabaseHandler.cs" />
     <Compile Include="ControlClasses\Globals.cs" />
     <Compile Include="ControlClasses\NotificationsHandler.cs" />
@@ -101,13 +104,11 @@
     <Compile Include="Entities\ApproverToChangeRequestLink.cs" />
     <Compile Include="Entities\ChangeRequest.cs" />
     <Compile Include="Entities\Company.cs" />
-    <Compile Include="Entities\ApiRequest.cs" />
     <Compile Include="Entities\BaseClass.cs" />
     <Compile Include="Entities\CR_Attachment.cs" />
     <Compile Include="Entities\DbEntity.cs" />
     <Compile Include="Entities\DbQueryLog.cs" />
-    <Compile Include="Entities\DynamicExtensions.cs" />
-    <Compile Include="Entities\DynamicObject.cs" />
+    <Compile Include="Entities\GoLiveRequest.cs" />
     <Compile Include="Entities\OneTimePassword.cs" />
     <Compile Include="Entities\PostChangeTests.cs" />
     <Compile Include="Entities\RiskAnalysis.cs" />
@@ -279,6 +280,12 @@
   <ItemGroup>
     <Content Include="ApproveChangeRequestEmail.html" />
     <Content Include="ApproveTBAREmail.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedCommons\SharedCommons.csproj">
+      <Project>{b0913b97-3879-4192-8c6c-ea215914254f}</Project>
+      <Name>SharedCommons</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

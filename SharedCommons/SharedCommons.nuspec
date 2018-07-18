@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SharedCommons</id>
+    <version>2</version>
+    <title>SharedCommons</title>
+    <authors>Nkasozi</authors>
+    <owners>Nkasozi</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/nkasozi</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SharedCommons</description>
+    <releaseNotes>Renamed Globals class to SharedCommonsGlobals because of possible conflict with users own Globals class</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>SharedCommons</tags>
+  </metadata>
+</package>

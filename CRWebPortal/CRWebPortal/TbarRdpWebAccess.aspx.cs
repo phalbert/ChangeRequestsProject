@@ -53,7 +53,7 @@ namespace CRWebPortal
 
         private void LoadData(TimeBoundAccessRequest tbar)
         {
-            Session["TBAR"] = tbar;
+            Session["RDP_TBAR"] = tbar;
             PegasusSystem system = SimpleDatabaseHandler<PegasusSystem>.QueryWithStoredProc("GetSystemById", tbar.SystemCode).FirstOrDefault();
 
             if (system == null)
@@ -81,31 +81,20 @@ namespace CRWebPortal
             lblSystemName.Text = system.SystemName;
             lblUsername.Text = Username;
             lblPassword.Text = Password;
-            processingDiv.Visible = true;
         }
 
         protected void btnCloseWndw_Click(object sender, EventArgs e)
         {
             try
             {
-                TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
+                TimeBoundAccessRequest tbar = Session["RDP_TBAR"] as TimeBoundAccessRequest;
                 SystemUser user = Session["User"] as SystemUser;
 
 
                 //lblSystemState.Text = "RDP SERVICE STARTED. USE ANY DESK FOR RDP";
                 SharedCommonsAPI.SharedCommonsAPISoapClient sharedCommons = new SharedCommonsAPI.SharedCommonsAPISoapClient();
 
-                SharedCommonsAPI.CommonResult result = sharedCommons.RemoveUserFromGroup(user.DomainAccountUsername, GroupName, Domain);
-
-                //if (result.StatusCode != Globals.SUCCESS_STATUS_CODE)
-                //{
-                //    //Show Error Message
-                //    string msg1 = result.StatusDesc;
-                //    Master.ErrorMessage = msg1;
-                //    return;
-                //}
-
-                result = sharedCommons.StopService(ServiceName);
+                SharedCommonsAPI.CommonResult result = sharedCommons.StopService(ServiceName);
 
                 if (result.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
@@ -114,6 +103,14 @@ namespace CRWebPortal
                     Master.ErrorMessage = msg1;
                     return;
                 }
+
+                Task.Factory.StartNew(() =>
+                {
+                    if (!user.RoleCode.ToUpper().Contains("ADMIN"))
+                    {
+                        result = sharedCommons.RemoveUserFromDomainGroup(user.DomainAccountUsername, GroupName, Domain);
+                    }
+                });
 
                 //Show Error Message
                 string msg = "SUCCESS: RDP SESSION CANCELLED.";
@@ -134,15 +131,13 @@ namespace CRWebPortal
         {
             try
             {
-                TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
+                TimeBoundAccessRequest tbar = Session["RDP_TBAR"] as TimeBoundAccessRequest;
                 SystemUser user = Session["User"] as SystemUser;
 
                 //lblSystemState.Text = "RDP SERVICE STARTED. USE ANY DESK FOR RDP";
                 SharedCommonsAPI.SharedCommonsAPISoapClient sharedCommons = new SharedCommonsAPI.SharedCommonsAPISoapClient();
 
-                SharedCommonsAPI.CommonResult result = sharedCommons.AddUserToGroup(user.DomainAccountUsername, GroupName, Domain);
-
-                result = sharedCommons.StartService(ServiceName);
+                SharedCommonsAPI.CommonResult result = sharedCommons.StartService(ServiceName);
 
                 if (result.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
@@ -152,12 +147,20 @@ namespace CRWebPortal
                     return;
                 }
 
+             
+                result = sharedCommons.AddUserToDomainGroup(user.DomainAccountUsername, GroupName, Domain);
+
+                if (result.StatusCode != Globals.SUCCESS_STATUS_CODE)
+                {
+                    //Show Error Message
+                    string msg1 = $"ERROR: RDP SERVICE STARTED,FAILED TO GIVE ADMIN ACCESS TO USER {user.DomainAccountUsername}. REASON {result.StatusDesc} ";
+                    Master.ErrorMessage = msg1;
+                    return;
+                }
+
                 Task.Factory.StartNew(() =>
                 {
-                    DateTime maxDate = tbar.StartTime.AddMinutes(tbar.DurationInMinutes);
-                    DateTime currentDate = DateTime.Now;
-                    int minutesLeft = ((int)maxDate.Subtract(currentDate).TotalMinutes) + 1;//add an extra minute for network latency
-                    sharedCommons.StopServiceAfterXminutes(ServiceName, minutesLeft);
+                    result = ScheduleServiceStop(tbar, user, sharedCommons, result);
                 });
 
                 //Show Error Message
@@ -174,7 +177,45 @@ namespace CRWebPortal
             }
         }
 
+        private static SharedCommonsAPI.CommonResult ScheduleServiceStop(TimeBoundAccessRequest tbar, SystemUser user, SharedCommonsAPI.SharedCommonsAPISoapClient sharedCommons, SharedCommonsAPI.CommonResult result)
+        {
+            try
+            {
+                DateTime maxDate = tbar.StartTime.AddMinutes(tbar.DurationInMinutes);
+                DateTime currentDate = DateTime.Now;
+                int minutesLeft = ((int)maxDate.Subtract(currentDate).TotalMinutes) + 1;//add an extra minute for network latency
+                sharedCommons.StopServiceAfterXminutesAsync(ServiceName, minutesLeft);
 
+                currentDate = DateTime.Now;
+                minutesLeft = ((int)maxDate.Subtract(currentDate).TotalMinutes);
+
+                Task.Factory.StartNew(() =>
+                {
+                    if (!user.RoleCode.ToUpper().Contains("ADMIN"))
+                    {
+                        Thread.Sleep(new TimeSpan(0, minutesLeft, 0));
+                        result = sharedCommons.RemoveUserFromDomainGroup(user.DomainAccountUsername, GroupName, Domain);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return result;
+        }
+
+        private static SharedCommonsAPI.CommonResult RemoveUser(SystemUser user, SharedCommonsAPI.SharedCommonsAPISoapClient sharedCommons, SharedCommonsAPI.CommonResult result, int minutesLeft)
+        {
+            Thread.Sleep(new TimeSpan(0, minutesLeft, 0));
+            if (!user.RoleCode.ToUpper().Contains("ADMIN"))
+            {
+                result = sharedCommons.RemoveUserFromDomainGroup(user.DomainAccountUsername, GroupName, Domain);
+            }
+
+            return result;
+        }
 
         protected void btnCancelLoad_Click(object sender, EventArgs e)
         {

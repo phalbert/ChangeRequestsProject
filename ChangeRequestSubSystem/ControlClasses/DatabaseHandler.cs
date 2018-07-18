@@ -83,22 +83,6 @@ namespace ChangeRequestSubSystem.ControlClasses
             }
         }
 
-        internal static List<dynamic> ExecuteDynamicDataTable(string storedProc, params object[] parameters)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                DbCommand procommand = DB.GetStoredProcCommand(storedProc, parameters);
-                dt = DB.ExecuteDataSet(procommand).Tables[0];
-                List<dynamic> dys = dt.AsDynamicEnumerable().ToList();
-                return dys;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-           
-        }
 
         internal static DataSet ExecuteDataSet(string storedProc, object[] parameters)
         {

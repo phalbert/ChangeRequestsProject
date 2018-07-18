@@ -48,7 +48,7 @@ namespace CRWebPortal
         {
             SystemUser user = Session["User"] as SystemUser;
             string statementsAllowed = GetStatementsAllowed(tbar);
-            Session["TBAR"] = tbar;
+            Session["DB_TBAR"] = tbar;
 
             LoadAutoCompleteIntellisense(tbar);
             lblDbName.Text = $"DB ACCESS LIMITED TO [{tbar.SystemCode}], STATEMENTS ALLOWED [{statementsAllowed}]";
@@ -194,7 +194,7 @@ namespace CRWebPortal
             try
             {
 
-                TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
+                TimeBoundAccessRequest tbar = Session["DB_TBAR"] as TimeBoundAccessRequest;
                 string sqlText = txtQuery.Text;
 
                 //check if tbar has expired
@@ -354,7 +354,7 @@ namespace CRWebPortal
         {
             try
             {
-                TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
+                TimeBoundAccessRequest tbar = Session["DB_TBAR"] as TimeBoundAccessRequest;
                 string sqlText = txtQuery.Text;
 
                 //check if tbar has expired
@@ -403,7 +403,7 @@ namespace CRWebPortal
         {
             try
             {
-                TimeBoundAccessRequest tbar = Session["TBAR"] as TimeBoundAccessRequest;
+                TimeBoundAccessRequest tbar = Session["DB_TBAR"] as TimeBoundAccessRequest;
 
                 //check if tbar has expired
                 ApiResult checkResult = BussinessLogic.CheckIfTbarIsStillValid(tbar);

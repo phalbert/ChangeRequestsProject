@@ -499,4 +499,42 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DbEntityOfPegasusSystemnX7H3sQe" nillable="true" type="tns:DbEntityOfPegasusSystemnX7H3sQe" />
+  <xs:complexType name="GoLiveRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DbEntityOfGoLiveRequestnX7H3sQe">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApproverDecision" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ApproverUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ChangeRequestId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GoLiveStartDateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="RequesterUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GoLiveRequest" nillable="true" type="tns:GoLiveRequest" />
+  <xs:complexType name="DbEntityOfGoLiveRequestnX7H3sQe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="DbEntityOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="GoLiveRequest" Namespace="http://schemas.datacontract.org/2004/07/ChangeRequestSubSystem.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/Castle.ActiveRecord" base="q13:ActiveRecordBaseOfGoLiveRequestnX7H3sQe">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ModifiedOn" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StatusDesc" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DbEntityOfGoLiveRequestnX7H3sQe" nillable="true" type="tns:DbEntityOfGoLiveRequestnX7H3sQe" />
 </xs:schema>

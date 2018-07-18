@@ -137,18 +137,14 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user)
+        internal TimeBoundAccessRequest CheckForValidTimeBoundAccessRequest(SystemUser user,string typeOfAccess)
         {
             TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
             try
             {
-                if (!user.IsValid())
-                {
-                    tbar.SetFailuresAsStatusInResponseFields(user.StatusDesc);
-                    return tbar;
-                }
 
-                TimeBoundAccessRequest[] all = TimeBoundAccessRequest.QueryWithStoredProc("GetTimeBoundRequestByUserId", user.Username);
+
+                TimeBoundAccessRequest[] all = TimeBoundAccessRequest.QueryWithStoredProc("CheckForValidTimeBoundAccessRequest", user.Username,typeOfAccess);
 
                 if (all.Count() <= 0)
                 {
@@ -317,234 +313,293 @@ namespace ChangeRequestSubSystem.ControlClasses
             ApiResult apiResult = new ApiResult();
             try
             {
-                SystemUser user = new SystemUser();
-                user.CompanyCode = "PEGASUS";
-                user.Email = "kasozi.nsubuga@pegasus.co.ug";
-                user.Username = "nsubugak";
-                user.RoleCode = "SUPER-ADMIN";
-                user.ModifiedBy = "Admin";
-                user.PhoneNumber = "256752001311";
-                user.FullName = "Nsubuga Kasozi";
-                user.DomainAccountUsername = "kobusheesheh";
-
-                SaveSystemUser(user);
-
-                TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
-                tbar.Approver = "nsubugak";
-                tbar.ApproverReason = "Test";
-                tbar.DurationInMinutes = 15;
-                tbar.Reason = "To Test";
-                tbar.StartTime = DateTime.Now;
-                tbar.Status = "APPROVED";
-                tbar.SystemCode = "TERMINAL_SVR_1";
-                tbar.TBPAccessId = DateTime.Now.Ticks.ToString();
-                tbar.TypeOfAccess = "FULL";
-                tbar.UserId = "nsubugak";
-
-                SaveTimeBoundAccessRequest(tbar);
-
-                SystemSetting setting = new SystemSetting();
-                setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_CR_EMAIL_TEMPLATE;
-                setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveChangeRequestEmail.html";
-                SaveSystemSetting(setting);
-
-                setting = new SystemSetting();
-                setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE;
-                setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
-                SaveSystemSetting(setting);
-
-                setting = new SystemSetting();
-                setting.SettingKey = "RDP_ACCESS";
-                setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
-                SaveSystemSetting(setting);
-
-                setting = new SystemSetting();
-                setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE;
-                setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
-                SaveSystemSetting(setting);
-
-                setting = new SystemSetting();
-                setting.SettingKey = Globals.APPROVE_CR_URL;
-                setting.SettingValue = $@"{Globals.DOMAIN}/ApproveChangeRequest.aspx";
-                SaveSystemSetting(setting);
-
-                setting = new SystemSetting();
-                setting.SettingKey = Globals.APPROVE_TBAR_URL;
-                setting.SettingValue = $@"{Globals.DOMAIN}/ApproveTbarRequest.aspx";
-                SaveSystemSetting(setting);
-
-                PegasusSystem system = new PegasusSystem();
-                system.ConnectionString = "Data Source=(local);Initial Catalog=TestMerchantCoreDB;User Id=sa;Password=T3rr1613;";
-                system.CreatedBy = "nsubugak";
-                system.CreatedOn = DateTime.Now;
-                system.ModifiedBy = "nsubugak";
-                system.ModifiedOn = DateTime.Now;
-                system.SystemCode = "TestMerchantCoreDB";
-                system.SystemName = "TestMerchantCoreDB";
-                system.SystemType = "DATABASE";
-
-                SavePegasusSystem(system);
-
-                system = new PegasusSystem();
-                system.ConnectionString = "192.168.33.8:470227779:Tp4tci2s4u2g!";
-                system.CreatedBy = "nsubugak";
-                system.CreatedOn = DateTime.Now;
-                system.ModifiedBy = "nsubugak";
-                system.ModifiedOn = DateTime.Now;
-                system.SystemCode = "TERMINAL_SVR_1";
-                system.SystemName = "Terminal Server 1 (33.8)";
-                system.SystemType = "SERVER";
-
-                SavePegasusSystem(system);
-
-                system = new PegasusSystem();
-                system.ConnectionString = "192.168.33.9:470227779:Tp4tci2s4u2g!";
-                system.CreatedBy = "nsubugak";
-                system.CreatedOn = DateTime.Now;
-                system.ModifiedBy = "nsubugak";
-                system.ModifiedOn = DateTime.Now;
-                system.SystemCode = "TERMINAL_SVR_2";
-                system.SystemName = "Terminal Server 2 (33.9)";
-                system.SystemType = "SERVER";
-
-                SavePegasusSystem(system);
-
-                system = new PegasusSystem();
-                system.ConnectionString = "Data Source=(local);Initial Catalog=TestGenericPegPayApi;User Id=sa;Password=T3rr1613;";
-                system.CreatedBy = "nsubugak";
-                system.CreatedOn = DateTime.Now;
-                system.ModifiedBy = "nsubugak";
-                system.ModifiedOn = DateTime.Now;
-                system.SystemCode = "TestGenericPegPayApi";
-                system.SystemName = "TestGenericPegPayApi";
-                system.SystemType = "DATABASE";
-
-                SavePegasusSystem(system);
-
-                system = new PegasusSystem();
-                system.ConnectionString = "Data Source=(local);Initial Catalog=ChangeRequestDB;User Id=sa;Password=T3rr1613;";
-                system.CreatedBy = "nsubugak";
-                system.CreatedOn = DateTime.Now;
-                system.ModifiedBy = "nsubugak";
-                system.ModifiedOn = DateTime.Now;
-                system.SystemCode = "ChangeRequestDB";
-                system.SystemName = "ChangeRequestDB";
-                system.SystemType = "DATABASE";
-
-                SavePegasusSystem(system);
-
-                SystemType type = new SystemType();
-                type.CreatedBy = "nsubugak";
-                type.CreatedOn = DateTime.Now;
-                type.ModifiedBy = "nsubugak";
-                type.ModifiedOn = DateTime.Now;
-                type.TypeCode = "DATABASE";
-                type.TypeName = "Database";
-
-                SaveSystemType(type);
-
-                type = new SystemType();
-                type.CreatedBy = "nsubugak";
-                type.CreatedOn = DateTime.Now;
-                type.ModifiedBy = "nsubugak";
-                type.ModifiedOn = DateTime.Now;
-                type.TypeCode = "FIREWALL";
-                type.TypeName = "Firewall";
-
-                SaveSystemType(type);
-
-                type = new SystemType();
-                type.CreatedBy = "nsubugak";
-                type.CreatedOn = DateTime.Now;
-                type.ModifiedBy = "nsubugak";
-                type.ModifiedOn = DateTime.Now;
-                type.TypeCode = "OTHER_NETWORK";
-                type.TypeName = "Other Network Device";
-
-                SaveSystemType(type);
-
-                type = new SystemType();
-                type.CreatedBy = "nsubugak";
-                type.CreatedOn = DateTime.Now;
-                type.ModifiedBy = "nsubugak";
-                type.ModifiedOn = DateTime.Now;
-                type.TypeCode = "SERVER";
-                type.TypeName = "Server";
-
-                SaveSystemType(type);
-
-                AccessType acesstype = new AccessType();
-                acesstype.CreatedBy = "nsubugak";
-                acesstype.CreatedOn = DateTime.Now;
-                acesstype.ModifiedBy = "nsubugak";
-                acesstype.ModifiedOn = DateTime.Now;
-                acesstype.AccessTypeCode = "UPDATE";
-                acesstype.AccessTypeName = "Update Database Data";
-                acesstype.SystemTypeCode = "DATABASE";
-
-                SaveAccessType(acesstype);
-
-                acesstype = new AccessType();
-                acesstype.CreatedBy = "nsubugak";
-                acesstype.CreatedOn = DateTime.Now;
-                acesstype.ModifiedBy = "nsubugak";
-                acesstype.ModifiedOn = DateTime.Now;
-                acesstype.AccessTypeCode = "DELETE";
-                acesstype.AccessTypeName = "Delete Database Data";
-                acesstype.SystemTypeCode = "DATABASE";
-
-                SaveAccessType(acesstype);
-
-                acesstype = new AccessType();
-                acesstype.CreatedBy = "nsubugak";
-                acesstype.CreatedOn = DateTime.Now;
-                acesstype.ModifiedBy = "nsubugak";
-                acesstype.ModifiedOn = DateTime.Now;
-                acesstype.AccessTypeCode = "INSERT";
-                acesstype.AccessTypeName = "INSERT Database Data";
-                acesstype.SystemTypeCode = "DATABASE";
-
-                SaveAccessType(acesstype);
-
-                acesstype = new AccessType();
-                acesstype.CreatedBy = "nsubugak";
-                acesstype.CreatedOn = DateTime.Now;
-                acesstype.ModifiedBy = "nsubugak";
-                acesstype.ModifiedOn = DateTime.Now;
-                acesstype.AccessTypeCode = "CREATE";
-                acesstype.AccessTypeName = "CREATE Database Objects";
-                acesstype.SystemTypeCode = "DATABASE";
-
-                SaveAccessType(acesstype);
-
-                acesstype = new AccessType();
-                acesstype.CreatedBy = "nsubugak";
-                acesstype.CreatedOn = DateTime.Now;
-                acesstype.ModifiedBy = "nsubugak";
-                acesstype.ModifiedOn = DateTime.Now;
-                acesstype.AccessTypeCode = "FULL";
-                acesstype.AccessTypeName = "FULL Database Access.(Any Query)";
-                acesstype.SystemTypeCode = "DATABASE";
-
-                SaveAccessType(acesstype);
-
-                acesstype = new AccessType();
-                acesstype.CreatedBy = "nsubugak";
-                acesstype.CreatedOn = DateTime.Now;
-                acesstype.ModifiedBy = "nsubugak";
-                acesstype.ModifiedOn = DateTime.Now;
-                acesstype.AccessTypeCode = "ADMIN_SERVER_ACCESS";
-                acesstype.AccessTypeName = "Admin Server Access.";
-                acesstype.SystemTypeCode = "SERVER";
-
-                SaveAccessType(acesstype);
+                SeedSystemUsers();
+                SeedTimeBoundRequests();
+                SeedSystemSettings();
+                SeedPegasusSystems();
+                SeedSystemTypes();
+                SeedAccessTypes();
+                SeedSystemRoles();
 
             }
             catch (Exception ex)
             {
-                apiResult = HandleException(nameof(SendOneTimePIN), $"SeedError, Error:{ex.Message}", ex);
+                apiResult = HandleException(nameof(Seed), $"SeedError, Error:{ex.Message}", ex);
             }
             return apiResult;
+        }
+
+        private void SeedSystemRoles()
+        {
+            Role newRole = new Role();
+            newRole.CompanyCode = "PEGASUS";
+            newRole.RoleName = "Pegasus Team Leader";
+            newRole.RoleCode = "REVIEWER";
+            newRole.ModifiedBy = "Admin";
+            newRole.CreatedBy = "Admin";
+            newRole.CreatedOn = DateTime.Now;
+            newRole.ModifiedOn = DateTime.Now;
+            SaveRole(newRole);
+
+            newRole = new Role();
+            newRole.CompanyCode = "PEGASUS";
+            newRole.RoleName = "Administrator";
+            newRole.RoleCode = "ADMIN";
+            newRole.ModifiedBy = "Admin";
+            newRole.CreatedBy = "Admin";
+            newRole.CreatedOn = DateTime.Now;
+            newRole.ModifiedOn = DateTime.Now;
+            SaveRole(newRole);
+
+            newRole = new Role();
+            newRole.CompanyCode = "PEGASUS";
+            newRole.RoleName = "Pegasus Tech Team Member";
+            newRole.RoleCode = "PEGASUS_TECHNICAL";
+            newRole.ModifiedBy = "Admin";
+            newRole.CreatedBy = "Admin";
+            newRole.CreatedOn = DateTime.Now;
+            newRole.ModifiedOn = DateTime.Now;
+            SaveRole(newRole);
+        }
+
+        private void SeedAccessTypes()
+        {
+            AccessType acesstype = new AccessType();
+            acesstype.CreatedBy = "nsubugak";
+            acesstype.CreatedOn = DateTime.Now;
+            acesstype.ModifiedBy = "nsubugak";
+            acesstype.ModifiedOn = DateTime.Now;
+            acesstype.AccessTypeCode = "UPDATE";
+            acesstype.AccessTypeName = "Update Database Data";
+            acesstype.SystemTypeCode = "DATABASE";
+
+            SaveAccessType(acesstype);
+
+            acesstype = new AccessType();
+            acesstype.CreatedBy = "nsubugak";
+            acesstype.CreatedOn = DateTime.Now;
+            acesstype.ModifiedBy = "nsubugak";
+            acesstype.ModifiedOn = DateTime.Now;
+            acesstype.AccessTypeCode = "DELETE";
+            acesstype.AccessTypeName = "Delete Database Data";
+            acesstype.SystemTypeCode = "DATABASE";
+
+            SaveAccessType(acesstype);
+
+            acesstype = new AccessType();
+            acesstype.CreatedBy = "nsubugak";
+            acesstype.CreatedOn = DateTime.Now;
+            acesstype.ModifiedBy = "nsubugak";
+            acesstype.ModifiedOn = DateTime.Now;
+            acesstype.AccessTypeCode = "INSERT";
+            acesstype.AccessTypeName = "INSERT Database Data";
+            acesstype.SystemTypeCode = "DATABASE";
+
+            SaveAccessType(acesstype);
+
+            acesstype = new AccessType();
+            acesstype.CreatedBy = "nsubugak";
+            acesstype.CreatedOn = DateTime.Now;
+            acesstype.ModifiedBy = "nsubugak";
+            acesstype.ModifiedOn = DateTime.Now;
+            acesstype.AccessTypeCode = "CREATE";
+            acesstype.AccessTypeName = "CREATE Database Objects";
+            acesstype.SystemTypeCode = "DATABASE";
+
+            SaveAccessType(acesstype);
+
+            acesstype = new AccessType();
+            acesstype.CreatedBy = "nsubugak";
+            acesstype.CreatedOn = DateTime.Now;
+            acesstype.ModifiedBy = "nsubugak";
+            acesstype.ModifiedOn = DateTime.Now;
+            acesstype.AccessTypeCode = "FULL";
+            acesstype.AccessTypeName = "FULL Database Access.(Any Query)";
+            acesstype.SystemTypeCode = "DATABASE";
+
+            SaveAccessType(acesstype);
+
+            acesstype = new AccessType();
+            acesstype.CreatedBy = "nsubugak";
+            acesstype.CreatedOn = DateTime.Now;
+            acesstype.ModifiedBy = "nsubugak";
+            acesstype.ModifiedOn = DateTime.Now;
+            acesstype.AccessTypeCode = "ADMIN_SERVER_ACCESS";
+            acesstype.AccessTypeName = "Admin Server Access.";
+            acesstype.SystemTypeCode = "SERVER";
+
+            SaveAccessType(acesstype);
+        }
+
+        private void SeedSystemTypes()
+        {
+            SystemType type = new SystemType();
+            type.CreatedBy = "nsubugak";
+            type.CreatedOn = DateTime.Now;
+            type.ModifiedBy = "nsubugak";
+            type.ModifiedOn = DateTime.Now;
+            type.TypeCode = "DATABASE";
+            type.TypeName = "Database";
+
+            SaveSystemType(type);
+
+            type = new SystemType();
+            type.CreatedBy = "nsubugak";
+            type.CreatedOn = DateTime.Now;
+            type.ModifiedBy = "nsubugak";
+            type.ModifiedOn = DateTime.Now;
+            type.TypeCode = "FIREWALL";
+            type.TypeName = "Firewall";
+
+            SaveSystemType(type);
+
+            type = new SystemType();
+            type.CreatedBy = "nsubugak";
+            type.CreatedOn = DateTime.Now;
+            type.ModifiedBy = "nsubugak";
+            type.ModifiedOn = DateTime.Now;
+            type.TypeCode = "OTHER_NETWORK";
+            type.TypeName = "Other Network Device";
+
+            SaveSystemType(type);
+
+            type = new SystemType();
+            type.CreatedBy = "nsubugak";
+            type.CreatedOn = DateTime.Now;
+            type.ModifiedBy = "nsubugak";
+            type.ModifiedOn = DateTime.Now;
+            type.TypeCode = "SERVER";
+            type.TypeName = "Server";
+
+            SaveSystemType(type);
+        }
+
+        private void SeedPegasusSystems()
+        {
+            PegasusSystem system = new PegasusSystem();
+            system.ConnectionString = "Data Source=(local);Initial Catalog=TestMerchantCoreDB;User Id=sa;Password=T3rr1613;";
+            system.CreatedBy = "nsubugak";
+            system.CreatedOn = DateTime.Now;
+            system.ModifiedBy = "nsubugak";
+            system.ModifiedOn = DateTime.Now;
+            system.SystemCode = "TestMerchantCoreDB";
+            system.SystemName = "TestMerchantCoreDB";
+            system.SystemType = "DATABASE";
+
+            SavePegasusSystem(system);
+
+            system = new PegasusSystem();
+            system.ConnectionString = $"192.168.33.8:{Globals.RDP_USERNAME}:{Globals.RDP_PASSWORD}";
+            system.CreatedBy = "nsubugak";
+            system.CreatedOn = DateTime.Now;
+            system.ModifiedBy = "nsubugak";
+            system.ModifiedOn = DateTime.Now;
+            system.SystemCode = "TERMINAL_SVR_1";
+            system.SystemName = "Terminal Server 1 (33.8)";
+            system.SystemType = "SERVER";
+
+            SavePegasusSystem(system);
+
+            system = new PegasusSystem();
+            system.ConnectionString = $"192.168.33.9:{Globals.RDP_USERNAME}:{Globals.RDP_PASSWORD}";
+            system.CreatedBy = "nsubugak";
+            system.CreatedOn = DateTime.Now;
+            system.ModifiedBy = "nsubugak";
+            system.ModifiedOn = DateTime.Now;
+            system.SystemCode = "TERMINAL_SVR_2";
+            system.SystemName = "Terminal Server 2 (33.9)";
+            system.SystemType = "SERVER";
+
+            SavePegasusSystem(system);
+
+            system = new PegasusSystem();
+            system.ConnectionString = "Data Source=(local);Initial Catalog=TestGenericPegPayApi;User Id=sa;Password=T3rr1613;";
+            system.CreatedBy = "nsubugak";
+            system.CreatedOn = DateTime.Now;
+            system.ModifiedBy = "nsubugak";
+            system.ModifiedOn = DateTime.Now;
+            system.SystemCode = "TestGenericPegPayApi";
+            system.SystemName = "TestGenericPegPayApi";
+            system.SystemType = "DATABASE";
+
+            SavePegasusSystem(system);
+
+            system = new PegasusSystem();
+            system.ConnectionString = "Data Source=(local);Initial Catalog=ChangeRequestDB;User Id=sa;Password=T3rr1613;";
+            system.CreatedBy = "nsubugak";
+            system.CreatedOn = DateTime.Now;
+            system.ModifiedBy = "nsubugak";
+            system.ModifiedOn = DateTime.Now;
+            system.SystemCode = "ChangeRequestDB";
+            system.SystemName = "ChangeRequestDB";
+            system.SystemType = "DATABASE";
+
+            SavePegasusSystem(system);
+        }
+
+        private void SeedSystemSettings()
+        {
+            SystemSetting setting = new SystemSetting();
+            setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_CR_EMAIL_TEMPLATE;
+            setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveChangeRequestEmail.html";
+            SaveSystemSetting(setting);
+
+            setting = new SystemSetting();
+            setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE;
+            setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
+            SaveSystemSetting(setting);
+
+            setting = new SystemSetting();
+            setting.SettingKey = "RDP_ACCESS";
+            setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
+            SaveSystemSetting(setting);
+
+            setting = new SystemSetting();
+            setting.SettingKey = Globals.FILE_PATH_TO_APPROVE_TBAR_EMAIL_TEMPLATE;
+            setting.SettingValue = @"E:\PePay\ChangeRequestProject\ChangeRequestAPI\ChangeRequestSubSystem\ApproveTBAREmail.html";
+            SaveSystemSetting(setting);
+
+            setting = new SystemSetting();
+            setting.SettingKey = Globals.APPROVE_CR_URL;
+            setting.SettingValue = $@"{Globals.DOMAIN}/ApproveChangeRequest.aspx";
+            SaveSystemSetting(setting);
+
+            setting = new SystemSetting();
+            setting.SettingKey = Globals.APPROVE_TBAR_URL;
+            setting.SettingValue = $@"{Globals.DOMAIN}/ApproveTbarRequest.aspx";
+            SaveSystemSetting(setting);
+        }
+
+        private void SeedTimeBoundRequests()
+        {
+            TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
+            tbar.Approver = "nsubugak";
+            tbar.ApproverReason = "Test";
+            tbar.DurationInMinutes = 15;
+            tbar.Reason = "To Test";
+            tbar.StartTime = DateTime.Now;
+            tbar.Status = "APPROVED";
+            tbar.SystemCode = "TERMINAL_SVR_1";
+            tbar.TBPAccessId = DateTime.Now.Ticks.ToString();
+            tbar.TypeOfAccess = "FULL";
+            tbar.UserId = "nsubugak";
+
+            SaveTimeBoundAccessRequest(tbar);
+        }
+
+        private void SeedSystemUsers()
+        {
+            SystemUser user = new SystemUser();
+            user.CompanyCode = "PEGASUS";
+            user.Email = "kasozi.nsubuga@pegasus.co.ug";
+            user.Username = "nsubugak";
+            user.RoleCode = "SUPER-ADMIN";
+            user.ModifiedBy = "Admin";
+            user.PhoneNumber = "256752001311";
+            user.FullName = "Nsubuga Kasozi";
+            user.DomainAccountUsername = "kobusheesheh";
+
+            SaveSystemUser(user);
         }
 
         internal ApiResult SendOneTimePIN(string username, string MethodOfSending)
@@ -973,6 +1028,10 @@ namespace ChangeRequestSubSystem.ControlClasses
                     return apiResult;
                 }
 
+                Role old = Role.QueryWithStoredProc("GetRoleByID", req.RoleCode).FirstOrDefault();
+
+                req.Id = old != null ? old.Id : req.Id;
+
                 req.Save();
 
                 apiResult.PegPayID = "" + req.Id;
@@ -987,20 +1046,23 @@ namespace ChangeRequestSubSystem.ControlClasses
             return apiResult;
         }
 
-        internal ApiResult SavePegasusSystem(PegasusSystem req)
+        internal ApiResult SavePegasusSystem(PegasusSystem sys)
         {
             ApiResult apiResult = new ApiResult();
             try
             {
-                if (!req.IsValid())
+                if (!sys.IsValid())
                 {
-                    apiResult.SetFailuresAsStatusInResponseFields(req.StatusDesc);
+                    apiResult.SetFailuresAsStatusInResponseFields(sys.StatusDesc);
                     return apiResult;
                 }
+                PegasusSystem old = PegasusSystem.QueryWithStoredProc("GetSystemByID", sys.SystemCode).FirstOrDefault();
 
-                req.Save();
+                sys.Id = old != null ? old.Id : sys.Id;
 
-                apiResult.PegPayID = "" + req.Id;
+                sys.Save();
+
+                apiResult.PegPayID = "" + sys.Id;
                 apiResult.SetSuccessAsStatusInResponseFields();
                 return apiResult;
             }
@@ -1078,6 +1140,31 @@ namespace ChangeRequestSubSystem.ControlClasses
                 req.Save();
 
                 apiResult.PegPayID = "" + req.Id;
+                apiResult.SetSuccessAsStatusInResponseFields();
+                return apiResult;
+            }
+            catch (Exception ex)
+            {
+                HandleError(nameof(SaveCompany), "EXCEPTION", ex.Message);
+                apiResult.SetFailuresAsStatusInResponseFields(ex.Message);
+            }
+            return apiResult;
+        }
+
+        internal ApiResult SaveGoLiveRequest(GoLiveRequest goliveRequest)
+        {
+            ApiResult apiResult = new ApiResult();
+            try
+            {
+                if (!goliveRequest.IsValid())
+                {
+                    apiResult.SetFailuresAsStatusInResponseFields(goliveRequest.StatusDesc);
+                    return apiResult;
+                }
+
+                goliveRequest.Save();
+
+                apiResult.PegPayID = "" + goliveRequest.Id;
                 apiResult.SetSuccessAsStatusInResponseFields();
                 return apiResult;
             }
@@ -1210,7 +1297,8 @@ namespace ChangeRequestSubSystem.ControlClasses
                     typeof(SystemSetting),
                     typeof(PegasusSystem),
                     typeof(SystemType),
-                    typeof(AccessType)
+                    typeof(AccessType),
+                    typeof(GoLiveRequest)
                 };
         }
 

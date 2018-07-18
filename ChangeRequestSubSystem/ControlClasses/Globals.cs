@@ -30,5 +30,8 @@ public static class Globals
     public const string DATE_FORMAT = "yyyy-MM-dd HH:mm";
 
     public static object DOMAIN = "test.pegasus.co.ug:8019/CrWebPortal";
+
+    public static object RDP_USERNAME = "398 721 574";
+    public static object RDP_PASSWORD = "Tp4tci2s4u2g!";
 }
 

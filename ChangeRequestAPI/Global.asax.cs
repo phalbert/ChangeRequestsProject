@@ -1,6 +1,7 @@
 ﻿using ChangeRequestSubSystem.ControlClasses;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -17,10 +18,10 @@ namespace ChangeRequestAPI
             {
                 CRSubSystemAPI.Initialize();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                //File.WriteAllText("ErrorDetail.txt", ex.Message);
+                //throw ex;
             }
         }
 

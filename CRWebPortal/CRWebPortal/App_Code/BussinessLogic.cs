@@ -15,18 +15,13 @@ namespace CRWebPortal
             return cRSystemAPIClient;
         }
 
-       
-        
-
-       
-
         public static TimeBoundAccessRequest IsAccessRequestIsValid(HttpSessionState Session,string TbarMethod)
         {
             TimeBoundAccessRequest tbar = new TimeBoundAccessRequest();
             try
             {
                 SystemUser user = Session["User"] as SystemUser;
-                tbar = Session["TBAR"] as TimeBoundAccessRequest == null ? cRSystemAPIClient.CheckForValidTimeBoundAccessRequest(user): Session["TBAR"] as TimeBoundAccessRequest;
+                tbar = Session["TBAR"] as TimeBoundAccessRequest == null ? cRSystemAPIClient.CheckForValidTimeBoundAccessRequest(user,TbarMethod): Session["TBAR"] as TimeBoundAccessRequest;
 
                 if (tbar.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
@@ -43,7 +38,9 @@ namespace CRWebPortal
                     tbar.StatusDesc = checkResult.StatusDesc;
                     return tbar;
                 }
+
                 DataTable dt = cRSystemAPIClient.ExecuteDataSet("GetSystemById",new object[] { tbar.SystemCode }).Tables[0];
+
                 if (dt.Rows.Count == 0)
                 {
                     Session["TBAR"] = null;

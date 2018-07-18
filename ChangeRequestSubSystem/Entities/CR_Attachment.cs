@@ -25,5 +25,19 @@ namespace ChangeRequestSubSystem.Entities
         [Property(Length = 400)]
         public string Hash { get; set; }
 
+        public override bool IsValid()
+        {
+            string propertiesThatCanBeNull = $"{nameof(Id)}|{nameof(Hash)}";
+            string nullCheckResult = SharedCommons.SharedCommons.CheckForNulls(this, propertiesThatCanBeNull);
+            if (nullCheckResult != Globals.SUCCESS_STATUS_TEXT)
+            {
+                StatusCode = Globals.FAILURE_STATUS_CODE;
+                StatusDesc = nullCheckResult;
+                return false;
+            }
+
+            return base.IsValid();
+        }
+
     }
 }
