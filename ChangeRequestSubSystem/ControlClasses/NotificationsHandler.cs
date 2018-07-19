@@ -399,9 +399,9 @@ namespace ChangeRequestSubSystem.ControlClasses
                                $"You can reapply for another Tbar with the necessary Changes\n<br/>" +
                                $"\n<br/>Thank you.\n<br/>" +
                                $"Pegasus Change Request System.\n<br/>" +
-                               $"#DontHateTheMessengerOfBadNews\n<br/>";
+                               $"#DontHateTheMessenger\n<br/>";
 
-                mail.Subject = "T.B.A.R REJECTED";
+                mail.Subject = "Time Bound Access Request REJECTED";
 
                 MailApi.MessengerSoapClient mapi = new MailApi.MessengerSoapClient();
 
@@ -459,7 +459,7 @@ namespace ChangeRequestSubSystem.ControlClasses
                                $"\n<br/>Thank you.\n<br/>" +
                                $"Pegasus Change Request System.\n<br/>";
 
-                mail.Subject = "T.B.A.R REJECTED";
+                mail.Subject = "Time Bound Access Request APPROVED";
 
                 MailApi.MessengerSoapClient mapi = new MailApi.MessengerSoapClient();
 

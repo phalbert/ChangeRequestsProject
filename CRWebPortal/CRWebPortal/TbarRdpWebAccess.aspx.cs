@@ -53,7 +53,10 @@ namespace CRWebPortal
 
         private void LoadData(TimeBoundAccessRequest tbar)
         {
-            Session["RDP_TBAR"] = tbar;
+            DateTime maxDate = tbar.StartTime.AddMinutes(tbar.DurationInMinutes);
+            DateTime currentDate = DateTime.Now;
+            int minutesLeft = ((int)maxDate.Subtract(currentDate).TotalMinutes) + 1;//add an extra minute for network latency
+            Session[Globals.RDP_TBAR_SESSION_KEY_NAME] = tbar;
             PegasusSystem system = SimpleDatabaseHandler<PegasusSystem>.QueryWithStoredProc("GetSystemById", tbar.SystemCode).FirstOrDefault();
 
             if (system == null)

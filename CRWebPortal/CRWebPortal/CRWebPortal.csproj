@@ -529,6 +529,7 @@
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
     <Content Include="Styles\bootstrap-material-datetimepicker.css" />
     <Content Include="Styles\easy-autocomplete.min.css" />
+    <Content Include="Styles\FlatUI.css" />
     <Content Include="Styles\jquery-loading.min.css" />
     <Content Include="Styles\jquery.textcomplete.css" />
     <Content Include="Styles\material-dashboard.css" />

@@ -1,10 +1,15 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true" CodeBehind="ExecuteQuery.aspx.cs" Inherits="CRWebPortal.ExecuteQuery" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MaterialUI.Master" AutoEventWireup="true" CodeBehind="ExecuteQuery.aspx.cs" Inherits="CRWebPortal.ExecuteQuery" %>
 
-<%@ MasterType VirtualPath="~/LoggedInMaster.Master" %>
+<%@ MasterType VirtualPath="~/MaterialUI.Master" %>
 <%@ Import Namespace="CRWebPortal.CRSystemAPI" %>
+<%@ Import Namespace="CRWebPortal" %>
 <asp:Content runat="server" ContentPlaceHolderID="headContentPlaceHolder" ID="headContentPlaceHolder">
     <link href="Styles/timeTo.css" rel="Stylesheet" />
     <link href="Styles/jquery.textcomplete.css" rel="stylesheet" />
+
+    .remove-all-styles {
+    all: revert;
+  }
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
@@ -65,7 +70,7 @@
                                    
                                         </div>
                                         <div class="card-body bg-default">
-                                            <asp:TextBox ID="txtQuery" required="true" CssClass="form-control auto-complete" Style="background-color: white" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                           <span class="remove-all-styles"><asp:TextBox ID="txtQuery" required="true" CssClass=".form-control auto-complete" Style="background-color: white;width:100%" runat="server" TextMode="MultiLine"></asp:TextBox></span> 
                                         </div>
                                         <div class="card-footer bg-default text-center">
                                             <asp:Button ID="btnRefresh" Text="Refresh Intellisense" CssClass="btn btn-sm btn-dark" runat="server" OnClick="btnRefresh_Click" />
@@ -115,7 +120,7 @@
     <script type="text/javascript" src="Scripts/jquery.time-to.js"></script>
     <script type="text/javascript" src="Scripts/jquery.textcomplete.min.js"></script>
     <% 
-        var Tbar = Session["TBAR"] as TimeBoundAccessRequest;
+        var Tbar = Session["DB_TBAR"] as TimeBoundAccessRequest;
         var Tables = Session["Tables"] as string;
 
         if (Tbar != null)

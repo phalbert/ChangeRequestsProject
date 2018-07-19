@@ -48,8 +48,10 @@ namespace CRWebPortal
         {
             SystemUser user = Session["User"] as SystemUser;
             string statementsAllowed = GetStatementsAllowed(tbar);
-            Session["DB_TBAR"] = tbar;
-
+            Session[Globals.DB_TBAR_SESSION_KEY_NAME] = tbar;
+            DateTime maxDate = tbar.StartTime.AddMinutes(tbar.DurationInMinutes);
+            DateTime currentDate = DateTime.Now;
+            int minutesLeft = ((int)maxDate.Subtract(currentDate).TotalMinutes) + 1;//add an extra minute for network latency
             LoadAutoCompleteIntellisense(tbar);
             lblDbName.Text = $"DB ACCESS LIMITED TO [{tbar.SystemCode}], STATEMENTS ALLOWED [{statementsAllowed}]";
             return true;

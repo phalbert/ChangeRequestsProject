@@ -66,7 +66,7 @@ namespace CRWebPortal
 
                 LoadSystemUsers(user);
 
-                string msg1 = "SUCCESS: System Saved Successfully";
+                string msg1 = "SUCCESS: User Saved Successfully";
                 Master.ErrorMessage = msg1;
                 return;
             }

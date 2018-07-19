@@ -1,5 +1,4 @@
-﻿namespace CRWebPortal
-{
+﻿
     public static class Globals
     {
         public const string SUCCESS_STATUS_CODE = "0";
@@ -19,7 +18,10 @@
                                                          "SELECT c.name AS 'ColumnName' FROM sys.columns c JOIN sys.tables t   ON c.object_id = t.object_id";
 
         public const int MAXIMUM_ROWS_FOR_NON_FULL_CONTROL_QUERY = 10;
+        public const string RDP_TBAR_METHOD = "SERVER";
+        public const string DB_TBAR_METHOD = "DATABASE";
+        public const string RDP_TBAR_SESSION_KEY_NAME = "RDP_TBAR";
+        public const string DB_TBAR_SESSION_KEY_NAME = "DB_TBAR";
 
         public static string START_PAGE = "StartPage.aspx";
     }
-}

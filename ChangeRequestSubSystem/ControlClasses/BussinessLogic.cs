@@ -945,7 +945,7 @@ namespace ChangeRequestSubSystem.ControlClasses
             ApiResult apiResult = new ApiResult();
             try
             {
-                TimeBoundAccessRequest old = TimeBoundAccessRequest.QueryWithStoredProc("GetTBarByID", UserId, TbarId).FirstOrDefault();
+                TimeBoundAccessRequest old = TimeBoundAccessRequest.QueryWithStoredProc("GetTBarByApproverID", UserId, TbarId).FirstOrDefault();
 
                 if (old == null)
                 {
@@ -960,15 +960,15 @@ namespace ChangeRequestSubSystem.ControlClasses
                 apiResult.StatusDesc = "SUCCESS: YOUR DECISION HAS BEEN SAVED SUCCESFULLY";
 
                 //this dude has rejected the CR
-                if (Decision == "REJECTED")
-                {
+                //if (Decision == "REJECTED")
+                //{
                     //inform the requestor asynchronously
                     Task.Factory.StartNew(() =>
                     {
                         InformRequestorOfTbarOutCome(TbarId);
                     });
                     return apiResult;
-                }
+                //}
             }
             catch (Exception ex)
             {

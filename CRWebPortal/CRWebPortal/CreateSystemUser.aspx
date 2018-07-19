@@ -61,6 +61,9 @@
                     <asp:TextBox ID="txtDomainAccount" CssClass="form-control auto-complete" Style="background-color: white" runat="server"></asp:TextBox>
                 </div>
             </div>
+            <div class="card-footer bg-default text-center">
+                <asp:Button ID="btnSave" Text="Save" CssClass="btn btn-md btn-success" runat="server" OnClick="btnSave_Click" />
+            </div>
             <br />
 
             <div class="row" id="resultsDiv" runat="server">
@@ -84,9 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer bg-default text-center">
-                <asp:Button ID="btnSave" Text="Save" CssClass="btn btn-md btn-success" runat="server" OnClick="btnSave_Click" />
-            </div>
+            
         </div>
     </div>
 </asp:Content>

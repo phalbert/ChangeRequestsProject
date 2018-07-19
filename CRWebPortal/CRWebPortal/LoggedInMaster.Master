@@ -146,10 +146,7 @@
 
             console.log("Ready");
 
-            $(document).ready(function($) {
-                var path = window.location.pathname;
-                $('.sidebar-wrapper ul li a[href="' + path + '"]').parent().addClass('active');
-            });
+           
 
         </script>
         <asp:ContentPlaceHolder ID="footerJsContent" runat="server" />

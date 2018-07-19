@@ -8,6 +8,7 @@ namespace CRWebPortal
 {
     public class BussinessLogic
     {
+       
         public static CRSystemAPIClient cRSystemAPIClient = new CRSystemAPIClient();
 
         public static CRSystemAPIClient GetCRSystemAPIHandle()
@@ -21,11 +22,20 @@ namespace CRWebPortal
             try
             {
                 SystemUser user = Session["User"] as SystemUser;
-                tbar = Session["TBAR"] as TimeBoundAccessRequest == null ? cRSystemAPIClient.CheckForValidTimeBoundAccessRequest(user,TbarMethod): Session["TBAR"] as TimeBoundAccessRequest;
+
+                //if (TbarMethod == Globals.DB_TBAR_METHOD)
+                //{
+                //    tbar = Session[Globals.DB_TBAR_SESSION_KEY_NAME] as TimeBoundAccessRequest == null ? cRSystemAPIClient.CheckForValidTimeBoundAccessRequest(user, TbarMethod) : Session[Globals.DB_TBAR_SESSION_KEY_NAME] as TimeBoundAccessRequest;
+                //}
+                //if (TbarMethod == Globals.RDP_TBAR_METHOD)
+                //{
+                //    tbar = Session[Globals.RDP_TBAR_SESSION_KEY_NAME] as TimeBoundAccessRequest == null ? cRSystemAPIClient.CheckForValidTimeBoundAccessRequest(user, TbarMethod) : Session[Globals.RDP_TBAR_SESSION_KEY_NAME] as TimeBoundAccessRequest;
+                //}
+                tbar = cRSystemAPIClient.CheckForValidTimeBoundAccessRequest(user, TbarMethod);
 
                 if (tbar.StatusCode != Globals.SUCCESS_STATUS_CODE)
                 {
-                    //Show Error Message
+                    //end here...return error
                     return tbar;
                 }
 
@@ -43,7 +53,6 @@ namespace CRWebPortal
 
                 if (dt.Rows.Count == 0)
                 {
-                    Session["TBAR"] = null;
                     tbar.StatusCode = Globals.FAILURE_STATUS_CODE;
                     tbar.StatusDesc = "FAILED TO DETERMINE SYSTEM TO ACCESS";
                     return tbar;
@@ -53,13 +62,11 @@ namespace CRWebPortal
 
                 if (systemType.ToUpper() != TbarMethod.ToUpper())
                 {
-                    Session["TBAR"] = null;
                     tbar.StatusCode = Globals.FAILURE_STATUS_CODE;
                     tbar.StatusDesc = "TBAR FOUND IS MEANT FOR "+systemType+" ACCESS. YOU APPEAR TO BE TRYING TO USE IT FOR "+TbarMethod+" ACCESS";
                     return tbar;
                 }
-
-                Session["TBAR"] = tbar;
+                
                 return tbar;
             }
             catch (Exception ex)

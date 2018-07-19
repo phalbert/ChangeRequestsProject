@@ -2,6 +2,7 @@
 
 <%@ MasterType VirtualPath="~/LoggedInMaster.Master" %>
 <%@ Import Namespace="CRWebPortal.CRSystemAPI" %>
+<%@ Import Namespace="CRWebPortal" %>
 <asp:Content runat="server" ContentPlaceHolderID="headContentPlaceHolder" ID="headContentPlaceHolder">
     <link href="Styles/timeTo.css" rel="Stylesheet" />
 </asp:Content>
@@ -102,7 +103,7 @@
     <script type="text/javascript" src="Scripts/jquery.time-to.js"></script>
     <script type="text/javascript">
         <% 
-        var Tbar = Session["TBAR"] as TimeBoundAccessRequest;
+        var Tbar = Session["RDP_TBAR"] as TimeBoundAccessRequest;
 
         if (Tbar != null)
         {
