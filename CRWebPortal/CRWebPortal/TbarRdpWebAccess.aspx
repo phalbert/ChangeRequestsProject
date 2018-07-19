@@ -33,14 +33,14 @@
 
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Oh Ya. Lets RDP This !!
                         </div>
                         <div class="card-body bg-default">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card border-primary text-white mb-3">
-                                        <div class="card-header bg-primary">
+                                        <div class="card-header card-header-info">
                                             Time Left
                                    
                                         </div>
@@ -55,7 +55,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card border-primary text-white mb-3">
-                                        <div class="card-header bg-primary">
+                                        <div class="card-header card-header-info">
                                             START RDP SESSION AND USE ANY DESK TO LOGIN
                                         </div>
                                         <div class="card-body bg-default">

@@ -24,14 +24,14 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="card border-primary text-white  mb-3">
-                <div class="card-header bg-primary">
+                <div class="card-header card-header-info">
                     Specify Any Post Change Tests
                 </div>
                 <div class="card-body bg-default">
 
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Test Details
                         </div>
                         <div class="card-body bg-default">
@@ -57,7 +57,7 @@
 
                     <%------------ View Uploaded Files---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Attached Post Change Tests
                         </div>
                         <div class="card-body bg-default">

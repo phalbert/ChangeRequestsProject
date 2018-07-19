@@ -34,7 +34,7 @@
 
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             <asp:Label ID="lblDbName" runat="server">DB_NAME</asp:Label>
                                    
                         </div>
@@ -44,7 +44,7 @@
                                 <%------------ Enter Query Section---------  --%>
                                 <div class="col-lg-12">
                                     <div class="card border-primary text-white mb-3">
-                                        <div class="card-header bg-primary">
+                                        <div class="card-header card-header-info">
                                             Time Left
                                    
                                         </div>
@@ -60,7 +60,7 @@
                                 <%------------ Enter Query Section---------  --%>
                                 <div class="col-lg-12">
                                     <div class="card border-primary text-white mb-3">
-                                        <div class="card-header bg-primary">
+                                        <div class="card-header card-header-info">
                                             Enter Query
                                    
                                         </div>
@@ -79,7 +79,7 @@
                                 <%------------ Query Results Section---------  --%>
                                 <div class="col-lg-12">
                                     <div class="card border-primary text-white mb-3">
-                                        <div class="card-header bg-primary">
+                                        <div class="card-header card-header-info">
                                             Query Results
                                    
                                         </div>

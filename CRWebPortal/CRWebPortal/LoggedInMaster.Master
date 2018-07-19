@@ -18,7 +18,7 @@
     <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
     <link href="Styles/nav-wizard.css" rel="stylesheet" />
     <link href="Styles/bootstrap-material-datetimepicker.css" rel="Stylesheet" />
-
+    <link href="Styles/Site.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="headContentPlaceHolder" runat="server" />
 </head>
 
@@ -37,49 +37,55 @@
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
-                        <li class="nav-item active">
+                         <li class="nav-item active">
+                            <a class="nav-link" href="StartPage.aspx">
+                                <i class="material-icons">dashboard</i>
+                                <p>Home</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="CreateChangeRequest.aspx">
                                 <i class="material-icons">dashboard</i>
                                 <p>New Change Request</p>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="#0">
                                 <i class="material-icons">dashboard</i>
                                 <p>View Change Requests</p>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="ChooseTbarMethod.aspx">
                                 <i class="material-icons">dashboard</i>
                                 <p>Use T.B.A.R</p>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="ApplyForTBPAccess.aspx">
                                 <i class="material-icons">dashboard</i>
                                 <p>Request 4 T.B.A.R</p>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="ApplyForGoLive.aspx">
                                 <i class="material-icons">dashboard</i>
                                 <p>New Go Live Request</p>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="DbQueryLogs.aspx">
                                 <i class="material-icons">dashboard</i>
                                 <p>View DbQuery Logs</p>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="SaveSystem.aspx">
                                 <i class="material-icons">dashboard</i>
                                 <p>Add Pegasus System</p>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="CreateSystemUser.aspx">
                                 <i class="material-icons">dashboard</i>
                                 <p>Add System User</p>
@@ -139,6 +145,11 @@
 
 
             console.log("Ready");
+
+            $(document).ready(function($) {
+                var path = window.location.pathname;
+                $('.sidebar-wrapper ul li a[href="' + path + '"]').parent().addClass('active');
+            });
 
         </script>
         <asp:ContentPlaceHolder ID="footerJsContent" runat="server" />

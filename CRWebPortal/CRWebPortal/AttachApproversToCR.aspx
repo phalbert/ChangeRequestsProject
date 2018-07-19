@@ -24,14 +24,14 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="card border-primary text-white  mb-3">
-                <div class="card-header bg-primary">
+                <div class="card-header card-header-info">
                     Specify Approvers/Reviewers For this Change Request
                 </div>
                 <div class="card-body bg-default">
 
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Select Approvers/Reviewers
                         </div>
                         <div class="card-body bg-default">
@@ -63,7 +63,7 @@
 
                     <%------------ View Uploaded Files---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Selected Change Control Board
                         </div>
                         <div class="card-body bg-default">

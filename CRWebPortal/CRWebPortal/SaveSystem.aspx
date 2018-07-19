@@ -4,7 +4,7 @@
 <asp:Content runat="server" ID="Main" ContentPlaceHolderID="MainContent">
     <%------------ General Details Section---------  --%>
     <div class="card border-primary text-white  mb-3">
-        <div class="card-header bg-primary">
+        <div class="card-header card-header-info">
             Save Details
                                    
         </div>
@@ -44,7 +44,7 @@
                 <%------------ General Details Section---------  --%>
                 <div class="col-lg-12">
                     <div class="card border-primary text-white mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Systems
                                    
                         </div>

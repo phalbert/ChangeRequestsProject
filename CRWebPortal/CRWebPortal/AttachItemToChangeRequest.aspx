@@ -24,14 +24,14 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="card border-primary text-white  mb-3">
-                <div class="card-header bg-primary">
+                <div class="card-header card-header-info">
                     Upload Any Items/Attachments to the Change Request
                 </div>
                 <div class="card-body bg-default">
 
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Attach File
                         </div>
                         <div class="card-body bg-default">
@@ -50,7 +50,7 @@
 
                     <%------------ View Uploaded Files---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             View Attachments
                         </div>
                         <div class="card-body bg-default">

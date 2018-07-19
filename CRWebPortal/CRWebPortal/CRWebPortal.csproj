@@ -145,6 +145,7 @@
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\mask.png" />
     <Content Include="assets\img\new_logo.png" />
+    <Content Include="assets\img\SampleUserPic.png" />
     <Content Include="assets\img\sidebar-1.jpg" />
     <Content Include="assets\img\sidebar-2.jpg" />
     <Content Include="assets\img\sidebar-3.jpg" />
@@ -524,6 +525,7 @@
     <Content Include="Scripts\plugins\chartist.min.js" />
     <Content Include="Scripts\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Scripts\progressbar.min.js" />
+    <Content Include="StartPage.aspx" />
     <Content Include="Styles\bootstrap-datetimepicker.min.css" />
     <Content Include="Styles\bootstrap-material-datetimepicker.css" />
     <Content Include="Styles\easy-autocomplete.min.css" />
@@ -675,6 +677,13 @@
       <DependentUpon>SaveSystem.aspx</DependentUpon>
     </Compile>
     <Compile Include="SimpleDatabaseHandler.cs" />
+    <Compile Include="StartPage.aspx.cs">
+      <DependentUpon>StartPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StartPage.aspx.designer.cs">
+      <DependentUpon>StartPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="TbarRdpWebAccess.aspx.cs">
       <DependentUpon>TbarRdpWebAccess.aspx</DependentUpon>

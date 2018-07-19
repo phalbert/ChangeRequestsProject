@@ -23,14 +23,14 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="card border-primary text-white  mb-3">
-                <div class="card-header bg-primary text-center">
+                <div class="card-header card-header-info text-center">
                     Specify Systems that will be Affected by this Change
                 </div>
                 <div class="card-body bg-default">
 
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Systems Affected
                         </div>
                         <div class="card-body bg-default">
@@ -64,7 +64,7 @@
 
                     <%------------ View Uploaded Files---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             List Of Affected Systems
                         </div>
                         <div class="card-body bg-default">

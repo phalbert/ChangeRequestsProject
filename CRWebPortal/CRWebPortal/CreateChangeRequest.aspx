@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/LoggedInMaster.Master" AutoEventWireup="true" CodeBehind="CreateChangeRequest.aspx.cs" Inherits="CRWebPortal.CreateChangeRequest" %>
+
 <%@ MasterType VirtualPath="~/LoggedInMaster.Master" %>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -23,8 +24,9 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="card border-primary text-white  mb-3">
-                <div class="card-header bg-primary text-center">
-                    Supply Change Request Details Below
+                <div class="card-header card-header-info">
+                    <h4 class="card-title">Supply Change Request Details Below</h4>
+                   
                 </div>
 
 
@@ -32,7 +34,7 @@
 
                     <%------------ General Details Section -----------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             General Information
                         </div>
                         <div class="card-body bg-default">
@@ -50,7 +52,7 @@
 
                     <%------------ Change Description Section -----------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Change Description (What is the Change About)
                         </div>
                         <div class="card-body bg-default">
@@ -89,7 +91,7 @@
 
                     <%------------ Justification Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Justify why the proposed changes should be implemented
                         </div>
                         <div class="card-body bg-default">
@@ -115,7 +117,7 @@
 
                     <%------------ Requestor Details Section ---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Requestor Details (Who Requested for this)
                         </div>
                         <div class="card-body bg-default">
@@ -148,14 +150,14 @@
                                     <asp:TextBox ID="txtReqAddress" runat="server" CssClass="form-control"
                                         placeholder="Enter text" />
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
 
                     <%------------ Implementer Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Implementer Details (Who is implenting this)
                         </div>
                         <div class="card-body bg-default">
@@ -192,7 +194,7 @@
                             <div class="row">
                                 <div class="col-lg-6" style="padding-bottom: 10px">
                                     <label>
-                                          End Date Time of Implementation</label>
+                                        End Date Time of Implementation</label>
                                     <asp:TextBox ID="txtImplementationEndDateTime" runat="server" CssClass="form-control form_datetime"
                                         placeholder="Enter text" />
                                 </div>

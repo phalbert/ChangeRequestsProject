@@ -99,7 +99,7 @@ namespace CRWebPortal
                 }
 
                 Session["User"] = user;
-                Response.Redirect("~/CreateChangeRequest.aspx");
+                Response.Redirect($"~/{Globals.START_PAGE}");
             }
             catch (Exception ex)
             {

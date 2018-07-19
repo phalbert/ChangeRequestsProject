@@ -17,14 +17,14 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="card border-primary text-white  mb-3">
-                <div class="card-header bg-primary">
+                <div class="card-header card-header-info">
                     Specify Approvers Time Bound Privelleged Access Request
                 </div>
                 <div class="card-body bg-default">
 
                     <%------------ General Details Section---------  --%>
                     <div class="card border-primary text-white  mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header card-header-info">
                             Select Approvers/Reviewers
                         </div>
                         <div class="card-body bg-default">
